@@ -1,4 +1,4 @@
-package ftn.uns.ac.rs.tim6.model;
+package ftn.uns.ac.rs.tim6.model.insurance;
 import javax.persistence.*;
 
 @Entity
@@ -26,5 +26,8 @@ public class Car {
 	
 	@Column(name = "car_owner_jmbg")
 	private String carOwnerJmbg;
+
+	
+	
 	
 }
