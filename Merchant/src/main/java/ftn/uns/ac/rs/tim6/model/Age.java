@@ -1,24 +1,52 @@
 package ftn.uns.ac.rs.tim6.model;
 
-import java.util.List;
-
 import javax.persistence.*;
 
 
 @Entity
-@Table(name = "home_insurance")
+@Table(name = "age")
 public class Age {
 
-	 @Id
+	
+
+	@Id
 	 @GeneratedValue
-	 @Column(name = "home_insurance_id")
+	 @Column(name = "age_id")
 	 private Long id;
 	 
-	 @Column(name = "home_risk_value")
-	 private Double homeRiskValue;
+	 @Column(name = "age_risk_value")
+	 private Double ageRiskValue;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Double getAgeRiskValue() {
+		return ageRiskValue;
+	}
+
+	public void setAgeRiskValue(Double ageRiskValue) {
+		this.ageRiskValue = ageRiskValue;
+	}
+
+	
 
 	 
 /*	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "person")
 	 private Person person;  */
+	 
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 }
