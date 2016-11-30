@@ -17,6 +17,19 @@ public class Age {
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinColumn(name = "person")
 	private Person person;
+	
+	
+
+	public Age() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Age(Long id, Double ageRiskValue) {
+		super();
+		this.id = id;
+		this.ageRiskValue = ageRiskValue;
+	}
 
 	public Long getId() {
 		return id;
