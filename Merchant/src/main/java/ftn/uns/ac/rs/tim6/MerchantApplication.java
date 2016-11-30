@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import ftn.uns.ac.rs.tim6.model.Age;
 
+import ftn.uns.ac.rs.tim6.model.Age;
+
 @SpringBootApplication
 //@RestController
 public class MerchantApplication {
@@ -31,3 +33,5 @@ public class MerchantApplication {
     }
 
 }
+
+
