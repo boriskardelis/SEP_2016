@@ -1,0 +1,25 @@
+{
+  "name": "merchant-bower",
+  "homepage": "www.google.com",
+  "authors": [
+    "Aleksej Boris Milos"
+  ],
+  "description": "Merchant Project",
+  "main": "Index.html",
+  "keywords": [
+    "bower"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "^1.5.9",
+    "angular-ui-router": "ui-router#^0.3.2"
+  }
+}

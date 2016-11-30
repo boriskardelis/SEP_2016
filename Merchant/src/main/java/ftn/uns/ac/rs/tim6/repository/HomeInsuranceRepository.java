@@ -1,5 +1,11 @@
 package ftn.uns.ac.rs.tim6.repository;
 
-public interface HomeInsuranceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import ftn.uns.ac.rs.tim6.model.HomeInsurance;
+
+@Repository
+public interface HomeInsuranceRepository extends JpaRepository<HomeInsurance, Long>  {
 
 }

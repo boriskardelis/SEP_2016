@@ -26,7 +26,7 @@ public class AgeService implements GenericService<Age>{
 	@Override
 	public Age save(Age t) {
 		// TODO Auto-generated method stub
-		return null;
+		return ageRepository.save(t);
 	}
 	
 	
