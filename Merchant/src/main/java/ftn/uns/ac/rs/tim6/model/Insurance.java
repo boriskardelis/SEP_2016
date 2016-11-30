@@ -1,5 +1,5 @@
 package ftn.uns.ac.rs.tim6.model;
 
-public class Insurence {
+public class Insurance {
 
 }

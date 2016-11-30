@@ -2,20 +2,21 @@ package ftn.uns.ac.rs.tim6.model;
 
 import javax.persistence.*;
 
-
 @Entity
 @Table(name = "age")
 public class Age {
 
-	
-
 	@Id
-	 @GeneratedValue
-	 @Column(name = "age_id")
-	 private Long id;
-	 
-	 @Column(name = "age_risk_value")
-	 private Double ageRiskValue;
+	@GeneratedValue
+	@Column(name = "age_id")
+	private Long id;
+
+	@Column(name = "age_risk_value")
+	private Double ageRiskValue;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "person")
+	private Person person;
 
 	public Long getId() {
 		return id;
@@ -33,13 +34,4 @@ public class Age {
 		this.ageRiskValue = ageRiskValue;
 	}
 
-	
-
-	 
-/*	 @OneToMany(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "person")
-	 private Person person;  */
-	 
-	 
-	 
 }
