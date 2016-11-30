@@ -13,7 +13,9 @@ public class AgeController {
 	@RequestMapping(value = "/age",						//test 
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Age> getAllAges(@RequestBody Age age) {
+    public ResponseEntity<Age> getAllAges() {
         return null;
     }
+	
+
 }

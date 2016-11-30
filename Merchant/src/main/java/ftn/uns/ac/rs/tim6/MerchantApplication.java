@@ -15,7 +15,7 @@ public class MerchantApplication {
 		Age newAge = new Age();
 		long i = 12348910;
 		newAge.setId(i);
-		newAge.setHomeRiskValue(2.6);
+		newAge.setAgeRiskValue(2.5);
 		
 		
 	}
