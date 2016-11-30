@@ -13,6 +13,7 @@ import ftn.uns.ac.rs.tim6.repository.BuyerRepository;
 @Transactional
 public class BuyerService implements GenericService<Buyer> {
 
+
 	@Autowired
 	private BuyerRepository buyerRepository;
 
