@@ -1,5 +1,9 @@
 package ftn.uns.ac.rs.tim6.repository;
 
-public interface SportRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import ftn.uns.ac.rs.tim6.model.Sport;
+
+public interface SportRepository extends JpaRepository<Sport, Long>  {
 
 }
