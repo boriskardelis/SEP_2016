@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.tim6.service;
 
-public class BuyerService implements GenericService<T>{
+import ftn.uns.ac.rs.tim6.model.Buyer;
+
+public class BuyerService {
 
 }
