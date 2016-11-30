@@ -25,7 +25,7 @@ public class HomeService implements GenericService<Home>{
 	@Override
 	public Home save(Home t) {
 		// TODO Auto-generated method stub
-		return null;
+		return homeRepository.save(t);
 	}
 	
 	

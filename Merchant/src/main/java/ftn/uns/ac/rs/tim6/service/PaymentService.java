@@ -25,7 +25,7 @@ public class PaymentService implements GenericService<Payment> {
 	@Override
 	public Payment save(Payment t) {
 		// TODO Auto-generated method stub
-		return null;
+		return paymentRepository.save(t);
 	}
 	
 	

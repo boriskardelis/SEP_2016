@@ -25,7 +25,7 @@ public class SportService implements GenericService<Sport>{
 	@Override
 	public Sport save(Sport t) {
 		// TODO Auto-generated method stub
-		return null;
+		return sportRepository.save(t);
 	}
 	
 	

@@ -25,7 +25,7 @@ public class SumInsuredToService implements GenericService<SumInsuredTo> {
 	@Override
 	public SumInsuredTo save(SumInsuredTo t) {
 		// TODO Auto-generated method stub
-		return null;
+		return sumInsuredToRepository.save(t);
 	}
 	
 	

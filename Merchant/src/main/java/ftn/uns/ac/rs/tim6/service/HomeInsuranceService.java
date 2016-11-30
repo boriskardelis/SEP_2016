@@ -25,7 +25,7 @@ public class HomeInsuranceService implements GenericService<HomeInsurance>{
 	@Override
 	public HomeInsurance save(HomeInsurance t) {
 		// TODO Auto-generated method stub
-		return null;
+		return homeInsuranceRepository.save(t);
 	}
 	
 	

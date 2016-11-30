@@ -25,6 +25,6 @@ public class HomeRiskTypeService implements GenericService<HomeRiskType> {
 	@Override
 	public HomeRiskType save(HomeRiskType t) {
 		// TODO Auto-generated method stub
-		return null;
+		return homeRiskTypeRepository.save(t);
 	}
 }

@@ -25,7 +25,7 @@ public class RegionService implements GenericService<Region> {
 	@Override
 	public Region save(Region t) {
 		// TODO Auto-generated method stub
-		return null;
+		return regionRepository.save(t);
 	};
 	
 	

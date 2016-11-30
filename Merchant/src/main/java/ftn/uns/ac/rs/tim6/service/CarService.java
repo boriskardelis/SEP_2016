@@ -25,7 +25,7 @@ public class CarService implements GenericService<Car>{
 	@Override
 	public Car save(Car t) {
 		// TODO Auto-generated method stub
-		return null;
+		return carRepository.save(t);
 	}
 
 }

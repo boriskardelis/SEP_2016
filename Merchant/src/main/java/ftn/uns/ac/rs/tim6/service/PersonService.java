@@ -25,7 +25,7 @@ public class PersonService implements GenericService<Person>{
 	@Override
 	public Person save(Person t) {
 		// TODO Auto-generated method stub
-		return null;
+		return personRepository.save(t);
 	};
 	
 	

@@ -25,7 +25,7 @@ public class PackagesService implements GenericService<Packages> {
 	@Override
 	public Packages save(Packages t) {
 		// TODO Auto-generated method stub
-		return null;
+		return packagesRepository.save(t);
 	}
 	
 	

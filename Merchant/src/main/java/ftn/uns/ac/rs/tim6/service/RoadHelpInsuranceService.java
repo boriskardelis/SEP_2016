@@ -25,7 +25,7 @@ public class RoadHelpInsuranceService implements GenericService<RoadHelpInsuranc
 	@Override
 	public RoadHelpInsurance save(RoadHelpInsurance t) {
 		// TODO Auto-generated method stub
-		return null;
+		return roadHelpInsuranceRepository.save(t);
 	}
 	
 	

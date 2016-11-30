@@ -26,6 +26,6 @@ public class BuyerService implements GenericService<Buyer> {
 	@Override
 	public Buyer save(Buyer t) {
 		// TODO Auto-generated method stub
-		return null;
+		return buyerRepository.save(t);
 	}
 }
