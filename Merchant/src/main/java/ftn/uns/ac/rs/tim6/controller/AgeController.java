@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import ftn.uns.ac.rs.tim6.model.Age;
@@ -17,14 +16,7 @@ public class AgeController {
 	
 	@Autowired
 	AgeService ageService;
-	
-	/*@RequestMapping(value = "/age",						
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Age> getAllAges(@RequestBody Age age) {
-		System.out.println("USAO0000000000000000000000000000000");
-        return null;
-    }*/
+
 	
 	@RequestMapping(value = "/ages",						 
             method = RequestMethod.GET,
