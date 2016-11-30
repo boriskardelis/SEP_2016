@@ -10,13 +10,13 @@ import javax.persistence.Table;
 @Table(name = "home_insurance")
 public class HomeInsurance {
 
-	@Id
+	 @Id
 	 @GeneratedValue
 	 @Column(name = "home_insurance_id")
 	 private Long id;
 	 
-	 @Column(name = "home_risk_value")
-	 private Double homeRiskValue;
+	 @Column(name = "risk_value")
+	 private Double riskValue;
 
 	public Long getId() {
 		return id;
@@ -26,12 +26,12 @@ public class HomeInsurance {
 		this.id = id;
 	}
 
-	public Double getHomeRiskValue() {
-		return homeRiskValue;
+	public Double getRiskValue() {
+		return riskValue;
 	}
 
-	public void setHomeRiskValue(Double homeRiskValue) {
-		this.homeRiskValue = homeRiskValue;
+	public void setRiskValue(Double riskValue) {
+		this.riskValue = riskValue;
 	}
 	 
 }

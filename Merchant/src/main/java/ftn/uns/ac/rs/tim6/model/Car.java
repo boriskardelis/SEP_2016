@@ -27,6 +27,62 @@ public class Car {
 	@Column(name = "car_owner_jmbg")
 	private String carOwnerJmbg;
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getCarVinNumber() {
+		return carVinNumber;
+	}
+
+	public void setCarVinNumber(String carVinNumber) {
+		this.carVinNumber = carVinNumber;
+	}
+
+	public int getCarYearOfProduction() {
+		return carYearOfProduction;
+	}
+
+	public void setCarYearOfProduction(int carYearOfProduction) {
+		this.carYearOfProduction = carYearOfProduction;
+	}
+
+	public String getCarRegistrationNumber() {
+		return carRegistrationNumber;
+	}
+
+	public void setCarRegistrationNumber(String carRegistrationNumber) {
+		this.carRegistrationNumber = carRegistrationNumber;
+	}
+
+	public String getCarOwnerFirstName() {
+		return carOwnerFirstName;
+	}
+
+	public void setCarOwnerFirstName(String carOwnerFirstName) {
+		this.carOwnerFirstName = carOwnerFirstName;
+	}
+
+	public String getCarOwnerLastName() {
+		return carOwnerLastName;
+	}
+
+	public void setCarOwnerLastName(String carOwnerLastName) {
+		this.carOwnerLastName = carOwnerLastName;
+	}
+
+	public String getCarOwnerJmbg() {
+		return carOwnerJmbg;
+	}
+
+	public void setCarOwnerJmbg(String carOwnerJmbg) {
+		this.carOwnerJmbg = carOwnerJmbg;
+	}
+
 	
 	//123
 	

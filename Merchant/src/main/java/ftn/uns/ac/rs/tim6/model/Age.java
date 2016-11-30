@@ -7,38 +7,55 @@ import javax.persistence.*;
 @Table(name = "age")
 public class Age {
 
-	
+	public enum AgeEnum {
+		UNDER_18("Under 18"),
+		BETWEEN_18_AND_60("Between 18 and 60"),
+		OVER_60("Over 60");
+		
+		private String name;
+		
+		private AgeEnum(String value) {
+			this.name = value;
+		}
+		
+		@Override
+		public String toString() {
+			return name;
+		}
+	}
 
-	@Id
+	 @Id
 	 @GeneratedValue
-	 @Column(name = "age_id")
-	 private Long id;
+	 @Column(name = "age")
+	 private AgeEnum age;
 	 
-	 @Column(name = "age_risk_value")
-	 private Double ageRiskValue;
+	 @Column(name = "risk_value")
+	 private Double riskValue;
 
-	public Long getId() {
-		return id;
+	 
+
+	public AgeEnum getAge() {
+		return age;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setAge(AgeEnum age) {
+		this.age = age;
 	}
 
-	public Double getAgeRiskValue() {
-		return ageRiskValue;
+	public Double getRiskValue() {
+		return riskValue;
 	}
 
-	public void setAgeRiskValue(Double ageRiskValue) {
-		this.ageRiskValue = ageRiskValue;
+	public void setRiskValue(Double riskValue) {
+		this.riskValue = riskValue;
 	}
 
 	
 
 	 
-/*	 @OneToMany(fetch = FetchType.LAZY)
+	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "person")
-	 private Person person;  */
+	 private Person person; 
 	 
 	 
 	 
