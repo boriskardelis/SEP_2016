@@ -1,0 +1,29 @@
+//created on: Nov 30, 2016
+package drools
+
+//list any import classes here.
+
+import ftn.uns.ac.rs.tim6.model.*;
+
+//declare any global variables here
+
+
+
+
+rule "Your First Rule"
+
+    when
+        //conditions
+    then
+        //actions
+
+end
+
+rule "Your Second Rule"
+    //include attributes such as "salience" here...
+    when
+        //conditions
+    then
+        //actions
+
+end
