@@ -23,7 +23,7 @@ public class MerchantApplication {
     	Age newAge = new Age();
     	long id = 12312312;
     	newAge.setId(id);
-    	newAge.setHomeRiskValue(1.3);
+    	newAge.setAgeRiskValue(1.3);
     	 
         SpringApplication.run(MerchantApplication.class, args);
         
