@@ -39,14 +39,4 @@ public class Age {
 /*	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "person")
 	 private Person person;  */
-	 
-	
-	 
-	 
-	 
-	 
-	 
-	 
-	 
-	 
 }
