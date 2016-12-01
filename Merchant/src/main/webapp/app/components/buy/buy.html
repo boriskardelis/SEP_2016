@@ -1,0 +1,21 @@
+<h2>Travel insurance</h2>
+
+<div class="tab-content">
+    <form name="profileForm" ng-submit="vm.modifyProfile()">
+		<table  class="table">
+			<tr>
+				<th class="col-sm-1">Region</th>
+				<td>
+					<select>
+						<option ng-repeat="region in vm.region">{{region}}</option>
+					</select>
+				</td>			
+			</tr>
+			<tr>
+				<th class="col-sm-1">First name:</th>
+				<td ><input type="text"></td>				
+			</tr>			
+		</table>
+		<br><br>
+ 	</form>
+  </div>

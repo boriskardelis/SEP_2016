@@ -1,0 +1,15 @@
+{
+  "name": "minimatch",
+  "homepage": "https://github.com/triapse/minimatch",
+  "version": "0.2.14",
+  "_release": "0.2.14",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.2.14",
+    "commit": "7b5453c71e7c6748ad79f1fb36450358297f52cb"
+  },
+  "_source": "https://github.com/triapse/minimatch.git",
+  "_target": "^0.2.14",
+  "_originalSource": "minimatch",
+  "_direct": true
+}
