@@ -1,11 +1,15 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "home")
-public class Home {
+public class Home implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	 @Id
 	 @GeneratedValue
 	 @Column(name = "home_id")
@@ -62,6 +66,19 @@ public class Home {
 	public void setOwnerJMBG(Long ownerJMBG) {
 		this.ownerJMBG = ownerJMBG;
 	}
+
+	public Home() {}
+
+	public Home(Long id, String address, String ownerFirstName, String ownerLastName, Long ownerJMBG) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.ownerFirstName = ownerFirstName;
+		this.ownerLastName = ownerLastName;
+		this.ownerJMBG = ownerJMBG;
+	}
+	
+	
 	 
 	 
 	 

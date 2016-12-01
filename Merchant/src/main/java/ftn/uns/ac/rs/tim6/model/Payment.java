@@ -1,10 +1,14 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "payment")
-public class Payment {
+public class Payment implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue
@@ -95,6 +99,25 @@ public class Payment {
 	public void setPaymentUurl(String paymentUurl) {
 		this.paymentUurl = paymentUurl;
 	}
+
+	public Payment() {}
+
+	public Payment(Long paymentRequestId, Long merchantOrderId, String merchantId, String merchantPassword,
+			double amount, String url, Long paymentId, String paymentUurl) {
+		super();
+		this.paymentRequestId = paymentRequestId;
+		this.merchantOrderId = merchantOrderId;
+		this.merchantId = merchantId;
+		this.merchantPassword = merchantPassword;
+		this.amount = amount;
+		this.url = url;
+		this.paymentId = paymentId;
+		this.paymentUurl = paymentUurl;
+	}
+	
+	
+	
+	
 	 
 	 
 }

@@ -1,11 +1,15 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 
 @Entity
 @Table(name = "packages")
-public class Packages {
+public class Packages implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 	
 	public enum TowingByKilometers {
 		UNDER_50("Under 50"),
@@ -105,7 +109,22 @@ public class Packages {
 	public void setAlternative_transport(String alternative_transport) {
 		this.alternative_transport = alternative_transport;
 	}
+
+	public Packages() {}
+
+	public Packages(Long packageId, TowingByKilometers towingByKilometers, RepairPrice carRepairs,
+			HotelAccommodation hotelAcommodation, String alternative_transport) {
+		super();
+		this.packageId = packageId;
+		this.towingByKilometers = towingByKilometers;
+		this.carRepairs = carRepairs;
+		this.hotelAcommodation = hotelAcommodation;
+		this.alternative_transport = alternative_transport;
+	}
+	
+	
 	 
+	
 	 
 	 
 	 
