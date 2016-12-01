@@ -3,7 +3,7 @@
 
 	angular
 		.module('merchantApp')
-		.controller('TestCtrl', TestCtrl)
+		.controller('TestCtrl', TestCtrl);
 
 	TestCtrl.$inject = ['$scope'];
 	function TestCtrl($scope) {
