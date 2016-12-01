@@ -1,14 +1,13 @@
 var gulp = require('gulp');
+
 var jshint = require('gulp-jshint');
-var jscs = require('gulp-jscs');
 
 //JSHint je alat koji analizira javaskript datoteke i skreće pažnju na loše prakse i problematičan kod
 //Ne rešava sve probleme, ali može da bude koristan
 gulp.task('lint', function() {
-  gulp.src('app/**/*.js')
-      .pipe(jshint())
-      .pipe(jscs())
-      .pipe(jshint.reporter('jshint-stylish' , {verbose: true}));
+    gulp.src('app/**/*.js')
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'));
 });
 
 //watch task poziva gulp.watch funkciju koja kao prvi parametar navodi koje datoteke posmatra,
