@@ -1,12 +1,15 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "sum_insured_to")
-public class SumInsuredTo {
+public class SumInsuredTo implements Serializable {
+	
+	 private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue
@@ -31,11 +34,20 @@ public class SumInsuredTo {
 	public void setRiskValue(Double riskValue) {
 		this.RiskValue = riskValue;
 	}
+
+	public SumInsuredTo() {}
+
+	public SumInsuredTo(Long id, Double riskValue) {
+		super();
+		this.id = id;
+		RiskValue = riskValue;
+	}
 	
-	@OneToMany(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "person")
-	 private List<Person> personList;
-	 
+	
+	
+	
+	
+	
 	 
 
 }

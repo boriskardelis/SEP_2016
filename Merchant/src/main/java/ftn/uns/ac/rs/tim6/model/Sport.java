@@ -1,12 +1,15 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "sport")
-public class Sport {
+public class Sport implements Serializable {
+	
+	 private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue
@@ -31,10 +34,18 @@ public class Sport {
 	public void setRiskValue(Double riskValue) {
 		RiskValue = riskValue;
 	}
+
+	public Sport() {}
+
+	public Sport(Long id, Double riskValue) {
+		super();
+		this.id = id;
+		RiskValue = riskValue;
+	}
+	
+	
 	 
-	@OneToMany(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "person")
-	 private List<Person> personList;
+	
 	
 	
 }

@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.List;
 
@@ -8,7 +9,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "road_help_insurance")
-public class RoadHelpInsurance {
+public class RoadHelpInsurance implements Serializable {
+	
+	 private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue
@@ -42,11 +45,6 @@ public class RoadHelpInsurance {
 	 @JoinColumn(name = "car")
 	 private List<Car> carList;
 	 
-/*	 @OneToOne(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "insurance")
-	 private Insurance insurance; */
-
-	
 
 	public List<Packages> getPackagesList() {
 		return packagesList;
@@ -64,13 +62,17 @@ public class RoadHelpInsurance {
 		this.carList = carList;
 	}
 
-/*	public Insurance getInsurance() {
-		return insurance;
-	}
+	public RoadHelpInsurance() {}
 
-	public void setInsurance(Insurance insurance) {
-		this.insurance = insurance;
+	public RoadHelpInsurance(Long id, Date date, List<Packages> packagesList, List<Car> carList) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.packagesList = packagesList;
+		this.carList = carList;
 	}
-	 
-*/	 
+	
+	
+
+	
 }

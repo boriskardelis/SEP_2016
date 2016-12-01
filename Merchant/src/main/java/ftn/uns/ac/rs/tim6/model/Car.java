@@ -1,9 +1,13 @@
 package ftn.uns.ac.rs.tim6.model;
+import java.io.Serializable;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "car")
-public class Car {
+public class Car implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name = "car_id")	// dodato nema u modelu
@@ -83,6 +87,21 @@ public class Car {
 		this.carOwnerJmbg = carOwnerJmbg;
 	}
 
+	public Car() {}
 
+	public Car(Long id, String carVinNumber, int carYearOfProduction, String carRegistrationNumber,
+			String carOwnerFirstName, String carOwnerLastName, String carOwnerJmbg) {
+		super();
+		this.id = id;
+		this.carVinNumber = carVinNumber;
+		this.carYearOfProduction = carYearOfProduction;
+		this.carRegistrationNumber = carRegistrationNumber;
+		this.carOwnerFirstName = carOwnerFirstName;
+		this.carOwnerLastName = carOwnerLastName;
+		this.carOwnerJmbg = carOwnerJmbg;
+	}
+
+	
+	
 	
 }

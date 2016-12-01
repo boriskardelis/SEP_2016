@@ -1,11 +1,17 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "person")
-public class Person {
+public class Person implements Serializable {
 	
+	
+	 private static final long serialVersionUID = 1L;	
 	 
 	 @Column(name = "first_name")
 	 private String firstName;
@@ -26,6 +32,16 @@ public class Person {
 	 
 	 @Column(name = "phone_number")
 	 private String phoneNumber;
+	 
+	 
+	 @ManyToOne(fetch = FetchType.EAGER)
+	 @JoinColumn(name = "age")
+	 private Age age;
+	 
+     
+	 
+	 
+	 
 
 	public String getFirstName() {
 		return firstName;
@@ -74,12 +90,34 @@ public class Person {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-	 
-	 
-	 
+
+	public Age getAge() {
+		return age;
+	}
+
+	public void setAge(Age age) {
+		this.age = age;
+	}
+
+	public Person() {}
+
+	public Person(String firstName, String lastName, Long personJMBG, String passportNumber, String adress,
+			String phoneNumber, Age age) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.personJMBG = personJMBG;
+		this.passportNumber = passportNumber;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+		this.age = age;
+	}
 	
-	 
-	 
-	 
+	
+
+	
+	
+	
+	
 	 
 }

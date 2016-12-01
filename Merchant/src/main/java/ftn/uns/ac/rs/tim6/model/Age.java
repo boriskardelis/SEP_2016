@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
@@ -7,7 +8,9 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "age")
-public class Age {
+public class Age implements Serializable {
+	
+	private static final long serialVersionUID = 1L;
 
 	public enum AgeEnum {
 		UNDER_18("Under 18"),
@@ -52,12 +55,20 @@ public class Age {
 		this.riskValue = riskValue;
 	}
 
+	public Age() {}
+
+	public Age(AgeEnum age, Double riskValue) {
+		super();
+		this.age = age;
+		this.riskValue = riskValue;
+	}
+	
 	
 
+	
+	
 	 
-	 @OneToMany(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "person")
-	 private List<Person> personList; 
+	 
 	 
 	 
 	 
