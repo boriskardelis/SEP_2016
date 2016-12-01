@@ -2,6 +2,8 @@ package ftn.uns.ac.rs.tim6.model;
 
 import javax.persistence.*;
 
+@Entity
+@Table(name = "home")
 public class Home {
 
 	 @Id

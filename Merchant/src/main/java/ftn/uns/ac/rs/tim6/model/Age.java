@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 
@@ -55,7 +57,7 @@ public class Age {
 	 
 	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "person")
-	 private Person person; 
+	 private List<Person> personList; 
 	 
 	 
 	 

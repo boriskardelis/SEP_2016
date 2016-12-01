@@ -4,7 +4,8 @@ import java.sql.Date;
 
 import javax.persistence.*;
 
-
+@Entity
+@Table(name = "insurance")
 public class Insurance {
 	
 	 @Id
@@ -64,11 +65,5 @@ public class Insurance {
 		this.totalPrice = totalPrice;
 	}
 
-	 
-	 
-	 
-	 
-	 
-	 
 
 }

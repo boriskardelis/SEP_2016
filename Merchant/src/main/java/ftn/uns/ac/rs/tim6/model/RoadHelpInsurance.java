@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.tim6.model;
 
 
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -35,33 +36,35 @@ public class RoadHelpInsurance {
 	 
 	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "packages")
-	 private Packages packages;
+	 private List<Packages> packagesList;
 	 
 	 @OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "car")
-	 private Car car;
+	 private List<Car> carList;
 	 
-	 @OneToOne(fetch = FetchType.LAZY)
+/*	 @OneToOne(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "insurance")
-	 private Insurance insurance;
+	 private Insurance insurance; */
 
-	public Packages getPackages() {
-		return packages;
+	
+
+	public List<Packages> getPackagesList() {
+		return packagesList;
 	}
 
-	public void setPackages(Packages packages) {
-		this.packages = packages;
+	public void setPackagesList(List<Packages> packagesList) {
+		this.packagesList = packagesList;
 	}
 
-	public Car getCar() {
-		return car;
+	public List<Car> getCarList() {
+		return carList;
 	}
 
-	public void setCar(Car car) {
-		this.car = car;
+	public void setCarList(List<Car> carList) {
+		this.carList = carList;
 	}
 
-	public Insurance getInsurance() {
+/*	public Insurance getInsurance() {
 		return insurance;
 	}
 
@@ -69,5 +72,5 @@ public class RoadHelpInsurance {
 		this.insurance = insurance;
 	}
 	 
-	 
+*/	 
 }

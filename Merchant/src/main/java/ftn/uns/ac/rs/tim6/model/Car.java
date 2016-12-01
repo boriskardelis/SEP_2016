@@ -83,7 +83,6 @@ public class Car {
 		this.carOwnerJmbg = carOwnerJmbg;
 	}
 
-	
-	//123
+
 	
 }

@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -32,7 +34,7 @@ public class SumInsuredTo {
 	
 	@OneToMany(fetch = FetchType.LAZY)
 	 @JoinColumn(name = "person")
-	 private Person person;
+	 private List<Person> personList;
 	 
 	 
 
