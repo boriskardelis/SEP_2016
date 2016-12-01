@@ -3,7 +3,7 @@
 
 	angular
 		.module('merchantApp')
-		.controller('HomeCtrl', HomeCtrl);
+		.controller('HomeCtrl', HomeCtrl)
 
 	HomeCtrl.$inject = ['$scope', 'HomeService' ];
 	function HomeCtrl($scope, HomeService) {

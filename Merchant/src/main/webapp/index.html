@@ -1,46 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chuck Norris Osiguranje</title>
+    <title>Chuck Norris Insuance</title>
+     <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+     <!-- <link rel="stylesheet" href="./assets/custom.css" /> -->
 </head>
 <body ng-app="merchantApp">
-    
-    <h1>Chuck Norris Osiguranje</h1>
-    
 
-     <div>
-              <label>Name:</label>
-              <input type="text" ng-model="yourName" placeholder="Enter a name here">
-              <hr>
-              <h1>Hello {{yourName}}!</h1>
-        </div>
+    <h1 align="center">Chuck Norris Insurance</h1>
+        
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">Chuck Norris Insurance</a>
+            </div>
+            <ul class="nav navbar-nav">
+              <!-- <li class="active"><a href="#">Home</a></li> -->
+              <li><a href="#/home">Home</a></li>
+              <li><a href="#/buy">Buy insurance</a></li>
+            </ul>
+           
+          </div>
+        </nav>
 
-         <div ng-controller="HomeCtrl as home">
-            <p>Evo:</p>{{home.proba}}
-            <p>Pozdrav od servisa:</p>{{home.hello}}
-            <p>Test: </p>{{home.test}}
-        </div>
-         <div ng-controller="TestCtrl as test">
-            <p>Evo test:</p>{{test.te}}
+   
+            <div>
+                 <ui-view> </ui-view>
+            </div>
+           
+         <!-- <div>
+          <label>Name:</label>
+                  <input type="text" ng-model="yourName" placeholder="Enter a name here">
+                  <hr>
+                  <h1>Hello {{yourName}}!</h1>
+            </div>
+
+              <div ng-controller="HomeCtrl as home">
+                <p>Evo:</p>{{home.proba}}
+                <p>Pozdrav od servisa:</p>{{home.hello}}
+                <p>Test: </p>{{home.test}}
+        </div> -->
          
-        </div>
 
-    <a ui-sref="home">Home</a>
-    <ui-view> </ui-view>
-    
-    
-    
-    
     <!-- <script src="./assets/js/angular.js"></script>  -->
+     <script src="./bower_components/jquery/dist/jquery.js"></script>
+     <script src="./bower_components/angular/angular.js"></script> 
     <script src="./bower_components/angular/angular.js"></script> 
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+     <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script> 
    
     <script src="./app/appModule.js"></script>
     <script src="./app/appConfig.js"></script>
     
-    <script src="./app/components/home/homeCtrl.js"></script>
-    <script src="./app/components/home/testCtrl.js"></script>
+    <!-- Controllers -->
+    <script src="./app/components/home/homeController.js"></script>
+    <script src="./app/components/buy/buyController.js"></script>
+    <!-- Services -->
     <script src="./app/components/home/homeService.js"></script>
+    <script src="./app/components/buy/buyService.js"></script>
 
 </body>
 </html>
