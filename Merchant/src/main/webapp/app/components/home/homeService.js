@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('merchantapp')
+		.module('merchantApp')
 		.factory('HomeService', HomeService);
 
 	HomeService.$inject = ['$http'];

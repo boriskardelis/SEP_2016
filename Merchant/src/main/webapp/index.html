@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>DDOR</title>
+    <title>Chuck Norris Osiguranje</title>
 </head>
 <body ng-app="merchantApp">
-    <h1>DDOR naslov </h1>
+    
+    <h1>Chuck Norris Osiguranje</h1>
     
 
      <div>
@@ -16,19 +17,29 @@
 
          <div ng-controller="HomeCtrl as home">
             <p>Evo:</p>{{home.proba}}
+            <p>Pozdrav od servisa:</p>{{home.hello}}
+            <p>Test: </p>{{home.test}}
+        </div>
+         <div ng-controller="TestCtrl as test">
+            <p>Evo test:</p>{{test.te}}
+         
         </div>
 
     <a ui-sref="home">Home</a>
     <ui-view> </ui-view>
     
-
+    
     
     
     <!-- <script src="./assets/js/angular.js"></script>  -->
     <script src="./bower_components/angular/angular.js"></script> 
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
+   
     <script src="./app/appModule.js"></script>
+    <script src="./app/appConfig.js"></script>
+    
     <script src="./app/components/home/homeCtrl.js"></script>
+    <script src="./app/components/home/testCtrl.js"></script>
     <script src="./app/components/home/homeService.js"></script>
 
 </body>
