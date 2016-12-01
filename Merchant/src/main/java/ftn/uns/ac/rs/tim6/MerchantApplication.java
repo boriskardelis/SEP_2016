@@ -9,7 +9,7 @@ public class MerchantApplication {
 	public static void main(String[] args) {
 		
 		SpringApplication.run(MerchantApplication.class, args);
-		System.out.println("ASDADA");
+		System.out.println("Pokrenuta aplikacija");
 
 	}
 

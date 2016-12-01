@@ -12,7 +12,7 @@
 			console.log("USAO U METODU GETregions");
 			return $http.get("api/regions")
 						.then(function(response) {
-							console.log('RESPONSE OD SERVISA');
+							console.log('RESPONSE OD SERVISA' + response);
 							return response;
 						});
 			
