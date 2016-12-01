@@ -12,9 +12,43 @@
 				</td>			
 			</tr>
 			<tr>
-				<th class="col-sm-1">First name:</th>
-				<td ><input type="text"></td>				
-			</tr>			
+				<th class="col-sm-1">Sum to insure</th>
+				<td >		  
+					<span ng-repeat="sum in vm.sumTo">
+						 <input type="radio" ng-model="$parent.sumToinsur"   
+						    	ng-value="sum" name="sumToinsur">    
+						 <label for="sum{{sum}}">{{sum}}</label>
+						 <br>		   
+					</span>
+					   {{sumToinsur}}						 
+				</td>				
+			</tr>
+			<tr>
+				<th class="col-sm-1">Age insurance carrier</th>
+				<td>
+					<select>
+						<option ng-repeat="ageCarrier in vm.ageCarrier">{{ageCarrier}}</option>
+					</select>
+				</td>			
+			</tr>
+			<tr>
+				<th class="col-sm-1">Number of insured persons</th>
+				<td>
+					<select>
+						<option ng-repeat="numbPers in vm.numberOfPersons">{{numbPers}}</option>
+					</select>
+				</td>			
+			</tr>
+			<tr>
+				<th class="col-sm-1">Duration</th>
+				<td>
+					<select>
+						<option ng-repeat="ageCarrier in vm.ageCarrier">{{ageCarrier}}</option>
+					</select>
+				</td>			
+			</tr>
+
+
 		</table>
 		<br><br>
  	</form>
