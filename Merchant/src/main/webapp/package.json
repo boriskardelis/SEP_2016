@@ -13,5 +13,8 @@
     "test": "test"
   },
   "author": "A B M",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  }
 }

@@ -38,6 +38,16 @@ public class Insurance implements Serializable{
 	 @JoinColumn(name = "sport")
 	 private Sport sport;
 	 
+	 @ManyToOne(fetch = FetchType.LAZY)
+	 @JoinColumn(name = "sum_insured_to")
+	 private SumInsuredTo sumInsuredTo;
+	 
+	 @OneToOne(cascade=CascadeType.ALL)  
+	 @JoinColumn(name="home_insurance_id")
+	 private HomeInsurance homeInsurance;
+	 
+	 
+	 
 	 
 
 	public Long getInsuranceID() {
@@ -96,10 +106,27 @@ public class Insurance implements Serializable{
 		this.sport = sport;
 	}
 	
-	public Insurance(){}
 	
+	public SumInsuredTo getSumInsuredTo() {
+		return sumInsuredTo;
+	}
+
+	public void setSumInsuredTo(SumInsuredTo sumInsuredTo) {
+		this.sumInsuredTo = sumInsuredTo;
+	}
+	
+	public HomeInsurance getHomeInsurance() {
+		return homeInsurance;
+	}
+
+	public void setHomeInsurance(HomeInsurance homeInsurance) {
+		this.homeInsurance = homeInsurance;
+	}
+
+	public Insurance(){}
+
 	public Insurance(Long insuranceID, int numberOfPersons, Date startDate, Date endDate, double totalPrice,
-			Region region, Sport sport) {
+			Region region, Sport sport, SumInsuredTo sumInsuredTo, HomeInsurance homeInsurance) {
 		super();
 		this.insuranceID = insuranceID;
 		this.numberOfPersons = numberOfPersons;
@@ -108,7 +135,11 @@ public class Insurance implements Serializable{
 		this.totalPrice = totalPrice;
 		this.region = region;
 		this.sport = sport;
+		this.sumInsuredTo = sumInsuredTo;
+		this.homeInsurance = homeInsurance;
 	}
+	
+	
 
 	
 
