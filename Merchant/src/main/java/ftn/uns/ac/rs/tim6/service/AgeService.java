@@ -19,7 +19,7 @@ public class AgeService implements GenericService<Age>{
 
 	@Override
 	public List<Age> getAll() {
-		System.out.println("PROLAZI KROZ METODE");
+		System.out.println("Uzima Age-s");
 		return ageRepository.findAll();
 	}
 

@@ -1,7 +1,6 @@
 
 package ftn.uns.ac.rs.tim6.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -26,12 +25,12 @@ public class AgeController {
 		return ageService.getAll();
 	}
 	
-/*	@RequestMapping(value = "/ages", method = RequestMethod.POST)
+	@RequestMapping(value = "/ages", method = RequestMethod.POST)
 	public Age handlePostAge(@Valid @RequestBody Age ageResource) {
 		Age age = new Age();
 		age.setAge(ageResource.getAge());
 		Age saved = ageService.save(age);
 		return new Age(saved.getAge(), saved.getRiskValue());
 	}
-*/
+
 }
