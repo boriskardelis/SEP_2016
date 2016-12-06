@@ -34,10 +34,7 @@ public class Person implements Serializable {
 	 private String phoneNumber;
 	 
 	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "age")
-	 private Age age;
-	 
+	
      
 	 
 	 
@@ -91,18 +88,10 @@ public class Person implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Age getAge() {
-		return age;
-	}
 
-	public void setAge(Age age) {
-		this.age = age;
-	}
-
-	public Person() {}
 
 	public Person(String firstName, String lastName, Long personJMBG, String passportNumber, String adress,
-			String phoneNumber, Age age) {
+			String phoneNumber) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -110,7 +99,7 @@ public class Person implements Serializable {
 		this.passportNumber = passportNumber;
 		this.adress = adress;
 		this.phoneNumber = phoneNumber;
-		this.age = age;
+		
 	}
 	
 	
