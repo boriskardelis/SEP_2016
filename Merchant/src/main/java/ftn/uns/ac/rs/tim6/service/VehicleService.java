@@ -6,26 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ftn.uns.ac.rs.tim6.model.Car;
-import ftn.uns.ac.rs.tim6.repository.CarRepository;
+import ftn.uns.ac.rs.tim6.model.Vehicle;
+import ftn.uns.ac.rs.tim6.repository.VehicleRepository;
 
 @Service
 @Transactional
-public class CarService implements GenericService<Car>{
+public class VehicleService implements GenericService<Vehicle>{
 	
 	@Autowired
-	private CarRepository carRepository;
+	private VehicleRepository vehicleRepository;
 
 	@Override
-	public List<Car> getAll() {
+	public List<Vehicle> getAll() {
 		// TODO Auto-generated method stub
-		return carRepository.findAll();
+		return vehicleRepository.findAll();
 	}
 
 	@Override
-	public Car save(Car t) {
+	public Vehicle save(Vehicle t) {
 		// TODO Auto-generated method stub
-		return carRepository.save(t);
+		return vehicleRepository.save(t);
 	}
 
 }
