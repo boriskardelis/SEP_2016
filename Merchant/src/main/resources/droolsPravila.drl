@@ -7,23 +7,16 @@ import ftn.uns.ac.rs.tim6.model.Buyer;
 
 //declare any global variables here
 
+dialect "java"
 
 
-
-rule "Your First Rule"
+rule "rule"
 
     when
-        //conditions
+    
+		$buyer : Buyer( phoneNumber == 10 )
     then
-        //actions
-
-end
-
-rule "Your Second Rule"
-    //include attributes such as "salience" here...
-    when
-        //conditions
-    then
-        //actions
-
+    
+    	$buyer.setPhoneNumber(20);
+         
 end
