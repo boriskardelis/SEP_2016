@@ -13,8 +13,8 @@ public class RiskCategory implements Serializable {
 	 
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "ID")
-	 private Long id;
+	 @Column(name = "RISK_CATEGORY_ID")
+	 private long id;
 	 
 	 @Column(name = "NAME")
 	 private String name;
@@ -23,10 +23,54 @@ public class RiskCategory implements Serializable {
 	 @JoinColumn(name = "DATE_CATEGORY")
 	 private DateCategory dateCategory;
 	 
-	 @ManyToMany(fetch = FetchType.EAGER, mappedBy = "riskCategories")
-	 private List<Insurance> insurances;
+	 @ManyToMany(mappedBy="riskCategories")
+	  private List<InsuranceType> insuranceTypes;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public DateCategory getDateCategory() {
+		return dateCategory;
+	}
+
+	public void setDateCategory(DateCategory dateCategory) {
+		this.dateCategory = dateCategory;
+	}
+
+	public List<InsuranceType> getInsuranceTypes() {
+		return insuranceTypes;
+	}
+
+	public void setInsuranceTypes(List<InsuranceType> insuranceTypes) {
+		this.insuranceTypes = insuranceTypes;
+	}
+
+	public RiskCategory(long id, String name, DateCategory dateCategory, List<InsuranceType> insuranceTypes) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.dateCategory = dateCategory;
+		this.insuranceTypes = insuranceTypes;
+	}
+
+	public RiskCategory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	 
-	 /*@ManyToMany(fetch = FetchType.EAGER, mappedBy = "insurenceTypes")
-	 private List<InsuranceType> insuranceTypes;*/
+	 
 
 }

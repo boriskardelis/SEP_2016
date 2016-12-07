@@ -12,8 +12,8 @@ public class Home implements Serializable {
 	
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "ID")
-	 private Long  id;
+	 @Column(name = "HOME_ID")
+	 private long id;
 	 
 	 @Column(name = "ADDRESS")
 	 private String  address;
@@ -27,12 +27,61 @@ public class Home implements Serializable {
 	 @Column(name = "OWNER_JMBG")
 	 private Long ownerJMBG;
 
-	
-	
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getOwnerFirstName() {
+		return ownerFirstName;
+	}
+
+	public void setOwnerFirstName(String ownerFirstName) {
+		this.ownerFirstName = ownerFirstName;
+	}
+
+	public String getOwnerLastName() {
+		return ownerLastName;
+	}
+
+	public void setOwnerLastName(String ownerLastName) {
+		this.ownerLastName = ownerLastName;
+	}
+
+	public Long getOwnerJMBG() {
+		return ownerJMBG;
+	}
+
+	public void setOwnerJMBG(Long ownerJMBG) {
+		this.ownerJMBG = ownerJMBG;
+	}
+
+	public Home(long id, String address, String ownerFirstName, String ownerLastName, Long ownerJMBG) {
+		super();
+		this.id = id;
+		this.address = address;
+		this.ownerFirstName = ownerFirstName;
+		this.ownerLastName = ownerLastName;
+		this.ownerJMBG = ownerJMBG;
+	}
+
+	public Home() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	 
 	 
-	 
-	 
-	 
+
 	 
 }
