@@ -21,14 +21,14 @@ public class MerchantApplication {
 		try {
 			DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
 			StatefulKnowledgeSession ksession = kbase.getSession();
-			Buyer buyer = new Buyer(10);
-			ksession.insert(buyer);
+		//	Buyer buyer = new Buyer(10);
+		//	ksession.insert(buyer);
 			
-			System.out.println("buyerov telefon " + buyer.getPhoneNumber());
+		//	System.out.println("buyerov telefon " + buyer.getPhoneNumber());
 			
 			ksession.fireAllRules();
 			
-			System.out.println("buyerov telefon " + buyer.getPhoneNumber());
+		//	System.out.println("buyerov telefon " + buyer.getPhoneNumber());
 			
 		} catch (Exception e) {
 			e.printStackTrace();
