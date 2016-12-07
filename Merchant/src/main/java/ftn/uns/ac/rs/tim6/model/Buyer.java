@@ -150,6 +150,11 @@ public class Buyer implements Serializable{
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
+	
+	//test
+	public Buyer(int phoneNumber){
+		this.phoneNumber = phoneNumber;
+	}
 
 
 
