@@ -8,36 +8,103 @@ import javax.persistence.*;
 @Table(name = "PAYMENT")
 public class Payment implements Serializable{
 	
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;	
+	 
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "ID")
+	 @Column(name = "PAYMENT_ID")
 	 private Long id;
 	 
-	 @Column(name = "MERCHANT_ORDER_ID")
-	 private Long merchantOrderId;
+	 @Column(name = "FIRST_NAME")
+	 private String firstName;
 	 
-	 @Column(name = "MERCHANT_ID")
-	 private String merchantId;
+	 @Column(name = "LAST_NAME")
+	 private String lastName;
 	 
-	 @Column(name = "MERCHANT_PASSWORD")
-	 private String merchantPassword;
+	 @Column(name = "JMBG")
+	 private Long jmbg;
 	 
-	 @Column(name = "AMOUNT")
-	 private double amount;
+	 @Column(name = "PASSPORT_NUMBER")
+	 private String passportNumber;
 	 
-	 @Column(name = "URL")
-	 private String url;
+	 @Column(name = "ADRESS")
+	 private String adress;
 	 
-	 @Column(name = "PAYMENT_ID")
-	 private Long paymentId;
-	 
-	 @Column(name = "PAYMENT_URL")
-	 private String paymentUurl;
+	 @Column(name = "PHONE_NUMBER")
+	 private String phoneNumber;
 
-	
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Long getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(Long jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public String getPassportNumber() {
+		return passportNumber;
+	}
+
+	public void setPassportNumber(String passportNumber) {
+		this.passportNumber = passportNumber;
+	}
+
+	public String getAdress() {
+		return adress;
+	}
+
+	public void setAdress(String adress) {
+		this.adress = adress;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Payment(Long id, String firstName, String lastName, Long jmbg, String passportNumber, String adress,
+			String phoneNumber) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.jmbg = jmbg;
+		this.passportNumber = passportNumber;
+		this.adress = adress;
+		this.phoneNumber = phoneNumber;
+	}
+
+	public Payment() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	 
 	 
 }

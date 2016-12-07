@@ -12,11 +12,11 @@ import javax.persistence.*;
 public class Insurance implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	
+	 
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "ID")
-	 private Long id;
+	 @Column(name = "INSURANCE_ID")
+	 private long id;
 	 
 	 @Column(name = "NUMBER_OF_PERSONS")
 	 private int numberOfPersons;
@@ -30,25 +30,114 @@ public class Insurance implements Serializable{
 	 @Column(name = "TOTAL_PRICE")
 	 private double totalPrice;
 	 
-	 @ManyToMany(fetch = FetchType.EAGER)
-	 @JoinTable(name = "RISK_CATEGORY")
+	 @ManyToMany(cascade = CascadeType.ALL)
+	 @JoinTable(name = "INSURANCE_RISK",
+	 			joinColumns=@JoinColumn(name="INSURANCE_ID"),
+	 			inverseJoinColumns=@JoinColumn(name="RISK_CATEGORY_ID"))
 	 private List<RiskCategory> riskCategories;
 	 
-	
+	 @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 private List<InsuranceType> insuranceTypes;
 	 
+	 @OneToMany(mappedBy = "insurance", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	 private List<Person> persons;
 	 
+	 @OneToOne(fetch=FetchType.EAGER)
+	  @JoinColumn(name="BUYER")
+	  private Buyer buyer;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public int getNumberOfPersons() {
+		return numberOfPersons;
+	}
+
+	public void setNumberOfPersons(int numberOfPersons) {
+		this.numberOfPersons = numberOfPersons;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public List<RiskCategory> getRiskCategories() {
+		return riskCategories;
+	}
+
+	public void setRiskCategories(List<RiskCategory> riskCategories) {
+		this.riskCategories = riskCategories;
+	}
+
+	public List<InsuranceType> getInsuranceTypes() {
+		return insuranceTypes;
+	}
+
+	public void setInsuranceTypes(List<InsuranceType> insuranceTypes) {
+		this.insuranceTypes = insuranceTypes;
+	}
+
+	public List<Person> getPersons() {
+		return persons;
+	}
+
+	public void setPersons(List<Person> persons) {
+		this.persons = persons;
+	}
+
+	public Buyer getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(Buyer buyer) {
+		this.buyer = buyer;
+	}
+
+	public Insurance(long id, int numberOfPersons, Date startDate, Date endDate, double totalPrice,
+			List<RiskCategory> riskCategories, List<InsuranceType> insuranceTypes, List<Person> persons, Buyer buyer) {
+		super();
+		this.id = id;
+		this.numberOfPersons = numberOfPersons;
+		this.startDate = startDate;
+		this.endDate = endDate;
+		this.totalPrice = totalPrice;
+		this.riskCategories = riskCategories;
+		this.insuranceTypes = insuranceTypes;
+		this.persons = persons;
+		this.buyer = buyer;
+	}
+
+	public Insurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	 
 
-	
-
-	
-	
-
-	
-
-    
-	
-	
 	
 
 }

@@ -13,8 +13,8 @@ public class RiskSubcategory implements Serializable {
 	 
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "ID")
-	 private Long id;
+	 @Column(name = "RISK_SUBCATEGORY_ID")
+	 private long id;
 	 
 	 @Column(name = "COEFFICIENT")
 	 private BigDecimal coefficient;
@@ -25,6 +25,53 @@ public class RiskSubcategory implements Serializable {
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "RISK_CATEGORY")
 	 private RiskCategory riskCategory;
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public BigDecimal getCoefficient() {
+		return coefficient;
+	}
+
+	public void setCoefficient(BigDecimal coefficient) {
+		this.coefficient = coefficient;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public RiskCategory getRiskCategory() {
+		return riskCategory;
+	}
+
+	public void setRiskCategory(RiskCategory riskCategory) {
+		this.riskCategory = riskCategory;
+	}
+
+	public RiskSubcategory(long id, BigDecimal coefficient, String name, RiskCategory riskCategory) {
+		super();
+		this.id = id;
+		this.coefficient = coefficient;
+		this.name = name;
+		this.riskCategory = riskCategory;
+	}
+
+	public RiskSubcategory() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	 
+	 
 	 
 
 }
