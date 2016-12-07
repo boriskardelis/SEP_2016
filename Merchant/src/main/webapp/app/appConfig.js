@@ -19,13 +19,31 @@
 	      templateUrl: "app/components/home/home.html",
 	      controller: "HomeCtrl",
 	      controllerAs: "vm"
-      })  
-      .state('pocetak', {
+      })
+      .state('about', {
+        url: "/about",
+        templateUrl: "app/components/about/about.html",
+        controller: "AboutCtrl",
+        controllerAs: "vm"
+      })    
+      .state('buy', {
         url: "/buy",
         templateUrl: "app/components/buy/buy.html",
         controller: "BuyCtrl",
         controllerAs: "vm"
-      });
+      })//Nested Views for buy
+       .state('buy.firstStep', {
+            url: '/firstStep',
+            templateUrl: 'app/components/buy/buyFirstStep.html'
+        })
+       .state('buy.secondStep', {
+            url: '/secondStep',
+            templateUrl: 'app/components/buy/buySecondStep.html'
+        })
+         .state('buy.thirdStep', {
+            url: '/thirdStep',
+            templateUrl: 'app/components/buy/buyThirdStep.html'
+        });
 
 
      //Koristim da bi izbacio # iz url-a. Jos u server.js koristim rewrite mehanizam // to ked osm pravel XO makso

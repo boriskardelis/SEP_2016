@@ -10,5 +10,6 @@
   },
   "_source": "https://github.com/strongloop/express.git",
   "_target": "^4.14.0",
-  "_originalSource": "express"
+  "_originalSource": "express",
+  "_direct": true
 }

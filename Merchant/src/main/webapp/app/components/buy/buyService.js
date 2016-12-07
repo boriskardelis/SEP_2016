@@ -11,8 +11,14 @@
 		var getRegions = function() {
 			console.log("USAO U METODU GETregions");
 			return $http.get("api/regions")
-						.then(function(response) {
-							console.log('RESPONSE OD SERVISA' + response);
+						.then(function(response) {					
+							console.log('RESPONSE OD SERVISA  ' + response.data[2].region);
+							console.log('RESPONSE OD SERVISA  ' + response.data);
+							//console.log(JSON.stringify(response.data))
+							return response;
+						})
+						.catch(function(response) {
+							console.log("USAO JE U CATCH");
 							return response;
 						});
 			
@@ -26,12 +32,28 @@
 			return ["1-2", "17-36"];
 		};
 
+		/*var getAges = function() {
+			return $http.get("api/ages")
+						.then(function(response) {										
+							return response;
+						})
+						.catch(function(response) {
+							return response;
+						});
+		};*/
+
+		var getAges = function() {
+			return ["1-2", "17-36", "15-232"];
+		};
+
+
 
 		return {
 			
 			getRegions : getRegions,
 			getSumTo : getSumTo,
-			getAgeCarrire : getAgeCarrire
+			getAgeCarrire : getAgeCarrire,
+			getAges : getAges
 			
 		};
 

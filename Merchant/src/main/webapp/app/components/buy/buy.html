@@ -1,55 +1,23 @@
-<h2>Travel insurance</h2>
 
-<div class="tab-content">
-    <form name="profileForm" ng-submit="vm.modifyProfile()">
-		<table  class="table">
-			<tr>
-				<th class="col-sm-1">Region</th>
-				<td>
-					<select>
-						<option ng-repeat="region in vm.region">{{region}}</option>
-					</select>
-				</td>			
-			</tr>
-			<tr>
-				<th class="col-sm-1">Sum to insure</th>
-				<td >		  
-					<span ng-repeat="sum in vm.sumTo">
-						 <input type="radio" ng-model="$parent.sumToinsur"   
-						    	ng-value="sum" name="sumToinsur">    
-						 <label for="sum{{sum}}">{{sum}}</label>
-						 <br>		   
-					</span>
-					   {{sumToinsur}}						 
-				</td>				
-			</tr>
-			<tr>
-				<th class="col-sm-1">Age insurance carrier</th>
-				<td>
-					<select>
-						<option ng-repeat="ageCarrier in vm.ageCarrier">{{ageCarrier}}</option>
-					</select>
-				</td>			
-			</tr>
-			<tr>
-				<th class="col-sm-1">Number of insured persons</th>
-				<td>
-					<select>
-						<option ng-repeat="numbPers in vm.numberOfPersons">{{numbPers}}</option>
-					</select>
-				</td>			
-			</tr>
-			<tr>
-				<th class="col-sm-1">Duration</th>
-				<td>
-					<select>
-						<option ng-repeat="ageCarrier in vm.ageCarrier">{{ageCarrier}}</option>
-					</select>
-				</td>			
-			</tr>
+		
+<h2 align="center">Travel insurance for abroad</h2>
+			<br>
+		<div class="col-sm-8 col-sm-offset-2">
 
 
-		</table>
-		<br><br>
- 	</form>
-  </div>
+		  <div id="form-container">
+		          <!-- the links to our nested states using relative paths -->
+		          <!-- add the active class if the state matches our ui-sref -->
+		          <div id="status-buttons" class="text-center">
+		              <a ui-sref-active="active" ui-sref=".firstStep"><span>1</span>First Step</a>
+		              <a ui-sref-active="active" ui-sref=".secondStep"><span>2</span> Second Step</a>
+		              <a ui-sref-active="active" ui-sref=".thirdStep"><span>3</span> Third Step</a>
+		          </div>
+		   </div> 
+			      <!-- use ng-submit to catch the form submission and use our Angular function -->
+			      <form id="signup-form" ng-submit="vm.processForm()">
+			          <!-- our nested state views will be injected here -->
+			          <div id="form-views" ui-view></div>
+			      </form>  	  
+		</div>
+		

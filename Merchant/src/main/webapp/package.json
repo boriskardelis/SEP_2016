@@ -4,6 +4,7 @@
   "main": "gulpfile.js",
   "devDependencies": {
     "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
     "gulp-jscs": "^4.0.0",
     "gulp-jshint": "^2.0.4",
     "jshint": "^2.9.4",

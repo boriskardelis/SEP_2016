@@ -1,0 +1,4 @@
+npm install --save-dev gulp-install
+npm install gulp-update
+
+check-list dependancy sam koristio za checkbx-ove

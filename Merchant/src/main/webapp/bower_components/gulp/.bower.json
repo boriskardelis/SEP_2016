@@ -10,5 +10,6 @@
   },
   "_source": "https://github.com/gulpjs/gulp.git",
   "_target": "^3.9.1",
-  "_originalSource": "gulp"
+  "_originalSource": "gulp",
+  "_direct": true
 }
