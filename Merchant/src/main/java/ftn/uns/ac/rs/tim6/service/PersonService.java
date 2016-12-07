@@ -18,15 +18,11 @@ public class PersonService implements GenericService<Person>{
 
 	@Override
 	public List<Person> getAll() {
-		// TODO Auto-generated method stub
 		return personRepository.findAll();
 	}
 
 	@Override
 	public Person save(Person t) {
-		// TODO Auto-generated method stub
 		return personRepository.save(t);
 	};
-	
-	
 }

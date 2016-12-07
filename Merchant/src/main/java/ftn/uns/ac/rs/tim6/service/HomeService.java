@@ -18,13 +18,11 @@ public class HomeService implements GenericService<Home>{
 
 	@Override
 	public List<Home> getAll() {
-		// TODO Auto-generated method stub
 		return homeRepository.findAll();
 	}
 
 	@Override
 	public Home save(Home t) {
-		// TODO Auto-generated method stub
 		return homeRepository.save(t);
 	}
 	

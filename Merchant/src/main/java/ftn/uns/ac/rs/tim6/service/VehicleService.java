@@ -18,13 +18,11 @@ public class VehicleService implements GenericService<Vehicle>{
 
 	@Override
 	public List<Vehicle> getAll() {
-		// TODO Auto-generated method stub
 		return vehicleRepository.findAll();
 	}
 
 	@Override
 	public Vehicle save(Vehicle t) {
-		// TODO Auto-generated method stub
 		return vehicleRepository.save(t);
 	}
 

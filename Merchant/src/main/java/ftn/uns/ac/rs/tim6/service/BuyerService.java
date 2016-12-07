@@ -19,13 +19,11 @@ public class BuyerService implements GenericService<Buyer> {
 
 	@Override
 	public List<Buyer> getAll() {
-		// TODO Auto-generated method stub
 		return buyerRepository.findAll();
 	}
 
 	@Override
 	public Buyer save(Buyer t) {
-		// TODO Auto-generated method stub
 		return buyerRepository.save(t);
 	}
 }

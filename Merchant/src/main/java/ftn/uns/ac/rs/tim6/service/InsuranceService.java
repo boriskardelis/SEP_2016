@@ -18,13 +18,11 @@ public class InsuranceService implements GenericService<Insurance>{
 
 	@Override
 	public List<Insurance> getAll() {
-		// TODO Auto-generated method stub
 		return insuranceRepository.findAll();
 	}
 
 	@Override
 	public Insurance save(Insurance t) {
-		// TODO Auto-generated method stub
 		return insuranceRepository.save(t);
 	}
 	

@@ -18,13 +18,11 @@ public class PaymentService implements GenericService<Payment> {
 
 	@Override
 	public List<Payment> getAll() {
-		// TODO Auto-generated method stub
 		return paymentRepository.findAll();
 	}
 
 	@Override
 	public Payment save(Payment t) {
-		// TODO Auto-generated method stub
 		return paymentRepository.save(t);
 	}
 	
