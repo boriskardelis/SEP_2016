@@ -4,32 +4,39 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "car")
+@Table(name = "VEHICLE")
 public class Vehicle implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "car_id")	// dodato nema u modelu
-	private Long id;
+	@Column(name = "VEHICLE_ID")	// dodato nema u modelu
+	private Long vehicleID;
 	
-	@Column(name = "car_vin_number")
-	private String carVinNumber;
+	@Column(name = "VIN_NUMBER")
+	private String vinNumber;
 	
-	@Column(name = "car_year_of_production")
-	private int carYearOfProduction;
+	@Column(name = "MAKE")
+	private String make;
 	
-	@Column(name = "car_registration_number")
-	private String carRegistrationNumber;
+	@Column(name = "TYPE")
+	private String type;
 	
-	@Column(name = "car_owner_firs_name")
-	private String carOwnerFirstName;
 	
-	@Column(name = "car_owner_last_name")
-	private String carOwnerLastName;
+	@Column(name = "YEAR_OF_PRODUCTION")
+	private int yearOfProduction;
 	
-	@Column(name = "car_owner_jmbg")
-	private String carOwnerJmbg;
+	@Column(name = "REGISTRATION_NUMBER")
+	private String RegistrationNumber;
+	
+	@Column(name = "OWENER_FIRST_NAME")
+	private String ownerFirstName;
+	
+	@Column(name = "OWNER_LAST_NAME")
+	private String ownerLastName;
+	
+	@Column(name = "OWNER_JMBG")
+	private String ownerJmbg;
 
 	
 

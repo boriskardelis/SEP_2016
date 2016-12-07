@@ -5,117 +5,37 @@ import java.io.Serializable;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "payment")
+@Table(name = "PAYMENT")
 public class Payment implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "payment_request_id")
-	 private Long paymentRequestId;
+	 @Column(name = "ID")
+	 private Long id;
 	 
-	 @Column(name = "merchant_order_id")
+	 @Column(name = "MERCHANT_ORDER_ID")
 	 private Long merchantOrderId;
 	 
-	 @Column(name = "merchant_id")
+	 @Column(name = "MERCHANT_ID")
 	 private String merchantId;
 	 
-	 @Column(name = "merchant_password")
+	 @Column(name = "MERCHANT_PASSWORD")
 	 private String merchantPassword;
 	 
-	 @Column(name = "amount")
+	 @Column(name = "AMOUNT")
 	 private double amount;
 	 
-	 @Column(name = "url")
+	 @Column(name = "URL")
 	 private String url;
 	 
-	 @Column(name = "payment_id")
+	 @Column(name = "PAYMENT_ID")
 	 private Long paymentId;
 	 
-	 @Column(name = "payment_url")
+	 @Column(name = "PAYMENT_URL")
 	 private String paymentUurl;
 
-	public Long getPaymentRequestId() {
-		return paymentRequestId;
-	}
-
-	public void setPaymentRequestId(Long paymentRequestId) {
-		this.paymentRequestId = paymentRequestId;
-	}
-
-	public Long getMerchantOrderId() {
-		return merchantOrderId;
-	}
-
-	public void setMerchantOrderId(Long merchantOrderId) {
-		this.merchantOrderId = merchantOrderId;
-	}
-
-	public String getMerchantId() {
-		return merchantId;
-	}
-
-	public void setMerchantId(String merchantId) {
-		this.merchantId = merchantId;
-	}
-
-	public String getMerchantPassword() {
-		return merchantPassword;
-	}
-
-	public void setMerchantPassword(String merchantPassword) {
-		this.merchantPassword = merchantPassword;
-	}
-
-	public double getAmount() {
-		return amount;
-	}
-
-	public void setAmount(double amount) {
-		this.amount = amount;
-	}
-
-	public String getUrl() {
-		return url;
-	}
-
-	public void setUrl(String url) {
-		this.url = url;
-	}
-
-	public Long getPaymentId() {
-		return paymentId;
-	}
-
-	public void setPaymentId(Long paymentId) {
-		this.paymentId = paymentId;
-	}
-
-	public String getPaymentUurl() {
-		return paymentUurl;
-	}
-
-	public void setPaymentUurl(String paymentUurl) {
-		this.paymentUurl = paymentUurl;
-	}
-
-	public Payment() {}
-
-	public Payment(Long paymentRequestId, Long merchantOrderId, String merchantId, String merchantPassword,
-			double amount, String url, Long paymentId, String paymentUurl) {
-		super();
-		this.paymentRequestId = paymentRequestId;
-		this.merchantOrderId = merchantOrderId;
-		this.merchantId = merchantId;
-		this.merchantPassword = merchantPassword;
-		this.amount = amount;
-		this.url = url;
-		this.paymentId = paymentId;
-		this.paymentUurl = paymentUurl;
-	}
-	
-	
 	
 	
 	 

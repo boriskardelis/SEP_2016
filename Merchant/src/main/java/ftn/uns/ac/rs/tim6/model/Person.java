@@ -7,106 +7,33 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "person")
+@Table(name = "PERSON")
 public class Person implements Serializable {
 	
 	
 	 private static final long serialVersionUID = 1L;	
 	 
-	 @Column(name = "first_name")
-	 private String firstName;
-	 
-	 @Column(name = "last_name")
-	 private String lastName;
-	 
 	 @Id
 	 @GeneratedValue
-	 @Column(name = "person_JMBG")
-	 private Long personJMBG;
+	 @Column(name = "ID")
+	 private Long id;
 	 
-	 @Column(name = "passport_number")
+	 @Column(name = "FIRST_NAME")
+	 private String firstName;
+	 
+	 @Column(name = "LAST_NAME")
+	 private String lastName;
+	 
+	 @Column(name = "JMBG")
+	 private Long jmbg;
+	 
+	 @Column(name = "PASSPORT_NUMBER")
 	 private String passportNumber;
 	 
-	 @Column(name = "adress")
+	 @Column(name = "ADRESS")
 	 private String adress;
 	 
-	 @Column(name = "phone_number")
+	 @Column(name = "PHONE_NUMBER")
 	 private String phoneNumber;
-	 
-	 
-	
-     
-	 
-	 
-	 
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Long getPersonJMBG() {
-		return personJMBG;
-	}
-
-	public void setPersonJMBG(Long personJMBG) {
-		this.personJMBG = personJMBG;
-	}
-
-	public String getPassportNumber() {
-		return passportNumber;
-	}
-
-	public void setPassportNumber(String passportNumber) {
-		this.passportNumber = passportNumber;
-	}
-
-	public String getAdress() {
-		return adress;
-	}
-
-	public void setAdress(String adress) {
-		this.adress = adress;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-
-
-	public Person(String firstName, String lastName, Long personJMBG, String passportNumber, String adress,
-			String phoneNumber) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.personJMBG = personJMBG;
-		this.passportNumber = passportNumber;
-		this.adress = adress;
-		this.phoneNumber = phoneNumber;
-		
-	}
-	
-	
-
-	
-	
-	
-	
 	 
 }
