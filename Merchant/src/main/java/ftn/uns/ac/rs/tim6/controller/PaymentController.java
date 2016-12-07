@@ -21,7 +21,6 @@ public class PaymentController {
 	PaymentService paymentService;
 	
 	@RequestMapping(value = "/payments", method = RequestMethod.GET)
-	@ResponseBody
 	public ResponseEntity<List<Payment>> handleGetAllPayments() {
 		List<Payment> payments = (List<Payment>) paymentService.getAll();
 		return new ResponseEntity<List<Payment>>(payments, HttpStatus.OK);
