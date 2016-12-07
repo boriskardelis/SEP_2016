@@ -17,7 +17,7 @@
 		vm.numberOfPersons = [1,2,3,4,5];
 
 		 
-	    BuyService.getRegions().then(function(response) {
+	   /* BuyService.getRegions().then(function(response) {
 							console.log('response.data');
 							console.log(response.data);
 							console.log('res prvog elementa, response.data[0]');
@@ -31,7 +31,7 @@
 							
 							vm.HttpStatus = response.status;
 							vm.region = response.data;							
-						});
+						});*/
 
 	    /*BuyService.getAges().then(function(response) {
 	    	vm.ages = response.data;
