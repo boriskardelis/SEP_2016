@@ -3,7 +3,7 @@ package drools
 
 //list any import classes here.
 
-import ftn.uns.ac.rs.tim6.model.*;
+import ftn.uns.ac.rs.tim6.model.Buyer;
 
 //declare any global variables here
 
