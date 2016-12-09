@@ -10,12 +10,38 @@
 		var vm = this;
 
 		
-		
-		
 		vm.sumTo = BuyService.getSumTo();
-		vm.ageCarrier = BuyService.getAgeCarrire();
-		vm.numberOfPersons = [1,2,3,4,5];
+		
+		BuyService.getRiskSubcategories().then(function(response) {
+			console.log(response.data[1].name);
+			console.log(response.data[1].coefficient);
+			console.log(response.data[1]);
+			console.log(response.data[1].riskCategory);
+			console.log(response.data[1].riskCategory.name);
+			vm.subcategories = response.data;
 
+			console.log(response.data[1].riskCategory.id)
+
+			/*vm.ages = [];
+			for (var i = 0; i < response.data.length; i++) {
+				if (response.data[i].riskCategory.name == "age") {
+					console.log(response.data[i].name);
+					vm.ages.push(response.data[i]);
+				}
+			}*/
+
+	
+			//@subcategories, @category
+			vm.regions = BuyService.getSubsForCat(response.data, "region");
+			vm.ages = BuyService.getSubsForCat(response.data, "age");
+			
+
+		});
+
+		BuyService.getRiskCategories().then(function(response) {
+			vm.catgories = response.data;
+			
+		});
 		 
 	   /* BuyService.getRegions().then(function(response) {
 							console.log('response.data');
@@ -33,10 +59,7 @@
 							vm.region = response.data;							
 						});*/
 
-	    /*BuyService.getAges().then(function(response) {
-	    	vm.ages = response.data;
-	    });*/
-	    vm.ages = BuyService.getAges();
+
 
 	     vm.processForm = function() {
        		 alert('awesome!');  

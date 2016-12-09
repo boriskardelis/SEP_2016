@@ -8,9 +8,9 @@
 	BuyService.$inject = ['$http'];
 	function BuyService($http) {
 
-		var getRegions = function() {
-			console.log("USAO U METODU GETregions");
-			return $http.get("api/regions")
+		var getRiskSubcategories = function() {
+			console.log("USAO U METODU getRiskSubcategories");
+			return $http.get("api/risksubcategories")
 						.then(function(response) {					
 							console.log('RESPONSE OD SERVISA  ' + response.data[2].region);
 							console.log('RESPONSE OD SERVISA  ' + response.data);
@@ -24,36 +24,42 @@
 			
 		};
 
-		var getSumTo = function() {
-			return ["10.000 EUR", "50.0000 EUR"];
-		};
-
-		var getAgeCarrire = function() {
-			return ["1-2", "17-36"];
-		};
-
-		/*var getAges = function() {
-			return $http.get("api/ages")
-						.then(function(response) {										
+		var getRiskCategories = function() {
+			console.log("USAO U METODU getRiskCategories");
+			return $http.get("api/riskcategories")
+						.then(function(response) {					
 							return response;
 						})
 						.catch(function(response) {
 							return response;
 						});
-		};*/
-
-		var getAges = function() {
-			return ["1-2", "17-36", "15-232"];
+			
 		};
 
+		//Get all subcategories for specific category. @subCategories, @category
+		var getSubsForCat = function (subCategories, category) {
+			var cat = [];
+			for (var i = 0; i < subCategories.length; i++) {
+				if (subCategories[i].riskCategory.name == category) {
+					console.log(subCategories[i].name);
+					cat.push(subCategories[i]);
+				}
+			}
+			return cat;
+		};
+
+		var getSumTo = function() {
+			return ["10.000 EUR", "50.0000 EUR"];
+		};
 
 
 		return {
 			
-			getRegions : getRegions,
+			getRiskSubcategories : getRiskSubcategories,
+			getRiskCategories : getRiskCategories,
 			getSumTo : getSumTo,
-			getAgeCarrire : getAgeCarrire,
-			getAges : getAges
+			getSubsForCat : getSubsForCat
+		
 			
 		};
 

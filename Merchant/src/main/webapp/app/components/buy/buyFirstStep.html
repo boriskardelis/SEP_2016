@@ -1,7 +1,7 @@
 			<div class="form-group">
 				<label class="buy-lable" for="region">Region</label>
 			    <select>
-					<option ng-repeat="region in vm.region">{{region.region}}</option>
+					<option ng-repeat="region in vm.regions">{{region.name}}</option>
 				</select>
 			</div>
 			<div class="form-group">
@@ -15,19 +15,22 @@
 						</span>
 						   {{sumToinsur}}	
 			</div>
+
 			<div class="form-group">
 				<label class="buy-lable" for="ageCarrier">Age insurance carrier</label>
 			    <select>
-					<option ng-repeat="ageCarrier in vm.ageCarrier">{{ageCarrier}}</option>
+					<option ng-repeat="age in vm.ages">{{age.name}}</option>
 				</select>
 			</div>
+
 			<div class="form-group">
 				<label class="buy-lable" for="numberOfPersons">Number of insuranced persons</label>
 				<span ng-repeat="age in vm.ages">
-					<label class="buy-lable" for="{{age}}}">{{age}}</label>
-					<input type="text" class="form-control" name="{{age}}" placeholder="0">
+					<label class="buy-lable" for="{{age.name}}}">{{age.name}}</label>
+					<input type="text" class="form-control" name="{{age.name}}" placeholder="0">
 				</span>
 			</div>
+
 			<div class="form-group">
 					<label class="buy-lable" for="insuranceType">Additional insurance</label>
 						<br>
