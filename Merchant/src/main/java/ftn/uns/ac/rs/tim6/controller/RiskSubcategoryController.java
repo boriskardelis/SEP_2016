@@ -20,7 +20,7 @@ public class RiskSubcategoryController {
 	RiskSubcategoryService riskSubcategoryService;
 	
 	@RequestMapping(value = "/risksubcategories", method = RequestMethod.GET)
-	public ResponseEntity<List<RiskSubcategory>> handleGetAllBuyers() {
+	public ResponseEntity<List<RiskSubcategory>> getSubcategories() {
 		List<RiskSubcategory> risksubcategories = (List<RiskSubcategory>) riskSubcategoryService.getAll();
 		return new ResponseEntity<List<RiskSubcategory>>(risksubcategories, HttpStatus.OK);
 	}
