@@ -21,17 +21,18 @@
 
 
 		BuyService.getRiskSubcategories().then(function(response) {
-			console.log(response.data[1].name);
+			/*console.log(response.data[1].name);
 			console.log(response.data[1].coefficient);
 			console.log(response.data[1]);
 			console.log(response.data[1].riskCategory);
-			console.log(response.data[1].riskCategory.name);
+			console.log(response.data[1].riskCategory.name);*/
 			vm.subcategories = response.data;
 
 			console.log(response.data[1].riskCategory.id)
 	
 			//@subcategories, @category
 			vm.regions = BuyService.getSubsForCat(response.data, "region");
+			console.log(vm.regions);
 			vm.ages = BuyService.getSubsForCat(response.data, "age");
 			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
 			vm.sports = BuyService.getSubsForCat(response.data, "sport");
@@ -150,10 +151,13 @@
 		};
 
 		vm.calculate = function() {
-			console.log("CALCULATE");
+			/*console.log("CALCULATE");
 			console.log(vm.regionSelected);
 			console.log(vm.sumToSelected);
-			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected);
+			console.log(vm.sumToSelected.id);
+			console.log(vm.regionSelected.id);
+			console.log(vm.ageSelected);*/
+			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected);
 
 		};
 

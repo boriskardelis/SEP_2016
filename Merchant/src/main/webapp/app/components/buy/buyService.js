@@ -52,8 +52,8 @@
 						});	
 		};
 
-		var postCalculate = function(region, sum) {
-			return $http.post('api/price', {region: region, sum: sum})
+		var postCalculate = function(region, sum, ageCarrire) {
+			return $http.post('api/price', {region: region, sum: sum, ageCarrire: ageCarrire})
 						.then(function(response) {
 							console.log("CKEDA ODGOVOR");
 							return response;
