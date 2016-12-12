@@ -10,6 +10,10 @@
         	restrict: 'E',
         	link: function(scope, element, attrs, ctrl) {
         		console.log("USAO U LINK");
+        		//vm.ageTyped - age-vi
+        		// var vm = this;
+        		// vm.age = scope.age;
+        		//console.log(vm.age);
         		
         	},
         	templateUrl: 'app/components/buy/buyDirective.html',

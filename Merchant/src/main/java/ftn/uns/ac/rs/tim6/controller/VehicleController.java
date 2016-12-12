@@ -20,7 +20,7 @@ public class VehicleController {
 	VehicleService vehicleService;
 	
 	@RequestMapping(value = "/vehicles", method = RequestMethod.GET)
-	public ResponseEntity<List<Vehicle>> handleGetAllVehicles() {
+	public ResponseEntity<List<Vehicle>> getVehicles() {
 		List<Vehicle> vehicles = (List<Vehicle>) vehicleService.getAll();
 		return new ResponseEntity<List<Vehicle>>(vehicles, HttpStatus.OK);
 	}

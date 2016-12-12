@@ -98,18 +98,31 @@
 			<label class="buy-lable" for="insuranceType">Additional insurance:</label>
 				<br>
 				<ul ng-repeat="insuranceType in vm.insuranceTypes">
-				  <li><input type="checkbox" checklist-model="vm.checked" checklist-value="insuranceType.insuranceName"> {{insuranceType.insuranceName}}</li>
+				  <li><input type="checkbox" checklist-model="vm.checked[$index]" checklist-value="insuranceType"> {{insuranceType.insuranceName}}</li>
 				  <!-- <li ng-if="vm.checked">ASD</li>			  -->
 				</ul>
-				{{vm.checked[1]}}
-				<span ng-if="vm.checked">asdasd {{vm.checked.name}}</span>		
+				<!-- {{vm.checked}} -->
+				{{vm.checked}}
+				<!-- <span ng-if="vm.checked[0]">Vehicle {{vm.checked[0]}}</span>		 -->
 	</div>
 
 	<div class="form-group row">
 		<div class="col-xs-6 col-xs-offset-3">
-		    <a ui-sref="buy.secondStep" class="btn btn-block btn-info">
+		    <a ui-sref="buy.secondStep" class="btn btn-block btn-info" ng-click="vm.calculate()">
 		    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
 		    </a>
 		</div>
 	</div>
+
+	<!-- Insurance type direktiva -->
+	<div class="form-group">
+		 <label class="buy-lable" for="insurnaceType">Additional insurance:</label>
+		 <ul ng-repeat="insuranceType in vm.insuranceTypes">
+		 	<!-- <p>INSURANCES: {{insuranceType}}</p> -->
+		 	<li><buy-additional-directive insurance-type="insuranceType"></buy-additional-directive></li>
+		 </ul>
+	</div>
+
+
+
 

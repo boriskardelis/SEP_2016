@@ -30,7 +30,7 @@ public class Vehicle implements Serializable {
 	@Column(name = "REGISTRATION_NUMBER")
 	private String RegistrationNumber;
 	
-	@Column(name = "OWENER_FIRST_NAME")
+	@Column(name = "OWNER_FIRST_NAME")
 	private String ownerFirstName;
 	
 	@Column(name = "OWNER_LAST_NAME")

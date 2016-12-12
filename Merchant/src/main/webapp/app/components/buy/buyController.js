@@ -9,10 +9,12 @@
 	function BuyCtrl($scope, BuyService, $state, $timeout) {
 		var vm = this;
 		
+			//samo da sebi stavim sta sam pokupio... obrisace se
 		 	vm.regionSelected;
 	   		vm.sumToSelected;
 	   		vm.ageSelected;
 	   		vm.sportSelected;
+	   		vm.ageTyped; //from directive
 
 
 	   		
@@ -44,8 +46,11 @@
 		});
 
 		BuyService.getInsuranceTypes().then(function(response) {
-			console.log(response.data);
 			vm.insuranceTypes = response.data;
+		});
+
+		BuyService.getVehicle().then(function(response) {
+			vm.vehciles = response.data;
 		});
 		 
 	   /* BuyService.getRegions().then(function(response) {
@@ -71,6 +76,9 @@
        		 console.log("AGET");
 	   		console.log(vm.aget);
 	   		console.log(vm.ageTyped);
+	   		console.log(vm.checked);
+	   		console.log(vm.checked[0]);
+
     	};
 
     	/* vm.start = new Date('11/20/13');
@@ -141,6 +149,13 @@
 		    startingDay: 1
 		};
 
+		vm.calculate = function() {
+			console.log("CALCULATE");
+			console.log(vm.regionSelected);
+			console.log(vm.sumToSelected);
+			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected);
+
+		};
 
     	vm.insuranceType = ["Putno", "Home"];
     	vm.checked = [];
