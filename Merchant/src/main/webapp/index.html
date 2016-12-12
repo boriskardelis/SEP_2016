@@ -3,7 +3,11 @@
 <head>
     <title>Chuck Norris Insuance</title>
      <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+     <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" > -->
      <link rel="stylesheet" href="./assets/css/custom.css" />
+      
+
+
      
 </head>
 <body ng-app="merchantApp">
@@ -43,15 +47,16 @@
                 <p>Test: </p>{{home.test}}
         </div> -->
          
-
     <!-- <script src="./assets/js/angular.js"></script>  -->
-     <script src="./bower_components/jquery/dist/jquery.js"></script>
-     <script src="./bower_components/angular/angular.js"></script> 
+    <script src="./bower_components/jquery/dist/jquery.js"></script>
+    <script src="./bower_components/angular/angular.js"></script> 
+  	<script src="/bower_components/angular-animate/angular-animate.js"></script>
     <script src="./bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script> 
-     <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script> 
-     <script src="/bower_components/angular-animate/angular-animate.js"></script>
-     <script src="/bower_components/checklist-model/checklist-model.js"></script>
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script> 
+    
+    <script src="/bower_components/checklist-model/checklist-model.js"></script>
+
    
     <script src="./app/appModule.js"></script>
     <script src="./app/appConfig.js"></script>
@@ -65,6 +70,8 @@
     <!-- Services -->
     <script src="./app/components/home/homeService.js"></script>
     <script src="./app/components/buy/buyService.js"></script>
+    <!-- Directives -->
+    <script src="./app/components/buy/buyDirective.js"></script>
 
 </body>
 </html>

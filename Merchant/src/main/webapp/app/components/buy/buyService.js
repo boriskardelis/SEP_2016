@@ -36,6 +36,18 @@
 			
 		};
 
+		var getInsuranceTypes = function() {
+			console.log("USAO U METODU getInsuranceTypes");
+			return $http.get("api/insurancetypes")
+						.then(function(response) {					
+							return response;
+						})
+						.catch(function(response) {
+							return response;
+						});
+			
+		};
+
 		//Get all subcategories for specific category. @subCategories, @category
 		var getSubsForCat = function (subCategories, category) {
 			var cat = [];
@@ -48,17 +60,15 @@
 			return cat;
 		};
 
-		var getSumTo = function() {
-			return ["10.000 EUR", "50.0000 EUR"];
-		};
+		
 
 
 		return {
 			
 			getRiskSubcategories : getRiskSubcategories,
 			getRiskCategories : getRiskCategories,
-			getSumTo : getSumTo,
-			getSubsForCat : getSubsForCat
+			getSubsForCat : getSubsForCat,
+			getInsuranceTypes : getInsuranceTypes
 		
 			
 		};

@@ -20,7 +20,7 @@ public class InsuranceTypeController {
 	InsuranceTypeService insuranceTypeService;
 	
 	@RequestMapping(value = "/insurancetypes", method = RequestMethod.GET)
-	public ResponseEntity<List<InsuranceType>> handleGetAllInsuranceTypes() {
+	public ResponseEntity<List<InsuranceType>> getInsuranceTypes() {
 		List<InsuranceType> insurancetypes = (List<InsuranceType>) insuranceTypeService.getAll();
 		return new ResponseEntity<List<InsuranceType>>(insurancetypes, HttpStatus.OK);
 	}

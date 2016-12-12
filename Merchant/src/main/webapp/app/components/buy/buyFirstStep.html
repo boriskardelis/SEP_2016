@@ -1,54 +1,115 @@
-			<div class="form-group">
-				<label class="buy-lable" for="region">Region</label>
-			    <select>
-					<option ng-repeat="region in vm.regions">{{region.name}}</option>
-				</select>
-			</div>
-			<div class="form-group">
-			 			<label class="buy-lable" for="sumTo">Sum to insure</label>
-			 			<br>
-			   			<span ng-repeat="sum in vm.sumTo">
-							 <input type="radio" ng-model="$parent.sumToinsur"   
-							    	ng-value="sum" name="sumToinsur">    
-							 <label for="sum{{sum}}">{{sum}}</label>
-							 <br>		   
-						</span>
-						   {{sumToinsur}}	
-			</div>
-
-			<div class="form-group">
-				<label class="buy-lable" for="ageCarrier">Age insurance carrier</label>
-			    <select>
-					<option ng-repeat="age in vm.ages">{{age.name}}</option>
-				</select>
-			</div>
-
-			<div class="form-group">
-				<label class="buy-lable" for="numberOfPersons">Number of insuranced persons</label>
-				<span ng-repeat="age in vm.ages">
-					<label class="buy-lable" for="{{age.name}}}">{{age.name}}</label>
-					<input type="text" class="form-control" name="{{age.name}}" placeholder="0">
-				</span>
-			</div>
-
-			<div class="form-group">
-					<label class="buy-lable" for="insuranceType">Additional insurance</label>
-						<br>
-			 			<label ng-repeat="insuranceType in vm.insuranceType"> 				   
-							  <input type="checkbox" checklist-model="vm.checked" checklist-value="insuranceType"> {{insuranceType}}
-						</label>
-						{{vm.checked}}
-						<br>
-						<span ng-repeat="checked in vm.checked">
-							{{checked}}
-						</span>
-						
-			</div>
-
-<div class="form-group row">
-	<div class="col-xs-6 col-xs-offset-3">
-	    <a ui-sref="buy.secondStep" class="btn btn-block btn-info">
-	    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
-	    </a>
+	<div class="form-group">
+		<label class="buy-lable" for="region">Region:</label>
+		&nbsp;
+	    <select ng-model="vm.regionSelected">
+	  	    <option value=""> - Select destination - </option>
+			<option ng-repeat="region in vm.regions">{{region.name}}</option>
+		</select>
+		{{vm.regionSelected}}
 	</div>
-</div>
+
+	<div class="form-group">
+	 			<label class="buy-lable" for="sumTo">Sum to insure:</label>
+	 			<!-- <div class="form-group">
+		   			<span ng-repeat="sum in vm.sumTo">
+						 <input type="radio" ng-model="$parent.sumToinsur"   
+						    	ng-value="sum.name" name="sumToinsur">    
+						 <label for="sum.name{{sum.name}}">{{sum.name}}</label>
+						 <br>		   
+					</span>
+					   {{sumToinsur}}	
+				</div> -->
+				<div class="form-group">
+		   			<span ng-repeat="sum in vm.sumTo">
+						 <input type="radio" ng-model="vm.sumToSelected"   
+						    	ng-value="sum.name" name="sumToinsur">    
+						 <label for="sum.name{{sum.name}}">{{sum.name}}</label>
+						 <br>		   
+					</span>
+					   {{vm.sumToSelected}}	
+				</div>
+
+	</div>
+
+	<div class="form-group">
+		<label class="buy-lable" for="ageCarrier">Age insurance carrier:</label>
+		&nbsp;
+	    <select ng-model="vm.ageSelected">
+	   	    <option value=""> - Select age - </option>
+			<option ng-repeat="age in vm.ages">{{age.name}}</option>
+		</select>
+	</div>
+
+	<!-- Uradjeno preko direktive!!! -->
+	<!-- <div class="form-group">
+		<label class="buy-lable" for="numberOfPersons">Number of insuranced persons:</label>
+		<div class="form-group">
+			<span ng-repeat="age in vm.ages">
+				<label class="buy-lable" for="{{age.name}}">{{age.name}}</label>
+				<input type="text" class="form-control"  ng-model="$parent.vm.aget[$index]" name="{{age.name}}" placeholder="0">
+				{{$parent.vm.aget[$index]}}				
+			</span>
+		</div>
+	</div> -->
+
+	<!-- Persons preko DIREKTIVE!!! -->
+	<div class="form-group">
+		 <label class="buy-lable" for="numberOfPersons">Number of insuranced persons:</label>
+		 <span ng-repeat="age in vm.ages">
+		 	<buy-directive age="age"></buy-directive>
+		 </span>
+	</div>
+
+	<!-- Za DatePicker -->
+	<div class="form-group">
+		<label class="buy-lable" for="duration">Duration of insurance:</label>
+		<div class="form-group">
+			<label class="buy-lable" for="startDate">From</label>
+		    <p class="input-group">
+		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" is-open="vm.startOpened" datepicker-options="vm.dateOptions" ng-change="vm.startDatePicked()" ng-required="true" close-text="Close" />
+		      <span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="vm.openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+		      </span>
+		    </p>
+		</div>
+
+		<div class="form-group">
+			<label class="buy-lable" for="endDate">To</label>
+		    <p class="input-group">
+		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" is-open="vm.endOpened" datepicker-options="vm.dateOptions" ng-change="vm.endDatePicked()" ng-required="true" close-text="Close" />
+		      <span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="vm.openEnd()"><i class="glyphicon glyphicon-calendar"></i></button>
+		      </span>
+		    </p>
+		</div>
+	</div>
+	 
+	<div class="form-group">
+		<label class="buy-lable" for="sport">Sport:</label>
+		&nbsp;
+	    <select ng-model="vm.sportSelected">
+	   		<option value=""> - Select Sport - </option>
+			<option ng-repeat="sport in vm.sports">{{sport.name}}</option>
+		</select>
+		<p>test ako nije nista izabrano:</p>{{vm.sportSelected}}
+	</div>
+
+	<div class="form-group">
+			<label class="buy-lable" for="insuranceType">Additional insurance:</label>
+				<br>
+				<ul ng-repeat="insuranceType in vm.insuranceTypes">
+				  <li><input type="checkbox" checklist-model="vm.checked" checklist-value="insuranceType.insuranceName"> {{insuranceType.insuranceName}}</li>
+				  <!-- <li ng-if="vm.checked">ASD</li>			  -->
+				</ul>
+				{{vm.checked[1]}}
+				<span ng-if="vm.checked">asdasd {{vm.checked.name}}</span>		
+	</div>
+
+	<div class="form-group row">
+		<div class="col-xs-6 col-xs-offset-3">
+		    <a ui-sref="buy.secondStep" class="btn btn-block btn-info">
+		    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+		    </a>
+		</div>
+	</div>
+
