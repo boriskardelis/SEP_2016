@@ -40,13 +40,7 @@ public class InsuranceType implements Serializable{
 	 			inverseJoinColumns=@JoinColumn(name="RISK_CATEGORY_ID"))
 	 private List<RiskCategory> riskCategories;
 	 
-	  @OneToOne(fetch=FetchType.EAGER)
-	  @JoinColumn(name="HOME_ID")
-	  private Home home;
-	  
-	  @OneToOne(fetch=FetchType.EAGER)
-	  @JoinColumn(name="VEHICLE_ID")
-	  private Vehicle vehicle;
+
 
 	public long getId() {
 		return id;
@@ -80,31 +74,14 @@ public class InsuranceType implements Serializable{
 		this.riskCategories = riskCategories;
 	}
 
-	public Home getHome() {
-		return home;
-	}
+    	
 
-	public void setHome(Home home) {
-		this.home = home;
-	}
-
-	public Vehicle getVehicle() {
-		return vehicle;
-	}
-
-	public void setVehicle(Vehicle vehicle) {
-		this.vehicle = vehicle;
-	}
-
-	public InsuranceType(long id, String insuranceName, Insurance insurance, List<RiskCategory> riskCategories,
-			Home home, Vehicle vehicle) {
+	public InsuranceType(long id, String insuranceName, Insurance insurance, List<RiskCategory> riskCategories) {
 		super();
 		this.id = id;
 		this.insuranceName = insuranceName;
 		this.insurance = insurance;
 		this.riskCategories = riskCategories;
-		this.home = home;
-		this.vehicle = vehicle;
 	}
 
 	public InsuranceType() {
