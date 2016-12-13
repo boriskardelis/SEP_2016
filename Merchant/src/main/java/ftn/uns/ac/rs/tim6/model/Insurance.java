@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
