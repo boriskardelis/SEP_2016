@@ -1,0 +1,41 @@
+<div class="form-group">
+	 <input type="checkbox" ng-model="insuranceType[$index]"  > 
+				<!-- ng-change="nesto()" -->
+				<!-- {{insuranceType[$index]}}	true /false -->
+
+				{{insuranceType.insuranceName}}
+				<div ng-if="insuranceType[$index] && insuranceType.insuranceName =='Home Insurance'">
+				 <!-- <input type="text" style="width:300px;" class="form-control" />{{insuranceType.insuranceName}} -->
+			 	
+				 	<div class="form-group">
+				 		<h4 align="center">Vehcile informations</h4>			
+						<label>Vehicle registration number</label>
+						<input type="text" ng-model="vm.vehicle.registration_number" class="form-control" placeholder="Registration number">
+					</div>
+					<div class="form-group">			
+						<label>Vehicle make</label>
+						<input type="text" ng-model="vm.vehicle.make" class="form-control" placeholder="Make">
+					</div>
+					<div class="form-group">			
+						<label>Vehicle owner first name</label>
+						<input type="text" ng-model="vm.vehicle.owner_first_name" class="form-control" placeholder="First name">
+					</div>
+					<div class="form-group">			
+						<label>Vehicle owner JMBG</label>
+						<input type="text" ng-model="vm.vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
+					</div>
+					<div class="form-group">			
+						<label>Vehicle make</label>
+						<input type="text" ng-model="vm.vehicle.make" class="form-control" placeholder="Make">
+					</div>
+
+				{{vm.vehicle.registration_number}}
+				</div>	
+
+				
+
+				
+
+
+	 
+</div>

@@ -157,6 +157,7 @@
 			console.log(vm.sumToSelected.id);
 			console.log(vm.regionSelected.id);
 			console.log(vm.ageSelected);*/
+			
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected);
 
 		};
