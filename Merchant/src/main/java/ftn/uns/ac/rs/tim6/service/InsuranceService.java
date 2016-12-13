@@ -25,6 +25,12 @@ public class InsuranceService implements GenericService<Insurance>{
 	public Insurance save(Insurance t) {
 		return insuranceRepository.save(t);
 	}
+
+	@Override
+	public Insurance findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }

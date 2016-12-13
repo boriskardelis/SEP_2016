@@ -24,5 +24,11 @@ public class PersonService implements GenericService<Person>{
 	@Override
 	public Person save(Person t) {
 		return personRepository.save(t);
+	}
+
+	@Override
+	public Person findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
 	};
 }

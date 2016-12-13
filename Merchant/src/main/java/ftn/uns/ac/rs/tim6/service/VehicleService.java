@@ -26,4 +26,10 @@ public class VehicleService implements GenericService<Vehicle>{
 		return vehicleRepository.save(t);
 	}
 
+	@Override
+	public Vehicle findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

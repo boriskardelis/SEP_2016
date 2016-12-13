@@ -25,4 +25,10 @@ public class DateCategoryService implements GenericService<DateCategory>{
 		return dateCategoryRepository.save(t);
 	}
 
+	@Override
+	public DateCategory findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

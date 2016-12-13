@@ -24,4 +24,10 @@ public class RiskCategoryService implements GenericService<RiskCategory>{
 		return riskCategoryRepository.save(t);
 	}
 
+	@Override
+	public RiskCategory findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

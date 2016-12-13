@@ -26,4 +26,10 @@ public class BuyerService implements GenericService<Buyer> {
 	public Buyer save(Buyer t) {
 		return buyerRepository.save(t);
 	}
+
+	@Override
+	public Buyer findById(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
