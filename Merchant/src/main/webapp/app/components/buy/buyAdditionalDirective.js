@@ -14,8 +14,9 @@
         		 var vm = this;
         		 // vm.insuranceTypess = scope.insuranceType;
         		 // console.log(vm.insuranceTypess);
-        		console.log(scope.insuranceType);
-        		vm.vehicle = [];
+        		 console.log("ZA TOWING");
+        		console.log(scope.towing);
+        		//vm.vehicle = [];
         		//scope.isChecked = false;
         	// 	scope.checked = "";
       			// scope.$watch('checked', function(newVal, oldVal) {
@@ -23,11 +24,22 @@
       			// 		console.log("USPELO");
       			// 	}
       			// }, true);
+      			vm.vehcile = scope.vehicle;
+
         		
         	},
         	templateUrl: 'app/components/buy/buyAdditionalDirective.html',
         	scope: {
 				insuranceType: '=',
+				towings: '=',
+				repairs: '=',
+				accommodations: '=',
+				alternativeRides: '=',
+				surfaces: '=',
+				ageApartments: '=',
+				valueApartments: '=',
+				disasters: '=',
+				
 				
 				//očekuje se u HTMLu atribut koji ide uz direktivu i koji se zove employee.
 				//kada stavimo '=' prosleđujemo referencu na neku vrednost iz nekog roditeljskog scope-a,

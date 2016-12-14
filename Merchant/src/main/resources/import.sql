@@ -16,7 +16,18 @@ INSERT INTO risk_category (name, date_category) VALUES ('age', 1);
 INSERT INTO risk_category (name, date_category) VALUES ('region', 2);
 INSERT INTO risk_category (name, date_category) VALUES ('sumTo', 2);
 INSERT INTO risk_category (name, date_category) VALUES ('sport', 2);
+
 INSERT INTO risk_category (name, date_category) VALUES ('towing', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('repairs', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('accommodation', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('alternativeRide', 2);
+
+INSERT INTO risk_category (name, date_category) VALUES ('surface', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('ageApartment', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('valueApartment', 2);
+INSERT INTO risk_category (name, date_category) VALUES ('disaster', 2);
+
+
 
 INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (2, 'to 18', 1);
 INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (4, '18-60', 1);
@@ -41,6 +52,35 @@ INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (8, 'Biki
 INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (3, '20km', 5);
 INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (8, '100km', 5);
 INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (15, '300km', 5);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (4, '500 EUR', 6);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (7, '1.500 EUR', 6);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (10, '3.000 EUR', 6);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (7, '7 days', 7);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (14, '14 days', 7);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (23, '28 days', 7);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (2, 'Taxi', 8);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (10, 'Van', 8);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (28, 'Truck', 8);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (12, 'to 30m2', 9);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (23, '30m2 - 80m2', 9);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (40, 'over 80m2', 9);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (10, 'to 10 years', 10);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (28, '10 - 20 years', 10);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (28, 'over 20 years', 10);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (10, '10.000 EUR', 11);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (40, '40.000 EUR', 11);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (80, '80.000 EUR', 11);
+
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (4, 'Flood', 12);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (12, 'Fire', 12);
+INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (30, 'Thievery', 12);
+
 
 INSERT INTO insurance_type (insurance_name,  insurance) VALUES ( 'Road Insurance', NULL);
 INSERT INTO insurance_type (insurance_name, insurance) VALUES ('Home Insurance', NULL);

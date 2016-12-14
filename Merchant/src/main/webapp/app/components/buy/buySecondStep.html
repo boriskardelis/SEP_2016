@@ -1,19 +1,13 @@
-<label>What's Your Console of Choice?</label>
-<div class="form-group">
-    <div class="radio">
-        <label>
-           <input type="radio" ng-model="formData.type" value="xbox" checked>
-           I like XBOX
-        </label>
-    </div>
-    <div class="radio">
-        <label>
-            <input type="radio" ng-model="formData.type" value="ps">
-            I like PS4
-        </label>
-    </div>
-</div>
 
+    <!-- Insurance type direktiva -->
+    <div class="form-group">
+         <label class="buy-lable" for="insurnaceType">Additional insurance:</label>
+         <ul ng-repeat="insuranceType in vm.insuranceTypes">
+            <!-- <p>INSURANCES: {{insuranceType}}</p> -->
+            <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters"></buy-additional-directive></li>
+         </ul>
+    </div>
+    {{vm.towingSelected}}
 
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">

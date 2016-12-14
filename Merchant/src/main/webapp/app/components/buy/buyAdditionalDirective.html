@@ -1,41 +1,161 @@
-<div class="form-group">
-	 <input type="checkbox" ng-model="insuranceType[$index]"  > 
-				<!-- ng-change="nesto()" -->
-				<!-- {{insuranceType[$index]}}	true /false -->
 
-				{{insuranceType.insuranceName}}
-				<div ng-if="insuranceType[$index] && insuranceType.insuranceName =='Home Insurance'">
-				 <!-- <input type="text" style="width:300px;" class="form-control" />{{insuranceType.insuranceName}} -->
-			 	
-				 	<div class="form-group">
-				 		<h4 align="center">Vehcile informations</h4>			
-						<label>Vehicle registration number</label>
-						<input type="text" ng-model="vm.vehicle.registration_number" class="form-control" placeholder="Registration number">
+	<input type="checkbox" ng-model="insuranceType[$index]"  > 
+		<!-- ng-change="nesto()" -->
+		<!-- {{insuranceType[$index]}}	true /false -->
+		
+
+		{{insuranceType.insuranceName}}
+		<!-- moze i preko ng-if, samo onda dodam jos jednog $parenta jer ng-if ima svoj scope -->
+		<div ng-show="insuranceType[$index] && insuranceType.insuranceName =='Road Insurance'">
+		 <!-- <input type="text" style="width:300px;" class="form-control" />{{insuranceType.insuranceName}} -->
+	 		
+	 		{{vm.vehicle.registration_number}}
+	 		<div class="form-group">
+		 		<h4 align="center">Additional Packages</h4>	
+		 		<input type="checkbox" ng-model="towings[$index]"  ng-true-value="'yes'" >		
+				<label>Towing to a certain mileage</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="towings[$index]" ng-model="$parent.vm.towingSelected" ng-options="towing.name for towing in towings">
+					  	     <option value=""> - Select mileage - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
 					</div>
-					<div class="form-group">			
-						<label>Vehicle make</label>
-						<input type="text" ng-model="vm.vehicle.make" class="form-control" placeholder="Make">
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="repairs[$index]"  >		
+				<label>Repairs to a certain price</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="repairs[$index]" ng-model="$parent.vm.repairSelected" ng-options="repair.name for repair in repairs">
+					  	     <option value=""> - Select price - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
 					</div>
-					<div class="form-group">			
-						<label>Vehicle owner first name</label>
-						<input type="text" ng-model="vm.vehicle.owner_first_name" class="form-control" placeholder="First name">
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="accommodations[$index]"  >		
+				<label>Accommodation in hotel to certain days</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="accommodations[$index]" ng-model="$parent.vm.accommodationSelected" ng-options="accommodation.name for accommodation in accommodations">
+					  	     <option value=""> - Select number of days - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
 					</div>
-					<div class="form-group">			
-						<label>Vehicle owner JMBG</label>
-						<input type="text" ng-model="vm.vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="alternativeRides[$index]"  >		
+				<label>Alternative ride</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="alternativeRides[$index]" ng-model="$parent.vm.alternativeRideSelected" ng-options="alternativeRide.name for alternativeRide in alternativeRides">
+					  	     <option value=""> - Select ride - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
 					</div>
-					<div class="form-group">			
-						<label>Vehicle make</label>
-						<input type="text" ng-model="vm.vehicle.make" class="form-control" placeholder="Make">
+			</div>
+			<br/>
+
+		 	<div class="form-group">
+		 		<h4 align="center">Vehcile informations</h4>			
+				<label>Registration number</label>
+				<input type="text" ng-model="$parent.vm.vehicle.registration_number" class="form-control" placeholder="Registration number">
+			</div>
+			<div class="form-group">			
+				<label>Vehicle make</label>
+				<input type="text" ng-model="$parent.vm.vehicle.make" class="form-control" placeholder="Make">
+			</div>
+			<div class="form-group">			
+				<label>Vehicle owner first name</label>
+				<input type="text" ng-model="$parent.vm.vehicle.owner_first_name" class="form-control" placeholder="First name">
+			</div>
+			<div class="form-group">			
+				<label>Vehicle owner last name</label>
+				<input type="text" ng-model="$parent.vm.vehicle.owner_last_name" class="form-control" placeholder="Last name">
+			</div>
+			<div class="form-group">			
+				<label>Vehicle owner JMBG</label>
+				<input type="text" ng-model="$parent.vm.vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
+			</div>
+			<div class="form-group">			
+				<label>Vehicle type</label>
+				<input type="text" ng-model="$parent.vm.vehicle.type" class="form-control" placeholder="Type">
+			</div>
+			<div class="form-group">			
+				<label>Vin number</label>
+				<input type="text" ng-model="$parent.vm.vehicle.vin_number" class="form-control" placeholder="Vin number">
+			</div>
+			<div class="form-group">			
+				<label>Year of production</label>
+				<input type="text" ng-model="$parent.vm.vehicle.year_of_production" class="form-control" placeholder="Year of production">
+			</div>			
+		</div>	 
+
+		<div ng-show="insuranceType[$index] && insuranceType.insuranceName =='Home Insurance'">
+			{{vm.vehicle.registration_number}}
+		 	<div class="form-group">
+		 		<h4 align="center">Home informations</h4>			
+				<label>Address</label>
+				<input type="text" ng-model="$parent.vm.home.address" class="form-control" placeholder="Address">
+			</div>
+			<div class="form-group">			
+				<label>Home owner first name</label>
+				<input type="text" ng-model="$parent.vm.home.owner_first_name" class="form-control" placeholder="First name">
+			</div>
+			<div class="form-group">			
+				<label>Home owner last name</label>
+				<input type="text" ng-model="$parent.vm.home.owner_last_name" class="form-control" placeholder="Last name">
+			</div>
+			<div class="form-group">			
+				<label>Home owner JMBG</label>
+				<input type="text" ng-model="$parent.vm.home.owner_jmbg" class="form-control" placeholder="JMBG">
+			</div>
+
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="surfaces[$index]"  >		
+				<label>Surface of apartment</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="surfaces[$index]" ng-model="$parent.vm.surfaceSelected" ng-options="surface.name for surface in surfaces">
+					  	     <option value=""> - Select surface - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
 					</div>
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="ageApartments[$index]"  >		
+				<label>Age of apartment</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="ageApartments[$index]" ng-model="$parent.vm.ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
+					  	     <option value=""> - Select age - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
+					</div>
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="valueApartments[$index]"  >		
+				<label>Estimated value of apartment</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="valueApartments[$index]" ng-model="$parent.vm.valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
+					  	     <option value=""> - Select value - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
+					</div>
+			</div>
+			<div class="form-group">
+		 		<input type="checkbox" ng-model="disasters[$index]"  >		
+				<label>Insure from disaster</label>
+				<br/>
+					<div class="form-group">		
+						<select ng-show="disasters[$index]" ng-model="$parent.vm.disasterSelected" ng-options="disaster.name for disaster in disasters">
+					  	     <option value=""> - Select disaster - </option>
+							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+						</select>
+					</div>
+			</div>								
+		</div>
 
-				{{vm.vehicle.registration_number}}
-				</div>	
-
-				
-
-				
-
-
-	 
-</div>
+		

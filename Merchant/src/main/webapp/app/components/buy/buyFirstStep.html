@@ -94,17 +94,13 @@
 		<p>test ako nije nista izabrano:</p>{{vm.sportSelected}}
 	</div>
 
-	<div class="form-group">
+	<!-- <div class="form-group">
 			<label class="buy-lable" for="insuranceType">Additional insurance:</label>
 				<br>
 				<ul ng-repeat="insuranceType in vm.insuranceTypes">
-				  <li><input type="checkbox" checklist-model="vm.checked[$index]" checklist-value="insuranceType"> {{insuranceType.insuranceName}}</li>
-				  <!-- <li ng-if="vm.checked">ASD</li>			  -->
-				</ul>
-				<!-- {{vm.checked}} -->
-				{{vm.checked}}
-				<!-- <span ng-if="vm.checked[0]">Vehicle {{vm.checked[0]}}</span>		 -->
-	</div>
+				  <li><input type="checkbox" checklist-model="vm.checked[$index]" checklist-value="insuranceType"> {{insuranceType.insuranceName}}</li>		
+				</ul>			
+	</div> -->
 
 	<div class="form-group row">
 		<div class="col-xs-6 col-xs-offset-3">
@@ -114,14 +110,7 @@
 		</div>
 	</div>
 
-	<!-- Insurance type direktiva -->
-	<div class="form-group">
-		 <label class="buy-lable" for="insurnaceType">Additional insurance:</label>
-		 <ul ng-repeat="insuranceType in vm.insuranceTypes">
-		 	<!-- <p>INSURANCES: {{insuranceType}}</p> -->
-		 	<li><buy-additional-directive insurance-type="insuranceType"></buy-additional-directive></li>
-		 </ul>
-	</div>
+	
 
 
 

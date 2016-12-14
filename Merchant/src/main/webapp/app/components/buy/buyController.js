@@ -36,7 +36,16 @@
 			vm.ages = BuyService.getSubsForCat(response.data, "age");
 			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
 			vm.sports = BuyService.getSubsForCat(response.data, "sport");
-			vm.towing = BuyService.getSubsForCat(response.data, "towing");
+
+			vm.towings = BuyService.getSubsForCat(response.data, "towing");
+			vm.repairs = BuyService.getSubsForCat(response.data, "repairs");
+			vm.accommodations = BuyService.getSubsForCat(response.data, "accommodation");
+			vm.alternativeRides = BuyService.getSubsForCat(response.data, "alternativeRide");
+
+			vm.surfaces = BuyService.getSubsForCat(response.data, "surface");
+			vm.ageApartments = BuyService.getSubsForCat(response.data, "ageApartment");
+			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
+			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
 			
 
 		});
@@ -157,7 +166,10 @@
 			console.log(vm.sumToSelected.id);
 			console.log(vm.regionSelected.id);
 			console.log(vm.ageSelected);*/
-			
+			//console.log(vm.vehicle.make);
+			console.log(vm.ageTyped);
+			console.log(vm.vehicle);
+			//console.log(vm.vehicle.make);
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected);
 
 		};
