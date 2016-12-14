@@ -3,22 +3,17 @@
 	
 	angular
 		.module('merchantApp')
-		.directive('buyDirective', buyDirective);
+		.directive('buyPersonsDirective', buyPersonsDirective);
 
-	function buyDirective() {
-		var buyDirective = {       	
+	function buyPersonsDirective() {
+		var buyPersonsDirective = {       	
         	restrict: 'E',
         	link: function(scope, element, attrs, ctrl) {
-        		var vm = this;
-        		console.log("USAO U LINK");
-        		//vm.ageTyped - age-vi
-        		// var vm = this;
-        		// vm.age = scope.age;
-        		//console.log(vm.age);
         		
-        		
+ 
+        		console.log("asdasd");
         	},
-        	templateUrl: 'app/components/buy/buyDirective.html',
+        	templateUrl: 'app/components/buy/buyPersonsDirective.html',
         	scope: {
 				age: '=',
 				
@@ -32,6 +27,6 @@
 				//= -dvostruka veza   @-jednostruka veza
 			}
 		};
-		return buyDirective;
+		return buyPersonsDirective;
 	}
 })();
