@@ -1,6 +1,8 @@
 package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +43,7 @@ public class InsuranceController {
 
 	@RequestMapping(value = "/price", method = RequestMethod.POST)
 	public InsurancePriceDto handlePrice(@RequestBody String jsonInString) throws JsonProcessingException, IOException {
-		
+
 		InsurancePriceDto dto = new InsurancePriceDto();
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode node = mapper.readTree(jsonInString);
@@ -49,16 +51,19 @@ public class InsuranceController {
 		RiskSubcategory region = mapper.convertValue(node.get("region"), RiskSubcategory.class);
 		RiskSubcategory sum = mapper.convertValue(node.get("sum"), RiskSubcategory.class);
 		RiskSubcategory ageCarrier = mapper.convertValue(node.get("ageCarrier"), RiskSubcategory.class);
-		
-		AgeSubCategoryDto ageType = mapper.convertValue(node.get("ageType"), AgeSubCategoryDto.class);
-		
-		System.out.println("region " + region);
-		System.out.println("ageType string: " + ageType);
-		
+
+		Object ageType = mapper.convertValue(node.get("ageType"), Object.class);
+		ArrayList<AgeSubCategoryDto> lista = citanjeAgeKategorija(ageType);
+
+		for (AgeSubCategoryDto ageSubCategoryDto : lista) {
+			System.out.println("id " + ageSubCategoryDto.getId());
+			System.out.println("broj " + ageSubCategoryDto.getNumber());
+		}
+
 		dto.getRisks().add(region);
 		dto.getRisks().add(sum);
 		dto.getRisks().add(ageCarrier);
-		
+
 		DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
 
 		try {
@@ -71,10 +76,43 @@ public class InsuranceController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		System.out.println("izasli iz drools-a, cena: " + dto.getTotalPrice());
 
 		return dto;
+	}
+
+	private ArrayList<AgeSubCategoryDto> citanjeAgeKategorija(Object ageType) {
+		String ageString = ageType.toString();
+		ageString = ageString.replace("{", "");
+		ageString = ageString.replace("}", "");
+		ageString = ageString.replace(",", "");
+
+		String[] parts = ageString.split("idAgeSub=");
+		String kolicina = parts[0];
+		String kljucevi = parts[1];
+		ArrayList<AgeSubCategoryDto> lista = new ArrayList<AgeSubCategoryDto>();
+
+		for (String retval : kljucevi.split(" ")) {
+
+			AgeSubCategoryDto ascd = new AgeSubCategoryDto();
+			ascd.setId(Character.getNumericValue(retval.charAt(2)));
+
+			for (String retvalKolicina : kolicina.split(" ")) {
+
+				int kljuc1 = Character.getNumericValue(retval.charAt(0));
+				int kljuc2 = Character.getNumericValue(retvalKolicina.charAt(0));
+
+				if (kljuc1 == kljuc2) {
+					String[] partsKolicina = retvalKolicina.split("=");
+					String brojOsoba = partsKolicina[1];
+					ascd.setNumber(Integer.valueOf(brojOsoba));
+				}
+			}
+
+			lista.add(ascd);
+		}
+		return lista;
 	}
 
 }
