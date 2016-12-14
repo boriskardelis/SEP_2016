@@ -32,7 +32,6 @@
 	
 			//@subcategories, @category
 			vm.regions = BuyService.getSubsForCat(response.data, "region");
-			console.log(vm.regions);
 			vm.ages = BuyService.getSubsForCat(response.data, "age");
 			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
 			vm.sports = BuyService.getSubsForCat(response.data, "sport");
@@ -83,11 +82,7 @@
 
 	     vm.processForm = function() {
        		 alert('awesome!');  
-       		 console.log("AGET");
-	   		console.log(vm.aget);
-	   		console.log(vm.ageTyped);
-	   		console.log(vm.checked);
-	   		console.log(vm.checked[0]);
+       	
 
     	};
 
@@ -160,17 +155,33 @@
 		};
 
 		vm.calculate = function() {
-			/*console.log("CALCULATE");
+			console.log("CALCULATE");
 			console.log(vm.regionSelected);
 			console.log(vm.sumToSelected);
-			console.log(vm.sumToSelected.id);
-			console.log(vm.regionSelected.id);
-			console.log(vm.ageSelected);*/
-			//console.log(vm.vehicle.make);
+			console.log(vm.ageSelected);
+			console.log(vm.sportSelected);
 			console.log(vm.ageTyped);
-			console.log(vm.vehicle);
-			//console.log(vm.vehicle.make);
-			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected);
+
+			//DOdaj u listu ako treba
+			console.log(vm.startDate);
+			console.log(vm.endDate);
+
+			//Ne ulaze u cenu
+			//console.log(vm.vehicle);
+			//console.log(vm.home);
+			
+			console.log(vm.towingSelected);
+			console.log(vm.repairSelected);
+			console.log(vm.accommodationSelected);
+			console.log(vm.alternativeRideSelected);
+			console.log(vm.surfaceSelected);
+			console.log(vm.valueApartmentSelected);
+			console.log(vm.disasterSelected);
+
+			
+			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
+			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
+			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected);
 
 		};
 

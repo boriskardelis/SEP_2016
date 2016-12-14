@@ -82,7 +82,7 @@
 			var cat = [];
 			for (var i = 0; i < subCategories.length; i++) {
 				if (subCategories[i].riskCategory.name == category) {
-					console.log(subCategories[i].name);
+					//console.log(subCategories[i].name);
 					cat.push(subCategories[i]);
 				}
 			}
