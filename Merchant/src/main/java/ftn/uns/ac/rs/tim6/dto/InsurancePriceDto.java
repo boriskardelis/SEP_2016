@@ -13,6 +13,7 @@ public class InsurancePriceDto {
 	private double totalPrice;
 	private List<RiskSubcategory> risks = new ArrayList<RiskSubcategory>();
 	private int days;
+	private List<AgeSubCategoryDto> ages = new ArrayList<AgeSubCategoryDto>();
 	
 	public double getPremiumPrice() {
 		return premiumPrice;
@@ -50,5 +51,13 @@ public class InsurancePriceDto {
 	public void setDays(int days) {
 		this.days = days;
 	}
+	public List<AgeSubCategoryDto> getAges() {
+		return ages;
+	}
+	public void setAges(List<AgeSubCategoryDto> ages) {
+		this.ages = ages;
+	}
+	
+	
 
 }

@@ -27,6 +27,11 @@ dialect "mvel"
   			$insurance.setTotalPrice($insurance.premiumPrice - $insurance.discountPrice + $insurance.taxPrice);
   			
   		}
+  		$insurance.setPremiumPrice(Math.round($insurance.premiumPrice * 100) / 100);
+  		$insurance.setDiscountPrice(Math.round($insurance.discountPrice * 100) / 100);
+  		$insurance.setTaxPrice(Math.round($insurance.taxPrice * 100) / 100);
+  		$insurance.setTotalPrice(Math.round($insurance.totalPrice * 100) / 100);
+  		
   		System.out.println("premiun: " + $insurance.premiumPrice);
   		System.out.println("popust: " + $insurance.discountPrice);
   		System.out.println("taksa: " + $insurance.taxPrice);

@@ -15,6 +15,7 @@ import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.drools.runtime.StatefulKnowledgeSession;
 
+import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
@@ -48,8 +49,11 @@ public class InsuranceController {
 		RiskSubcategory region = mapper.convertValue(node.get("region"), RiskSubcategory.class);
 		RiskSubcategory sum = mapper.convertValue(node.get("sum"), RiskSubcategory.class);
 		RiskSubcategory ageCarrier = mapper.convertValue(node.get("ageCarrier"), RiskSubcategory.class);
-
-		// Pravimo novo osiguranje
+		
+		AgeSubCategoryDto ageType = mapper.convertValue(node.get("ageType"), AgeSubCategoryDto.class);
+		
+		System.out.println("region " + region);
+		System.out.println("ageType string: " + ageType);
 		
 		dto.getRisks().add(region);
 		dto.getRisks().add(sum);
