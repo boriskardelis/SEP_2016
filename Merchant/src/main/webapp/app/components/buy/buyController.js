@@ -147,11 +147,17 @@
 			console.log(vm.valueApartmentSelected);
 			console.log(vm.disasterSelected);*/
 			console.log(vm.ageTyped);
-			console.log(vm.ageTyped[0]);
-			for (var i=0; vm.ageTyped.length; i++) {
+			//console.log(vm.ageTyped[0]);
+
+			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.
+			var size = Object.keys(vm.ageTyped).length;
+			for (var i=0;  i <size; i++) {
 				console.log("USAO U FOR");
-				if (vm.ageTyped[i] == "undefined")
+				console.log(vm.ageTyped[i]);
+				if (vm.ageTyped[i] == undefined) {
+					vm.ageTyped[i] = "0";
 					console.log(vm.ageTyped[i] + "je NEDEFINISAN");
+				}
 			}
 			console.log(vm.ageTyped);
 
@@ -165,7 +171,13 @@
 			
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
 			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
-			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected);
+			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected)
+				.then(function(response) {
+			 		
+			 		vm.droolPrices = response.data;
+
+			 });
+			
 
 		};
 
