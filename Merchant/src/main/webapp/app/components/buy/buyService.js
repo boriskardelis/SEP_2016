@@ -68,6 +68,8 @@
 			return $http.post('api/price', {region: region, sum: sum, ageCarrier: ageCarrier})
 						.then(function(response) {
 							console.log("CKEDA ODGOVOR");
+							console.log(response);
+							console.log(response.data);
 							return response;
 						})
 						.catch(function(response) {
