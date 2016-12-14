@@ -18,7 +18,6 @@
 					<div class="form-group">		
 						<select ng-show="towings[$index]" ng-model="$parent.vm.towingSelected" ng-options="towing.name for towing in towings">
 					  	     <option value=""> - Select mileage - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 						</select>
 					</div>
 			</div>
@@ -29,7 +28,6 @@
 					<div class="form-group">		
 						<select ng-show="repairs[$index]" ng-model="$parent.vm.repairSelected" ng-options="repair.name for repair in repairs">
 					  	     <option value=""> - Select price - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 						</select>
 					</div>
 			</div>
@@ -40,7 +38,6 @@
 					<div class="form-group">		
 						<select ng-show="accommodations[$index]" ng-model="$parent.vm.accommodationSelected" ng-options="accommodation.name for accommodation in accommodations">
 					  	     <option value=""> - Select number of days - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 						</select>
 					</div>
 			</div>
@@ -51,7 +48,6 @@
 					<div class="form-group">		
 						<select ng-show="alternativeRides[$index]" ng-model="$parent.vm.alternativeRideSelected" ng-options="alternativeRide.name for alternativeRide in alternativeRides">
 					  	     <option value=""> - Select ride - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 						</select>
 					</div>
 			</div>
@@ -112,49 +108,29 @@
 				<input type="text" ng-model="$parent.vm.home.owner_jmbg" class="form-control" placeholder="JMBG">
 			</div>
 
-			<div class="form-group">
-		 		<input type="checkbox" ng-model="surfaces[$index]"  >		
-				<label>Surface of apartment</label>
-				<br/>
-					<div class="form-group">		
-						<select ng-show="surfaces[$index]" ng-model="$parent.vm.surfaceSelected" ng-options="surface.name for surface in surfaces">
-					  	     <option value=""> - Select surface - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
-						</select>
-					</div>
+			<div class="form-group">	
+				<label>Surface of apartment:</label>&nbsp;	
+				<select ng-model="$parent.vm.surfaceSelected" ng-options="surface.name for surface in surfaces">
+			  	     <option value=""> - Select surface - </option>			
+				</select>
 			</div>
-			<div class="form-group">
-		 		<input type="checkbox" ng-model="ageApartments[$index]"  >		
-				<label>Age of apartment</label>
-				<br/>
-					<div class="form-group">		
-						<select ng-show="ageApartments[$index]" ng-model="$parent.vm.ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
-					  	     <option value=""> - Select age - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
-						</select>
-					</div>
+			<div class="form-group">		
+				<label>Age of apartment:</label>&nbsp;
+				<select ng-model="$parent.vm.ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
+			  	     <option value=""> - Select age - </option>
+				</select>
 			</div>
-			<div class="form-group">
-		 		<input type="checkbox" ng-model="valueApartments[$index]"  >		
-				<label>Estimated value of apartment</label>
-				<br/>
-					<div class="form-group">		
-						<select ng-show="valueApartments[$index]" ng-model="$parent.vm.valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
-					  	     <option value=""> - Select value - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
-						</select>
-					</div>
+			<div class="form-group">	
+				<label>Estimated value of apartment:</label>&nbsp;		
+				<select ng-model="$parent.vm.valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
+			  	     <option value=""> - Select value - </option>
+				</select>
 			</div>
-			<div class="form-group">
-		 		<input type="checkbox" ng-model="disasters[$index]"  >		
-				<label>Insure from disaster</label>
-				<br/>
-					<div class="form-group">		
-						<select ng-show="disasters[$index]" ng-model="$parent.vm.disasterSelected" ng-options="disaster.name for disaster in disasters">
-					  	     <option value=""> - Select disaster - </option>
-							<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
-						</select>
-					</div>
+			<div class="form-group">	
+				<label>Insure from disaster:</label>&nbsp;	
+				<select ng-model="$parent.vm.disasterSelected" ng-options="disaster.name for disaster in disasters">
+			  	     <option value=""> - Select disaster - </option>
+				</select>
 			</div>								
 		</div>
 
