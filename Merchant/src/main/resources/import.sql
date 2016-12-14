@@ -85,6 +85,8 @@ INSERT INTO risk_subcategory (coefficient, name, risk_category) VALUES (30, 'Thi
 INSERT INTO insurance_type (insurance_name,  insurance) VALUES ( 'Road Insurance', NULL);
 INSERT INTO insurance_type (insurance_name, insurance) VALUES ('Home Insurance', NULL);
 
+INSERT INTO payment (payment_id, first_name) VALUES (123, 'miko');
+
 INSERT INTO vehicle (registration_number, make, owner_first_name, owner_jmbg, owner_last_name, type,vin_number, year_of_production, insurance_type_id) VALUES ('SO232-JL', 'Ford', 'Pera', '1323241543312', 'Peric', 'Kola', '2132', 2005, 1);
 
 

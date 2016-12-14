@@ -8,10 +8,8 @@
 
  function config($stateProvider, $urlRouterProvider, $locationProvider) {
   
-  
-  $urlRouterProvider.otherwise('/home');
-
- 
+ 	$urlRouterProvider.otherwise('/home');
+ 		
      $stateProvider
       
       .state('home', {
@@ -43,19 +41,12 @@
          .state('buy.thirdStep', {
             url: '/thirdStep',
             templateUrl: 'app/components/buy/buyThirdStep.html'
-        })
-         .state('buy.fourthStep', {
-            url: '/fourthStep',
-            templateUrl: 'app/components/buy/buyFourthStep.html'
-        })
-         .state('buy.fifthStep', {
-            url: '/fifthStep',
-            templateUrl: 'app/components/buy/buyFifthStep.html'
-        })
+        });
 
 
      //Koristim da bi izbacio # iz url-a. Jos u server.js koristim rewrite mehanizam // to ked osm pravel XO makso
-     //$locationProvider.html5Mode(true); 
+    $locationProvider.html5Mode(true); 
+    
 
 
   }
