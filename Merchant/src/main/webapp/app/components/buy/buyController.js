@@ -147,21 +147,30 @@
 			console.log(vm.valueApartmentSelected);
 			console.log(vm.disasterSelected);*/
 			console.log(vm.ageTyped);
-			//console.log(vm.ageTyped[0]);
+			var size = Object.keys(vm.ages).length;
+
+			console.log(vm.ages);
+			for (var i=0;  i <size; i++) {
+				
+					console.log(vm.ages[i]);
+				
+			}
 
 			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.
-			var size = Object.keys(vm.ageTyped).length;
+			
 			for (var i=0;  i <size; i++) {
-				console.log("USAO U FOR");
-				console.log(vm.ageTyped[i]);
 				if (vm.ageTyped[i] == undefined) {
 					vm.ageTyped[i] = "0";
-					console.log(vm.ageTyped[i] + "je NEDEFINISAN");
 				}
 			}
-			console.log(vm.ageTyped);
+			//saberem sve ukupne osobe koliko ih ima
+			var sum = 0;
+			for (var i=0;  i <size; i++) {
+				 //var sum = parseInt(vm.ageTyped[i]);
+				  sum = sum + parseInt(vm.ageTyped[i]);
+			}
+			vm.totalPersons = sum;
 
-			vm.totalPersons = parseInt(vm.ageTyped[0])+parseInt(vm.ageTyped[1])+parseInt(vm.ageTyped[2]);
 			console.log(vm.totalPersons);
 
 			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
