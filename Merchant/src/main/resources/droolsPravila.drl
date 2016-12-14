@@ -3,20 +3,38 @@ package drools
 
 //list any import classes here.
 
-import ftn.uns.ac.rs.tim6.model.Buyer;
+import ftn.uns.ac.rs.tim6.model.*;
+import ftn.uns.ac.rs.tim6.dto.*;
 
 //declare any global variables here
 
-dialect "java"
+rule "osiguranje cena"
+dialect "mvel"
 
-
-rule "rule"
 
     when
-    
-		$buyer : Buyer( phoneNumber == 10 )
+    	$insurance : InsurancePriceDto( premiumPrice == 0 )
+		
     then
     
-    	$buyer.setPhoneNumber(20);
-         
+  		$insurance.setPremiumPrice( 100 );
+  		
+  		for(RiskSubcategory risk : $insurance.risks){
+  		
+  			$insurance.setPremiumPrice($insurance.premiumPrice + risk.coefficient * $insurance.premiumPrice / 100);
+  			$insurance.setDiscountPrice($insurance.premiumPrice * 0.1);
+  			$insurance.setTaxPrice($insurance.premiumPrice * 0.2);
+  			$insurance.setTotalPrice($insurance.premiumPrice - $insurance.discountPrice + $insurance.taxPrice);
+  			
+  		}
+  		$insurance.setPremiumPrice(Math.round($insurance.premiumPrice * 100) / 100);
+  		$insurance.setDiscountPrice(Math.round($insurance.discountPrice * 100) / 100);
+  		$insurance.setTaxPrice(Math.round($insurance.taxPrice * 100) / 100);
+  		$insurance.setTotalPrice(Math.round($insurance.totalPrice * 100) / 100);
+  		
+  		System.out.println("premiun: " + $insurance.premiumPrice);
+  		System.out.println("popust: " + $insurance.discountPrice);
+  		System.out.println("taksa: " + $insurance.taxPrice);
+  		System.out.println("ukupno: " + $insurance.totalPrice);
+  		  		
 end

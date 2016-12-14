@@ -86,40 +86,9 @@
 
     	};
 
-    	/* vm.start = new Date('11/20/13');
-		 vm.start = new Date();
-		 vm.end = new Date();
-		  
-		  vm.minStartDate = new Date(); //fixed date
-		  vm.maxStartDate = vm.end; //init value
-		  vm.minEndDate = vm.start; //init value
-		  vm.maxEndDate = new Date('12/12/16'); //fixed date same as $scope.maxStartDate init value
-		  
-		  $scope.$watch('start', function(v){
-		    vm.minEndDate = v;
-		  });
-		  $scope.$watch('end', function(v){
-		   vm.maxStartDate = v;
-		  });
+   
 
-		  vm.openStart = function() {
-		    $timeout(function() {
-		      vm.startOpened = true;
-		    });
-		  };
-
-		  vm.openEnd = function() {
-		    $timeout(function() {
-		      vm.endOpened = true;
-		    });
-		  };
-
-		  vm.dateOptions = {
-		    'year-format': "'yy'",
-		    'starting-day': 1
-		  };
-
-		  vm.format = 'dd/MM/yyyy';*/
+		  //vm.format = 'dd/MM/yyyy';
 
 		vm.startDate = new Date();
 		vm.endDate = new Date();
@@ -156,7 +125,7 @@
 
 		vm.calculate = function() {
 			console.log("CALCULATE");
-			console.log(vm.regionSelected);
+			/*console.log(vm.regionSelected);
 			console.log(vm.sumToSelected);
 			console.log(vm.ageSelected);
 			console.log(vm.sportSelected);
@@ -176,12 +145,48 @@
 			console.log(vm.alternativeRideSelected);
 			console.log(vm.surfaceSelected);
 			console.log(vm.valueApartmentSelected);
-			console.log(vm.disasterSelected);
+			console.log(vm.disasterSelected);*/
+			console.log(vm.ageTyped);
+			var size = Object.keys(vm.ages).length;
 
+			console.log(vm.ages);
+			for (var i=0;  i <size; i++) {
+				
+					console.log(vm.ages[i]);
+				
+			}
+
+			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.
+			
+			for (var i=0;  i <size; i++) {
+				if (vm.ageTyped[i] == undefined) {
+					vm.ageTyped[i] = "0";
+				}
+			}
+			//saberem sve ukupne osobe koliko ih ima
+			var sum = 0;
+			for (var i=0;  i <size; i++) {
+				 //var sum = parseInt(vm.ageTyped[i]);
+				  sum = sum + parseInt(vm.ageTyped[i]);
+			}
+			vm.totalPersons = sum;
+
+			console.log(vm.totalPersons);
+
+			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
+			vm.getNumber = function(num) {
+			    return new Array(num);   
+			}
 			
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
 			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
-			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected);
+			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected)
+				.then(function(response) {
+			 		
+			 		vm.droolPrices = response.data;
+
+			 });
+			
 
 		};
 
