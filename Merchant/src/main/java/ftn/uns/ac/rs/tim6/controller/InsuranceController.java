@@ -2,7 +2,6 @@ package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +21,7 @@ import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
+import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
@@ -35,6 +35,9 @@ public class InsuranceController {
 
 	@Autowired
 	RiskSubcategoryService riskSubcategoryService;
+	
+	@Autowired
+	BankService bankService;
 
 	@RequestMapping(value = "/insurances", method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> handleGetAllInsurances() {
@@ -84,13 +87,14 @@ public class InsuranceController {
 	}
 	
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
-	public PaymentUrlIdDto handleBuy(@RequestBody Double suma) throws JsonProcessingException, IOException {
+	public PaymentUrlIdDto handleBuy(@RequestBody Double suma) throws IOException {
 
 		System.out.println("suma od frontenda: " + suma);
-		//pozivanje banke 
+		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		
+		puid = bankService.getPaymentUrlAndId(suma);
 		
-		return null;
+		return puid;
 	}
 
 	private ArrayList<AgeSubCategoryDto> citanjeAgeKategorija(Object ageType) {

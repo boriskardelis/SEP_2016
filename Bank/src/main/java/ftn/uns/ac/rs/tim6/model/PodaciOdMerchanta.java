@@ -1,10 +1,6 @@
 package ftn.uns.ac.rs.tim6.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.mysql.fabric.xmlrpc.base.Array;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class PodaciOdMerchanta {
