@@ -81,7 +81,11 @@
 
 
 	     vm.processForm = function() {
-       		 alert('awesome!');  
+       		alert('awesome!');
+       		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
+				console.log("Odgovor iz buy");
+				vm.paymentURLandID = response.data;
+			});
        	
 
     	};

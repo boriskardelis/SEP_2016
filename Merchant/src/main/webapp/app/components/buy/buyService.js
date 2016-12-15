@@ -64,6 +64,18 @@
 						});	
 		};*/
 
+			var buy = function() {			
+			return $http.get("api/buy")
+						.then(function(response) {	
+							console.log("Vracen odgovor from BUY");				
+							return response;
+						})
+						.catch(function(response) {
+							console.log("doslo do CATCH BUY");	
+							return response;
+						});	
+			};
+
 		var postCalculate = function(region, sum, ageCarrier, sport, ageType,towing, repair, accommodation, altRide, surface, ageApartment, valueApartment, disaster) {		
 			return $http.post('api/price', {region: region, sum: sum, ageCarrier: ageCarrier, sport: sport, ageType: ageType, towing: towing, 
 				repair: repair, accommodation: accommodation, altRide: altRide, surface: surface, ageApartment: ageApartment, valueApartment: valueApartment, disaster: disaster})
@@ -102,7 +114,8 @@
 			getSubsForCat : getSubsForCat,
 			getInsuranceTypes : getInsuranceTypes,
 			postCalculate : postCalculate,
-			getVehicle : getVehicle
+			getVehicle : getVehicle,
+			buy : buy
 		
 			
 		};

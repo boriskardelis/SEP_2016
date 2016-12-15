@@ -1,1 +1,64 @@
-<p>hey</p>
+<!-- <p>hey</p> -->
+<!-- {{ageTyped.ageSub[0].name}} -->
+<!-- {{ageTyped.ageSub[$parent.$index].id}} -->
+<!-- {{iter}}
+<p>evo: {{vm.newIter}} </p>
+
+<div class="form-inline">
+	<div class="form-group">
+		<label class="col-xs-3" align="right">First Name</label>
+		<input class="col-xs-3" type="text" ng-model="vm.person[vm.iter]" placeholder="First name" ng-init="$parent.vm.iter = $parent.vm.iter +1">
+	</div>
+</div> 
+{{$parent.vm.person[iter]}}-->
+
+
+<div class="col-md-3">
+		 <div class="form-group  ">
+		        <label for="name" >First name</label>
+		        <input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" id="name" placeholder="First name">
+		 </div>
+		  <div class="form-group  ">
+		        <label for="last" >Last name</label>
+		        <input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" id="last" placeholder="Last name">
+		 </div>
+		 <div class="form-group  ">
+		        <label for="address" >Address</label>
+		        <input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" id="address" placeholder="Address">
+		 </div>
+		 <div class="form-group ">
+		        <label for="passport" >Passport number</label>
+		        <input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" id="passport" placeholder="Passsport number">
+		 </div>
+		 <div class="form-group ">
+		        <label for="phone" >Phone</label>
+		        <input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" id="phone" placeholder="Phone">
+		 </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+ 
+<!-- <div ng-show="ageTyped.ageSub[$parent.$index].name == 'to 18' && $parent.$index < " class="form-group">			
+	<label>do 18</label>
+	<p{{$parent.$index}}</p><input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" placeholder="First name">
+</div>
+
+<div ng-show="ageTyped.ageSub[$parent.$index].name == '18-60'" class="form-group">			
+	<label>18-60</label>
+	<input type="text" ng-model="$parent.vm.person[$parent.$index]" class="form-control" placeholder="First name">
+</div> -->
+
+
+
+
+<!-- ageTyped.ageSub[$parent.$index].name == 'to 18' -->
+

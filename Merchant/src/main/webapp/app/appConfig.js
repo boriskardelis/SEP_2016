@@ -41,6 +41,14 @@
          .state('buy.thirdStep', {
             url: '/thirdStep',
             templateUrl: 'app/components/buy/buyThirdStep.html'
+        })
+         .state('buy.fourthStep', {
+            url: '/fourthStep',
+            templateUrl: 'app/components/buy/buyFourthStep.html'
+        })
+         .state('buy.fifthStep', {
+            url: '/fifthStep',
+            templateUrl: 'app/components/buy/buyFifthStep.html'
         });
 
 
