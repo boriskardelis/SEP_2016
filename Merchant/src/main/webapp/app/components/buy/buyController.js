@@ -5,8 +5,8 @@
 		.module('merchantApp')
 		.controller('BuyCtrl', BuyCtrl);
 
-	BuyCtrl.$inject = ['$scope', 'BuyService', '$state', '$timeout'];
-	function BuyCtrl($scope, BuyService, $state, $timeout) {
+	BuyCtrl.$inject = ['$scope', 'BuyService', '$state', '$timeout', '$window'];
+	function BuyCtrl($scope, BuyService, $state, $timeout, $window) {
 		var vm = this;
 		
 		BuyService.getRiskSubcategories().then(function(response) {
@@ -72,19 +72,20 @@
 	     vm.processForm = function() {
        		alert('awesome!');
        		console.log(vm.regionSelected);
-   //     		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
-			// 	console.log("Odgovor iz buy");
-			// 	vm.paymentURLandID = response.data;
-			// });
+       		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
+			 	console.log("Odgovor iz buy");
+			 	vm.paymentUrlAndID = response.data;
+			 	console.log(vm.paymentUrlAndID);
+			 	//url paymentId
+			 	
+				$window.location = vm.paymentUrlAndID.url;
+
+		    });
 
 		
        	
 
     	};
-
-   
-
-		  //vm.format = 'dd/MM/yyyy';
 
 		vm.startDate = new Date();
 		vm.endDate = new Date();
