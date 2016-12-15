@@ -29,13 +29,13 @@ public class PaymentUrlAndIdController {
 	}
 	
 	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	public String handleBuy(@RequestBody Double suma) throws IOException {
+	public String handleBuy(@RequestBody String suma) throws IOException {
 
 		System.out.println("suma u BANCI!!! : " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		
 		
-		return "evo nas";
+		return suma;
 	}
 	
 }
