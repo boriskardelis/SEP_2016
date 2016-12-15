@@ -27,8 +27,7 @@ public class MerchantService implements GenericService<Merchant> {
 
 	@Override
 	public Merchant findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return merchantRepository.findOne(id);
 	}
 
 

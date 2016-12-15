@@ -58,7 +58,6 @@ public class Payment implements Serializable{
 
 	public Payment() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	 
 	 

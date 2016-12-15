@@ -29,7 +29,6 @@ public class BuyerService implements GenericService<Buyer> {
 
 	@Override
 	public Buyer findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return buyerRepository.findOne(id);
 	}
 }

@@ -116,7 +116,6 @@ public class IssuerMessage implements Serializable {
 
 	public IssuerMessage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

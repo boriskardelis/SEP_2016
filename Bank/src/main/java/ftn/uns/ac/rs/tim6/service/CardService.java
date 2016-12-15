@@ -27,7 +27,6 @@ public class CardService implements GenericService<Card>{
 
 	@Override
 	public Card findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return cardRepository.findOne(id);
 	}
 }

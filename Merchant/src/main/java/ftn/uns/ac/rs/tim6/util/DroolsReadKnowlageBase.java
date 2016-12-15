@@ -20,7 +20,6 @@ public class DroolsReadKnowlageBase {
 	
 	public DroolsReadKnowlageBase() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public StatefulKnowledgeSession getSession() throws Exception {

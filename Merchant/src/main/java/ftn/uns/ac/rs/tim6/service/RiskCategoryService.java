@@ -26,8 +26,7 @@ public class RiskCategoryService implements GenericService<RiskCategory>{
 
 	@Override
 	public RiskCategory findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return riskCategoryRepository.findOne(id);
 	}
 
 }

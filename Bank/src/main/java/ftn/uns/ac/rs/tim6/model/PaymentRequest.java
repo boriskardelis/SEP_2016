@@ -155,7 +155,6 @@ public class PaymentRequest implements Serializable {
 
 	public PaymentRequest() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

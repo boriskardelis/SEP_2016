@@ -27,8 +27,7 @@ public class DateCategoryService implements GenericService<DateCategory>{
 
 	@Override
 	public DateCategory findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return dateCategoryRepository.findOne(id);
 	}
 
 }

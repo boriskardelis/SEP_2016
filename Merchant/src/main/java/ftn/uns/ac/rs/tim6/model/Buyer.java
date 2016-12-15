@@ -160,7 +160,6 @@ public class Buyer implements Serializable{
 
 	public Buyer() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

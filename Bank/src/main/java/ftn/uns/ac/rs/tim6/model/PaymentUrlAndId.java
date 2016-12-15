@@ -76,7 +76,6 @@ public class PaymentUrlAndId implements Serializable {
 
 	public PaymentUrlAndId() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

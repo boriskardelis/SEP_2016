@@ -68,7 +68,6 @@ public class RiskCategory implements Serializable {
 
 	public RiskCategory() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	 
 	 

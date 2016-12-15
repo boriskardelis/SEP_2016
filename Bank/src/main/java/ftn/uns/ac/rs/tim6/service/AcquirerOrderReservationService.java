@@ -27,7 +27,6 @@ public class AcquirerOrderReservationService implements GenericService<AcquirerO
 
 	@Override
 	public AcquirerOrderReservation findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return acquirerOrderReservationRepository.findOne(id);
 	}
 }

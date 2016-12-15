@@ -23,7 +23,6 @@ public class PodaciOdMerchanta {
 
 	public PodaciOdMerchanta() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

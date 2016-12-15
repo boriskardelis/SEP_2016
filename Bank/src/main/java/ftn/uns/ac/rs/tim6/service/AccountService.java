@@ -27,8 +27,7 @@ public class AccountService implements GenericService<Account> {
 
 	@Override
 	public Account findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return accountRepository.findOne(id);
 	}
 
 }

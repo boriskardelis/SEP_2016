@@ -26,8 +26,7 @@ public class InsuranceTypeService implements GenericService<InsuranceType>{
 
 	@Override
 	public InsuranceType findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return insuranceTypeRepository.findOne(id);
 	}
 
 }

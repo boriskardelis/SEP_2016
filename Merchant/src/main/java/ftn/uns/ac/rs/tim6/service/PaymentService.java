@@ -28,8 +28,7 @@ public class PaymentService implements GenericService<Payment> {
 
 	@Override
 	public Payment findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return paymentRepository.findOne(id);
 	}
 	
 	

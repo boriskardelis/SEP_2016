@@ -28,8 +28,7 @@ public class HomeService implements GenericService<Home>{
 
 	@Override
 	public Home findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return homeRepository.findOne(id);
 	}
 	
 	

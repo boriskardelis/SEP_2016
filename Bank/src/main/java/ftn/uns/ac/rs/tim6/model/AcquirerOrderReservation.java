@@ -77,7 +77,6 @@ public class AcquirerOrderReservation implements Serializable{
 
 	public AcquirerOrderReservation() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

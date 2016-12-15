@@ -77,7 +77,6 @@ public class Merchant implements Serializable{
 
 	public Merchant() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

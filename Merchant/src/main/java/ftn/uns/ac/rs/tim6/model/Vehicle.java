@@ -145,7 +145,6 @@ public class Vehicle implements Serializable {
 
 	public Vehicle() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

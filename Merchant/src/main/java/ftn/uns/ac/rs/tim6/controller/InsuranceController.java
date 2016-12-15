@@ -19,7 +19,6 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.drools.runtime.StatefulKnowledgeSession;
-
 import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
@@ -77,7 +76,7 @@ public class InsuranceController {
 			ksession.fireAllRules();
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
+			System.out.println(" GRESKA KOD DROOLS-A ");
 			e.printStackTrace();
 		}
 

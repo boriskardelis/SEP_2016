@@ -55,7 +55,6 @@ public class DateCategory implements Serializable {
 
 	public DateCategory() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	 
 	

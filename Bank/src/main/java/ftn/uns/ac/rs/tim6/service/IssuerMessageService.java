@@ -28,8 +28,7 @@ public class IssuerMessageService implements GenericService<IssuerMessage> {
 
 	@Override
 	public IssuerMessage findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return issuerMessageRepository.findOne(id);
 	}
 	
 

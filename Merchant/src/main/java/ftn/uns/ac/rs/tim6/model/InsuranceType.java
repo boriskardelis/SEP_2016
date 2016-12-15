@@ -84,7 +84,6 @@ public class InsuranceType implements Serializable{
 
 	public InsuranceType() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	  
 	

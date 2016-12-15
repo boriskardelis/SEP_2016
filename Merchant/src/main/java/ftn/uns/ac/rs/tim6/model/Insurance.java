@@ -133,7 +133,6 @@ public class Insurance implements Serializable{
 
 	public Insurance() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	 
 

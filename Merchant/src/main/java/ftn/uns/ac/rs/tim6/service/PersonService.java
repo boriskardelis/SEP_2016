@@ -28,7 +28,6 @@ public class PersonService implements GenericService<Person>{
 
 	@Override
 	public Person findById(long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return personRepository.findOne(id);
 	};
 }

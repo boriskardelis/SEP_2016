@@ -86,7 +86,6 @@ public class Card implements Serializable{
 
 	public Card() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
