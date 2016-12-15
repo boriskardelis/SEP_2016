@@ -8,5 +8,6 @@ public class PccApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(PccApplication.class, args);
+		System.out.println("PCC pokrenut");
 	}
 }
