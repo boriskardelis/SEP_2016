@@ -19,6 +19,7 @@ import org.drools.runtime.StatefulKnowledgeSession;
 
 import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
+import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
@@ -80,6 +81,16 @@ public class InsuranceController {
 		System.out.println("izasli iz drools-a, cena: " + dto.getTotalPrice());
 
 		return dto;
+	}
+	
+	@RequestMapping(value = "/buy", method = RequestMethod.POST)
+	public PaymentUrlIdDto handleBuy(@RequestBody Double suma) throws JsonProcessingException, IOException {
+
+		System.out.println("suma od frontenda: " + suma);
+		//pozivanje banke 
+		
+		
+		return null;
 	}
 
 	private ArrayList<AgeSubCategoryDto> citanjeAgeKategorija(Object ageType) {
