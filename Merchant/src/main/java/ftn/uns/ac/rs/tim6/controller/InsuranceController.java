@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -21,7 +25,6 @@ import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
-import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
@@ -35,9 +38,6 @@ public class InsuranceController {
 
 	@Autowired
 	RiskSubcategoryService riskSubcategoryService;
-	
-	@Autowired
-	BankService bankService;
 
 	@RequestMapping(value = "/insurances", method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> handleGetAllInsurances() {
@@ -87,14 +87,27 @@ public class InsuranceController {
 	}
 	
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
-	public PaymentUrlIdDto handleBuy(@RequestBody Double suma) throws IOException {
+	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody Double suma) throws IOException {
 
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
+
+		try {
+			
+			RestTemplate client = new RestTemplate();
+			HttpHeaders headers = new HttpHeaders();
+			headers.setContentType(MediaType.APPLICATION_JSON);
+			HttpEntity<PaymentUrlIdDto> entity = new HttpEntity<PaymentUrlIdDto>(puid,headers);
+			
+			puid = client.postForObject("http://localhost:7070/api/urlid",entity, PaymentUrlIdDto.class);
+			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
+			
+		} catch (Exception e) {
+			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.BAD_REQUEST);
+		}
 		
-		puid = bankService.getPaymentUrlAndId(suma);
 		
-		return puid;
+
 	}
 
 	private ArrayList<AgeSubCategoryDto> citanjeAgeKategorija(Object ageType) {
