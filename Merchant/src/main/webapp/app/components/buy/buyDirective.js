@@ -10,7 +10,7 @@
         	restrict: 'E',
         	link: function(scope, element, attrs, ctrl) {
         		var vm = this;
-        		console.log("USAO U LINK");
+        		
         		//vm.ageTyped - age-vi
         		// var vm = this;
         		// vm.age = scope.age;

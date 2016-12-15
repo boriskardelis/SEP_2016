@@ -9,17 +9,6 @@
 	function BuyCtrl($scope, BuyService, $state, $timeout) {
 		var vm = this;
 		
-			//samo da sebi stavim sta sam pokupio... obrisace se
-		 	vm.regionSelected;
-	   		vm.sumToSelected;
-	   		vm.ageSelected;
-	   		vm.sportSelected;
-	   		vm.ageTyped; //from directive
-
-
-	   		
-
-
 		BuyService.getRiskSubcategories().then(function(response) {
 			/*console.log(response.data[1].name);
 			console.log(response.data[1].coefficient);
@@ -82,10 +71,13 @@
 
 	     vm.processForm = function() {
        		alert('awesome!');
-       		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
-				console.log("Odgovor iz buy");
-				vm.paymentURLandID = response.data;
-			});
+       		console.log(vm.regionSelected);
+   //     		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
+			// 	console.log("Odgovor iz buy");
+			// 	vm.paymentURLandID = response.data;
+			// });
+
+		
        	
 
     	};
@@ -126,8 +118,53 @@
 		    minDate: new Date(),
 		    startingDay: 1
 		};
+		vm.calculateFirstStep = function() {
+			//Parsiranje datuma
+			var startDay = vm.startDate.getDate();
+			var startMonth = vm.startDate.getMonth()+1;
+			var startYear = vm.startDate.getFullYear();
+			var startDate = startDay + '.' + startMonth +'.' + startYear;
+			vm.startDateParsed = startDate;
 
-		vm.calculate = function() {
+			var endDay = vm.startDate.getDate();
+			var endMonth = vm.startDate.getMonth()+1;
+			var endYear = vm.startDate.getFullYear();
+			var endDate = endDay + '.' + endMonth +'.' + endYear;
+			vm.endDateParsed = endDate;
+
+			var size = Object.keys(vm.ages).length;
+
+			console.log(vm.ages);
+			for (var i=0;  i <size; i++) {
+				
+					console.log(vm.ages[i]);
+				
+			}
+
+			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.	
+			for (var i=0;  i <size; i++) {
+				if (vm.ageTyped[i] == undefined) {
+					vm.ageTyped[i] = "0";
+				}
+			}
+			//saberem sve ukupne osobe koliko ih ima
+			var sum = 0;
+			for (var i=0;  i <size; i++) {
+				 //var sum = parseInt(vm.ageTyped[i]);
+				  sum = sum + parseInt(vm.ageTyped[i]);
+			}
+			vm.totalPersons = sum;
+
+			console.log(vm.totalPersons);
+
+			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
+			vm.getNumber = function(num) {
+			    return new Array(num);   
+			}
+
+		};
+
+		vm.calculateSecondStep = function() {
 			console.log("CALCULATE");
 			/*console.log(vm.regionSelected);
 			console.log(vm.sumToSelected);
@@ -151,36 +188,8 @@
 			console.log(vm.valueApartmentSelected);
 			console.log(vm.disasterSelected);*/
 			console.log(vm.ageTyped);
-			var size = Object.keys(vm.ages).length;
 
-			console.log(vm.ages);
-			for (var i=0;  i <size; i++) {
-				
-					console.log(vm.ages[i]);
-				
-			}
-
-			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.
 			
-			for (var i=0;  i <size; i++) {
-				if (vm.ageTyped[i] == undefined) {
-					vm.ageTyped[i] = "0";
-				}
-			}
-			//saberem sve ukupne osobe koliko ih ima
-			var sum = 0;
-			for (var i=0;  i <size; i++) {
-				 //var sum = parseInt(vm.ageTyped[i]);
-				  sum = sum + parseInt(vm.ageTyped[i]);
-			}
-			vm.totalPersons = sum;
-
-			console.log(vm.totalPersons);
-
-			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
-			vm.getNumber = function(num) {
-			    return new Array(num);   
-			}
 			
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
 			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,

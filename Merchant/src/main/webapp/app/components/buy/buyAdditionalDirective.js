@@ -10,12 +10,12 @@
         	restrict: 'E',
         	transclude: true,
         	link: function(scope, element, attrs, ctrl) {
-        		console.log("USAO U LINK add");
+        		
         		 var vm = this;
         		 // vm.insuranceTypess = scope.insuranceType;
         		 // console.log(vm.insuranceTypess);
-        		 console.log("ZA TOWING");
-        		console.log(scope.towing);
+        		
+        	
         		//vm.vehicle = [];
         		//scope.isChecked = false;
         	// 	scope.checked = "";

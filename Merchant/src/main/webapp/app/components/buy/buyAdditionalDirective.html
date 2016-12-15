@@ -9,7 +9,7 @@
 		<div ng-show="insuranceType[$index] && insuranceType.insuranceName =='Road Insurance'">
 		 <!-- <input type="text" style="width:300px;" class="form-control" />{{insuranceType.insuranceName}} -->
 	 		
-	 		{{vm.vehicle.registration_number}}
+	 		
 	 		<div class="form-group">
 		 		<h4 align="center">Additional Packages</h4>	
 		 		<input type="checkbox" ng-model="towings[$index]"  ng-true-value="'yes'" >		
@@ -89,7 +89,7 @@
 		</div>	 
 
 		<div ng-show="insuranceType[$index] && insuranceType.insuranceName =='Home Insurance'">
-			{{vm.vehicle.registration_number}}
+			
 		 	<div class="form-group">
 		 		<h4 align="center">Home informations</h4>			
 				<label>Address</label>

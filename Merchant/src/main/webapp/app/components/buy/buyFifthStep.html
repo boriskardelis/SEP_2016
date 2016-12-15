@@ -1,3 +1,93 @@
+ 	
+        <p class="h4 bg-danger" align="left">Insurance informations</p>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Region:</label>
+                    <p>{{vm.regionSelected.name}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Sum to insuring:</label>
+                    <p>{{vm.sumToSelected.name}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Insured persons:</label>
+                    <p>{{vm.totalPersons + 1}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Duration of insurance:</label>
+                    <p>From {{vm.startDateParsed}} to {{vm.endDateParsed}}</p>
+            </div>
+            
+
+        <p class="h4 bg-danger" align="left">Additional insurances</p>  
+            <div ng-if="vm.sportSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Sport:</label>
+                    <p>{{vm.sportSelected.name}}</p>
+            </div>       
+            <div ng-if="vm.towingSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Towing:</label>
+                    <p>{{vm.towingSelected.name}}</p>
+            </div>
+            <div ng-if="vm.repairSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Repairs:</label>
+                    <p>{{vm.repairSelected.name}}</p>
+            </div>
+            <div ng-if="vm.accommodationSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Accommodation in hotel:</label>
+                    <p>{{vm.accommodationSelected.name}}</p>
+            </div>
+            <div ng-if="vm.alternativeRideSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Alternative ride:</label>
+                    <p>{{vm.alternativeRideSelected.name}}</p>
+            </div>
+            <div ng-if="vm.surfaceSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Suraface of apartment:</label>
+                    <p>{{vm.surfaceSelected.name}}</p>
+            </div>
+            <div ng-if="vm.valueApartmentSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Estimated value of apartment:</label>
+                    <p>{{vm.valueApartmentSelected.name}}</p>
+            </div>
+            <div ng-if="vm.disasterSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Insure from disaster:</label>
+                    <p>{{vm.disasterSelected.name}}</p>
+            </div>
+            <div ng-if="vm.ageApartmentSelected != undefined" class="form-inline">
+                    <label class="col-md-4" align="right">Age of apartment:</label>
+                    <p>{{vm.ageApartmentSelected.name}}</p>
+            </div>
+
+        <p class="h4 bg-danger" align="left">For payment</p>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Total price:</label>
+                    <p>{{vm.droolPrices.totalPrice}}</p>
+            </div>
+
+        <p class="h4 bg-danger" align="left">Information about buyer</p>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Name and Last name:</label>
+                    <p>{{vm.buyer.first_name}} {{vm.buyer.last_name}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">JMBG:</label>
+                    <p>{{vm.buyer.jmbg}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Passport number:</label>
+                    <p>{{vm.buyer.passport_number}}</p>
+            </div>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">Address:</label>
+                    <p>{{vm.buyer.address}}</p>
+            </div>
+
+        <p class="h4 bg-danger" align="left">Delivery</p>
+            <div class="form-inline">
+                    <label class="col-md-4" align="right">E-mail:</label>
+                    <p>{{vm.buyer.email}}</p>
+            </div>
+
+        <br>
+
 <div class="text-center">
     <span class="glyphicon glyphicon-heart"></span>
     <h3>Thanks For Your Money!</h3>
