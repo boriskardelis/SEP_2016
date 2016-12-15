@@ -4,9 +4,9 @@
   angular
        .module('merchantApp')
       .config(config)
-     .run(run);
+     .run(run);	
 
- function config($stateProvider, $urlRouterProvider, $locationProvider) {
+ function config($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
   
  	$urlRouterProvider.otherwise('/home');
  		
@@ -54,7 +54,29 @@
 
      //Koristim da bi izbacio # iz url-a. Jos u server.js koristim rewrite mehanizam // to ked osm pravel XO makso
     $locationProvider.html5Mode(true); 
-    
+
+    var eng =
+        {
+            
+            home : "Home",
+            sumToInsure : "Sum to insure:"
+          
+        };
+
+        var ser =
+        {
+            
+            home : "Početna",
+            sumToInsure : "Osigurana:"
+
+            
+        };
+
+
+    $translateProvider
+		.translations('en', eng)
+		.translations('sr', ser)
+    	.preferredLanguage('sr');
 
 
   }

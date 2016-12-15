@@ -26,7 +26,12 @@
     "checklist-model": "^0.10.0",
     "angular-bootstrap": "^2.3.0",
     "angular-animate": "^1.5.9",
-    "minimatch": "^0.2.14"
+    "minimatch": "^0.2.14",
+    "angular-translate-loader-static-files": "^2.13.1",
+    "angular-translate-storage-local": "^2.13.1",
+    "angular-translate-handler-log": "^2.13.1",
+    "angular-dynamic-locale": "^0.1.32",
+    "angular-i18n": "^1.6.0"
   },
   "devDependencies": {
     "angular-translate": "^2.13.1"
