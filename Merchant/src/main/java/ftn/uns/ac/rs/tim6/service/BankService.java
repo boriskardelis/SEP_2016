@@ -1,14 +1,11 @@
 package ftn.uns.ac.rs.tim6.service;
 
-import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
+import java.math.BigInteger;
+import java.net.HttpURLConnection;
 import java.net.URL;
-
-import javax.net.ssl.HttpsURLConnection;
+import java.nio.charset.StandardCharsets;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,57 +17,51 @@ import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 public class BankService {
 
 	public PaymentUrlIdDto getPaymentUrlAndId(Double suma) {
-
-		String url = "http://localhost:7070/api/urlid";
 		
-		StringBuffer response = null;
+		System.out.println("usao u bankService ");
+		PaymentUrlIdDto puid = new PaymentUrlIdDto();
+		
 		try {
-			URL obj = new URL(url);
-			HttpsURLConnection con = (HttpsURLConnection) obj.openConnection();
-
-			//add reuqest header
-			con.setRequestMethod("POST");
-			con.setRequestProperty("User-Agent", "Chrome");
-			con.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
+			
+			String urlString = "http://localhost:7070/api/urlid";
+			URL url = new URL(urlString);
+			
+			System.out.println("usao u bankService odradio url");
 
 			String urlParameters = "suma=" + suma;
+			
+			System.out.println("usao u bankService parametri " + urlParameters);
+			
+			byte[] postData = urlParameters.getBytes(StandardCharsets.UTF_8);
+			int postDataLength = postData.length;
 
-			// Send post request
-			con.setDoOutput(true);
-			DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-			wr.writeBytes(urlParameters);
-			wr.flush();
-			wr.close();
-
-			int responseCode = con.getResponseCode();
-			System.out.println("\nSending 'POST' request to URL : " + url);
-			System.out.println("Post parameters : " + urlParameters);
-			System.out.println("Response Code : " + responseCode);
-
-			BufferedReader in = new BufferedReader(
-			        new InputStreamReader(con.getInputStream()));
-			String inputLine;
-			response = new StringBuffer();
-
-			while ((inputLine = in.readLine()) != null) {
-				response.append(inputLine);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn.setDoOutput(true);
+			conn.setInstanceFollowRedirects(false);
+			conn.setRequestMethod("POST");
+			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
+			conn.setRequestProperty("charset", "utf-8");
+			conn.setRequestProperty("Content-Length", Integer.toString(postDataLength));
+			conn.setUseCaches(false);
+			
+			try (DataOutputStream wr = new DataOutputStream(conn.getOutputStream())) {
+				System.out.println("usao u bankService wr: " + wr);
+				wr.write(postData);
 			}
-			in.close();
-		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ProtocolException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			
+			System.out.println("usao u bankService postData: " + postData);
+			System.out.println("usao u bankService ");
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		puid.setPaymentId(BigInteger.valueOf(5));
+		puid.setUrl("http://localhost:7070/api");
 
-		//print result
-		System.out.println(response.toString());
-
-		return null;
+		return puid;
 
 	}
 

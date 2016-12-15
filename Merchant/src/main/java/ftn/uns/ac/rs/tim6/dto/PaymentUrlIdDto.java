@@ -5,7 +5,7 @@ import java.math.BigInteger;
 public class PaymentUrlIdDto {
 	
 	private String url;
-	private BigInteger paymentUrlId;
+	private BigInteger paymentId;
 	
 	public String getUrl() {
 		return url;
@@ -13,13 +13,12 @@ public class PaymentUrlIdDto {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public BigInteger getPaymentUrlId() {
-		return paymentUrlId;
+	public BigInteger getPaymentId() {
+		return paymentId;
 	}
-	public void setPaymentUrlId(BigInteger paymentUrlId) {
-		this.paymentUrlId = paymentUrlId;
+	public void setPaymentId(BigInteger paymentId) {
+		this.paymentId = paymentId;
 	}
 	
 	
-
 }
