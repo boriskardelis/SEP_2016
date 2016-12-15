@@ -4,8 +4,15 @@
 .buy-lable {
 	 /*padding-left:100px;*/
 }
+.inper {
+	width: 100px;
+
+}
 .form-group {
 	padding-left: 50px;
+}
+.form-group-pers {
+	padding-left: 5px;
 }
 
 /* BASIC STYLINGS

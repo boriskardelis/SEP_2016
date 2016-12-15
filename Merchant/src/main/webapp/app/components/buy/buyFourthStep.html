@@ -29,6 +29,56 @@
         <input type="text" ng-model="vm.buyer.email" class="form-control" placeholder="E-mail">
     </div>
 
+    <label for="sumTo">Insurance contractor is:</label>
+        <div class="form-group" >      
+                 <input type="radio" ng-model="vm.contractor"   
+                         name="contractor"  ng-value="contractor">    
+                 <label>same person as insurance carrier.</label>
+                 <br>  
+                 <input type="radio" ng-model="vm.contractor"   
+                         name="not" value="notContractor" ng-change="">    
+                 <label>NOT a same person as insurance carrier.</label>
+                 <br>                 
+         </div>
+
+
+         <!-- Ako nije ista osoba kao ugovarac osiguranja -->
+         <div ng-if="vm.contractor == 'notContractor'">
+            <h4 align="left">Insurance carrier informations:</h4>
+            <div class="row form-inline">
+                <div class="form-group-pers col-md-1" style="width: 0.5%">
+                        <br/><br/>
+                        <label>0.</label>                  
+                 </div>
+
+                 <div class="form-group-pers col-md-2">
+                        <label for="name" >First name</label>
+                        <input style="width: 100px" type="text" ng-model="vm.person.first_name_holder" class="form-control" id="name" placeholder="First name">
+                 </div>
+                  <div class="form-group-pers  col-md-2">
+                        <label for="last" >Last name</label>
+                        <input style="width: 100px" type="text" ng-model="vm.person.last_name_holder" class="form-control" id="last" placeholder="Last name">
+                 </div>
+                 <div class="form-group-pers  col-md-3">
+                        <label for="address" >Address</label>
+                        <input style="width: 160px" type="text" ng-model="vm.person.address_holder" class="form-control" id="address" placeholder="Address">
+                 </div>
+                 <div class="form-group-pers col-md-2">
+                        <label for="passport" >Passport</label>
+                        <input style="width: 100px" type="text" ng-model="vm.person.passport_number_holder" class="form-control" id="passport" placeholder="Passsport">
+                 </div>
+                 <div class="form-group-pers col-md-2">
+                        <label for="phone" >Phone</label>
+                        <input style="width: 100px" type="text" ng-model="vm.person.phone_number_holder" class="form-control" id="phone" placeholder="Phone">
+                 </div>
+            </div>        
+         </div>
+
+          <!-- URADI AKO KORISNIK PROMENI NAZAD -->
+
+
+
+
     <h4 align="left">Insuranced persons:</h4>
 
      <span ng-repeat="i in vm.getNumber(vm.totalPersons) track by $index">
