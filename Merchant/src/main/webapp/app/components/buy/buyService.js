@@ -64,8 +64,8 @@
 						});	
 		};*/
 
-			var buy = function() {			
-			return $http.get("api/buy")
+			var buy = function(totalPrice) {			
+			return $http.post("api/buy", totalPrice)
 						.then(function(response) {	
 							console.log("Vracen odgovor from BUY");				
 							return response;
