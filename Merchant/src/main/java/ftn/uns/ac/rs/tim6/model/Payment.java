@@ -15,8 +15,11 @@ public class Payment implements Serializable{
 	 @Column(name = "PAYMENT_ID")
 	 private Long id;
 	 
-	 @Column(name = "FIRST_NAME")
-	 private String firstName;
+	 @Column(name = "MERCHANT_ID")
+	 private String merchantId;
+	 
+	 @Column(name = "MERCHANT_ORDER_ID")
+	 private Integer merchantOrderId;
 	 
 	 
 
@@ -28,20 +31,29 @@ public class Payment implements Serializable{
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
 	
 
-	public Payment(Long id, String firstName) {
+	public Payment(Long id, String merchantId, Integer merchantOrderId) {
 		super();
 		this.id = id;
-		this.firstName = firstName;
+		this.merchantId = merchantId;
+		this.merchantOrderId = merchantOrderId;
+	}
+
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+
+	public Integer getMerchantOrderId() {
+		return merchantOrderId;
+	}
+
+	public void setMerchantOrderId(Integer merchantOrderId) {
+		this.merchantOrderId = merchantOrderId;
 	}
 
 	public Payment() {
