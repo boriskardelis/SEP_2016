@@ -1,5 +1,5 @@
 
-    <h4 align="left">Insurance contractor informations:</h4>  
+    <p class="h4" align="left">Insurance contractor informations:</p>  
     <div class="form-group">          
         <label>First name</label>
         <input type="text" ng-model="vm.buyer.first_name" class="form-control" placeholder="First name">
@@ -44,7 +44,7 @@
 
          <!-- Ako nije ista osoba kao ugovarac osiguranja -->
          <div ng-if="vm.contractor == 'notContractor'">
-            <h4 align="left">Insurance carrier informations:</h4>
+            <p class="h4" align="left">Insurance carrier informations:</p>
             <div class="row form-inline">
                 <div class="form-group-pers col-md-1" style="width: 0.5%">
                         <br/><br/>
@@ -78,9 +78,9 @@
 
 
 
-
-    <h4 align="left">Insuranced persons:</h4>
-
+    <div ng-if="vm.totalPersons != 0">
+         <p class="h4" align="left">Insuranced persons:</p>
+    </div>
      <span ng-repeat="i in vm.getNumber(vm.totalPersons) track by $index">
             <buy-persons-directive age="age"></buy-persons-directive>
     </span>

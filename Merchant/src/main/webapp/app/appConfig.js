@@ -14,22 +14,49 @@
       
       .state('home', {
 	      url: "/home",
-	      templateUrl: "app/components/home/home.html",
-	      controller: "HomeCtrl",
-	      controllerAs: "vm"
+        views: {
+                 'content': {
+                           templateUrl: 'app/components/home/home.html',
+                           controller: "HomeCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
       })
       .state('about', {
         url: "/about",
-        templateUrl: "app/components/about/about.html",
-        controller: "AboutCtrl",
-        controllerAs: "vm"
-      })    
+        views: {
+                 'content': {
+                           templateUrl: "app/components/about/about.html",
+                           controller: "AboutCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
+       }) 
       .state('buy', {
         url: "/buy",
-        templateUrl: "app/components/buy/buy.html",
-        controller: "BuyCtrl",
-        controllerAs: "vm"
-      })//Nested Views for buy
+        views: {
+                 'content': {
+                           templateUrl: "app/components/buy/buy.html",
+                           controller: "BuyCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
+       })//Nested Views for buy
        .state('buy.firstStep', {
             url: '/firstStep',
             templateUrl: 'app/components/buy/buyFirstStep.html'
@@ -76,8 +103,9 @@
     $translateProvider
 		.translations('en', eng)
 		.translations('sr', ser)
-    	.preferredLanguage('sr');
-
+    .preferredLanguage('en');
+    
+    $translateProvider.useSanitizeValueStrategy('escaped');
 
   }
 
