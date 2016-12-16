@@ -45,7 +45,7 @@ public class PaymentUrlAndIdController {
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
 		
-		puid.setPaymentId(randomGenerator.nextInt(1000));
+		puid.setPaymentId(paymentRequest.getId());
 		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());	
 		
 		paymentRequest.setAmount(mdto.getAmount());
