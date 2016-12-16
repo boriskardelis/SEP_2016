@@ -27,8 +27,11 @@ public class PaymentRequestController {
 	
 	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
 	public ResponseEntity<PaymentRequest> getInsurance(@PathVariable Long id) {
+		System.out.println("usao u payment ID");
+		System.out.println(id);
 
-		PaymentRequest paymentRequest = paymentRequestService.findById(id);
+		PaymentRequest paymentRequest = paymentRequestService.findById(1);
+		System.out.println(paymentRequest);
 		return new ResponseEntity<PaymentRequest>(paymentRequest, HttpStatus.OK);
 	}
 }

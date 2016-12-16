@@ -38,25 +38,50 @@ public class PaymentUrlAndIdController {
 		return new ResponseEntity<List<PaymentUrlAndId>>(PaymentUrlAndIds, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
+	/*@RequestMapping(value = "/urlid", method = RequestMethod.POST)
+	public PaymentUrlIdDto  handleBuy(@RequestBody MerchantDto mdto) throws IOException {
 		
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
 		
-		puid.setPaymentId(paymentRequest.getId());
+		puid.setPaymentId(randomGenerator.nextInt(1000));
 		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());	
 		
 		paymentRequest.setAmount(mdto.getAmount());
 		paymentRequest.setId(puid.getPaymentId());
+		System.out.println("od payment request:" + paymentRequest);
 		paymentRequestService1.save(paymentRequest);
+		System.out.println("Nakon sacuvanja payment request:" + paymentRequest.getId());
 		
 		System.out.println(puid.getUrl());
 		System.out.println(puid.getPaymentId());
 		System.out.println("suma u BANCI!!! : " + mdto.getAmount());
 
 		return puid;
-	}
+	}*/
+	
+	
+	
+	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
+	 public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
+	  
+	  PaymentUrlIdDto puid = new PaymentUrlIdDto();
+	  Random randomGenerator = new Random();
+	  PaymentRequest paymentRequest = new PaymentRequest();
+	  
+	  puid.setPaymentId(randomGenerator.nextInt(1000));
+	  puid.setUrl("http://localhost:7070/payment?paimentId=" + puid.getPaymentId()); 
+	  
+	  paymentRequest.setAmount(mdto.getAmount());
+	  paymentRequest.setId(puid.getPaymentId());
+	  paymentRequestService1.save(paymentRequest);
+	  
+	  System.out.println(puid.getUrl());
+	  System.out.println(puid.getPaymentId());
+	  System.out.println("suma u BANCI!!! : " + mdto.getAmount());
+
+	  return puid;
+	 }
 
 }
