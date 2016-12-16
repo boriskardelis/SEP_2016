@@ -1,0 +1,13 @@
+npm install --save-dev gulp-install
+npm install gulp-update
+
+npm install bower
+
+npm install -g npm-check-updates
+
+bower install
+
+bower install angular angular-translate --save
+npm install gulp-sass gulp-uglify gulp-concat run-sequence browser-sync --save-dev
+
+check-list dependancy sam koristio za checkbx-ove

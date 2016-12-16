@@ -77,8 +77,12 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
+			 	$timeout(function() {
+			 		console.log("proslo");
+				   $window.location = vm.paymentUrlAndID.url;
+				}, 3000);
 			 	
-				$window.location = vm.paymentUrlAndID.url;
+				
 
 		    });
 
@@ -208,7 +212,7 @@
     	vm.checked = [];
 
     	//Prepravi jer kad reloadujes prelazi na prvo stanje
-	   	//$state.go('buy.firstStep');
+	   	$state.go('buy.firstStep');
 
 
 

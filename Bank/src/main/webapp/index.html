@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chuck Norris Insuance</title>
+    <title>MBM Bank</title>
     <base href="/">
      <link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
      <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" > -->
@@ -26,24 +26,16 @@
     
     <!-- Controllers -->
     <script src="./app/components/home/homeController.js"></script>
-    <script src="./app/components/buy/buyController.js"></script>
-    <script src="./app/components/about/aboutController.js"></script>
+    <script src="./app/components/payment/paymentController.js"></script>
     <script src="./app/components/navigation/navigationController.js"></script>
     <!-- Services -->
     <script src="./app/components/home/homeService.js"></script>
-    <script src="./app/components/buy/buyService.js"></script>
-    <!-- Directives -->
-    <script src="./app/components/buy/buyDirective.js"></script>
-    <script src="./app/components/buy/buyAdditionalDirective.js"></script>
-    <script src="./app/components/buy/buyPersonsDirective.js"></script>
+   
  
 </head>
-<body ng-app="merchantApp">
+<body ng-app="bankApp">
 
-
-        
-       
-          
+         
             <div ui-view="navigation">
               
             </div>
@@ -51,9 +43,7 @@
             <div class="container" ui-view="content">
                 
             </div> 
-
-
-         
+        
    
 </body>
 </html>
