@@ -82,20 +82,98 @@
      //Koristim da bi izbacio # iz url-a. Jos u server.js koristim rewrite mehanizam // to ked osm pravel XO makso
     $locationProvider.html5Mode(true); 
 
-    var eng =
+        var eng =
         {
-            
+            cn : "Chuck Norris Insurance",
             home : "Home",
-            sumToInsure : "Sum to insure:"
+            buyInsurance : "Buy insurance",
+            about : "About",
+            sumToInsure : "Sum to insure:",
+            selectAge : "-Select age-",
+            selectDestination: "-Select destination-",
+            region : "Region",
+            home : "Home",
+            sumToInsure : "Sum to insure:",
+            ageInsuranceCarrier : "Insurance carrier age:",
+            numberOfInsurancedPersons : "Number of insuranced persons:",
+            to18 : "to 18",
+            over60 : "over 60",
+            age_replacement : '{{name}}',
+            durationOfInsurance : "Duration of insurance:",
+            from : "From",
+            to : "To",
+            selectSport : "-Select sport-",
+            firsts : "First step",
+            seconds : "Second step",
+            thirds : "Third step",
+            fourths : "Fourth step",
+            fifths : "Fifth step",
+            travelInsuranceMessage : "Travel insurance",
+            nextSection : "Next section",
+            additionalInsurance : "Additional insurance",
+            additionalPackages : "Additional Packages",
+            towing : "Towing to a certain mileage",
+            selectMileage : "-Select mileage-",
+            repairsTo : "Repairs to a certain price ",
+            selectPrice : "-Select price-",
+            accommodation: "Accommodation in hotel to certain days",
+            selectNumberOfDays : "-Select number of days-",
+            alternativeRide : "Alternative ride",
+            selectRide : "-Select ride-",
+            vehicleInformations : "Vehcile informations",
+            registrationNumber: "Registration number",
+            vehicleIMake : "Vehcile make",
+            vehicleOwnerFN : "Vehicle owner first name",
+            vehicleOwnerLN : "Vehicle owner last name",
           
         };
 
         var ser =
-        {
-            
+        {   
+            cn : "Chuck Norris osiuguranje",
             home : "Početna",
-            sumToInsure : "Osigurana:"
+            buyInsurance : "Kupi osiguranje",
+            about : "O nama",
+            selectDestination: "-Odaberite destinaciju-",
+            selectAge : "-Odaberite godine-",
+            region : "Region",
+            home : "Početna",
+            sumToInsure : "Osigurana suma:",
+            ageInsuranceCarrier : "Uzrast nosioca osiguranja",
+            numberOfInsurancedPersons : "Broj osiguranika:",
+            to18 : "do 18",
+            over60 : "preko 60",
+            age_replacement : '{{name}}',
+            durationOfInsurance : "Trajanje osiguranja:",
+            from : "Od",
+            to : "Do",
+            selectSport : "-Odaberite sport-",
+            firsts : "Prvi korak",
+            seconds : "Drugi korak",
+            thirds : "Treći korak",
+            fourths : "Četvrti korak",
+            fifths : "Peti korak",
+            travelInsuranceMessage : "Putno osiguranje",
+            nextSection : "Sledeći korak",
+            additionalInsurance : "Dodatno osiguranje",
+            additionalPackages : "Dodatni paketi",
+            towing : "Šlepanje do određene kilometraže",
+            selectMileage : "-Odaberite kilometražu-",
+            repairsTo : "Popravka do određene cene",
+            selectPrice : "-Odaberite cenu-",
+            accommodation: "Smeštaj u hotelu do određenog broja dana",
+            selectNumberOfDays : "-Odaberite broj dana-",
+            alternativeRide : "Alternativni prevoz",
+            selectRide : "-Odaberite prevoz-",
+            vehicleInformations : "Informacije o vozilu",
+            registrationNumber: "Broj registracije",
+            vehicleMake : "Marka vozila",
+            vehicleOwnerFN : "Ime vlasnika vozila",
+            vehicleOwnerLN : "Prezime vlasnika vozila",
 
+          
+
+          
             
         };
 

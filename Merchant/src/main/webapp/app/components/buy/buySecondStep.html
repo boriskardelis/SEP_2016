@@ -1,7 +1,7 @@
 
     <!-- Insurance type direktiva -->
     <div class="form-group">
-         <label class="buy-lable" for="insurnaceType">Additional insurance:</label>
+         <label class="buy-lable" for="insurnaceType" translate="additionalInsurance"></label>
          <ul ng-repeat="insuranceType in vm.insuranceTypes">
             <!-- <p>INSURANCES: {{insuranceType}}</p> -->
             <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters"></buy-additional-directive></li>
@@ -12,7 +12,7 @@
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">
         <a ui-sref="buy.thirdStep" class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()">
-        Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
         </a>
         <a ui-sref="buy.firstStep" class="btn btn-block btn-info">
         <span class="glyphicon glyphicon-circle-arrow-left"></span> Previouse Section 

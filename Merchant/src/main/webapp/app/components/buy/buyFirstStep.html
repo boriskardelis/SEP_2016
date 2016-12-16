@@ -1,14 +1,14 @@
 	<div class="form-group">
-		<label class="buy-lable" for="region">Region:</label>
+		<label class="buy-lable" for="region" translate="region"></label>
 		&nbsp;
 	    <select ng-model="vm.regionSelected" ng-options="region.name for region in vm.regions">
-	  	     <option value=""> - Select destination - </option>
+	  	     <option value="" translate="selectDestination"> </option>
 			<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 		</select>
 	</div>
 
 	<div class="form-group">
-	 			<label class="buy-lable" for="sumTo">Sum to insure:</label>
+	 			<label class="buy-lable" for="sumTo" translate="sumToInsure"></label>
 				<div class="form-group">
 		   			<span ng-repeat="sum in vm.sumTo">
 						 <input type="radio" ng-model="vm.sumToSelected"   
@@ -20,16 +20,16 @@
 	</div>
 
 	<div class="form-group">
-		<label class="buy-lable" for="ageCarrier">Age insurance carrier:</label>
+		<label class="buy-lable" for="ageCarrier" translate="ageInsuranceCarrier"></label>
 		&nbsp;
 	    <select ng-model="vm.ageSelected" ng-options="age.name for age in vm.ages">
-	   	    <option value=""> - Select age - </option>
+	   	    <option value="" translate="selectAge"></option>
 		</select>
 	</div>
 
 	<!-- Persons preko DIREKTIVE!!! -->
 	<div class="form-group">
-		 <label class="buy-lable" for="numberOfPersons">Number of insuranced persons:</label>
+		 <label class="buy-lable" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
 		 <span ng-repeat="age in vm.ages">
 		 	<buy-directive age="age"></buy-directive>
 		 </span>
@@ -37,9 +37,9 @@
 
 	<!-- Za DatePicker -->
 	<div class="form-group">
-		<label class="buy-lable" for="duration">Duration of insurance:</label>
+		<label class="buy-lable" for="duration" translate="durationOfInsurance"></label>
 		<div class="form-group">
-			<label class="buy-lable" for="startDate">From</label>
+			<label class="buy-lable" for="startDate" translate="from"></label>
 		    <p class="input-group">
 		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" is-open="vm.startOpened" datepicker-options="vm.dateOptions" ng-change="vm.startDatePicked()" ng-required="true" close-text="Close" />
 		      <span class="input-group-btn">
@@ -49,7 +49,7 @@
 		</div>
 
 		<div class="form-group">
-			<label class="buy-lable" for="endDate">To</label>
+			<label class="buy-lable" for="endDate" translate="to"></label>
 		    <p class="input-group">
 		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" is-open="vm.endOpened" datepicker-options="vm.dateOptions" ng-change="vm.endDatePicked()" ng-required="true" close-text="Close" />
 		      <span class="input-group-btn">
@@ -64,14 +64,14 @@
 		<label class="buy-lable" for="sport">Sport:</label>
 		&nbsp;
 		<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
-	  	     <option value=""> - Select Sport - </option>
+	  	     <option value="" translate="selectSport"> </option>
 		</select>
 	</div>
 
 	<div class="form-group row">
 		<div class="col-xs-6 col-xs-offset-3">
 		    <a ui-sref="buy.secondStep" class="btn btn-block btn-info" ng-click="vm.calculateFirstStep()">
-		    Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+		    {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
 		    </a>
 		</div>
 	</div>
