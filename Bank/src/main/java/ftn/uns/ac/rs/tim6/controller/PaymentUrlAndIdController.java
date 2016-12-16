@@ -16,13 +16,21 @@ import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
 import ftn.uns.ac.rs.tim6.model.PaymentUrlAndId;
+import ftn.uns.ac.rs.tim6.service.PaymentRequestService;
 import ftn.uns.ac.rs.tim6.service.PaymentUrlAndIdService;
 
 @RestController
 @RequestMapping("/api")
 public class PaymentUrlAndIdController {
+	
 	@Autowired
 	PaymentUrlAndIdService paymentUrlAndRequestService;
+	
+	@Autowired
+	PaymentRequestService paymentRequestService1;
+	
+	@Autowired
+	PaymentUrlAndIdService paymentRequestService;
 
 	@RequestMapping(value = "/paymenturlandids", method = RequestMethod.GET)
 	public ResponseEntity<List<PaymentUrlAndId>> handleGetAllPaPaymentUrlAndIds() {
@@ -38,8 +46,11 @@ public class PaymentUrlAndIdController {
 		PaymentRequest paymentRequest = new PaymentRequest();
 		
 		puid.setPaymentId(randomGenerator.nextInt(1000));
-		puid.setUrl("http://localhost:7070/payment/" + puid.getPaymentId());
+		puid.setUrl("http://localhost:7070/payment?paimentId=" + puid.getPaymentId());	
 		
+		paymentRequest.setAmount(mdto.getAmount());
+		paymentRequest.setId(puid.getPaymentId());
+		paymentRequestService1.save(paymentRequest);
 		
 		System.out.println(puid.getUrl());
 		System.out.println(puid.getPaymentId());
