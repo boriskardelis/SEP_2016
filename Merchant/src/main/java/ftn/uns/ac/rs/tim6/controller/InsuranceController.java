@@ -21,6 +21,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.drools.runtime.StatefulKnowledgeSession;
 import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
+import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
@@ -90,13 +91,15 @@ public class InsuranceController {
 
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
+		MerchantDto mdto = new MerchantDto();
+		mdto.setAmount(suma);
 
 		try {
 			
 			RestTemplate client = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<PaymentUrlIdDto> entity = new HttpEntity<PaymentUrlIdDto>(puid,headers);
+			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto,headers);
 			
 			puid = client.postForObject("http://localhost:7070/api/urlid",entity, PaymentUrlIdDto.class);
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);

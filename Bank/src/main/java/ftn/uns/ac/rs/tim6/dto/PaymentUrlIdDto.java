@@ -1,11 +1,9 @@
 package ftn.uns.ac.rs.tim6.dto;
 
-import java.math.BigInteger;
-
 public class PaymentUrlIdDto {
 	
 	private String url;
-	private BigInteger paymentId;
+	private long paymentId;
 	
 	public String getUrl() {
 		return url;
@@ -13,12 +11,13 @@ public class PaymentUrlIdDto {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public BigInteger getPaymentId() {
+	public long getPaymentId() {
 		return paymentId;
 	}
-	public void setPaymentId(BigInteger paymentId) {
+	public void setPaymentId(long paymentId) {
 		this.paymentId = paymentId;
 	}
+	
 	
 	
 }

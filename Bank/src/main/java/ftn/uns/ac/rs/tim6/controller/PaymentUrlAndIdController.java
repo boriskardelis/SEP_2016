@@ -1,7 +1,6 @@
 package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
+import ftn.uns.ac.rs.tim6.model.PaymentRequest;
 import ftn.uns.ac.rs.tim6.model.PaymentUrlAndId;
 import ftn.uns.ac.rs.tim6.service.PaymentUrlAndIdService;
 
@@ -30,17 +31,19 @@ public class PaymentUrlAndIdController {
 	}
 
 	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	public PaymentUrlIdDto handleBuy(@RequestBody String suma) throws IOException {
-
+	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
 		
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
+		PaymentRequest paymentRequest = new PaymentRequest();
 		
-		puid.setPaymentId(BigInteger.valueOf(randomGenerator.nextInt(1000)));
-		puid.setUrl("http://localhost:7070/api/bank");
+		puid.setPaymentId(randomGenerator.nextInt(1000));
+		puid.setUrl("http://localhost:7070/payment/" + puid.getPaymentId());
+		
+		
 		System.out.println(puid.getUrl());
 		System.out.println(puid.getPaymentId());
-		System.out.println("suma u BANCI!!! : " + suma);
+		System.out.println("suma u BANCI!!! : " + mdto.getAmount());
 
 		return puid;
 	}
