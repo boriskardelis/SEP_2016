@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('merchantApp')
+		.module('bankApp')
 		.controller('HomeCtrl', HomeCtrl);
 
 	HomeCtrl.$inject = ['$scope', 'HomeService' ];
