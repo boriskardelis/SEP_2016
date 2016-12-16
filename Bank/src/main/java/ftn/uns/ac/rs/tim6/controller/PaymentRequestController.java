@@ -25,7 +25,7 @@ public class PaymentRequestController {
 		return new ResponseEntity<List<PaymentRequest>>(paymentRequests, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
 	public ResponseEntity<PaymentRequest> getInsurance(@PathVariable Long id) {
 
 		PaymentRequest paymentRequest = paymentRequestService.findById(id);
