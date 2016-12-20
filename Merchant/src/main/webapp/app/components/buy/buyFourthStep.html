@@ -1,20 +1,20 @@
 
-    <p class="h4" align="left">Insurance contractor informations:</p>  
+    <p class="h4" align="left">{{ 'insuranceContractorInfo' | translate }}</p>  
     <div class="form-group">          
-        <label>First name</label>
-        <input type="text" ng-model="vm.buyer.first_name" class="form-control" placeholder="First name">
+        <label>{{ 'firstName' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.first_name" class="form-control" placeholder="{{ 'firstName' | translate }}">
     </div>
     <div class="form-group">          
-        <label>Last name</label>
-        <input type="text" ng-model="vm.buyer.last_name" class="form-control" placeholder="Last name">
+        <label>{{ 'lastName' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.last_name" class="form-control" placeholder="{{ 'lastName' | translate }}">
     </div>
     <div class="form-group">          
-        <label>JMBG</label>
-        <input type="text" ng-model="vm.buyer.jmbg" class="form-control" placeholder="JMBG">
+        <label>{{ 'jmbg' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.jmbg" class="form-control" placeholder="{{ 'jmbg' | translate }}">
     </div>
     <div class="form-group">          
-        <label>Passport number</label>
-        <input type="text" ng-model="vm.buyer.passport_number" class="form-control" placeholder="Passport number">
+        <label>{{ 'passportNumber' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.passport_number" class="form-control" placeholder="{{ 'passportNumber' | translate }}">
     </div>
     <div class="form-group">          
         <label>Address</label>
@@ -79,7 +79,7 @@
 
 
     <div ng-if="vm.totalPersons != 0">
-         <p class="h4" align="left">Insuranced persons:</p>
+         <p class="h4" align="left">{{ 'insurancedPersons' | translate }}</p>
     </div>
      <span ng-repeat="i in vm.getNumber(vm.totalPersons) track by $index">
             <buy-persons-directive age="age"></buy-persons-directive>
@@ -89,10 +89,10 @@
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">
         <a ui-sref="buy.fifthStep" class="btn btn-block btn-info">
-        Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+        {{ 'nextSection' | translate }}<span class="glyphicon glyphicon-circle-arrow-right"></span>
         </a>
         <a ui-sref="buy.thirdStep" class="btn btn-block btn-info">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Previouse Section 
+        <span class="glyphicon glyphicon-circle-arrow-left"></span>{{ 'previousSection' | translate }} 
         </a>
         </span>         
     </div>

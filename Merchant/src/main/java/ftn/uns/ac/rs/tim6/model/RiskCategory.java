@@ -19,9 +19,10 @@ public class RiskCategory implements Serializable {
 	 @Column(name = "NAME")
 	 private String name;
 	 
-	 @ManyToOne(fetch = FetchType.EAGER)
+	/* @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "DATE_CATEGORY")
-	 private DateCategory dateCategory;
+	 private Pricelist pricelist;
+	 */
 	 
 	 @ManyToMany(mappedBy="riskCategories")
 	  private List<InsuranceType> insuranceTypes;
@@ -42,13 +43,13 @@ public class RiskCategory implements Serializable {
 		this.name = name;
 	}
 
-	public DateCategory getDateCategory() {
-		return dateCategory;
+	/*public Pricelist getDateCategory() {
+		return pricelist;
 	}
 
-	public void setDateCategory(DateCategory dateCategory) {
-		this.dateCategory = dateCategory;
-	}
+	public void setDateCategory(Pricelist pricelist) {
+		this.pricelist = pricelist;
+	}*/
 
 	public List<InsuranceType> getInsuranceTypes() {
 		return insuranceTypes;
@@ -58,11 +59,11 @@ public class RiskCategory implements Serializable {
 		this.insuranceTypes = insuranceTypes;
 	}
 
-	public RiskCategory(long id, String name, DateCategory dateCategory, List<InsuranceType> insuranceTypes) {
+
+	public RiskCategory(long id, String name, List<InsuranceType> insuranceTypes) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.dateCategory = dateCategory;
 		this.insuranceTypes = insuranceTypes;
 	}
 

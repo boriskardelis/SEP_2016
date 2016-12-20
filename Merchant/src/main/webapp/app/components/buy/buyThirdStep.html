@@ -2,22 +2,22 @@
 
 <!-- <div class="container"> -->
     <div class="form-inline">
-            <label class="col-xs-3" align="right">Insurance premium:</label>
+            <label class="col-xs-3" align="right">{{ 'insurancePremium' | translate }} </label>
             <label>{{vm.droolPrices.premiumPrice}} RSD</label>
     </div>
     <br/>
     <div class="form-inline">
-            <label class="col-xs-3" align="right">Discount:</label>
+            <label class="col-xs-3" align="right">{{ 'discount' | translate }}</label>
             <label>{{vm.droolPrices.discountPrice}} RSD</label>
     </div>
     <br/>
     <div class="form-inline">
-            <label class="col-xs-3" align="right">Tax:</label>
+            <label class="col-xs-3" align="right">{{ 'tax' | translate }}</label>
             <label>{{vm.droolPrices.taxPrice}} RSD</label>
     </div>
     <br/>
     <div class="form-inline">
-            <label class="col-xs-3" align="right">Total payment:</label>
+            <label class="col-xs-3" align="right">{{ 'totalPayment' | translate }}</label>
             <label>{{vm.droolPrices.totalPrice}} RSD</label>
     </div>
     <br/>
@@ -26,10 +26,10 @@
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">
         <a ui-sref="buy.fourthStep" class="btn btn-block btn-info">
-        Next Section <span class="glyphicon glyphicon-circle-arrow-right"></span>
+         {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
         </a>
         <a ui-sref="buy.secondStep" class="btn btn-block btn-info">
-        <span class="glyphicon glyphicon-circle-arrow-left"></span> Previouse Section 
+        <span class="glyphicon glyphicon-circle-arrow-left"></span> {{ 'previousSection' | translate }} 
         </a>
         </span>         
     </div>

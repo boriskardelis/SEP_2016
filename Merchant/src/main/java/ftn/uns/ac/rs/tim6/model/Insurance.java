@@ -29,14 +29,17 @@ public class Insurance implements Serializable{
 	 @Column(name = "TOTAL_PRICE")
 	 private double totalPrice;
 	 
-	 @ManyToMany(cascade = CascadeType.ALL)
+	/* @ManyToMany(cascade = CascadeType.ALL)
 	 @JoinTable(name = "INSURANCE_RISK",
 	 			joinColumns=@JoinColumn(name="INSURANCE_ID"),
 	 			inverseJoinColumns=@JoinColumn(name="RISK_CATEGORY_ID"))
-	 private List<RiskCategory> riskCategories;
+	 private List<RiskCategory> riskCategories;*/
 	 
 	 @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	 private List<InsuranceType> insuranceTypes;
+	 
+	 @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 private List<Pricelist> pricelists;
 	 
 	 @OneToMany(mappedBy = "insurance", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	 private List<Person> persons;
@@ -84,13 +87,24 @@ public class Insurance implements Serializable{
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
+	
 
-	public List<RiskCategory> getRiskCategories() {
+	/*public List<RiskCategory> getRiskCategories() {
 		return riskCategories;
 	}
 
 	public void setRiskCategories(List<RiskCategory> riskCategories) {
 		this.riskCategories = riskCategories;
+	}*/
+	
+
+	public List<Pricelist> getPricelists() {
+		return pricelists;
+	}
+
+	public void setPricelists(List<Pricelist> pricelists) {
+		this.pricelists = pricelists;
 	}
 
 	public List<InsuranceType> getInsuranceTypes() {
@@ -117,16 +131,20 @@ public class Insurance implements Serializable{
 		this.buyer = buyer;
 	}
 
+	
+
+	
+
 	public Insurance(long id, int numberOfPersons, Date startDate, Date endDate, double totalPrice,
-			List<RiskCategory> riskCategories, List<InsuranceType> insuranceTypes, List<Person> persons, Buyer buyer) {
+			List<InsuranceType> insuranceTypes, List<Pricelist> pricelists, List<Person> persons, Buyer buyer) {
 		super();
 		this.id = id;
 		this.numberOfPersons = numberOfPersons;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.totalPrice = totalPrice;
-		this.riskCategories = riskCategories;
 		this.insuranceTypes = insuranceTypes;
+		this.pricelists = pricelists;
 		this.persons = persons;
 		this.buyer = buyer;
 	}
