@@ -80,7 +80,7 @@
 			 	$timeout(function() {
 			 		console.log("proslo");
 				   $window.location = vm.paymentUrlAndID.url;
-				}, 3000);
+				}, 2000);
 			 	
 				
 

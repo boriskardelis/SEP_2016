@@ -7,27 +7,28 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ftn.uns.ac.rs.tim6.model.Pricelist;
-import ftn.uns.ac.rs.tim6.repository.DateCategoryRepository;
+import ftn.uns.ac.rs.tim6.repository.PricelistRepository;
+
 
 @Service
 @Transactional
-public class DateCategoryService implements GenericService<Pricelist>{
+public class PricelistService implements GenericService<Pricelist>{
 	
 	@Autowired
-	private DateCategoryRepository dateCategoryRepository;
+	private PricelistRepository pricelistRepository;
 
 	public List<Pricelist> getAll() {
-		return dateCategoryRepository.findAll();
+		return pricelistRepository.findAll();
 	}
 
 	@Override
 	public Pricelist save(Pricelist t) {
-		return dateCategoryRepository.save(t);
+		return pricelistRepository.save(t);
 	}
 
 	@Override
 	public Pricelist findById(long id) {
-		return dateCategoryRepository.findOne(id);
+		return pricelistRepository.findOne(id);
 	}
 
 }

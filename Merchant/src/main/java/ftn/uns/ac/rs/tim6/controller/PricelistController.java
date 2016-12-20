@@ -10,18 +10,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ftn.uns.ac.rs.tim6.model.Pricelist;
-import ftn.uns.ac.rs.tim6.service.DateCategoryService;
+import ftn.uns.ac.rs.tim6.service.PricelistService;
+
 
 @RestController
 @RequestMapping("/api")
-public class DateCategoryController {
+public class PricelistController {
 	
 	@Autowired
-	DateCategoryService dateCategoryService;
+	PricelistService pricelistService;
 	
-	@RequestMapping(value = "datecategories", method = RequestMethod.GET)
-	public ResponseEntity<List<Pricelist>> handleGetAllDateCategory(){
-		List<Pricelist> datecategories = (List<Pricelist>) dateCategoryService.getAll();
-		return new ResponseEntity<List<Pricelist>>(datecategories, HttpStatus.OK);
+	@RequestMapping(value = "pricelists", method = RequestMethod.GET)
+	public ResponseEntity<List<Pricelist>> getAllPricelist(){
+		List<Pricelist> pricelists = (List<Pricelist>) pricelistService.getAll();
+		return new ResponseEntity<List<Pricelist>>(pricelists, HttpStatus.OK);
 	}
 }
