@@ -73,6 +73,12 @@ public class PricelistItem implements Serializable {
 		this.pricelist = pricelist;
 		this.riskSubcategory = riskSubcategory;
 	}
+	
+	public PricelistItem() {
+		super();
+	}
+	
+	
 	 
 	 
 }
