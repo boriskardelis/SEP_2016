@@ -35,13 +35,13 @@ public class Insurance implements Serializable{
 	 			inverseJoinColumns=@JoinColumn(name="RISK_CATEGORY_ID"))
 	 private List<RiskCategory> riskCategories;*/
 	 
-	 @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "insurance",  cascade = CascadeType.ALL)
 	 private List<InsuranceType> insuranceTypes;
 	 
-	 @OneToMany(mappedBy = "insurance", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
 	 private List<Pricelist> pricelists;
 	 
-	 @OneToMany(mappedBy = "insurance", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
 	 private List<Person> persons;
 	 
 	 @OneToOne(fetch=FetchType.EAGER)
@@ -93,7 +93,6 @@ public class Insurance implements Serializable{
 	/*public List<RiskCategory> getRiskCategories() {
 		return riskCategories;
 	}
-
 	public void setRiskCategories(List<RiskCategory> riskCategories) {
 		this.riskCategories = riskCategories;
 	}*/

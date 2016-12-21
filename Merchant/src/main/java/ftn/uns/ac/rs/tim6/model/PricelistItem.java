@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "PRICELIST_ITEM")
 public class PricelistItem implements Serializable {
@@ -32,6 +34,7 @@ public class PricelistItem implements Serializable {
 	 
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "RISK_SUBCATEGORY")
+	 @JsonManagedReference
 	 private RiskSubcategory riskSubcategory;
 
 	public long getId() {

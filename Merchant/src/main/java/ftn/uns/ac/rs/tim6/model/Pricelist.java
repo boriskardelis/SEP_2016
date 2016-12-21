@@ -27,7 +27,7 @@ public class Pricelist implements Serializable {
 	 @JoinColumn(name = "INSURANCE")
 	 private Insurance insurance;
 	 
-	 @OneToMany(mappedBy = "pricelist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "pricelist",  cascade = CascadeType.ALL)
 	 private List<PricelistItem> pricelistItems;
 	 
 

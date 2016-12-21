@@ -46,7 +46,6 @@ public class RiskCategory implements Serializable {
 	/*public Pricelist getDateCategory() {
 		return pricelist;
 	}
-
 	public void setDateCategory(Pricelist pricelist) {
 		this.pricelist = pricelist;
 	}*/

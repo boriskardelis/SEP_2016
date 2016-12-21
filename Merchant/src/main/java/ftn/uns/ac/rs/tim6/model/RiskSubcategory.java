@@ -1,9 +1,10 @@
 package ftn.uns.ac.rs.tim6.model;
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "RISK_SUBCATEGORY")
@@ -27,7 +28,8 @@ public class RiskSubcategory implements Serializable {
 	 @JoinColumn(name = "RISK_CATEGORY")
 	 private RiskCategory riskCategory;
 	 
-	 @OneToMany(mappedBy = "pricelist", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	 @OneToMany(mappedBy = "riskSubcategory", cascade = CascadeType.ALL)
+	 @JsonBackReference
 	 private List<PricelistItem> pricelistItems;
 
 	public long getId() {
@@ -41,7 +43,6 @@ public class RiskSubcategory implements Serializable {
 	/*public BigDecimal getCoefficient() {
 		return coefficient;
 	}
-
 	public void setCoefficient(BigDecimal coefficient) {
 		this.coefficient = coefficient;
 	}*/
