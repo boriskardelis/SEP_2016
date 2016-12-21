@@ -23,9 +23,8 @@ public class Pricelist implements Serializable {
 	 @Column(name = "END_DATE")
 	 private Date endDate;
 	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "INSURANCE")
-	 private Insurance insurance;
+	 @OneToMany(mappedBy = "pricelist", cascade = CascadeType.ALL)
+	 private List<Insurance> insurance;
 	 
 	 @OneToMany(mappedBy = "pricelist",  cascade = CascadeType.ALL)
 	 private List<PricelistItem> pricelistItems;
@@ -56,14 +55,6 @@ public class Pricelist implements Serializable {
 	}
 	
 
-	public Insurance getInsurance() {
-		return insurance;
-	}
-
-	public void setInsurance(Insurance insurance) {
-		this.insurance = insurance;
-	}
-
 	public List<PricelistItem> getPricelistItems() {
 		return pricelistItems;
 	}
@@ -74,7 +65,17 @@ public class Pricelist implements Serializable {
 
 	
 
-	public Pricelist(long id, Date startDate, Date endDate, Insurance insurance, List<PricelistItem> pricelistItems) {
+	public List<Insurance> getInsurance() {
+		return insurance;
+	}
+
+	public void setInsurance(List<Insurance> insurance) {
+		this.insurance = insurance;
+	}
+	
+
+	public Pricelist(long id, Date startDate, Date endDate, List<Insurance> insurance,
+			List<PricelistItem> pricelistItems) {
 		super();
 		this.id = id;
 		this.startDate = startDate;

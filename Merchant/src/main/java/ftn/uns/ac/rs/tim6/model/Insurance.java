@@ -38,11 +38,13 @@ public class Insurance implements Serializable{
 	 @OneToMany(mappedBy = "insurance",  cascade = CascadeType.ALL)
 	 private List<InsuranceType> insuranceTypes;
 	 
-	 @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
-	 private List<Pricelist> pricelists;
 	 
 	 @OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
 	 private List<Person> persons;
+	 
+	 @ManyToOne(fetch = FetchType.EAGER)
+	 @JoinColumn(name = "PRICELIST")
+	 private Pricelist pricelist;
 	 
 	 @OneToOne(fetch=FetchType.EAGER)
 	  @JoinColumn(name="BUYER")
@@ -98,13 +100,6 @@ public class Insurance implements Serializable{
 	}*/
 	
 
-	public List<Pricelist> getPricelists() {
-		return pricelists;
-	}
-
-	public void setPricelists(List<Pricelist> pricelists) {
-		this.pricelists = pricelists;
-	}
 
 	public List<InsuranceType> getInsuranceTypes() {
 		return insuranceTypes;
@@ -130,12 +125,20 @@ public class Insurance implements Serializable{
 		this.buyer = buyer;
 	}
 
-	
+
+
+	public Pricelist getPricelist() {
+		return pricelist;
+	}
+
+	public void setPricelist(Pricelist pricelist) {
+		this.pricelist = pricelist;
+	}
 
 	
 
 	public Insurance(long id, int numberOfPersons, Date startDate, Date endDate, double totalPrice,
-			List<InsuranceType> insuranceTypes, List<Pricelist> pricelists, List<Person> persons, Buyer buyer) {
+			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer) {
 		super();
 		this.id = id;
 		this.numberOfPersons = numberOfPersons;
@@ -143,8 +146,8 @@ public class Insurance implements Serializable{
 		this.endDate = endDate;
 		this.totalPrice = totalPrice;
 		this.insuranceTypes = insuranceTypes;
-		this.pricelists = pricelists;
 		this.persons = persons;
+		this.pricelist = pricelist;
 		this.buyer = buyer;
 	}
 
