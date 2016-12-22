@@ -12,7 +12,7 @@
 				<div class="form-group">
 		   			<span ng-repeat="sum in vm.sumTo">
 						 <input type="radio" ng-model="vm.sumToSelected"   
-						    	ng-value="sum" name="sumToinsur">    
+						    	ng-value="sum"  name="sumToinsur">    
 						 <label for="sum.name{{sum.name}}">{{sum.name}}</label>
 						 <br>		   
 					</span>
@@ -60,12 +60,20 @@
 	</div>
 	<br>
 	 
+	 {{currentLanguage}}
 	<div class="form-group">
 		<label class="buy-lable" for="sport">Sport:</label>
 		&nbsp;
-		<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
-	  	     <option value="" translate="selectSport"> </option>
-		</select>
+		<div ng-if="currentLanguage == 'en'">
+			<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
+		  	     <option value="" translate="selectSport"> </option>
+			</select>
+		</div>
+		<div ng-if="currentLanguage == 'sr'">
+			<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
+		  	     <option value="" translate="selectSport"> </option>
+			</select>
+		</div>
 	</div>
 
 	<div class="form-group row">
