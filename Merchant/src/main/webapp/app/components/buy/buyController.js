@@ -82,12 +82,7 @@
 			 	$timeout(function() {
 			 		console.log("proslo");
 				   $window.location = vm.paymentUrlAndID.url;
-				}, 20000);
-
-				console.log(vm.person);
-			 	
-				
-
+				}, 10000);
 		    });
 
 		
@@ -170,11 +165,6 @@
 			vm.getNumber = function(num) {
 			    return new Array(num);   
 			}
-
-			console.log("IZRACUNA");
-			console.log(vm.currentLanguage);
-			console.log(vm.ageTyped);
-
 		};
 
 		vm.calculateSecondStep = function() {
@@ -192,7 +182,7 @@
 			//Ne ulaze u cenu
 			//console.log(vm.vehicle);
 			//console.log(vm.home);
-			*/
+			
 			
 			console.log(vm.towingSelected);
 			console.log(vm.repairSelected);
@@ -205,11 +195,7 @@
 			
 			console.log(vm.vehicle);
 			console.log(vm.home);
-			
-
-
-
-			
+			*/			
 			
 			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
 			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
@@ -217,10 +203,7 @@
 				.then(function(response) {
 			 		
 			 		vm.droolPrices = response.data;
-
 			 });
-			
-
 		};
 
     	vm.insuranceType = ["Putno", "Home"];
