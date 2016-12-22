@@ -11,6 +11,9 @@
 
 		vm.changeCurrentLanguage = function(key){
             $translate.use(key);
+            vm.currentLanguage = key;
+            console.log(vm.currentLanguage);
+
             console.log("Poziva metod");
         };
 

@@ -24,6 +24,9 @@ public class RiskSubcategory implements Serializable {
 	 @Column(name = "NAME")
 	 private String name;
 	 
+	 @Column(name = "NAME_SERBIAN")
+	 private String nameSerbian;
+	 
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "RISK_CATEGORY")
 	 private RiskCategory riskCategory;
@@ -54,6 +57,16 @@ public class RiskSubcategory implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	
+
+	public String getNameSerbian() {
+		return nameSerbian;
+	}
+
+	public void setNameSerbian(String nameSerbian) {
+		this.nameSerbian = nameSerbian;
+	}
 
 	public RiskCategory getRiskCategory() {
 		return riskCategory;
@@ -75,10 +88,12 @@ public class RiskSubcategory implements Serializable {
 
 	
 
-	public RiskSubcategory(long id, String name, RiskCategory riskCategory, List<PricelistItem> pricelistItems) {
+	public RiskSubcategory(long id, String name, String nameSerbian, RiskCategory riskCategory,
+			List<PricelistItem> pricelistItems) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.nameSerbian = nameSerbian;
 		this.riskCategory = riskCategory;
 		this.pricelistItems = pricelistItems;
 	}

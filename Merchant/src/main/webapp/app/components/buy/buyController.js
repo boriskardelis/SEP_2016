@@ -167,6 +167,8 @@
 			    return new Array(num);   
 			}
 
+			console.log(vm.currentLanguage);
+
 		};
 
 		vm.calculateSecondStep = function() {
@@ -193,6 +195,7 @@
 			console.log(vm.valueApartmentSelected);
 			console.log(vm.disasterSelected);*/
 			console.log(vm.ageTyped);
+
 
 			
 			

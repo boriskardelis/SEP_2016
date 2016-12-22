@@ -29,57 +29,57 @@ INSERT INTO risk_category (name) VALUES ('disaster');
 
 
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('to 18', 1);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('18-60', 1);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('over 60', 1);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('to 18', 'do 18', 1);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('18-60', '18-60', 1);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('over 60','preko 60', 1);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Europe', 2);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Asia', 2);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('North America', 2);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('South America', 2);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Australia', 2);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Africa', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Europe','Evropa', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Asia', 'Azija', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('North America', 'Severna Amerika', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('South America', 'Južna Amerika', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Australia', 'Australija', 2);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Africa','Afrika', 2);
 
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('10.000 EUR', 3);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('50.000 EUR', 3);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('150.000 EUR', 3);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('10.000 EUR', '10.000 EUR', 3);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('50.000 EUR', '50.000 EUR', 3);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('150.000 EUR', '150.000 EUR', 3);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Rugby', 4);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Golf', 4);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Biking', 4);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Rugby', 'Ragbi', 4);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Golf', 'Golf', 4);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Biking', 'Biciklizam', 4);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('20km', 5);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('100km', 5);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('300km', 5);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('20km','20km', 5);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('100km','100km', 5);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('300km', '300km', 5);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('500 EUR', 6);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('1.500 EUR', 6);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('3.000 EUR', 6);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('500 EUR', '500 EUR', 6);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('1.500 EUR', '1.500 EUR', 6);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('3.000 EUR', '3.000 EUR', 6);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('7 days', 7);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('14 days', 7);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('28 days', 7);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('7 days', '7 dana', 7);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('14 days', '14 dana', 7);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('28 days', '28 dana', 7);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Taxi', 8);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Van', 8);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Truck', 8);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Taxi', 'Taksi', 8);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Van', 'Kombi', 8);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Truck', 'Kamion', 8);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('to 30m2', 9);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('30m2 - 80m2', 9);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('over 80m2', 9);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('to 30m2', 'do 30m2', 9);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('30m2 - 80m2', '30m2 - 80m2', 9);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('over 80m2', 'preko 80m2', 9);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('to 10 years', 10);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('10 - 20 years', 10);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('over 20 years', 10);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('to 10 years', 'do 10 godina', 10);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('10 - 20 years', '10 - 20 godina', 10);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('over 20 years', 'preko20 godina', 10);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('10.000 EUR', 11);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('40.000 EUR', 11);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('80.000 EUR', 11);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('10.000 EUR', '10.000 EUR', 11);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('40.000 EUR', '40.000 EUR', 11);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('80.000 EUR', '80.000 EUR', 11);
 
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Flood', 12);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Fire', 12);
-INSERT INTO risk_subcategory (name, risk_category) VALUES ('Thievery', 12);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Flood', 'Poplava', 12);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Fire', 'Požar', 12);
+INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Thievery', 'Pljačka', 12);
 
 
 INSERT INTO insurance_type (insurance_name,  insurance) VALUES ( 'Road Insurance', NULL);
