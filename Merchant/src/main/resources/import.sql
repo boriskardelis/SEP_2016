@@ -85,8 +85,10 @@ INSERT INTO risk_subcategory (name, name_serbian, risk_category) VALUES ('Thieve
 INSERT INTO insurance_type (insurance_name,  insurance) VALUES ( 'Road Insurance', NULL);
 INSERT INTO insurance_type (insurance_name, insurance) VALUES ('Home Insurance', NULL);
 
-INSERT INTO pricelist (end_date, start_date) VALUES ('2017-10-11 00:00:00', '2014-10-11 00:00:00');
-INSERT INTO pricelist (end_date, start_date) VALUES ('2016-10-11 00:00:00', '2013-10-11 00:00:00');
+INSERT INTO pricelist (start_date) VALUES ('2016-10-11 00:00:00');
+INSERT INTO pricelist (start_date) VALUES ('2017-10-11 00:00:00');
+INSERT INTO pricelist (start_date) VALUES ('2015-10-11 00:00:00');
+INSERT INTO pricelist (start_date) VALUES ('2014-10-11 00:00:00');
 
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (2, 1, 1);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 1, 2);

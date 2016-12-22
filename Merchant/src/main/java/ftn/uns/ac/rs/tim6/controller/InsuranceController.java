@@ -19,15 +19,16 @@ import org.codehaus.jackson.JsonNode;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.drools.runtime.StatefulKnowledgeSession;
+
 import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
-import ftn.uns.ac.rs.tim6.model.Pricelist;
-import ftn.uns.ac.rs.tim6.model.RiskCategory;
+import ftn.uns.ac.rs.tim6.model.PricelistItem;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
+import ftn.uns.ac.rs.tim6.service.PricelistService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
 
@@ -41,6 +42,9 @@ public class InsuranceController {
 	@Autowired
 	RiskSubcategoryService riskSubcategoryService;
 
+	@Autowired
+	PricelistService pricelistService;
+
 	@RequestMapping(value = "/insurances", method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> handleGetAllInsurances() {
 		List<Insurance> insurances = (List<Insurance>) insuranceService.getAll();
@@ -52,8 +56,13 @@ public class InsuranceController {
 
 		InsurancePriceDto dto = new InsurancePriceDto();
 		ObjectMapper mapper = new ObjectMapper();
-		JsonNode node = mapper.readTree(jsonInString);
+		ArrayList<RiskSubcategory> riskSubcategories = new ArrayList<RiskSubcategory>();
+		List<PricelistItem> curentPricelistItems = pricelistService.getCurrentPricelistItems();
+		DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
 
+		
+		/*CITANJE PODATAKA OD FRONTEND-A*/
+		JsonNode node = mapper.readTree(jsonInString);
 		RiskSubcategory region = mapper.convertValue(node.get("region"), RiskSubcategory.class);
 		RiskSubcategory sum = mapper.convertValue(node.get("sum"), RiskSubcategory.class);
 		RiskSubcategory ageCarrier = mapper.convertValue(node.get("ageCarrier"), RiskSubcategory.class);
@@ -66,14 +75,27 @@ public class InsuranceController {
 			System.out.println("broj " + ageSubCategoryDto.getNumber());
 		}
 
-		dto.getRisks().add(region);
-		dto.getRisks().add(sum);
-		dto.getRisks().add(ageCarrier);
-
-		DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
+		riskSubcategories.add(region);
+		riskSubcategories.add(sum);
+		riskSubcategories.add(ageCarrier);
+		
+		
+		for (RiskSubcategory risk : riskSubcategories) {
+			for (PricelistItem item : curentPricelistItems) {
+				if (item.getRiskSubcategory().getName().equals(risk.getName())) {
+					System.out.println("ODABRANI");
+					System.out.println("od fronta risk: " + risk.getName());
+					System.out.println("od fronta item: " + item.getRiskSubcategory().getName());
+					dto.getItems().add(item);
+				}
+			}
+		}
+		
+		/*CITANJE PODATAKA OD FRONTEND-A*/
 
 		try {
 
+			System.out.println(" ULAZIMO U DROOLS ");
 			StatefulKnowledgeSession ksession = kbase.getSession();
 			ksession.insert(dto);
 			ksession.fireAllRules();
@@ -87,7 +109,7 @@ public class InsuranceController {
 
 		return dto;
 	}
-	
+
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
 	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody Double suma) throws IOException {
 
@@ -97,20 +119,18 @@ public class InsuranceController {
 		mdto.setAmount(suma);
 
 		try {
-			
+
 			RestTemplate client = new RestTemplate();
 			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto,headers);
-			
-			puid = client.postForObject("http://localhost:7070/api/urlid",entity, PaymentUrlIdDto.class);
+			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
+
+			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
-			
+
 		} catch (Exception e) {
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.BAD_REQUEST);
 		}
-		
-		
 
 	}
 
@@ -119,14 +139,6 @@ public class InsuranceController {
 		ageString = ageString.replace("{", "");
 		ageString = ageString.replace("}", "");
 		ageString = ageString.replace(",", "");
-		
-		/*RiskSubcategory sub = new RiskSubcategory();
-		RiskCategory cat = new RiskCategory();
-		
-		
-		Pricelist pricelist = new Pricelist();*/
-		
-		
 
 		String[] parts = ageString.split("idAgeSub=");
 		String kolicina = parts[0];

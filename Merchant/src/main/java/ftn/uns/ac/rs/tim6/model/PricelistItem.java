@@ -30,6 +30,7 @@ public class PricelistItem implements Serializable {
 	 
 	 @ManyToOne(fetch = FetchType.EAGER)
 	 @JoinColumn(name = "PRICELIST")
+	 @JsonManagedReference
 	 private Pricelist pricelist;
 	 
 	 @ManyToOne(fetch = FetchType.EAGER)

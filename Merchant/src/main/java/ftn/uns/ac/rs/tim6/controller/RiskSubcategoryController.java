@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
+import ftn.uns.ac.rs.tim6.service.PricelistService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 
 @RestController
@@ -19,9 +20,12 @@ public class RiskSubcategoryController {
 	@Autowired
 	RiskSubcategoryService riskSubcategoryService;
 	
+	@Autowired
+	PricelistService pricelistService;
+	
 	@RequestMapping(value = "/risksubcategories", method = RequestMethod.GET)
 	public ResponseEntity<List<RiskSubcategory>> getSubcategories() {
-		List<RiskSubcategory> risksubcategories = (List<RiskSubcategory>) riskSubcategoryService.getAll();
+		List<RiskSubcategory> risksubcategories = (List<RiskSubcategory>) pricelistService.getCurrentPricelistSubcategories();
 		return new ResponseEntity<List<RiskSubcategory>>(risksubcategories, HttpStatus.OK);
 	}
 }

@@ -6,6 +6,8 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "PRICELIST")
 public class Pricelist implements Serializable {
@@ -20,13 +22,11 @@ public class Pricelist implements Serializable {
 	 @Column(name = "START_DATE")
 	 private Date startDate;
 	 
-	 @Column(name = "END_DATE")
-	 private Date endDate;
-	 
 	 @OneToMany(mappedBy = "pricelist", cascade = CascadeType.ALL)
 	 private List<Insurance> insurance;
 	 
 	 @OneToMany(mappedBy = "pricelist",  cascade = CascadeType.ALL)
+	 @JsonBackReference
 	 private List<PricelistItem> pricelistItems;
 	 
 
@@ -44,14 +44,6 @@ public class Pricelist implements Serializable {
 
 	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-
-	public Date getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
 	}
 	
 
@@ -74,12 +66,11 @@ public class Pricelist implements Serializable {
 	}
 	
 
-	public Pricelist(long id, Date startDate, Date endDate, List<Insurance> insurance,
+	public Pricelist(long id, Date startDate, List<Insurance> insurance,
 			List<PricelistItem> pricelistItems) {
 		super();
 		this.id = id;
 		this.startDate = startDate;
-		this.endDate = endDate;
 		this.insurance = insurance;
 		this.pricelistItems = pricelistItems;
 	}

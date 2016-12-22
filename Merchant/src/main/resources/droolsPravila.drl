@@ -19,9 +19,9 @@ dialect "mvel"
     
   		$insurance.setPremiumPrice( 100 );
   		
-  		for(RiskSubcategory risk : $insurance.risks){
+  		for(PricelistItem item : $insurance.items){
   		
-  			$insurance.setPremiumPrice($insurance.premiumPrice + risk.coefficient * $insurance.premiumPrice / 100);
+  			$insurance.setPremiumPrice($insurance.premiumPrice + item.coefficient * $insurance.premiumPrice / 100);
   			$insurance.setDiscountPrice($insurance.premiumPrice * 0.1);
   			$insurance.setTaxPrice($insurance.premiumPrice * 0.2);
   			$insurance.setTotalPrice($insurance.premiumPrice - $insurance.discountPrice + $insurance.taxPrice);
