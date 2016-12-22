@@ -21,7 +21,7 @@ public class PricelistItemController {
 	@Autowired
 	PricelistItemService pricelistItemService;
 	
-	@RequestMapping(value = "pricelistItems", method = RequestMethod.GET)
+	@RequestMapping(value = "/pricelistItems", method = RequestMethod.GET)
 	public ResponseEntity<List<PricelistItem>> getAllPricelistItems(){
 		List<PricelistItem> pricelistItems = (List<PricelistItem>) pricelistItemService.getAll();
 		return new ResponseEntity<List<PricelistItem>>(pricelistItems, HttpStatus.OK);

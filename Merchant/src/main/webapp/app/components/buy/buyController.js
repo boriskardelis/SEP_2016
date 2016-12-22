@@ -8,6 +8,8 @@
 	BuyCtrl.$inject = ['$scope', 'BuyService', '$state', '$timeout', '$window'];
 	function BuyCtrl($scope, BuyService, $state, $timeout, $window) {
 		var vm = this;
+
+		//vm.test = "asd";
 		
 		BuyService.getRiskSubcategories().then(function(response) {
 			/*console.log(response.data[1].name);
@@ -70,7 +72,7 @@
 
 
 	     vm.processForm = function() {
-       		alert('awesome!');
+       		//alert('awesome!');
        		console.log(vm.regionSelected);
        		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
 			 	console.log("Odgovor iz buy");
@@ -80,7 +82,9 @@
 			 	$timeout(function() {
 			 		console.log("proslo");
 				   $window.location = vm.paymentUrlAndID.url;
-				}, 2000);
+				}, 20000);
+
+				console.log(vm.person);
 			 	
 				
 
@@ -167,7 +171,9 @@
 			    return new Array(num);   
 			}
 
+			console.log("IZRACUNA");
 			console.log(vm.currentLanguage);
+			console.log(vm.ageTyped);
 
 		};
 
@@ -186,6 +192,7 @@
 			//Ne ulaze u cenu
 			//console.log(vm.vehicle);
 			//console.log(vm.home);
+			*/
 			
 			console.log(vm.towingSelected);
 			console.log(vm.repairSelected);
@@ -193,8 +200,13 @@
 			console.log(vm.alternativeRideSelected);
 			console.log(vm.surfaceSelected);
 			console.log(vm.valueApartmentSelected);
-			console.log(vm.disasterSelected);*/
+			console.log(vm.disasterSelected);
 			console.log(vm.ageTyped);
+			
+			console.log(vm.vehicle);
+			console.log(vm.home);
+			
+
 
 
 			

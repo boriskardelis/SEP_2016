@@ -24,6 +24,8 @@ import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.model.Insurance;
+import ftn.uns.ac.rs.tim6.model.Pricelist;
+import ftn.uns.ac.rs.tim6.model.RiskCategory;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
@@ -117,6 +119,14 @@ public class InsuranceController {
 		ageString = ageString.replace("{", "");
 		ageString = ageString.replace("}", "");
 		ageString = ageString.replace(",", "");
+		
+		/*RiskSubcategory sub = new RiskSubcategory();
+		RiskCategory cat = new RiskCategory();
+		
+		
+		Pricelist pricelist = new Pricelist();*/
+		
+		
 
 		String[] parts = ageString.split("idAgeSub=");
 		String kolicina = parts[0];

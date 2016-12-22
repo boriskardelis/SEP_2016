@@ -28,10 +28,10 @@
 	</div>
 
 	<!-- Persons preko DIREKTIVE!!! -->
-	<div class="form-group">
+    <div class="form-group">
 		 <label class="buy-lable" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
-		 <span ng-repeat="age in vm.ages">
-		 	<buy-directive age="age"></buy-directive>
+		 <span ng-repeat="(ageIndex, age) in vm.ages">
+		 	<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped"></buy-directive>
 		 </span>
 	</div>
 

@@ -39,6 +39,18 @@
 				ageApartments: '=',
 				valueApartments: '=',
 				disasters: '=',
+				towingSelected: '=',
+				repairSelected: '=',
+				accommodationSelected: '=',
+				alternativeRideSelected:'=',
+				vehicle: '=',
+				home: "=",
+				surfaceSelected: "=",
+				ageApartmentSelected: "=",
+				valueApartmentSelected: "=",
+				disasterSelected: "="
+
+
 				
 				
 				//očekuje se u HTMLu atribut koji ide uz direktivu i koji se zove employee.

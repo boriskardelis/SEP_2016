@@ -16,7 +16,7 @@
 				<label>{{ 'towing' | translate }}</label>
 				<br/>
 					<div class="form-group">		
-						<select ng-show="towings[$index]" ng-model="$parent.vm.towingSelected" ng-options="towing.name for towing in towings">
+						<select ng-show="towings[$index]" ng-model="towingSelected" ng-options="towing.name for towing in towings">
 					  	     <option value="">{{ 'selectMileage' | translate }}</option>
 						</select>
 					</div>
@@ -26,7 +26,7 @@
 				<label>{{ 'repairsTo' | translate }}</label>
 				<br/>
 					<div class="form-group">		
-						<select ng-show="repairs[$index]" ng-model="$parent.vm.repairSelected" ng-options="repair.name for repair in repairs">
+						<select ng-show="repairs[$index]" ng-model="repairSelected" ng-options="repair.name for repair in repairs">
 					  	     <option value="">{{ 'selectPrice' | translate }}</option>
 						</select>
 					</div>
@@ -36,7 +36,7 @@
 				<label>{{ 'accommodation' | translate }}</label>
 				<br/>
 					<div class="form-group">		
-						<select ng-show="accommodations[$index]" ng-model="$parent.vm.accommodationSelected" ng-options="accommodation.name for accommodation in accommodations">
+						<select ng-show="accommodations[$index]" ng-model="accommodationSelected" ng-options="accommodation.name for accommodation in accommodations">
 					  	     <option value=""> {{ 'selectNumberOfDays' | translate }} </option>
 						</select>
 					</div>
@@ -46,7 +46,7 @@
 				<label>{{ 'alternativeRide' | translate }}</label>
 				<br/>
 					<div class="form-group">		
-						<select ng-show="alternativeRides[$index]" ng-model="$parent.vm.alternativeRideSelected" ng-options="alternativeRide.name for alternativeRide in alternativeRides">
+						<select ng-show="alternativeRides[$index]" ng-model="alternativeRideSelected" ng-options="alternativeRide.name for alternativeRide in alternativeRides">
 					  	     <option value="">{{ 'selectRide' | translate }}</option>
 						</select>
 					</div>
@@ -56,35 +56,35 @@
 		 	<div class="form-group">
 		 		<h4 align="center">{{ 'vehicleInformations' | translate }}</h4>			
 				<label>{{ 'registrationNumber' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.registration_number" class="form-control" placeholder="{{ 'registrationNumber' | translate }}">
+				<input type="text" ng-model="vehicle.registration_number" class="form-control" placeholder="{{ 'registrationNumber' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vehicleMake' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}">
+				<input type="text" ng-model="vehicle.make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vehicleOwnerFN' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.owner_first_name" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}">
+				<input type="text" ng-model="vehicle.owner_first_name" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vehicleOwnerLN' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.owner_last_name" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}">
+				<input type="text" ng-model="vehicle.owner_last_name" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vehicleOwnerJMBG' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
+				<input type="text" ng-model="vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vehicleType' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.type" class="form-control" placeholder="{{ 'vehicleType' | translate }}">
+				<input type="text" ng-model="vehicle.type" class="form-control" placeholder="{{ 'vehicleType' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'vinNumber' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.vin_number" class="form-control" placeholder="{{ 'vinNumber' | translate }}">
+				<input type="text" ng-model="vehicle.vin_number" class="form-control" placeholder="{{ 'vinNumber' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'yearOfProduction' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.vehicle.year_of_production" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}">
+				<input type="text" ng-model="vehicle.year_of_production" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}">
 			</div>			
 		</div>	 
 
@@ -93,42 +93,42 @@
 		 	<div class="form-group">
 		 		<h4 align="center">{{ 'homeInfo' | translate }}</h4>			
 				<label>{{ 'address' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.home.address" class="form-control" placeholder="{{ 'address' | translate }}">
+				<input type="text" ng-model="home.address" class="form-control" placeholder="{{ 'address' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'homeOwnerFN' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.home.owner_first_name" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}">
+				<input type="text" ng-model="home.owner_first_name" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'homeOwnerLN' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.home.owner_last_name" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}">
+				<input type="text" ng-model="home.owner_last_name" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}">
 			</div>
 			<div class="form-group">			
 				<label>{{ 'homeOwnerJMBG' | translate }}</label>
-				<input type="text" ng-model="$parent.vm.home.owner_jmbg" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}">
+				<input type="text" ng-model="home.owner_jmbg" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}">
 			</div>
 
 			<div class="form-group">	
 				<label>{{ 'surface' | translate }}</label>&nbsp;	
-				<select ng-model="$parent.vm.surfaceSelected" ng-options="surface.name for surface in surfaces">
+				<select ng-model="surfaceSelected" ng-options="surface.name for surface in surfaces">
 			  	     <option value="">{{ 'selectSurface' | translate }}</option>			
 				</select>
 			</div>
 			<div class="form-group">		
 				<label>{{ 'ageOfHome' | translate }}</label>&nbsp;
-				<select ng-model="$parent.vm.ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
+				<select ng-model="ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
 			  	     <option value="">{{ 'selectAge' | translate }}</option>
 				</select>
 			</div>
 			<div class="form-group">	
 				<label>{{ 'estimatedValue' | translate }}</label>&nbsp;		
-				<select ng-model="$parent.vm.valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
+				<select ng-model="valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
 			  	     <option value="">{{ 'selectValue' | translate }}</option>
 				</select>
 			</div>
 			<div class="form-group">	
 				<label>{{ 'insureFrom' | translate }}</label>&nbsp;	
-				<select ng-model="$parent.vm.disasterSelected" ng-options="disaster.name for disaster in disasters">
+				<select ng-model="disasterSelected" ng-options="disaster.name for disaster in disasters">
 			  	     <option value="">{{ 'selectType' | translate }}</option>
 				</select>
 			</div>								

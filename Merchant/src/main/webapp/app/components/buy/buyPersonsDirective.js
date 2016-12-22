@@ -22,31 +22,15 @@
         		// console.log(scope.iter);
         		// vm.newIter = scope.iter;
         		// console.log(vm.newIter);
-        
-        	
-        		
-
-        		
-        		
 
         		
         	},
         	templateUrl: 'app/components/buy/buyPersonsDirective.html',
         	scope: {
         		ageTyped: '=',
-
-				
-
-
-				
-				//očekuje se u HTMLu atribut koji ide uz direktivu i koji se zove employee.
-				//kada stavimo '=' prosleđujemo referencu na neku vrednost iz nekog roditeljskog scope-a,
-				//i ako ga promenimo u direktivi menjamo ga i tamo odakle je došao
-				//inputTitle: '@'
-				//kada se stavi '@' prosleđuje se vrednost, u vidu stringa, znači običan tekst koji možemo obrađivati
-				//bez da rizikujemo da ga menjamo na još nekom mestu.
-
-				//= -dvostruka veza   @-jednostruka veza
+                        personIndex: "=",
+                        person: "="
+			
 			}
 		};
 		return buyPersonsDirective;

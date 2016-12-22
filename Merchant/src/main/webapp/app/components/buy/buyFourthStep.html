@@ -81,8 +81,8 @@
     <div ng-if="vm.totalPersons != 0">
          <p class="h4" align="left">{{ 'insurancedPersons' | translate }}</p>
     </div>
-     <span ng-repeat="i in vm.getNumber(vm.totalPersons) track by $index">
-            <buy-persons-directive age="age"></buy-persons-directive>
+     <span ng-repeat="(personIndex, i) in vm.getNumber(vm.totalPersons) track by $index">
+            <buy-persons-directive age="age" person-index="personIndex" person="vm.person"></buy-persons-directive>
     </span>
 
 

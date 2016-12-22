@@ -20,7 +20,7 @@ public class PricelistController {
 	@Autowired
 	PricelistService pricelistService;
 	
-	@RequestMapping(value = "pricelists", method = RequestMethod.GET)
+	@RequestMapping(value = "/pricelists", method = RequestMethod.GET)
 	public ResponseEntity<List<Pricelist>> getAllPricelist(){
 		List<Pricelist> pricelists = (List<Pricelist>) pricelistService.getAll();
 		return new ResponseEntity<List<Pricelist>>(pricelists, HttpStatus.OK);

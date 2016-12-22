@@ -4,7 +4,7 @@
          <label class="buy-lable" for="insurnaceType" translate="additionalInsurance"></label>
          <ul ng-repeat="insuranceType in vm.insuranceTypes">
             <!-- <p>INSURANCES: {{insuranceType}}</p> -->
-            <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters"></buy-additional-directive></li>
+            <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters" towing-selected="vm.towingSelected" repair-selected="vm.repairSelected" accommodation-selected="vm.accommodationSelected" alternative-ride-selected="vm.alternativeRideSelected" vehicle="vm.vehicle" home="vm.home" surface-selected="vm.surfaceSelected" age-apartment-selected="vm.ageApartmentSelected" value-apartment-selected="vm.valueApartmentSelected" disaster-selected="vm.disasterSelected"></buy-additional-directive></li>
          </ul>
     </div>
     {{vm.towingSelected}}
@@ -20,3 +20,5 @@
         </span>         
     </div>
 </div>
+
+{{vm.test}}
