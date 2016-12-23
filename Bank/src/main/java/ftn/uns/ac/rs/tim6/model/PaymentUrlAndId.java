@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,9 +31,8 @@ public class PaymentUrlAndId implements Serializable {
 	@URL
 	@Column(name = "PAYMENT_URL")
 	private String paymentUrl;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "PAYMENT_REQUEST_ID")
+		
+	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentUrlAndId", cascade=CascadeType.ALL)
 	private PaymentRequest paymentRequest;
 
 	public Long getId() {

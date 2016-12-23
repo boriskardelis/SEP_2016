@@ -11,8 +11,10 @@
 
 		var getAmount = function(paymentId) {
 		console.log(paymentId);			
-			return $http.get("api/payment/?id=" + paymentId)
+			return $http.get("api/payment/" + paymentId)
 						.then(function(response) {	
+							console.log("PAYMENT ID");
+							console.log(paymentId);
 							console.log("Vracen odgovor from Payment");				
 							return response;
 						})

@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.tim6.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ import ftn.uns.ac.rs.tim6.repository.PaymentRequestRepository;
 @Service
 @Transactional
 public class PaymentRequestService implements GenericService<PaymentRequest> {
-	
+
 	@Autowired
 	private PaymentRequestRepository paymentRequestRepository;
 
@@ -19,7 +20,7 @@ public class PaymentRequestService implements GenericService<PaymentRequest> {
 	public List<PaymentRequest> getAll() {
 		return paymentRequestRepository.findAll();
 	}
-	
+
 	@Override
 	public PaymentRequest save(PaymentRequest t) {
 		return paymentRequestRepository.save(t);
@@ -29,19 +30,20 @@ public class PaymentRequestService implements GenericService<PaymentRequest> {
 	public PaymentRequest findById(long id) {
 		return paymentRequestRepository.findOne(id);
 	}
-	
-	public PaymentRequest findByPaymentId(Long id){
-		List<PaymentRequest> paymentRequestList = paymentRequestRepository.findAll();
+
+	public PaymentRequest findByPaymentId(Long id) {
+
+		List<PaymentRequest> paymentRequestList = new ArrayList<PaymentRequest>();
+		paymentRequestList = paymentRequestRepository.findAll();
 		for (PaymentRequest paymentRequest : paymentRequestList) {
-			if (paymentRequest.getPaymentUrlAndId().getPaymentId() == id) {
-				System.out.println("REQUEST" + paymentRequest.getPaymentUrlAndId().getId());
+
+			if (paymentRequest.getPaymentUrlAndId().getPaymentId().longValue() == id.longValue()) {
 				return paymentRequest;
-				
+
 			}
 		}
 		return null;
-		
+
 	}
-	
 
 }

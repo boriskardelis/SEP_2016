@@ -54,7 +54,8 @@ public class PaymentRequest implements Serializable {
 	@JoinColumn(name = "ACQUIRER_ORDER_ID")
 	private AcquirerOrder acquirerOrder;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentRequest", cascade=CascadeType.ALL)
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "PAYMENT_URL_AND_ID")
 	private PaymentUrlAndId paymentUrlAndId;
 
 	public Long getId() {
