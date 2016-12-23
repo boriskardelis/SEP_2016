@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.tim6.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -53,7 +54,7 @@ public class PaymentRequest implements Serializable {
 	@JoinColumn(name = "ACQUIRER_ORDER_ID")
 	private AcquirerOrder acquirerOrder;
 	
-	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentRequest")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentRequest", cascade=CascadeType.ALL)
 	private PaymentUrlAndId paymentUrlAndId;
 
 	public Long getId() {

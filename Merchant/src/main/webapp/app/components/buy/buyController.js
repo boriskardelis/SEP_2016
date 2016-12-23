@@ -82,7 +82,7 @@
 			 	$timeout(function() {
 			 		console.log("proslo");
 				   $window.location = vm.paymentUrlAndID.url;
-				}, 10000);
+				}, 1000);
 		    });
 
 		

@@ -41,23 +41,29 @@ public class PaymentUrlAndIdController {
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
+		PaymentUrlAndId puidDb = new PaymentUrlAndId();
 
 		puid.setPaymentId(randomGenerator.nextInt(1000));
-		puid.setUrl("http://localhost:7070/payment?paimentId=" + puid.getPaymentId());
+		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 		
-		PaymentUrlAndId puidDb = new PaymentUrlAndId();
-		puidDb.setPaymentId(puid.getPaymentId());
-		puidDb.setPaymentUrl(puid.getUrl());
-
 		paymentRequest.setAmount(mdto.getAmount());
 		paymentRequest.setId(puid.getPaymentId());
+		puidDb.setPaymentId(puid.getPaymentId());
+		puidDb.setPaymentUrl(puid.getUrl());
 		paymentRequest.setPaymentUrlAndId(puidDb);
 		paymentRequestService.save(paymentRequest);
-		paymentUrlAndRequestService.save(puidDb);
-
+		
+		System.out.println("PAYMENT REQUEST");
+		System.out.println(paymentRequest.getAmount());
+		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
+		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
+		
+		
+		System.out.println("SUMA URL I ID U BANCI!!!");
+		System.out.println(mdto.getAmount());
 		System.out.println(puid.getUrl());
 		System.out.println(puid.getPaymentId());
-		System.out.println("suma u BANCI!!! : " + mdto.getAmount());
+		
 		
 		return puid;
 	}

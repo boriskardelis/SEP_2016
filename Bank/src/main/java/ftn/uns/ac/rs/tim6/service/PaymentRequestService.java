@@ -34,7 +34,9 @@ public class PaymentRequestService implements GenericService<PaymentRequest> {
 		List<PaymentRequest> paymentRequestList = paymentRequestRepository.findAll();
 		for (PaymentRequest paymentRequest : paymentRequestList) {
 			if (paymentRequest.getPaymentUrlAndId().getPaymentId() == id) {
+				System.out.println("REQUEST" + paymentRequest.getPaymentUrlAndId().getId());
 				return paymentRequest;
+				
 			}
 		}
 		return null;

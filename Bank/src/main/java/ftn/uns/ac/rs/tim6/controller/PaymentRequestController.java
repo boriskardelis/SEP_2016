@@ -28,8 +28,11 @@ public class PaymentRequestController {
 	}
 	
 	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
-	public ResponseEntity<AmountDto> handleGetPaymentAmmount(@PathVariable Long id) {
+	public ResponseEntity<AmountDto> handleGetPaymentAmmount(@PathVariable("id") Long id) {
 		
+		System.out.println("PRINT ID");
+		System.out.println(id);
+//		long idLong = Long.parseLong(id);
 		AmountDto adto = new AmountDto();
 		PaymentRequest paymentRequest = paymentRequestService.findByPaymentId(id);
 		adto.setAmount(paymentRequest.getAmount());

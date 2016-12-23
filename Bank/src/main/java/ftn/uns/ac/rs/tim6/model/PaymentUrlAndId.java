@@ -2,6 +2,7 @@ package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +31,7 @@ public class PaymentUrlAndId implements Serializable {
 	@Column(name = "PAYMENT_URL")
 	private String paymentUrl;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "PAYMENT_REQUEST_ID")
 	private PaymentRequest paymentRequest;
 
