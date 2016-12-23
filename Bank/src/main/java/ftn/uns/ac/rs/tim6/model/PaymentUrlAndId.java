@@ -20,7 +20,7 @@ public class PaymentUrlAndId implements Serializable {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "PAYMENT_URL_AND	_ID")
+	@Column(name = "PAYMENT_URL_AND_ID")
 	private Long id;
 	
 	@Column(name = "PAYMENT_ID")
@@ -30,8 +30,8 @@ public class PaymentUrlAndId implements Serializable {
 	@Column(name = "PAYMENT_URL")
 	private String paymentUrl;
 	
-	@OneToOne(optional = true)
-	@JoinColumn(name = "PAYMENT_REQUEST_ID" , nullable = false)
+	@OneToOne
+	@JoinColumn(name = "PAYMENT_REQUEST_ID")
 	private PaymentRequest paymentRequest;
 
 	public Long getId() {

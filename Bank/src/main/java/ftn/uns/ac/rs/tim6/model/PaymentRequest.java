@@ -46,14 +46,14 @@ public class PaymentRequest implements Serializable {
 	private String errorUrl;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn( name = "PAYMENT_REQUEST_MERCHANT", nullable = true)
+	@JoinColumn( name = "PAYMENT_REQUEST_MERCHANT")
 	private Merchant merchant;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ACQUIRER_ORDER_ID" , nullable = true)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ACQUIRER_ORDER_ID")
 	private AcquirerOrder acquirerOrder;
 	
-	@OneToOne(optional = true, fetch = FetchType.LAZY, mappedBy= "paymentRequest")
+	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentRequest")
 	private PaymentUrlAndId paymentUrlAndId;
 
 	public Long getId() {

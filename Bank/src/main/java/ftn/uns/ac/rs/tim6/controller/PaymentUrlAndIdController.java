@@ -22,15 +22,12 @@ import ftn.uns.ac.rs.tim6.service.PaymentUrlAndIdService;
 @RestController
 @RequestMapping("/api")
 public class PaymentUrlAndIdController {
-	
+
 	@Autowired
 	PaymentUrlAndIdService paymentUrlAndRequestService;
-	
+
 	@Autowired
-	PaymentRequestService paymentRequestService1;
-	
-	@Autowired
-	PaymentUrlAndIdService paymentRequestService;
+	PaymentRequestService paymentRequestService;
 
 	@RequestMapping(value = "/paymenturlandids", method = RequestMethod.GET)
 	public ResponseEntity<List<PaymentUrlAndId>> handleGetAllPaPaymentUrlAndIds() {
@@ -38,50 +35,31 @@ public class PaymentUrlAndIdController {
 		return new ResponseEntity<List<PaymentUrlAndId>>(PaymentUrlAndIds, HttpStatus.OK);
 	}
 
-	/*@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	public PaymentUrlIdDto  handleBuy(@RequestBody MerchantDto mdto) throws IOException {
-		
+	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
+	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
+
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
-		
+
 		puid.setPaymentId(randomGenerator.nextInt(1000));
-		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());	
+		puid.setUrl("http://localhost:7070/payment?paimentId=" + puid.getPaymentId());
 		
+		PaymentUrlAndId puidDb = new PaymentUrlAndId();
+		puidDb.setPaymentId(puid.getPaymentId());
+		puidDb.setPaymentUrl(puid.getUrl());
+
 		paymentRequest.setAmount(mdto.getAmount());
 		paymentRequest.setId(puid.getPaymentId());
-		System.out.println("od payment request:" + paymentRequest);
-		paymentRequestService1.save(paymentRequest);
-		System.out.println("Nakon sacuvanja payment request:" + paymentRequest.getId());
-		
+		paymentRequest.setPaymentUrlAndId(puidDb);
+		paymentRequestService.save(paymentRequest);
+		paymentUrlAndRequestService.save(puidDb);
+
 		System.out.println(puid.getUrl());
 		System.out.println(puid.getPaymentId());
 		System.out.println("suma u BANCI!!! : " + mdto.getAmount());
-
+		
 		return puid;
-	}*/
-	
-	
-	
-	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	 public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
-	  
-	  PaymentUrlIdDto puid = new PaymentUrlIdDto();
-	  Random randomGenerator = new Random();
-	  PaymentRequest paymentRequest = new PaymentRequest();
-	  
-	  puid.setPaymentId(randomGenerator.nextInt(1000));
-	  puid.setUrl("http://localhost:7070/payment?paimentId=" + puid.getPaymentId()); 
-	  
-	  paymentRequest.setAmount(mdto.getAmount());
-	  paymentRequest.setId(puid.getPaymentId());
-	  paymentRequestService1.save(paymentRequest);
-	  
-	  System.out.println(puid.getUrl());
-	  System.out.println(puid.getPaymentId());
-	  System.out.println("suma u BANCI!!! : " + mdto.getAmount());
-
-	  return puid;
-	 }
+	}
 
 }

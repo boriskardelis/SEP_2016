@@ -13,21 +13,32 @@ import ftn.uns.ac.rs.tim6.repository.PaymentRequestRepository;
 public class PaymentRequestService implements GenericService<PaymentRequest> {
 	
 	@Autowired
-	private PaymentRequestRepository paymentRequesteRepository;
+	private PaymentRequestRepository paymentRequestRepository;
 
 	@Override
 	public List<PaymentRequest> getAll() {
-		return paymentRequesteRepository.findAll();
+		return paymentRequestRepository.findAll();
 	}
 	
 	@Override
 	public PaymentRequest save(PaymentRequest t) {
-		return paymentRequesteRepository.save(t);
+		return paymentRequestRepository.save(t);
 	}
 
 	@Override
 	public PaymentRequest findById(long id) {
-		return paymentRequesteRepository.findOne(id);
+		return paymentRequestRepository.findOne(id);
+	}
+	
+	public PaymentRequest findByPaymentId(Long id){
+		List<PaymentRequest> paymentRequestList = paymentRequestRepository.findAll();
+		for (PaymentRequest paymentRequest : paymentRequestList) {
+			if (paymentRequest.getPaymentUrlAndId().getPaymentId() == id) {
+				return paymentRequest;
+			}
+		}
+		return null;
+		
 	}
 	
 

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import ftn.uns.ac.rs.tim6.dto.AmountDto;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
 import ftn.uns.ac.rs.tim6.service.PaymentRequestService;
 
@@ -26,12 +28,12 @@ public class PaymentRequestController {
 	}
 	
 	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
-	public ResponseEntity<PaymentRequest> getInsurance(@PathVariable Long id) {
-		System.out.println("usao u payment ID");
-		System.out.println(id);
-
-		PaymentRequest paymentRequest = paymentRequestService.findById(1);
-		System.out.println(paymentRequest);
-		return new ResponseEntity<PaymentRequest>(paymentRequest, HttpStatus.OK);
+	public ResponseEntity<AmountDto> handleGetPaymentAmmount(@PathVariable Long id) {
+		
+		AmountDto adto = new AmountDto();
+		PaymentRequest paymentRequest = paymentRequestService.findByPaymentId(id);
+		adto.setAmount(paymentRequest.getAmount());
+		
+		return new ResponseEntity<AmountDto>(adto, HttpStatus.OK);
 	}
 }
