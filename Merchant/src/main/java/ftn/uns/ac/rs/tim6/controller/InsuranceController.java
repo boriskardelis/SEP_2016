@@ -126,6 +126,8 @@ public class InsuranceController {
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
 
 			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
+			System.out.println(puid);
+			System.out.println(puid.getPaymentId());
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 
 		} catch (Exception e) {

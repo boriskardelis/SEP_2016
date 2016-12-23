@@ -13,15 +13,21 @@
 		console.log(paymentId);			
 			return $http.get("api/payment/" + paymentId)
 						.then(function(response) {	
-							console.log("PAYMENT ID");
-							console.log(paymentId);
 							console.log("Vracen odgovor from Payment");				
 							return response;
 						})
 						.catch(function(response) {
-							console.log("doslo do CATCH Payment");
-							console.log(response);	
-							console.log(response.data);
+							return response;
+						});	
+			};
+
+		var pay = function(card) {
+		console.log(card);		
+			return $http.get("api/payment/pay", card)
+						.then(function(response) {				
+							return response;
+						})
+						.catch(function(response) {
 							return response;
 						});	
 			};
@@ -29,7 +35,8 @@
 
 		return {
 			
-			getAmount : getAmount
+			getAmount : getAmount,
+			pay : pay
 			
 		};
 

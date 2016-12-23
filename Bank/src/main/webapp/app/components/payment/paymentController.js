@@ -38,6 +38,11 @@
 
 		vm.pay = function() {
 			console.log("placeno");
+			vm.card.paymentId = vm.paymentId;
+			PaymentService.pay(vm.card).then(function(response) {
+				console.log("URADJEN PAY");
+
+			});
 		};
 
 	}

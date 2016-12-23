@@ -1,3 +1,23 @@
+
+<!-- 
+
+      <div class="col-md-2">
+        <label for="ex1">col-xs-2</label>
+        <input class="form-control" id="ex1" type="text">
+      </div>
+      <div class="col-md-3">
+        <label for="ex2">col-xs-3</label>
+        <input class="form-control" id="ex2" type="text">
+      </div>
+      <div class="col-md-4">
+        <label for="ex3">col-xs-4</label>
+        <input class="form-control" id="ex3" type="text">
+      </div>
+      <div class="col-md-3">
+        <label for="ex3">col-xs-4</label>
+        <input class="form-control" id="ex3" type="text">
+      </div> -->
+
 	<div class="form-group">
 		<label class="buy-lable" for="region" translate="region"></label>
 		&nbsp;
@@ -63,19 +83,20 @@
 	<div class="form-group">
 		<label class="buy-lable" for="sport">Sport:</label>
 		&nbsp;
-		<div ng-if="currentLanguage == 'en'">
+		
+		<span ng-if="currentLanguage == 'en'">
 			<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
 		  	     <option value="" translate="selectSport"> </option>
 			</select>
-		</div>
-		<div ng-if="currentLanguage == 'sr'">
+		</span>
+		<span ng-if="currentLanguage == 'sr'">
 			<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
 		  	     <option value="" translate="selectSport"> </option>
 			</select>
-		</div>
+		</span>
 	</div>
 
-	<div class="form-group row">
+	<div class="form-group">
 		<div class="col-xs-6 col-xs-offset-3">
 		    <a ui-sref="buy.secondStep" class="btn btn-block btn-info" ng-click="vm.calculateFirstStep()">
 		    {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
