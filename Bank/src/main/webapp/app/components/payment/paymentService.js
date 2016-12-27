@@ -23,7 +23,7 @@
 
 		var pay = function(card) {
 		console.log(card);		
-			return $http.get("api/payment/pay", card)
+			return $http.post("api/payment/pay", card)
 						.then(function(response) {				
 							return response;
 						})

@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class AmountDto {
 	
-	BigDecimal amount;
+	private BigDecimal amount;
 
 	public BigDecimal getAmount() {
 		return amount;

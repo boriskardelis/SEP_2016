@@ -17,48 +17,48 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACQUIRER_ORDER")
-public class AcquirerOrder implements Serializable{
-	
+public class AcquirerOrder implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "ACQUIRER_ORDER_ID")
 	private Long id;
-	
+
 	@Column(name = "ACQUIRER_TIMESTAMP")
 	private Timestamp timestamp;
-	
+
 	@Column(name = "PAN")
-	private String pan;
-	
+	private Long pan;
+
 	@Column(name = "SECURITY_CODE")
 	private String securityCode;
-	
+
 	@Column(name = "TRANSACTION_AMOUNT")
 	private BigDecimal transactionAmount;
-	
+
 	@Column(name = "CARD_HOLDER")
 	private String cardHolder;
-	
+
 	@Column(name = "EXP_DATE")
 	private Date expDate;
-	
-	//?
+
+	// ?
 	@Column(name = "DIRECTION")
 	private String string;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy= "acquirerOrder")
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "acquirerOrder")
 	private PaymentRequest paymentRequest;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy= "acquirerOrder")
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "acquirerOrder")
 	private IssuerMessage issuerMessage;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy= "acquirerOrder")
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "acquirerOrder")
 	private AcquirerOrderReservation acquirerOrderReservation;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( name = "ACCOUNT_ID", nullable = true)
+	@JoinColumn(name = "ACCOUNT_ID", nullable = true)
 	private Account account;
 
 	public Long getId() {
@@ -77,11 +77,11 @@ public class AcquirerOrder implements Serializable{
 		this.timestamp = timestamp;
 	}
 
-	public String getPan() {
+	public Long getPan() {
 		return pan;
 	}
 
-	public void setPan(String pan) {
+	public void setPan(Long pan) {
 		this.pan = pan;
 	}
 
@@ -157,7 +157,7 @@ public class AcquirerOrder implements Serializable{
 		this.account = account;
 	}
 
-	public AcquirerOrder(Long id, Timestamp timestamp, String pan, String securityCode, BigDecimal transactionAmount,
+	public AcquirerOrder(Long id, Timestamp timestamp, Long pan, String securityCode, BigDecimal transactionAmount,
 			String cardHolder, Date expDate, String string, PaymentRequest paymentRequest, IssuerMessage issuerMessage,
 			AcquirerOrderReservation acquirerOrderReservation, Account account) {
 		super();
@@ -178,13 +178,5 @@ public class AcquirerOrder implements Serializable{
 	public AcquirerOrder() {
 		super();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }

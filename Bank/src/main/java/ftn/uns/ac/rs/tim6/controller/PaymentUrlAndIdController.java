@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.tim6.controller;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Random;
 
@@ -36,8 +35,9 @@ public class PaymentUrlAndIdController {
 	}
 
 	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
-	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) throws IOException {
-
+	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto){
+		
+		//TODO dobio sam merchanta kreiraj sta imas
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
@@ -46,6 +46,7 @@ public class PaymentUrlAndIdController {
 		puid.setPaymentId(randomGenerator.nextInt(1000));
 		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 		
+		//TODO proveri dobijenog merchanta, i napravi sta imas 
 		paymentRequest.setAmount(mdto.getAmount());
 		paymentRequest.setId(puid.getPaymentId());
 		puidDb.setPaymentId(puid.getPaymentId());
@@ -53,16 +54,16 @@ public class PaymentUrlAndIdController {
 		paymentRequest.setPaymentUrlAndId(puidDb);
 		paymentRequestService.save(paymentRequest);
 		
-		System.out.println("PAYMENT REQUEST");
-		System.out.println(paymentRequest.getAmount());
-		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
-		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
-		
-		
-		System.out.println("SUMA URL I ID U BANCI!!!");
-		System.out.println(mdto.getAmount());
-		System.out.println(puid.getUrl());
-		System.out.println(puid.getPaymentId());
+//		System.out.println("PAYMENT REQUEST");
+//		System.out.println(paymentRequest.getAmount());
+//		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
+//		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
+//		
+//		
+//		System.out.println("SUMA URL I ID U BANCI!!!");
+//		System.out.println(mdto.getAmount());
+//		System.out.println(puid.getUrl());
+//		System.out.println(puid.getPaymentId());
 		
 		
 		return puid;

@@ -29,4 +29,5 @@ public class CardService implements GenericService<Card>{
 	public Card findById(long id) {
 		return cardRepository.findOne(id);
 	}
+	
 }

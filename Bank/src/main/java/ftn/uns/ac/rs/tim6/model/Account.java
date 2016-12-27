@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -14,8 +15,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ACCOUNT")
-public class Account implements Serializable{
-	
+public class Account implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -23,19 +24,23 @@ public class Account implements Serializable{
 	@Column(name = "ACCOUNT_ID")
 	private Long id;
 	
+	//TODO da li treba String? verovatno broj
 	@Column(name = "ACCOUNT_NUMBER")
 	private String accountNumber;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy= "account")
+
+	@Column(name = "ACCOUNT_BALANCE")
+	private BigDecimal accountBalance;
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	private List<AcquirerOrder> acquirerOrder;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy= "account")
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "account")
 	private List<Card> card;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy= "account")
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "account")
 	private Merchant merchant;
-	
-	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy= "account")
+
+	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "account")
 	private AcquirerOrderReservation acquirerOrderReservation;
 
 	public Long getId() {
@@ -86,6 +91,22 @@ public class Account implements Serializable{
 		this.acquirerOrderReservation = acquirerOrderReservation;
 	}
 
+	public String getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(String accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public BigDecimal getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(BigDecimal accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
 	public Account(Long id, String firstName, List<AcquirerOrder> acquirerOrder, List<Card> card, Merchant merchant,
 			AcquirerOrderReservation acquirerOrderReservation) {
 		super();
@@ -100,7 +121,5 @@ public class Account implements Serializable{
 	public Account() {
 		super();
 	}
-	
-	
 
 }
