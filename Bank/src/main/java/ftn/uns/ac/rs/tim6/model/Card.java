@@ -22,8 +22,14 @@ public class Card implements Serializable{
 	@Column(name = "CARD_ID")
 	private Long id;
 	
-	@Column(name = "CARD_HOLDER")
-	private String cardHolder;
+	@Column(name = "MONTH")
+	private int month;
+	
+	@Column(name = "YEAR")
+	private int year;
+	
+	@Column(name = "CARD_HOLDER_NAME")
+	private String cardHolderName;
 	
 	@Column(name = "PAN")
 	private Long pan;
@@ -44,11 +50,11 @@ public class Card implements Serializable{
 	}
 
 	public String getCardHolder() {
-		return cardHolder;
+		return cardHolderName;
 	}
 
 	public void setCardHolder(String cardHolder) {
-		this.cardHolder = cardHolder;
+		this.cardHolderName = cardHolder;
 	}
 
 	public Long getPan() {
@@ -74,11 +80,32 @@ public class Card implements Serializable{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	
+	
+	public int getMonth() {
+		return month;
+	}
 
-	public Card(Long id, String cardHolder, Long pan, Long securityCode, Account account) {
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+	
+	
+	
+	public Card(Long id, int month, int year, String cardHolderName, Long pan, Long securityCode, Account account) {
 		super();
 		this.id = id;
-		this.cardHolder = cardHolder;
+		this.month = month;
+		this.year = year;
+		this.cardHolderName = cardHolderName;
 		this.pan = pan;
 		this.securityCode = securityCode;
 		this.account = account;

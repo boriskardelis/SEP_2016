@@ -1,14 +1,16 @@
 package ftn.uns.ac.rs.tim6.dto;
 
+import java.math.BigDecimal;
+
 public class AmountDto {
 	
-	double amount;
+	BigDecimal amount;
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 	

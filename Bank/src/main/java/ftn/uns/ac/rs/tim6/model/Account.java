@@ -24,7 +24,7 @@ public class Account implements Serializable{
 	private Long id;
 	
 	@Column(name = "ACCOUNT_NUMBER")
-	private String firstName;
+	private String accountNumber;
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy= "account")
 	private List<AcquirerOrder> acquirerOrder;
@@ -47,11 +47,11 @@ public class Account implements Serializable{
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return accountNumber;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.accountNumber = firstName;
 	}
 
 	public List<AcquirerOrder> getAcquirerOrder() {
@@ -90,7 +90,7 @@ public class Account implements Serializable{
 			AcquirerOrderReservation acquirerOrderReservation) {
 		super();
 		this.id = id;
-		this.firstName = firstName;
+		this.accountNumber = firstName;
 		this.acquirerOrder = acquirerOrder;
 		this.card = card;
 		this.merchant = merchant;

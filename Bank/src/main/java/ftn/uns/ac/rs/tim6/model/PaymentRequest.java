@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.CascadeType;
@@ -40,7 +41,7 @@ public class PaymentRequest implements Serializable {
 	private Date merchantTimestamp;
 	
 	@Column(name = "AMOUNT")
-	private double amount;
+	private BigDecimal amount;
 	
 	@URL
 	@Column(name = "ERROR_URL")
@@ -98,13 +99,12 @@ public class PaymentRequest implements Serializable {
 		this.merchantTimestamp = merchantTimestamp;
 	}
 
-	
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
@@ -140,8 +140,10 @@ public class PaymentRequest implements Serializable {
 		this.paymentUrlAndId = paymentUrlAndId;
 	}
 
+	
+
 	public PaymentRequest(Long id, Integer merchantOrderId, String merchantId, String merchantPassword,
-			Date merchantTimestamp, long amount, String errorUrl, Merchant merchant, AcquirerOrder acquirerOrder,
+			Date merchantTimestamp, BigDecimal amount, String errorUrl, Merchant merchant, AcquirerOrder acquirerOrder,
 			PaymentUrlAndId paymentUrlAndId) {
 		super();
 		this.id = id;

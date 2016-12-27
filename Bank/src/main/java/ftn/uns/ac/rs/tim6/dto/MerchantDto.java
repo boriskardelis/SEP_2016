@@ -1,16 +1,18 @@
 package ftn.uns.ac.rs.tim6.dto;
 
+import java.math.BigDecimal;
+
 public class MerchantDto {
 
-	private double amount;
+	private BigDecimal amount;
 	
 	private long orderID;
 
-	public double getAmount() {
+	public BigDecimal getAmount() {
 		return amount;
 	}
 
-	public void setAmount(double amount) {
+	public void setAmount(BigDecimal amount) {
 		this.amount = amount;
 	}
 
