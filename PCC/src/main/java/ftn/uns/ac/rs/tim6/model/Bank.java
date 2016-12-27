@@ -11,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 @Entity
 @Table(name = "BANK")
-public class Bank implements Serializable{
+public class Bank implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -23,16 +21,16 @@ public class Bank implements Serializable{
 	@GeneratedValue
 	@Column(name = "BANK_ID")
 	private Long id;
-	
+
 	@Column(name = "BANK_PAN")
 	private Long bankPan;
-	
+
 	@Column(name = "BANK_NAME")
 	private String bankName;
-	
+
 	@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
 	private List<IncomingMessage> incomingMessages;
-	
+
 	@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
 	private List<ResponseMessage> requestMessages;
 
@@ -88,9 +86,7 @@ public class Bank implements Serializable{
 
 	public Bank() {
 		super();
-		// TODO Auto-generated constructor stub
+
 	}
-	
-	
-	
+
 }

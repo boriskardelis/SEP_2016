@@ -150,7 +150,6 @@ public class IncomingMessage implements Serializable {
 
 	public IncomingMessage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

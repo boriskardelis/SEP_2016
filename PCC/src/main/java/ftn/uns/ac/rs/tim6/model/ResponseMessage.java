@@ -112,7 +112,6 @@ public class ResponseMessage implements Serializable{
 
 	public ResponseMessage() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	
