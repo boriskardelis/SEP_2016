@@ -1,8 +1,11 @@
 package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -60,8 +63,7 @@ public class InsuranceController {
 		List<PricelistItem> curentPricelistItems = pricelistService.getCurrentPricelistItems();
 		DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
 
-		
-		/*CITANJE PODATAKA OD FRONTEND-A*/
+		/* CITANJE PODATAKA OD FRONTEND-A */
 		JsonNode node = mapper.readTree(jsonInString);
 		RiskSubcategory region = mapper.convertValue(node.get("region"), RiskSubcategory.class);
 		RiskSubcategory sum = mapper.convertValue(node.get("sum"), RiskSubcategory.class);
@@ -78,20 +80,19 @@ public class InsuranceController {
 		riskSubcategories.add(region);
 		riskSubcategories.add(sum);
 		riskSubcategories.add(ageCarrier);
-		
-		
+
 		for (RiskSubcategory risk : riskSubcategories) {
 			for (PricelistItem item : curentPricelistItems) {
 				if (item.getRiskSubcategory().getName().equals(risk.getName())) {
-					System.out.println("ODABRANI");
-					System.out.println("od fronta risk: " + risk.getName());
-					System.out.println("od fronta item: " + item.getRiskSubcategory().getName());
+//					System.out.println("ODABRANI");
+//					System.out.println("od fronta risk: " + risk.getName());
+//					System.out.println("od fronta item: " + item.getRiskSubcategory().getName());
 					dto.getItems().add(item);
 				}
 			}
 		}
-		
-		/*CITANJE PODATAKA OD FRONTEND-A*/
+
+		/* CITANJE PODATAKA OD FRONTEND-A */
 
 		try {
 
@@ -111,17 +112,26 @@ public class InsuranceController {
 	}
 
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
-	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody Double suma) throws IOException {
+	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody BigDecimal suma) throws IOException {
 
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
+		Random randomGenerator = new Random();
 		MerchantDto mdto = new MerchantDto();
+		RestTemplate client = new RestTemplate();
+		HttpHeaders headers = new HttpHeaders();
+
+		// TODO setovati sve atribute u merchantu
+		mdto.setMerchantId(15L);
+		mdto.setMerchantPassword("password");
 		mdto.setAmount(suma);
+		// TODO orderId Number(10)
+		mdto.setOrderID(randomGenerator.nextInt(1000));
+		mdto.setMerchantTimestamp(new Date());
+		mdto.setErrorUrl("www.error.url");
 
 		try {
 
-			RestTemplate client = new RestTemplate();
-			HttpHeaders headers = new HttpHeaders();
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
 
