@@ -38,8 +38,8 @@ public class ResponseMessage implements Serializable{
 	private Timestamp issuerTimestamp;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "RESPONSE_MESSAGE")
-	private ResponseMessage responseMessage;
+	@JoinColumn(name = "BANK")
+	private Bank bank;
 
 	public Long getId() {
 		return id;
@@ -89,16 +89,17 @@ public class ResponseMessage implements Serializable{
 		this.issuerTimestamp = issuerTimestamp;
 	}
 
-	public ResponseMessage getResponseMessage() {
-		return responseMessage;
+	public Bank getBank() {
+		return bank;
 	}
 
-	public void setResponseMessage(ResponseMessage responseMessage) {
-		this.responseMessage = responseMessage;
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
+	
 
 	public ResponseMessage(Long id, Long acquirerOrderId, Boolean result, Timestamp acquirerTimestamp,
-			Long issuerOrderId, Timestamp issuerTimestamp, ResponseMessage responseMessage) {
+			Long issuerOrderId, Timestamp issuerTimestamp, Bank bank) {
 		super();
 		this.id = id;
 		this.acquirerOrderId = acquirerOrderId;
@@ -106,7 +107,7 @@ public class ResponseMessage implements Serializable{
 		this.acquirerTimestamp = acquirerTimestamp;
 		this.issuerOrderId = issuerOrderId;
 		this.issuerTimestamp = issuerTimestamp;
-		this.responseMessage = responseMessage;
+		this.bank = bank;
 	}
 
 	public ResponseMessage() {

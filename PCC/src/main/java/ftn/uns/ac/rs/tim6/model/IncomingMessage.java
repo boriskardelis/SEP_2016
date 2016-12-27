@@ -48,8 +48,8 @@ public class IncomingMessage implements Serializable {
 	private BigDecimal amount;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "INCOMING_MESSAGE")
-	private IncomingMessage incomingMessage;
+	@JoinColumn(name = "BANK")
+	private Bank bank;
 
 	public Long getId() {
 		return id;
@@ -123,16 +123,18 @@ public class IncomingMessage implements Serializable {
 		this.amount = amount;
 	}
 
-	public IncomingMessage getIncomingMessage() {
-		return incomingMessage;
+	public Bank getBank() {
+		return bank;
 	}
 
-	public void setIncomingMessage(IncomingMessage incomingMessage) {
-		this.incomingMessage = incomingMessage;
+	public void setBank(Bank bank) {
+		this.bank = bank;
 	}
+	
+	
 
 	public IncomingMessage(Long id, Long acquirerOrderId, Timestamp acquirerTimestamp, String pan, String securityCode,
-			String cardHolderName, int month, int year, BigDecimal amount, IncomingMessage incomingMessage) {
+			String cardHolderName, int month, int year, BigDecimal amount, Bank bank) {
 		super();
 		this.id = id;
 		this.acquirerOrderId = acquirerOrderId;
@@ -143,7 +145,7 @@ public class IncomingMessage implements Serializable {
 		this.month = month;
 		this.year = year;
 		this.amount = amount;
-		this.incomingMessage = incomingMessage;
+		this.bank = bank;
 	}
 
 	public IncomingMessage() {
