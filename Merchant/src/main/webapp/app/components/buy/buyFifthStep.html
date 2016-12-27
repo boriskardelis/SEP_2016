@@ -1,24 +1,24 @@
  	
-        <p class="h4 bg-danger" align="left">Insurance informations</p>
+        <p class="h4 bg-danger" align="left">{{ 'insuranceInformation' | translate }}</p>
             <div class="form-inline">
                     <label class="col-md-4" align="right">Region:</label>
                     <p>{{vm.regionSelected.name}}</p>
             </div>
             <div class="form-inline">
-                    <label class="col-md-4" align="right">Sum to insuring:</label>
+                    <label class="col-md-4" align="right">{{ 'sumToInsure' | translate }}</label>
                     <p>{{vm.sumToSelected.name}}</p>
             </div>
             <div class="form-inline">
-                    <label class="col-md-4" align="right">Insured persons:</label>
+                    <label class="col-md-4" align="right">{{ 'numberOfInsurancedPersons' | translate }}</label>
                     <p>{{vm.totalPersons + 1}}</p>
             </div>
             <div class="form-inline">
-                    <label class="col-md-4" align="right">Duration of insurance:</label>
-                    <p>From {{vm.startDateParsed}} to {{vm.endDateParsed}}</p>
+                    <label class="col-md-4" align="right">{{ 'durationOfInsurance' | translate }}</label>
+                    <p>{{ 'from' | translate }} {{vm.startDateParsed}} {{ 'to1' | translate }} {{vm.endDateParsed}}</p>
             </div>
             
 
-        <p class="h4 bg-danger" align="left">Additional insurances</p>  
+        <p class="h4 bg-danger" align="left">{{ 'additionalInsurances' | translate }}</p>  
             <div ng-if="vm.sportSelected != undefined" class="form-inline">
                     <label class="col-md-4" align="right">Sport:</label>
                     <p>{{vm.sportSelected.name}}</p>

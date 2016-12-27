@@ -17,27 +17,27 @@
         <input type="text" ng-model="vm.buyer.passport_number" class="form-control" placeholder="{{ 'passportNumber' | translate }}">
     </div>
     <div class="form-group">          
-        <label>Address</label>
-        <input type="text" ng-model="vm.buyer.address" class="form-control" placeholder="Address">
+        <label>{{ 'address' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.address" class="form-control" placeholder="{{ 'address' | translate }}">
     </div>
     <div class="form-group">          
-        <label>Phone number</label>
-        <input type="text" ng-model="vm.buyer.phone_number" class="form-control" placeholder="Phone number">
+        <label>{{ 'phoneNumber' | translate }}</label>
+        <input type="text" ng-model="vm.buyer.phone_number" class="form-control" placeholder="{{ 'phoneNumber' | translate }}">
     </div>
     <div class="form-group">          
         <label>E-mail</label>
         <input type="text" ng-model="vm.buyer.email" class="form-control" placeholder="E-mail">
     </div>
 
-    <label for="sumTo">Insurance contractor is:</label>
+    <label for="sumTo">{{ 'insuranceContractor' | translate }}</label>
         <div class="form-group" >      
                  <input type="radio" ng-model="vm.contractor"   
                          name="contractor"  ng-value="contractor">    
-                 <label>same person as insurance carrier.</label>
+                 <label>{{ 'spaic' | translate }}</label>
                  <br>  
                  <input type="radio" ng-model="vm.contractor"   
                          name="not" value="notContractor" ng-change="">    
-                 <label>NOT a same person as insurance carrier.</label>
+                 <label>{{ 'nspaic' | translate }}</label>
                  <br>                 
          </div>
 
@@ -52,24 +52,24 @@
                  </div>
 
                  <div class="form-group-pers col-md-2">
-                        <label for="name" >First name</label>
-                        <input style="width: 93px" type="text" ng-model="vm.person.first_name_holder" class="form-control" id="name" placeholder="First name">
+                        <label for="name" >{{ 'firstName' | translate }}</label>
+                        <input style="width: 93px" type="text" ng-model="vm.person.first_name_holder" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}">
                  </div>
                   <div class="form-group-pers  col-md-2">
-                        <label for="last" >Last name</label>
-                        <input style="width: 93px" type="text" ng-model="vm.person.last_name_holder" class="form-control" id="last" placeholder="Last name">
+                        <label for="last" >{{ 'lastName' | translate }}</label>
+                        <input style="width: 93px" type="text" ng-model="vm.person.last_name_holder" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}">
                  </div>
                  <div class="form-group-pers  col-md-3">
-                        <label for="address" >Address</label>
-                        <input style="width: 140px" type="text" ng-model="vm.person.address_holder" class="form-control" id="address" placeholder="Address">
+                        <label for="address" >{{ 'address' | translate }}</label>
+                        <input style="width: 140px" type="text" ng-model="vm.person.address_holder" class="form-control" id="address" placeholder="{{ 'address' | translate }}">
                  </div>
                  <div class="form-group-pers col-md-2">
-                        <label for="passport" >Passport</label>
-                        <input style="width: 93px" type="text" ng-model="vm.person.passport_number_holder" class="form-control" id="passport" placeholder="Passsport">
+                        <label for="passport" >{{ 'passportNumber' | translate }}</label>
+                        <input style="width: 93px" type="text" ng-model="vm.person.passport_number_holder" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}">
                  </div>
                  <div class="form-group-pers col-md-2">
-                        <label for="phone" >Phone</label>
-                        <input style="width: 93px" type="text" ng-model="vm.person.phone_number_holder" class="form-control" id="phone" placeholder="Phone">
+                        <label for="phone" >{{ 'phoneNumber' | translate }}</label>
+                        <input style="width: 93px" type="text" ng-model="vm.person.phone_number_holder" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}">
                  </div>
             </div>        
          </div>

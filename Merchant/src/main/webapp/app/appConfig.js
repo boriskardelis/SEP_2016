@@ -111,7 +111,7 @@
             nextSection : "Next section",
             previousSection: "Previous section",
             additionalInsurance : "Additional insurance:",
-            additionalPackages : "Additional Packages:",
+            additionalPackages : "Additional packages:",
             towing : "Towing to a certain mileage:",
             selectMileage : "-Select mileage-",
             repairsTo : "Repairs to a certain price: ",
@@ -151,6 +151,14 @@
             lastName : "Last name",
             jmbg : "Identification number",
             passportNumber : "Passport number",
+            phoneNumber : "Phone number",
+            insuranceContractor : "Insurance contractor is:",
+            spaic : " insurance carrier.",
+            nspaic : "NOT a same person as insurance carrier.",
+            insuranceInformation : "Insurance informations",
+            additionalInsurances : "Additional insurances:",
+            to1 : "to",
+
 
 
           
@@ -225,6 +233,14 @@
             lastName : "Prezime",
             jmbg : "JMBG",
             passportNumber : "Broj pasoša",
+            phoneNumber : "Broj telefona",
+            insuranceContractor : "Ugovarač osiguranja je:",
+            spaic : "nosilac osiguranja.",
+            nspaic : "druga osoba koja nije nosilac osiguranja.",
+            insuranceInformation : "Informacije o osiguranju",
+            additionalInsurances : "Dodatna osiguranja",
+            to1 : "do",
+
 
 
 
