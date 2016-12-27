@@ -1,27 +1,38 @@
-<!-- <div class="form-inline">
+<!-- <div class="form-inline"> -->
 
-<!-- <div class="container"> -->
-    <div class="form-inline">
-            <label class="col-xs-3" align="right">{{ 'insurancePremium' | translate }} </label>
-            <label>{{vm.droolPrices.premiumPrice}} RSD</label>
+    <div class="form-group row celina">
+        <div class="col-md-3">
+            <label class="right">{{ 'insurancePremium' | translate }} </label>
+        </div>
+        <div class="col-md-9">
+             <p>{{vm.droolPrices.premiumPrice}} RSD</p>
+        </div>
+    </div>
+    <div class="form-group row celina">
+        <div class="col-md-3">
+            <label class="right" align="right">{{ 'discount' | translate }}</label>
+        </div>
+        <div class="col-md-9">
+             <p>{{vm.droolPrices.discountPrice}} RSD</p>
+        </div>
+    </div>
+    <div class="form-group row celina">
+        <div class="col-md-3">
+            <label class="right" align="right">{{ 'tax' | translate }}</label>
+        </div>
+        <div class="col-md-9">
+             <p>{{vm.droolPrices.taxPrice}} RSD</p>
+        </div>
+    </div>
+    <div class="form-group row celina">
+        <div class="col-md-3">
+            <label class="right" align="right">{{ 'totalPayment' | translate }}</label>
+        </div>
+        <div class="col-md-9">
+             <p>{{vm.droolPrices.totalPrice}} RSD</p>
+        </div>
     </div>
     <br/>
-    <div class="form-inline">
-            <label class="col-xs-3" align="right">{{ 'discount' | translate }}</label>
-            <label>{{vm.droolPrices.discountPrice}} RSD</label>
-    </div>
-    <br/>
-    <div class="form-inline">
-            <label class="col-xs-3" align="right">{{ 'tax' | translate }}</label>
-            <label>{{vm.droolPrices.taxPrice}} RSD</label>
-    </div>
-    <br/>
-    <div class="form-inline">
-            <label class="col-xs-3" align="right">{{ 'totalPayment' | translate }}</label>
-            <label>{{vm.droolPrices.totalPrice}} RSD</label>
-    </div>
-    <br/>
-
 
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">

@@ -1,101 +1,172 @@
  	
-        <p class="h4 bg-danger" align="left">{{ 'insuranceInformation' | translate }}</p>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">Region:</label>
-                    <p>{{vm.regionSelected.name}}</p>
+    <p class="h4 bg-danger" align="center">{{ 'insuranceInformation' | translate }}</p>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Region:</label>
             </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">{{ 'sumToInsure' | translate }}</label>
-                    <p>{{vm.sumToSelected.name}}</p>
+            <div class="col-md-9">
+                  <p>{{vm.regionSelected.name}}</p>
             </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">{{ 'numberOfInsurancedPersons' | translate }}</label>
-                    <p>{{vm.totalPersons + 1}}</p>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">{{ 'sumToInsure' | translate }}</label>
             </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">{{ 'durationOfInsurance' | translate }}</label>
-                    <p>{{ 'from' | translate }} {{vm.startDateParsed}} {{ 'to1' | translate }} {{vm.endDateParsed}}</p>
+            <div class="col-md-9">
+                  <p>{{vm.sumToSelected.name}}</p>
             </div>
-            
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">{{ 'numberOfInsurancedPersons' | translate }}</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.totalPersons + 1}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">{{ 'durationOfInsurance' | translate }}</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{ 'from' | translate }} {{vm.startDateParsed}} {{ 'to1' | translate }} {{vm.endDateParsed}}</p>
+            </div>
+        </div>
+        
+    <p class="h4 bg-danger" align="center">{{ 'additionalInsurances' | translate }}</p>  
+        <div ng-if="vm.sportSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Sport:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.sportSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.towingSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Towing:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.towingSelected.name}}</p>
+            </div>
+        </div> 
+        <div ng-if="vm.repairSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Repairs:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.repairSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.accommodationSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Accommodation in hotel:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.accommodationSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.alternativeRideSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Alternative ride:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.alternativeRideSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.surfaceSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Suraface of apartment:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.surfaceSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.valueApartmentSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Estimated value of apartment:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.valueApartmentSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.disasterSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Insure from disaster:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.disasterSelected.name}}</p>
+            </div>
+        </div>
+        <div ng-if="vm.ageApartmentSelected != undefined" class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Age of apartment:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.ageApartmentSelected.name}}</p>
+            </div>
+        </div>
 
-        <p class="h4 bg-danger" align="left">{{ 'additionalInsurances' | translate }}</p>  
-            <div ng-if="vm.sportSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Sport:</label>
-                    <p>{{vm.sportSelected.name}}</p>
-            </div>       
-            <div ng-if="vm.towingSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Towing:</label>
-                    <p>{{vm.towingSelected.name}}</p>
+    <p class="h4 bg-danger" align="center">For payment</p>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Total price:</label>
             </div>
-            <div ng-if="vm.repairSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Repairs:</label>
-                    <p>{{vm.repairSelected.name}}</p>
+            <div class="col-md-9">
+                  <p>{{vm.droolPrices.totalPrice}} RSD</p>
             </div>
-            <div ng-if="vm.accommodationSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Accommodation in hotel:</label>
-                    <p>{{vm.accommodationSelected.name}}</p>
-            </div>
-            <div ng-if="vm.alternativeRideSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Alternative ride:</label>
-                    <p>{{vm.alternativeRideSelected.name}}</p>
-            </div>
-            <div ng-if="vm.surfaceSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Suraface of apartment:</label>
-                    <p>{{vm.surfaceSelected.name}}</p>
-            </div>
-            <div ng-if="vm.valueApartmentSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Estimated value of apartment:</label>
-                    <p>{{vm.valueApartmentSelected.name}}</p>
-            </div>
-            <div ng-if="vm.disasterSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Insure from disaster:</label>
-                    <p>{{vm.disasterSelected.name}}</p>
-            </div>
-            <div ng-if="vm.ageApartmentSelected != undefined" class="form-inline">
-                    <label class="col-md-4" align="right">Age of apartment:</label>
-                    <p>{{vm.ageApartmentSelected.name}}</p>
-            </div>
+        </div>
 
-        <p class="h4 bg-danger" align="left">For payment</p>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">Total price:</label>
-                    <p>{{vm.droolPrices.totalPrice}} RSD</p>
+    <p class="h4 bg-danger" align="center">Information about buyer</p>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Name and Last name:</label>
             </div>
+            <div class="col-md-9">
+                  <p>{{vm.buyer.first_name}} {{vm.buyer.last_name}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">JMBG:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.buyer.jmbg}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Passport number:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.buyer.passport_number}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3">
+                 <label class="right">Address:</label>
+            </div>
+            <div class="col-md-9">
+                  <p>{{vm.buyer.address}}</p>
+            </div>
+        </div>
 
-        <p class="h4 bg-danger" align="left">Information about buyer</p>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">Name and Last name:</label>
-                    <p>{{vm.buyer.first_name}} {{vm.buyer.last_name}}</p>
+    <p class="h4 bg-danger" align="center">Delivery</p>
+        <div class="form-group row">
+            <div class="col-md-3">
+                <label class="right">E-mail:</label>
             </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">JMBG:</label>
-                    <p>{{vm.buyer.jmbg}}</p>
+            <div class="col-md-9">
+                <p>{{vm.buyer.email}}</p>
             </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">Passport number:</label>
-                    <p>{{vm.buyer.passport_number}}</p>
-            </div>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">Address:</label>
-                    <p>{{vm.buyer.address}}</p>
-            </div>
+        </div>
+    <br>
 
-        <p class="h4 bg-danger" align="left">Delivery</p>
-            <div class="form-inline">
-                    <label class="col-md-4" align="right">E-mail:</label>
-                    <p>{{vm.buyer.email}}</p>
-            </div>
-
-        <br>
-
-<div class="text-center">
-  <!--   <span class="glyphicon glyphicon-heart"></span>
-    <h3>Thanks For Your Money!</h3> -->
-    
-    <button type="submit" class="btn btn-success">Buy</button>
+<div class="row text-center col-md-4 col-md-offset-4">
+    <button type="submit" class="btn btn-success btn-block">Buy</button>
 </div>
 
-<br><br>
+<br><br><br>
 
 <div class="form-group row">
     <div class="col-xs-6 col-xs-offset-3">     

@@ -1,7 +1,7 @@
 
 <!-- 
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="ex1">col-xs-2</label>
         <input class="form-control" id="ex1" type="text">
       </div>
@@ -18,82 +18,95 @@
         <input class="form-control" id="ex3" type="text">
       </div> -->
 
-	<div class="form-group">
-		<label class="buy-lable" for="region" translate="region"></label>
-		&nbsp;
-	    <select ng-model="vm.regionSelected" ng-options="region.name for region in vm.regions">
-	  	     <option value="" translate="selectDestination"> </option>
-			<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
-		</select>
+	<div class="form-group row celina">
+		<div class="col-md-3">
+			<label class="right" for="region" translate="region"></label>
+		</div>
+		<div class="col-md-9">
+		    <select ng-model="vm.regionSelected" ng-options="region.name for region in vm.regions">
+		  	     <option value="" translate="selectDestination"> </option>
+				<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+			</select>
+		</div>
 	</div>
 
-	<div class="form-group">
-	 			<label class="buy-lable" for="sumTo" translate="sumToInsure"></label>
-				<div class="form-group">
-		   			<span ng-repeat="sum in vm.sumTo">
-						 <input type="radio" ng-model="vm.sumToSelected"   
-						    	ng-value="sum"  name="sumToinsur">    
-						 <label for="sum.name{{sum.name}}">{{sum.name}}</label>
-						 <br>		   
-					</span>
-				</div>
+	<div class="form-group row celina">
+		<div class="col-md-3">
+	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
+	 	</div>
+	 	<div class="col-md-9">		
+		   	<span ng-repeat="sum in vm.sumTo">
+			    <input type="radio" ng-model="vm.sumToSelected" ng-value="sum"  name="sumToinsur">    
+				<label for="sum.name{{sum.name}}">{{sum.name}}</label>
+				<br>		   
+			</span>			
+		</div>
 	</div>
 
-	<div class="form-group">
-		<label class="buy-lable" for="ageCarrier" translate="ageInsuranceCarrier"></label>
-		&nbsp;
-	    <select ng-model="vm.ageSelected" ng-options="age.name for age in vm.ages">
-	   	    <option value="" translate="selectAge"></option>
-		</select>
+	<div class="form-group row celina">
+		<div class="col-md-3">
+			<label class="right" for="ageCarrier" translate="ageInsuranceCarrier"></label>
+		</div>
+		<div class="col-md-9">
+		    <select ng-model="vm.ageSelected" ng-options="age.name for age in vm.ages">
+		   	    <option value="" translate="selectAge"></option>
+			</select>
+		</div>
 	</div>
 
 	<!-- Persons preko DIREKTIVE!!! -->
-    <div class="form-group">
-		 <label class="buy-lable" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
-		 <span ng-repeat="(ageIndex, age) in vm.ages">
-		 	<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped"></buy-directive>
-		 </span>
+    <div class="form-group row celina">
+    	<div class="col-md-3">
+			<label class="right" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
+		</div>
+		<span ng-repeat="(ageIndex, age) in vm.ages">
+			<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped"></buy-directive>
+		</span>
 	</div>
 
 	<!-- Za DatePicker -->
-	<div class="form-group">
-		<label class="buy-lable" for="duration" translate="durationOfInsurance"></label>
-		<div class="form-group">
-			<label class="buy-lable" for="startDate" translate="from"></label>
-		    <p class="input-group">
-		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" is-open="vm.startOpened" datepicker-options="vm.dateOptions" ng-change="vm.startDatePicked()" ng-required="true" close-text="Close" />
-		      <span class="input-group-btn">
-		        <button type="button" class="btn btn-default" ng-click="vm.openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
-		      </span>
-		    </p>
+	<div class="form-group row celina">
+		<div class="col-md-3">
+			<label class="right" for="duration" translate="durationOfInsurance"></label>
 		</div>
-
-		<div class="form-group">
-			<label class="buy-lable" for="endDate" translate="to"></label>
-		    <p class="input-group">
-		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" is-open="vm.endOpened" datepicker-options="vm.dateOptions" ng-change="vm.endDatePicked()" ng-required="true" close-text="Close" />
-		      <span class="input-group-btn">
-		        <button type="button" class="btn btn-default" ng-click="vm.openEnd()"><i class="glyphicon glyphicon-calendar"></i></button>
-		      </span>
-		    </p>
-		</div>
+			<div class="form-group col-md-3">
+				<label class="buy-lable" for="startDate" translate="from"></label>
+			    <p class="input-group">
+			      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" is-open="vm.startOpened" datepicker-options="vm.dateOptions" ng-change="vm.startDatePicked()" ng-required="true" close-text="Close" />
+			      <span class="input-group-btn">
+			        <button type="button" class="btn btn-default" ng-click="vm.openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+			      </span>
+			    </p>
+			</div>
+			<div class="form-group col-md-3">
+				<label class="buy-lable" for="endDate" translate="to"></label>
+			    <p class="input-group">
+			      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" is-open="vm.endOpened" datepicker-options="vm.dateOptions" ng-change="vm.endDatePicked()" ng-required="true" close-text="Close" />
+			      <span class="input-group-btn">
+			        <button type="button" class="btn btn-default" ng-click="vm.openEnd()"><i class="glyphicon glyphicon-calendar"></i></button>
+			      </span>
+			    </p>
+			</div>
 	</div>
-	<br>
 	 
-	<div class="form-group">
-		<label class="buy-lable" for="sport">Sport:</label>
-		&nbsp;
-		
-		<span ng-if="currentLanguage == 'en'">
-			<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
-		  	     <option value="" translate="selectSport"> </option>
-			</select>
-		</span>
-		<span ng-if="currentLanguage == 'sr'">
-			<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
-		  	     <option value="" translate="selectSport"> </option>
-			</select>
-		</span>
+	<div class="form-group row celina">
+		<div class="col-md-3">
+			<label class="right" for="sport">Sport:</label>
+		</div>
+		<div class="col-md-9">
+			<span ng-if="currentLanguage == 'en'">
+				<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
+			  	     <option value="" translate="selectSport"> </option>
+				</select>
+			</span>
+		</div>
+		<div class="col-md-9">
+			<span ng-if="currentLanguage == 'sr'">
+				<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
+			  	     <option value="" translate="selectSport"> </option>
+				</select>
+			</span>
+		</div>
 	</div>
 
 	<div class="form-group">

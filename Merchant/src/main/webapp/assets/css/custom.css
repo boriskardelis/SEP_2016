@@ -20,6 +20,23 @@
 	width: 300px;
 }
 
+.right {
+	display: block;
+	text-align: right;
+}
+
+.center {
+	display: block; 
+	text-align: center;
+}
+
+.celina {
+	 padding-bottom: 10px;
+	 border-bottom: 1px solid;
+	 border-color: #a2d4d8;
+
+}
+
 /* BASIC STYLINGS
 ============================================================================= */
 body                            { padding-top:20px; }
