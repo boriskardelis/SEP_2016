@@ -5,34 +5,18 @@ import java.util.Date;
 
 public class MerchantDto {
 
-	private Long merchantId;
+	private String merchantId;
 	private String merchantPassword;
 	private BigDecimal amount;
-	private long orderID;
+	private Integer merchantOrderID;
 	private Date merchantTimestamp;
 	private String errorUrl;
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
-
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
-
-	public long getOrderID() {
-		return orderID;
-	}
-
-	public void setOrderID(long orderID) {
-		this.orderID = orderID;
-	}
-
-	public Long getMerchantId() {
+	public String getMerchantId() {
 		return merchantId;
 	}
 
-	public void setMerchantId(Long merchantId) {
+	public void setMerchantId(String merchantId) {
 		this.merchantId = merchantId;
 	}
 
@@ -42,6 +26,22 @@ public class MerchantDto {
 
 	public void setMerchantPassword(String merchantPassword) {
 		this.merchantPassword = merchantPassword;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public Integer getMerchantOrderID() {
+		return merchantOrderID;
+	}
+
+	public void setMerchantOrderID(Integer merchantOrderID) {
+		this.merchantOrderID = merchantOrderID;
 	}
 
 	public Date getMerchantTimestamp() {

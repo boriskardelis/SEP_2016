@@ -38,7 +38,7 @@ public class PricelistService implements GenericService<Pricelist> {
 	public Pricelist getCurrentPricelist() {
 		List<Pricelist> allPricelists = pricelistRepository.findAll();
 		Date danas = new Date();
-		Date uporedi = new Date();
+//		Date uporedi = new Date();
 
 		System.out.println("new Date danas +++ " + danas);
 

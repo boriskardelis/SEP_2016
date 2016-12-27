@@ -37,33 +37,40 @@ public class PaymentUrlAndIdController {
 	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
 	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto){
 		
-		//TODO dobio sam merchanta kreiraj sta imas
+		//TODO korak 3 provera da li je zahtev ispravan
+		
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
 		PaymentRequest paymentRequest = new PaymentRequest();
 		PaymentUrlAndId puidDb = new PaymentUrlAndId();
-
+		
+		//TODO korak 3.1 id je Number(10)
 		puid.setPaymentId(randomGenerator.nextInt(1000));
 		puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 		
-		//TODO proveri dobijenog merchanta, i napravi sta imas 
-		paymentRequest.setAmount(mdto.getAmount());
-		paymentRequest.setId(puid.getPaymentId());
 		puidDb.setPaymentId(puid.getPaymentId());
 		puidDb.setPaymentUrl(puid.getUrl());
+		
+		//TODO 3.2 popuni paymentRequest sa podacima iz mdto
+		paymentRequest.setMerchantOrderId(mdto.getMerchantOrderID());
+		paymentRequest.setMerchantId(mdto.getMerchantId());
+		paymentRequest.setMerchantPassword(mdto.getMerchantPassword());
+		paymentRequest.setMerchantTimestamp(mdto.getMerchantTimestamp());
+		paymentRequest.setAmount(mdto.getAmount());
+//		paymentRequest.setErrorUrl(mdto.getErrorUrl());
 		paymentRequest.setPaymentUrlAndId(puidDb);
 		paymentRequestService.save(paymentRequest);
 		
-//		System.out.println("PAYMENT REQUEST");
-//		System.out.println(paymentRequest.getAmount());
-//		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
-//		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
-//		
-//		
-//		System.out.println("SUMA URL I ID U BANCI!!!");
-//		System.out.println(mdto.getAmount());
-//		System.out.println(puid.getUrl());
-//		System.out.println(puid.getPaymentId());
+		System.out.println("PAYMENT REQUEST");
+		System.out.println(paymentRequest.getAmount());
+		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
+		System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
+		
+		
+		System.out.println("SUMA URL I ID U BANCI!!!");
+		System.out.println(mdto.getAmount());
+		System.out.println(puid.getUrl());
+		System.out.println(puid.getPaymentId());
 		
 		
 		return puid;

@@ -121,14 +121,16 @@ public class InsuranceController {
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 
-		// TODO setovati sve atribute u merchantu
-		mdto.setMerchantId(15L);
+		// TODO korak 2. setovati sve atribute u merchantu
+		mdto.setMerchantId("merchantov id");
 		mdto.setMerchantPassword("password");
 		mdto.setAmount(suma);
-		// TODO orderId Number(10)
-		mdto.setOrderID(randomGenerator.nextInt(1000));
+		// TODO korak 2.1 orderId Number(10) -> Integer duzine 10
+		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
+		// TODO korak 2.2 kakav i odakle timestamp
 		mdto.setMerchantTimestamp(new Date());
-		mdto.setErrorUrl("www.error.url");
+		// TODO korak 2.3 univerzalan url?
+//		mdto.setErrorUrl("www.error.url");
 
 		try {
 
