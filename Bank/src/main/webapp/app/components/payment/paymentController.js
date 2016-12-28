@@ -9,26 +9,16 @@
 	function PaymentCtrl($scope, $stateParams, $timeout, PaymentService) {
 		var vm = this;
 
+		var date = new Date();
+		vm.currentYear = date.getFullYear();
+
+		vm.months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+		vm.years = [vm.currentYear, vm.currentYear+1,vm.currentYear+2, vm.currentYear+3, vm.currentYear+4, vm.currentYear+5, vm.currentYear+6,vm.currentYear+7, 
+		vm.currentYear+8, vm.currentYear+9, vm.currentYear+10];
+
 		vm.paymentId = $stateParams.paymentId;
 		console.log(vm.paymentId);
-		// $timeout(function() {
-		// 			vm.paymentId = $stateParams.paymentId;
-		// 	 		console.log($stateParams.paymentId);
-  //       			console.log($stateParams);
-  //       			console.log(vm.paymentId);
-		// 		}, 3000);
-		/*console.log("POZdrav od payment CTRL");
-        console.log($stateParams.paymentID);
-        console.log($stateParams);*/
-
 		
-		/*$http.get("api/payment/" + vm.paymentId)
-						.then(function(response) {					
-							return response;
-						})
-						.catch(function(response) {
-							return response;
-						});		*/
 		PaymentService.getAmount(vm.paymentId).then(function(response) {
 			 	console.log("Odgovor iz getAmount");
 			 	vm.amount = response.data;

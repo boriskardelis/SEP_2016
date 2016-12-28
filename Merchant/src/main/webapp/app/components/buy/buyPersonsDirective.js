@@ -25,7 +25,7 @@
 
         		
         	},
-        	templateUrl: 'app/components/buy/buyPersonsDirective.html',
+        	templateUrl: 'app/components/buy/views/buyPersonsDirective.html',
         	scope: {
         		ageTyped: '=',
                         personIndex: "=",

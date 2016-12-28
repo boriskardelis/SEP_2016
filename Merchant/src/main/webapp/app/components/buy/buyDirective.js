@@ -21,7 +21,7 @@
         		
         		
         	},
-        	templateUrl: 'app/components/buy/buyDirective.html',
+        	templateUrl: 'app/components/buy/views/buyDirective.html',
         	scope: {
 				age: '=',
 				ageIndex: '=',

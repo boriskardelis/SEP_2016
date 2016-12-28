@@ -46,7 +46,7 @@
         url: "/buy",
         views: {
                  'content': {
-                           templateUrl: "app/components/buy/buy.html",
+                           templateUrl: "app/components/buy/views/buy.html",
                            controller: "BuyCtrl",
                            controllerAs: "vm"
                        },
@@ -59,23 +59,23 @@
        })//Nested Views for buy
        .state('buy.firstStep', {
             url: '/firstStep',
-            templateUrl: 'app/components/buy/buyFirstStep.html'
+            templateUrl: 'app/components/buy/views/buyFirstStep.html'
         })
        .state('buy.secondStep', {
             url: '/secondStep',
-            templateUrl: 'app/components/buy/buySecondStep.html'
+            templateUrl: 'app/components/buy/views/buySecondStep.html'
         })
          .state('buy.thirdStep', {
             url: '/thirdStep',
-            templateUrl: 'app/components/buy/buyThirdStep.html'
+            templateUrl: 'app/components/buy/views/buyThirdStep.html'
         })
          .state('buy.fourthStep', {
             url: '/fourthStep',
-            templateUrl: 'app/components/buy/buyFourthStep.html'
+            templateUrl: 'app/components/buy/views/buyFourthStep.html'
         })
          .state('buy.fifthStep', {
             url: '/fifthStep',
-            templateUrl: 'app/components/buy/buyFifthStep.html'
+            templateUrl: 'app/components/buy/views/buyFifthStep.html'
         });
 
 

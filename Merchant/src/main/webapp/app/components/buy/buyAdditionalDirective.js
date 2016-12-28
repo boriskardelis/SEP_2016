@@ -28,7 +28,7 @@
 
         		
         	},
-        	templateUrl: 'app/components/buy/buyAdditionalDirective.html',
+        	templateUrl: 'app/components/buy/views/buyAdditionalDirective.html',
         	scope: {
 				insuranceType: '=',
 				towings: '=',
