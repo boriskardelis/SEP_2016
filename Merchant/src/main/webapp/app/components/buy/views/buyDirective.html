@@ -1,0 +1,30 @@
+<!-- 	<div class="form-group">			
+		<label class="bg-info" for="{{age.name}}" translate="age_replacement" translate-values="{ name: '{{age.name}}'}"></label>
+		<input type="text" ng-model="$parent.vm.ageTyped[$parent.$index]" class="form-control" name="{{age.name}}" placeholder="0">
+	</div>
+
+
+			<div class="form-group" hidden>			
+				<label>Vehicle owner first name</label>
+				<input type="text"  ng-init="$parent.vm.ageTyped.idAgeSub[$parent.$index] = age.id" ng-model="$parent.vm.ageTyped.idAgeSub[$parent.$index]" class="form-control" placeholder="First name" >
+			</div>  -->
+
+			<!-- <label>DIREKTIVA</label>
+			<input type="text" name="test" ng-model="test[ageIndex]">
+			{{ageIndex}}
+
+			{{test}} -->
+
+		 <div class="form-group col-md-2">			
+				<label  class="center" for="{{age.name}}" translate="age_replacement" translate-values="{ name: '{{age.name}}'}"></label>
+				<input type="text" ng-model="ageTyped[ageIndex]" class="form-control" id="{{age.name}}" name="{{age.name}}" placeholder="0">
+			</div>
+
+			<!-- NE mogu da izbacim nikako $parent odavde. Jer ng-init inicira samo prvi element u nizu. ZASTO? -->
+		    <div class="form-group" hidden>			
+				<label>Vehicle owner first name</label>
+				<input type="text"  ng-init="$parent.vm.ageTyped.idAgeSub[ageIndex] = age.id" ng-model="ageTyped.idAgeSub[ageIndex]" class="form-control" >
+			</div>
+			
+
+			
