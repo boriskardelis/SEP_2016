@@ -1,6 +1,6 @@
     
     <!-- <div class="form-group"> -->
-        <p class="h4 bg-danger" align="center">{{ 'insuranceContractorInfo' | translate }}</p>
+        <p class="h4 bg-success" align="center">{{ 'insuranceContractorInfo' | translate }}</p>
         <br>
     
         <div class="form-group row">
@@ -112,7 +112,7 @@
               <!-- URADI AKO KORISNIK PROMENI NAZAD -->
  
     <div ng-if="vm.totalPersons != 0">
-        <p class="h4 bg-danger" align="center">{{ 'insurancedPersons' | translate }}</p>
+        <p class="h4 bg-success" align="center">{{ 'insurancedPersons' | translate }}</p>
     </div>
      <span ng-repeat="(personIndex, i) in vm.getNumber(vm.totalPersons) track by $index">
             <buy-persons-directive age="age" person-index="personIndex" person="vm.person"></buy-persons-directive>
