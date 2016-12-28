@@ -114,6 +114,7 @@ public class InsuranceController {
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
 	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody BigDecimal suma) throws IOException {
 
+		//TODO korak 2
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
@@ -121,9 +122,9 @@ public class InsuranceController {
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 
-		// TODO korak 2. setovati sve atribute u merchantu
-		mdto.setMerchantId("merchantov id");
-		mdto.setMerchantPassword("password");
+		//korak 2. setovati sve atribute u merchantu
+		mdto.setMerchantId("chuck");
+		mdto.setMerchantPassword("norris");
 		mdto.setAmount(suma);
 		// TODO korak 2.1 orderId Number(10) -> Integer duzine 10
 		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
