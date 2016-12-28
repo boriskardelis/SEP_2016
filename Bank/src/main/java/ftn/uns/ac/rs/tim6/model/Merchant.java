@@ -16,23 +16,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "MERCHANT")
-public class Merchant implements Serializable{
-	
+public class Merchant implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
-	@Column(name = "MERCHANT_ID")
+	@Column(name = "ID")
 	private Long id;
-	
+
+	@Column(name = "MERCHANT_ID")
+	private String merchantId;
+
 	@Column(name = "MERCHANT_PASSWORD")
 	private String password;
-	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy= "merchant",cascade= CascadeType.ALL)
+
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "merchant", cascade = CascadeType.ALL)
 	private List<PaymentRequest> paymentRequests;
-	
+
 	@OneToOne(fetch = FetchType.LAZY, optional = true)
-	@JoinColumn(name = "ACCOUNT_ID" , nullable = false)
+	@JoinColumn(name = "ACCOUNT_ID", nullable = false)
 	private Account account;
 
 	public Long getId() {
@@ -41,6 +44,14 @@ public class Merchant implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
 	}
 
 	public String getPassword() {
@@ -67,9 +78,15 @@ public class Merchant implements Serializable{
 		this.account = account;
 	}
 
-	public Merchant(Long id, String password, List<PaymentRequest> paymentRequests, Account account) {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Merchant(Long id, String merchantId, String password, List<PaymentRequest> paymentRequests,
+			Account account) {
 		super();
 		this.id = id;
+		this.merchantId = merchantId;
 		this.password = password;
 		this.paymentRequests = paymentRequests;
 		this.account = account;
@@ -78,6 +95,5 @@ public class Merchant implements Serializable{
 	public Merchant() {
 		super();
 	}
-	
-	
+
 }

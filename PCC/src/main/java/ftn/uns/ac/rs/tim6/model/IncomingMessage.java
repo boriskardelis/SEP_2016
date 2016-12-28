@@ -30,19 +30,19 @@ public class IncomingMessage implements Serializable {
 	private Timestamp acquirerTimestamp;
 	
 	@Column(name = "PAN")
-	private String pan;
+	private Long pan;
 	
 	@Column(name = "SECURITY_CODE")
-	private String securityCode;
+	private Long securityCode;
 	
 	@Column(name = "CARD_HOLDER_NAME")
 	private String cardHolderName;
 	
-	@Column(name = "MONTH")
-	private int month;
+	@Column(name = "EXP_DATE_YEAR")
+	private Long expDateYear;
 	
-	@Column(name = "YEAR")
-	private int year;
+	@Column(name = "EXP_DATE_MONTH")
+	private Long expDateMonth;
 	
 	@Column(name = "AMOUNT")
 	private BigDecimal amount;
@@ -75,19 +75,19 @@ public class IncomingMessage implements Serializable {
 		this.acquirerTimestamp = acquirerTimestamp;
 	}
 
-	public String getPan() {
+	public Long getPan() {
 		return pan;
 	}
 
-	public void setPan(String pan) {
+	public void setPan(Long pan) {
 		this.pan = pan;
 	}
 
-	public String getSecurityCode() {
+	public Long getSecurityCode() {
 		return securityCode;
 	}
 
-	public void setSecurityCode(String securityCode) {
+	public void setSecurityCode(Long securityCode) {
 		this.securityCode = securityCode;
 	}
 
@@ -99,20 +99,20 @@ public class IncomingMessage implements Serializable {
 		this.cardHolderName = cardHolderName;
 	}
 
-	public int getMonth() {
-		return month;
+	public Long getExpDateYear() {
+		return expDateYear;
 	}
 
-	public void setMonth(int month) {
-		this.month = month;
+	public void setExpDateYear(Long expDateYear) {
+		this.expDateYear = expDateYear;
 	}
 
-	public int getYear() {
-		return year;
+	public Long getExpDateMonth() {
+		return expDateMonth;
 	}
 
-	public void setYear(int year) {
-		this.year = year;
+	public void setExpDateMonth(Long expDateMonth) {
+		this.expDateMonth = expDateMonth;
 	}
 
 	public BigDecimal getAmount() {
@@ -130,11 +130,17 @@ public class IncomingMessage implements Serializable {
 	public void setBank(Bank bank) {
 		this.bank = bank;
 	}
-	
-	
 
-	public IncomingMessage(Long id, Long acquirerOrderId, Timestamp acquirerTimestamp, String pan, String securityCode,
-			String cardHolderName, int month, int year, BigDecimal amount, Bank bank) {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public IncomingMessage() {
+		super();
+	}
+
+	public IncomingMessage(Long id, Long acquirerOrderId, Timestamp acquirerTimestamp, Long pan, Long securityCode,
+			String cardHolderName, Long expDateYear, Long expDateMonth, BigDecimal amount, Bank bank) {
 		super();
 		this.id = id;
 		this.acquirerOrderId = acquirerOrderId;
@@ -142,15 +148,12 @@ public class IncomingMessage implements Serializable {
 		this.pan = pan;
 		this.securityCode = securityCode;
 		this.cardHolderName = cardHolderName;
-		this.month = month;
-		this.year = year;
+		this.expDateYear = expDateYear;
+		this.expDateMonth = expDateMonth;
 		this.amount = amount;
 		this.bank = bank;
 	}
 
-	public IncomingMessage() {
-		super();
-	}
 	
 	
 }

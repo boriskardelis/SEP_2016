@@ -23,10 +23,13 @@ public class Bank implements Serializable {
 	private Long id;
 
 	@Column(name = "BANK_PAN")
-	private Long bankPan;
+	private Long pan;
+
+	@Column(name = "BANK_PORT")
+	private Long port;
 
 	@Column(name = "BANK_NAME")
-	private String bankName;
+	private String name;
 
 	@OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
 	private List<IncomingMessage> incomingMessages;
@@ -42,20 +45,28 @@ public class Bank implements Serializable {
 		this.id = id;
 	}
 
-	public Long getBankPan() {
-		return bankPan;
+	public Long getPan() {
+		return pan;
 	}
 
-	public void setBankPan(Long bankPan) {
-		this.bankPan = bankPan;
+	public void setPan(Long pan) {
+		this.pan = pan;
 	}
 
-	public String getBankName() {
-		return bankName;
+	public Long getPort() {
+		return port;
 	}
 
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
+	public void setPort(Long port) {
+		this.port = port;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<IncomingMessage> getIncomingMessages() {
@@ -74,19 +85,23 @@ public class Bank implements Serializable {
 		this.requestMessages = requestMessages;
 	}
 
-	public Bank(Long id, Long bankPan, String bankName, List<IncomingMessage> incomingMessages,
-			List<ResponseMessage> requestMessages) {
-		super();
-		this.id = id;
-		this.bankPan = bankPan;
-		this.bankName = bankName;
-		this.incomingMessages = incomingMessages;
-		this.requestMessages = requestMessages;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public Bank() {
 		super();
+	}
 
+	public Bank(Long id, Long pan, Long port, String name, List<IncomingMessage> incomingMessages,
+			List<ResponseMessage> requestMessages) {
+		super();
+		this.id = id;
+		this.pan = pan;
+		this.port = port;
+		this.name = name;
+		this.incomingMessages = incomingMessages;
+		this.requestMessages = requestMessages;
 	}
 
 }

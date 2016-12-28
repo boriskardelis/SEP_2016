@@ -3,8 +3,6 @@ package ftn.uns.ac.rs.tim6.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,7 +31,7 @@ public class AcquirerOrder implements Serializable {
 	private Long pan;
 
 	@Column(name = "SECURITY_CODE")
-	private String securityCode;
+	private Long securityCode;
 
 	@Column(name = "TRANSACTION_AMOUNT")
 	private BigDecimal transactionAmount;
@@ -41,8 +39,11 @@ public class AcquirerOrder implements Serializable {
 	@Column(name = "CARD_HOLDER")
 	private String cardHolder;
 
-	@Column(name = "EXP_DATE")
-	private Date expDate;
+	@Column(name = "EXP_DATE_YEAR")
+	private Long expDateYear;
+	
+	@Column(name = "EXP_DATE_MONTH")
+	private Long expDateMonth;
 
 	// ?
 	@Column(name = "DIRECTION")
@@ -85,11 +86,11 @@ public class AcquirerOrder implements Serializable {
 		this.pan = pan;
 	}
 
-	public String getSecurityCode() {
+	public Long getSecurityCode() {
 		return securityCode;
 	}
 
-	public void setSecurityCode(String securityCode) {
+	public void setSecurityCode(Long securityCode) {
 		this.securityCode = securityCode;
 	}
 
@@ -109,12 +110,22 @@ public class AcquirerOrder implements Serializable {
 		this.cardHolder = cardHolder;
 	}
 
-	public Date getExpDate() {
-		return expDate;
+	
+
+	public Long getExpDateYear() {
+		return expDateYear;
 	}
 
-	public void setExpDate(Date expDate) {
-		this.expDate = expDate;
+	public void setExpDateYear(Long expDateYear) {
+		this.expDateYear = expDateYear;
+	}
+
+	public Long getExpDateMonth() {
+		return expDateMonth;
+	}
+
+	public void setExpDateMonth(Long expDateMonth) {
+		this.expDateMonth = expDateMonth;
 	}
 
 	public String getString() {
@@ -157,9 +168,17 @@ public class AcquirerOrder implements Serializable {
 		this.account = account;
 	}
 
-	public AcquirerOrder(Long id, Timestamp timestamp, Long pan, String securityCode, BigDecimal transactionAmount,
-			String cardHolder, Date expDate, String string, PaymentRequest paymentRequest, IssuerMessage issuerMessage,
-			AcquirerOrderReservation acquirerOrderReservation, Account account) {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public AcquirerOrder() {
+		super();
+	}
+
+	public AcquirerOrder(Long id, Timestamp timestamp, Long pan, Long securityCode, BigDecimal transactionAmount,
+			String cardHolder, Long expDateYear, Long expDateMonth, String string, PaymentRequest paymentRequest,
+			IssuerMessage issuerMessage, AcquirerOrderReservation acquirerOrderReservation, Account account) {
 		super();
 		this.id = id;
 		this.timestamp = timestamp;
@@ -167,7 +186,8 @@ public class AcquirerOrder implements Serializable {
 		this.securityCode = securityCode;
 		this.transactionAmount = transactionAmount;
 		this.cardHolder = cardHolder;
-		this.expDate = expDate;
+		this.expDateYear = expDateYear;
+		this.expDateMonth = expDateMonth;
 		this.string = string;
 		this.paymentRequest = paymentRequest;
 		this.issuerMessage = issuerMessage;
@@ -175,8 +195,6 @@ public class AcquirerOrder implements Serializable {
 		this.account = account;
 	}
 
-	public AcquirerOrder() {
-		super();
-	}
-
+	
+	
 }
