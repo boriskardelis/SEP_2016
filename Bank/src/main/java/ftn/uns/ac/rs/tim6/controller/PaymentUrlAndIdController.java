@@ -51,8 +51,9 @@ public class PaymentUrlAndIdController {
 			PaymentRequest paymentRequest = new PaymentRequest();
 			PaymentUrlAndId puidDb = new PaymentUrlAndId();
 
-			// TODO korak 3.1 id je Number(10)
+			// korak 3.1 id je Number(10) -> Integer
 			puid.setPaymentId(randomGenerator.nextInt(1000));
+			
 			// TODO korak 4
 			puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 
@@ -73,13 +74,13 @@ public class PaymentUrlAndIdController {
 			System.out.println(paymentRequest.getAmount());
 			System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
 			System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
-			System.out.println("PAYMENT REQUEST");
+			System.out.println("");
 
 			System.out.println("SUMA URL I ID U BANCI!!!");
 			System.out.println(mdto.getAmount());
 			System.out.println(puid.getUrl());
 			System.out.println(puid.getPaymentId());
-			System.out.println("SUMA URL I ID U BANCI!!!");
+			System.out.println("");
 
 			return puid;
 		}
@@ -93,20 +94,18 @@ public class PaymentUrlAndIdController {
 		merchants = merchantService.getAll();
 
 		for (Merchant merchant : merchants) {
-			System.out.println("MDTO *** ID " + mdto.getMerchantId());
-			System.out.println("MDTO *** PASSWORD " + mdto.getMerchantPassword());
-			System.out.println("BANK *** ID " + merchant.getMerchantId());
-			System.out.println("BANK *** PASSWORD " + merchant.getPassword());
 			if (merchant.getMerchantId().equals(mdto.getMerchantId())) {
 				if (merchant.getPassword().equals(mdto.getMerchantPassword())) {
-					System.out.println("BANK *** POSTOJI MERCHANT");
-					System.out.println("BANK *** ID " + merchant.getMerchantId());
-					System.out.println("BANK *** PASSWORD " + merchant.getPassword());
+					System.out.println("POSTOJI MERCHANT");
+					System.out.println("ID " + merchant.getMerchantId());
+					System.out.println("PASSWORD " + merchant.getPassword());
+					System.out.println("");
 					return true;
 				}
 			}
 		}
-		System.out.println("BANK *** NE POSTOJI MERCHANT!!!");
+		System.out.println("NE POSTOJI MERCHANT!!!");
+		System.out.println("");
 		return false;
 	}
 

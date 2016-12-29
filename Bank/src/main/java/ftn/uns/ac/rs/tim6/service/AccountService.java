@@ -36,11 +36,9 @@ public class AccountService implements GenericService<Account> {
 		List<Account> accounts = new ArrayList<Account>();
 		accounts = accountRepository.findAll();
 		for (Account account : accounts) {
-			System.out.println("ACCOUNT-i " + account.getAccountNumber());
 			ArrayList<Card> cards = new ArrayList<Card>();
 			cards.addAll(account.getCard());
 			for (Card card : cards) {
-				System.out.println("KARTICE: " + card.getPan());
 				if (card.getPan().longValue() == pan.longValue()) {
 					System.out.println(
 							"NADJEN ACCOUNT " + account.getAccountNumber() + " SA KARTICOM KOJA IMA PAN " + pan);

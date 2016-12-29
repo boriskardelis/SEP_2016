@@ -9,3 +9,5 @@ INSERT INTO card (month, year, pan, security_code, account) VALUES ('11', '2018'
 INSERT INTO merchant (merchant_id, merchant_password, account_id) values ('chuck', 'norris', 1);
 INSERT INTO merchant (merchant_id, merchant_password, account_id) values ('texas', 'ranger', 2);
 INSERT INTO merchant (merchant_id, merchant_password, account_id) values ('neki', 'tamo', 3);
+
+--dodati paymentRequest i paymentUrlAndId za testiranje da ne mora svaki put da se popunjava osiguranje

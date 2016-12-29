@@ -24,6 +24,9 @@ public class AcquirerOrder implements Serializable {
 	@Column(name = "ACQUIRER_ORDER_ID")
 	private Long id;
 
+	@Column(name = "ACQUIRER_ORDER_ID_ID")
+	private Integer acquirerOrderId;
+
 	@Column(name = "ACQUIRER_TIMESTAMP")
 	private Timestamp timestamp;
 
@@ -41,13 +44,9 @@ public class AcquirerOrder implements Serializable {
 
 	@Column(name = "EXP_DATE_YEAR")
 	private Long expDateYear;
-	
+
 	@Column(name = "EXP_DATE_MONTH")
 	private Long expDateMonth;
-
-	// ?
-	@Column(name = "DIRECTION")
-	private String string;
 
 	@OneToOne(fetch = FetchType.LAZY, optional = true, mappedBy = "acquirerOrder")
 	private PaymentRequest paymentRequest;
@@ -110,8 +109,6 @@ public class AcquirerOrder implements Serializable {
 		this.cardHolder = cardHolder;
 	}
 
-	
-
 	public Long getExpDateYear() {
 		return expDateYear;
 	}
@@ -126,14 +123,6 @@ public class AcquirerOrder implements Serializable {
 
 	public void setExpDateMonth(Long expDateMonth) {
 		this.expDateMonth = expDateMonth;
-	}
-
-	public String getString() {
-		return string;
-	}
-
-	public void setString(String string) {
-		this.string = string;
 	}
 
 	public PaymentRequest getPaymentRequest() {
@@ -172,15 +161,25 @@ public class AcquirerOrder implements Serializable {
 		return serialVersionUID;
 	}
 
+	public Integer getAcquirerOrderId() {
+		return acquirerOrderId;
+	}
+
+	public void setAcquirerOrderId(Integer acquirerOrderId) {
+		this.acquirerOrderId = acquirerOrderId;
+	}
+
 	public AcquirerOrder() {
 		super();
 	}
 
-	public AcquirerOrder(Long id, Timestamp timestamp, Long pan, Long securityCode, BigDecimal transactionAmount,
-			String cardHolder, Long expDateYear, Long expDateMonth, String string, PaymentRequest paymentRequest,
-			IssuerMessage issuerMessage, AcquirerOrderReservation acquirerOrderReservation, Account account) {
+	public AcquirerOrder(Long id, Integer acquirerOrderId, Timestamp timestamp, Long pan, Long securityCode,
+			BigDecimal transactionAmount, String cardHolder, Long expDateYear, Long expDateMonth,
+			PaymentRequest paymentRequest, IssuerMessage issuerMessage,
+			AcquirerOrderReservation acquirerOrderReservation, Account account) {
 		super();
 		this.id = id;
+		this.acquirerOrderId = acquirerOrderId;
 		this.timestamp = timestamp;
 		this.pan = pan;
 		this.securityCode = securityCode;
@@ -188,13 +187,10 @@ public class AcquirerOrder implements Serializable {
 		this.cardHolder = cardHolder;
 		this.expDateYear = expDateYear;
 		this.expDateMonth = expDateMonth;
-		this.string = string;
 		this.paymentRequest = paymentRequest;
 		this.issuerMessage = issuerMessage;
 		this.acquirerOrderReservation = acquirerOrderReservation;
 		this.account = account;
 	}
 
-	
-	
 }
