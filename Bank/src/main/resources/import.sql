@@ -11,3 +11,10 @@ INSERT INTO merchant (merchant_id, merchant_password, account_id) values ('texas
 INSERT INTO merchant (merchant_id, merchant_password, account_id) values ('neki', 'tamo', 3);
 
 --dodati paymentRequest i paymentUrlAndId za testiranje da ne mora svaki put da se popunjava osiguranje
+
+INSERT INTO payment_url_and_id (payment_id, payment_url) values (300, 'http://localhost:7070/payment?paymentId=300');
+INSERT INTO payment_url_and_id (payment_id, payment_url) values (500, 'http://localhost:7070/payment?paymentId=500');
+
+--- ovo ne radi
+INSERT INTO payment_request (amount, merchant_id, merchant_order_id, merchan_password, payment_url_and_id) values (152, 'chuck', 300, 'norris', 1);
+INSERT INTO payment_request (amount, merchant_id, merchant_order_id, merchan_password, payment_url_and_id) values (399, 'chuck', 500, 'norris', 2);
