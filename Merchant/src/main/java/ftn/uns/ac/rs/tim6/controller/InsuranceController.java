@@ -71,11 +71,7 @@ public class InsuranceController {
 
 		Object ageType = mapper.convertValue(node.get("ageType"), Object.class);
 		ArrayList<AgeSubCategoryDto> lista = citanjeAgeKategorija(ageType);
-
-		for (AgeSubCategoryDto ageSubCategoryDto : lista) {
-			System.out.println("id " + ageSubCategoryDto.getId());
-			System.out.println("broj " + ageSubCategoryDto.getNumber());
-		}
+		System.out.println("AGE " + lista.toString());
 
 		riskSubcategories.add(region);
 		riskSubcategories.add(sum);
@@ -84,9 +80,6 @@ public class InsuranceController {
 		for (RiskSubcategory risk : riskSubcategories) {
 			for (PricelistItem item : curentPricelistItems) {
 				if (item.getRiskSubcategory().getName().equals(risk.getName())) {
-//					System.out.println("ODABRANI");
-//					System.out.println("od fronta risk: " + risk.getName());
-//					System.out.println("od fronta item: " + item.getRiskSubcategory().getName());
 					dto.getItems().add(item);
 				}
 			}
@@ -126,7 +119,7 @@ public class InsuranceController {
 		mdto.setMerchantId("chuck");
 		mdto.setMerchantPassword("norris");
 		mdto.setAmount(suma);
-		// TODO korak 2.1 orderId Number(10) -> Integer duzine 10
+		//korak 2.1 Number(10) -> Integer
 		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
 		// TODO korak 2.2 kakav i odakle timestamp
 		mdto.setMerchantTimestamp(new Date());
@@ -139,8 +132,6 @@ public class InsuranceController {
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
 
 			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
-			System.out.println(puid);
-			System.out.println(puid.getPaymentId());
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 
 		} catch (Exception e) {

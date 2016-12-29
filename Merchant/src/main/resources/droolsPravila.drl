@@ -32,9 +32,11 @@ dialect "mvel"
   		$insurance.setTaxPrice(Math.round($insurance.taxPrice * 100) / 100);
   		$insurance.setTotalPrice(Math.round($insurance.totalPrice * 100) / 100);
   		
+  		System.out.println("U DROOLS-u");
   		System.out.println("premiun: " + $insurance.premiumPrice);
   		System.out.println("popust: " + $insurance.discountPrice);
   		System.out.println("taksa: " + $insurance.taxPrice);
   		System.out.println("ukupno: " + $insurance.totalPrice);
+  		System.out.println("");
   		  		
 end

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import ftn.uns.ac.rs.tim6.dto.IncomingAcquirerOrderMessageDto;
+import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.model.ResponseMessage;
 import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.ResponseMessageService;
@@ -36,7 +36,7 @@ public class ResponseMessageController {
 	}
 
 	@RequestMapping(value = "/response", method = RequestMethod.POST)
-	public ResponseEntity<String> handleIncomingMessage(@RequestBody IncomingAcquirerOrderMessageDto incomingMessage) {
+	public ResponseEntity<String> handleIncomingMessage(@RequestBody AcquirerOrderDto incomingMessage) {
 
 		// TODO korak 9
 

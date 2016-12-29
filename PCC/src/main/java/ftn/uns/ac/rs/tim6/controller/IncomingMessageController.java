@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.tim6.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import ftn.uns.ac.rs.tim6.dto.IncomingAcquirerOrderMessageDto;
+import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.model.Bank;
 import ftn.uns.ac.rs.tim6.model.IncomingMessage;
 import ftn.uns.ac.rs.tim6.model.ResponseMessage;
@@ -38,12 +39,12 @@ public class IncomingMessageController {
 	}
 
 	@RequestMapping(value = "/incomingacquirerorder", method = RequestMethod.POST)
-	public ResponseEntity<String> handleIncomingMessage(@RequestBody IncomingAcquirerOrderMessageDto incomingMessage) {
-		
+	public ResponseEntity<String> handleIncomingMessage(@RequestBody AcquirerOrderDto incomingMessage) {
+
+		// TODO korak 7
 		Bank bank = findBankByPan(incomingMessage.getPan());
 
-		// TODO korak 7 nadjemo banku preko PAN-a
-		// 7.1 OVO NECE RADITI mapirati pristiglu poruku na ovu sto nam treba
+		// korak 7.1 nadjemo banku preko PAN-a
 
 		ResponseMessage response = new ResponseMessage();
 		RestTemplate client = new RestTemplate();
@@ -63,8 +64,17 @@ public class IncomingMessageController {
 	}
 
 	private Bank findBankByPan(Long pan) {
-		// TODO korak 7.3 iz pan-a kartice odrediti pan banke, i prosledi banku
-		// A BBBBB CCCCCCCCCCCC D
+		// A BBBBB CCCCCCCCCCCC D ja uzimam prvih 6 cifara
+		Long panBanke = Long.parseLong(Long.toString(pan).substring(0, 6));
+		List<Bank> banke = new ArrayList<Bank>();
+		banke = bankService.getAll();
+		for (Bank bank : banke) {
+			if (bank.getPan().longValue() == panBanke.longValue()) {
+				System.out.println("NASLI SMO BANKU");
+				return bank;
+			}
+		}
+		System.out.println("NISMO NASLI SMO BANKU!!!");
 		return null;
 	}
 
