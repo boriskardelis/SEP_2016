@@ -31,6 +31,10 @@
 			vm.card.paymentId = vm.paymentId;
 			PaymentService.pay(vm.card).then(function(response) {
 				console.log("URADJEN PAY");
+				console.log(response.data;)
+				console.log(response.data.status);
+				alert(response.data.status);
+
 
 			});
 		};
