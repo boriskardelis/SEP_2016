@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.model.Payment;
 import ftn.uns.ac.rs.tim6.service.PaymentService;
 
@@ -24,26 +26,14 @@ public class PaymentController {
 		return new ResponseEntity<List<Payment>>(payments, HttpStatus.OK);
 	}
 	
-/*	@RequestMapping(value = "/paymentresult", method = RequestMethod.POST)
-	public void handleIncomingMessage(@RequestBody String result) {
+	@RequestMapping(value = "/result", method = RequestMethod.POST)
+	public String handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
 
-		// korak 11
-		// primiti pravilan format poslati pravilan format
-		RestTemplate client = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
+		//TODO korak 11
+		//poslati pravilan format
 		
-		
-		try {
-
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> entity = new HttpEntity<String>("objekat koji saljem", headers);
-			//korak 10.1 na frontend banke?
-			client.postForObject("http://localhost:8080/api/paymentresult", entity, String.class); 
-			return;
-
-		} catch (Exception e) {
-			return;
-		}
-	}*/
+		String rezultat = rmdto.getResult().toString();
+		return rezultat;
+	}
 
 }

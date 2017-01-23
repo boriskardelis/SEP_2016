@@ -38,7 +38,7 @@
 
 				});
 				console.log("nakon PAY");
-				console.log(response.data;)
+				console.log(response.data);
 				console.log(response.data.status);
 				//alert(response.data.status);
 			});
