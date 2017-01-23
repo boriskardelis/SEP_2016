@@ -17,6 +17,7 @@ import org.springframework.web.client.RestTemplate;
 
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentInfoDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.model.AcquirerOrder;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
 import ftn.uns.ac.rs.tim6.service.AccountService;
@@ -44,15 +45,12 @@ public class AcquirerOrderController {
 	}
 
 	@RequestMapping(value = "/payment/pay", method = RequestMethod.POST)
-	public ResponseEntity<String> handlePay(@RequestBody PaymentInfoDto paymentInfo) {
+	public ResponseEntity<ResponseMessageDto> handlePay(@RequestBody PaymentInfoDto paymentInfo) {
 
 		
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		
-		
-		// TODO korak 12 na ovaj url cekamo odgovor celog kruga
-		String url = "";
+		ResponseMessageDto rmdto = new ResponseMessageDto();
 		
 		// TODO korak 5
 		// moraju se identicno zvati atributi na frontendu i backendu
@@ -73,11 +71,14 @@ public class AcquirerOrderController {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			url = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity, String.class);
-			return new ResponseEntity<String>(url, HttpStatus.OK);
+			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity, ResponseMessageDto.class);
+			//rmdto.setPaymentId(acquirerOrder.getPaymentRequest().getPaymentUrlAndId().getPaymentId());
+			rmdto.setMerchantOrderId(acquirerOrder.getPaymentRequest().getMerchantOrderId());
+			// TODO korak 10
+			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<String>(url, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
 
 	}

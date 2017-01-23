@@ -15,9 +15,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.model.Bank;
 import ftn.uns.ac.rs.tim6.model.IncomingMessage;
-import ftn.uns.ac.rs.tim6.model.ResponseMessage;
 import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.IncomingMessageService;
 
@@ -39,27 +40,31 @@ public class IncomingMessageController {
 	}
 
 	@RequestMapping(value = "/incomingacquirerorder", method = RequestMethod.POST)
-	public ResponseEntity<String> handleIncomingMessage(@RequestBody AcquirerOrderDto incomingMessage) {
+	public ResponseEntity<ResponseMessageDto> handleIncomingMessage(@RequestBody AcquirerOrderDto aodto) {
 
 		// TODO korak 7
-		Bank bank = findBankByPan(incomingMessage.getPan());
+		Bank bank = findBankByPan(aodto.getPan());
 
 		// korak 7.1 nadjemo banku preko PAN-a
+		// prosledjujemo pristigli zahtev
 
-		ResponseMessage response = new ResponseMessage();
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		String url = "";
+		ResponseMessageDto rmdto = new ResponseMessageDto();
+		
+		rmdto.setResult(TransactionResult.SUCCESSFUL);
+		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
+		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 
 		try {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<ResponseMessage> entity = new HttpEntity<ResponseMessage>(response, headers);
-			url = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity, String.class);
-			return new ResponseEntity<String>(url, HttpStatus.OK);
+			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
+			rmdto = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity, ResponseMessageDto.class);
+			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<String>(url, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
 	}
 
@@ -71,6 +76,7 @@ public class IncomingMessageController {
 		for (Bank bank : banke) {
 			if (bank.getPan().longValue() == panBanke.longValue()) {
 				System.out.println("NASLI SMO BANKU");
+				System.out.println(bank.getPort());
 				return bank;
 			}
 		}
