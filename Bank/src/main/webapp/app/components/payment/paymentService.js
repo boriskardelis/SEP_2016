@@ -32,11 +32,23 @@
 						});	
 			};
 
+		var sendResults = function(result) {
+		console.log(result);		
+			return $http.post("api/payment/result", result)
+						.then(function(response) {				
+							return response;
+						})
+						.catch(function(response) {
+							return response;
+						});	
+			};
+
 
 		return {
 			
 			getAmount : getAmount,
-			pay : pay
+			pay : pay,
+			sendResults : sendResults
 			
 		};
 
