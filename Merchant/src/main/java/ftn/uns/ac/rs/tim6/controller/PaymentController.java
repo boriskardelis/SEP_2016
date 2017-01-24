@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
+import ftn.uns.ac.rs.tim6.dto.URLDto;
 import ftn.uns.ac.rs.tim6.model.Payment;
 import ftn.uns.ac.rs.tim6.service.PaymentService;
 
@@ -26,14 +28,24 @@ public class PaymentController {
 		return new ResponseEntity<List<Payment>>(payments, HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = "/result", method = RequestMethod.POST)
-	public String handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
-
+	@RequestMapping(value = "/incomingresult", method = RequestMethod.POST)
+	public ResponseEntity<URLDto> handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
+		
+		URLDto urldto = new URLDto();
+		System.out.println("Usao u MERCHANT za URL");
+		System.out.println(rmdto.getResult().toString());
 		//TODO korak 11
 		//poslati pravilan format
-		
-		String rezultat = rmdto.getResult().toString();
-		return rezultat;
+
+		TransactionResult rezultat = rmdto.getResult();
+		if ( rezultat.equals(TransactionResult.SUCCESSFUL) ) {
+			urldto.setUrl("http://localhost:8080/paymentSuccessful");
+			System.out.println("Uspesan payment url");
+		} else {
+			urldto.setUrl("http://localhost:8080/paymentFailed");
+			System.out.println("NEUSPESAN payment url");
+		}
+		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 	}
 
 }

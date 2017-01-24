@@ -24,31 +24,22 @@
 		var pay = function(card) {
 		console.log(card);		
 			return $http.post("api/payment/pay", card)
-						.then(function(response) {				
+						.then(function(response) {
+							console.log("Kod SERVISA");
+							console.log(response);			
 							return response;
 						})
 						.catch(function(response) {
+							console.log("Kod SERVISA DOSLO DO CATCH");
+							console.log(response);	
 							return response;
 						});	
 			};
-
-		var sendResults = function(result) {
-		console.log(result);		
-			return $http.post("api/payment/result", result)
-						.then(function(response) {				
-							return response;
-						})
-						.catch(function(response) {
-							return response;
-						});	
-			};
-
 
 		return {
 			
 			getAmount : getAmount,
 			pay : pay,
-			sendResults : sendResults
 			
 		};
 

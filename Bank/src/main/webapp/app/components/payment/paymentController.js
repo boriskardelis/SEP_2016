@@ -31,16 +31,10 @@
 			vm.card.paymentId = vm.paymentId;
 			PaymentService.pay(vm.card).then(function(response) {
 				console.log("URADJEN PAY");
-				console.log(response.data);
-				alert(response.data);
-				PaymentService.sendResults(response.data).then(function(response) {
-					console.log("Vratio response od SEND RESULTS");
-
-				});
-				console.log("nakon PAY");
-				console.log(response.data);
-				console.log(response.data.status);
-				//alert(response.data.status);
+				console.log(response);
+				//console.log(response.data);
+				alert(response);
+			
 			});
 		};
 

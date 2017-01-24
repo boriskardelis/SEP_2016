@@ -18,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentInfoDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.URLDto;
 import ftn.uns.ac.rs.tim6.model.AcquirerOrder;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
 import ftn.uns.ac.rs.tim6.service.AccountService;
@@ -45,12 +46,13 @@ public class AcquirerOrderController {
 	}
 
 	@RequestMapping(value = "/payment/pay", method = RequestMethod.POST)
-	public ResponseEntity<ResponseMessageDto> handlePay(@RequestBody PaymentInfoDto paymentInfo) {
+	public ResponseEntity<URLDto> handlePay(@RequestBody PaymentInfoDto paymentInfo) {
 
 		
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
+		URLDto urldto = new URLDto();
 		
 		// TODO korak 5
 		// moraju se identicno zvati atributi na frontendu i backendu
@@ -61,24 +63,33 @@ public class AcquirerOrderController {
 		
 		AcquirerOrder acquirerOrder = setAndSaveAcquirerOrder(paymentInfo);
 		AcquirerOrderDto aodto = createAcquirerOrderDto(acquirerOrder);
-		
-		
-		
-
+	
 		// TODO korak 6
 
 		try {
-
+			//rmdto.setPaymentId(acquirerOrder.getPaymentRequest().getPaymentUrlAndId().getPaymentId());
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity, ResponseMessageDto.class);
-			//rmdto.setPaymentId(acquirerOrder.getPaymentRequest().getPaymentUrlAndId().getPaymentId());
-			rmdto.setMerchantOrderId(acquirerOrder.getPaymentRequest().getMerchantOrderId());
+			
+			System.out.println("PRE SLANJA PCC-u");
+			//poruka prema PCC-u i dalje u krug
+			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity, ResponseMessageDto.class);	
+			
+			
+			//rmdto.setMerchantOrderId(acquirerOrder.getPaymentRequest().getMerchantOrderId());
 			// TODO korak 10
-			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
+			
+			System.out.println("RMDTO: ");
+			System.out.println(rmdto.toString());
+			//poruka prema merchantu koja se prosledjuje od PCC-a
+			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
+			urldto = client.postForObject("http://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
+			
+			System.out.println("Vracen string " + urldto.getMessage());
+			return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 
 		} catch (Exception e) {
-			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<URLDto>(urldto, HttpStatus.BAD_REQUEST);
 		}
 
 	}
