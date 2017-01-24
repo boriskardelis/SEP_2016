@@ -16,7 +16,6 @@ import org.springframework.web.client.RestTemplate;
 
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
-import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.model.Bank;
 import ftn.uns.ac.rs.tim6.model.IncomingMessage;
 import ftn.uns.ac.rs.tim6.service.BankService;
@@ -52,7 +51,6 @@ public class IncomingMessageController {
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		
-		rmdto.setResult(TransactionResult.SUCCESSFUL);
 		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 

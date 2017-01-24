@@ -32,19 +32,28 @@ public class PaymentController {
 	public ResponseEntity<URLDto> handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
 		
 		URLDto urldto = new URLDto();
+		
 		System.out.println("Usao u MERCHANT za URL");
 		System.out.println(rmdto.getResult().toString());
+		
 		//TODO korak 11
-		//poslati pravilan format
 
 		TransactionResult rezultat = rmdto.getResult();
+		
 		if ( rezultat.equals(TransactionResult.SUCCESSFUL) ) {
-			urldto.setUrl("http://localhost:8080/paymentSuccessful");
-			System.out.println("Uspesan payment url");
-		} else {
-			urldto.setUrl("http://localhost:8080/paymentFailed");
-			System.out.println("NEUSPESAN payment url");
-		}
+			urldto.setUrl("http://localhost:7070/paymentSuccessful");
+			urldto.setMessage("Your payment hes been successfull");
+		} else if (rezultat.equals(TransactionResult.CVC_INVALID)) {
+			urldto.setUrl("http://localhost:7070/paymentError");
+			urldto.setMessage("Your CVC is invalid");
+		} else if (rezultat.equals(TransactionResult.INSUFFICIENT_FUNDS)) {
+			urldto.setUrl("http://localhost:7070/paymentError");
+			urldto.setMessage("Insufficient funds");
+		} else if (rezultat.equals(TransactionResult.INVALID_DATE)) {
+			urldto.setUrl("http://localhost:7070/paymentError");
+			urldto.setMessage("Your card date is not valid");
+		} 
+		
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 	}
 

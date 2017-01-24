@@ -31,8 +31,4 @@ public class BankService implements GenericService<Bank>  {
 		return bankRepository.findOne(id);
 	}
 
-	//TODO get bank by pan
-	public Bank findByPan(long id){
-		return null;
-	}
 }

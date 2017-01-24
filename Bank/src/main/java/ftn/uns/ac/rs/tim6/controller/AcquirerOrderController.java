@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.tim6.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Random;
 
@@ -18,6 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentInfoDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.dto.URLDto;
 import ftn.uns.ac.rs.tim6.model.AcquirerOrder;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
@@ -48,44 +50,58 @@ public class AcquirerOrderController {
 	@RequestMapping(value = "/payment/pay", method = RequestMethod.POST)
 	public ResponseEntity<URLDto> handlePay(@RequestBody PaymentInfoDto paymentInfo) {
 
-		
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		URLDto urldto = new URLDto();
-		
+
 		// TODO korak 5
 		// moraju se identicno zvati atributi na frontendu i backendu
 		// pravimo AcquirerOrder, zahtev za proveru kartice
-		
+
 		// TODO korak 5.2 timestamp, proveriti svuda -> treba sertifikat
 		// acquirerOrder.setTimestamp(new Timestamp(null, null));
-		
+
 		AcquirerOrder acquirerOrder = setAndSaveAcquirerOrder(paymentInfo);
 		AcquirerOrderDto aodto = createAcquirerOrderDto(acquirerOrder);
-	
+
 		// TODO korak 6
 
 		try {
-			//rmdto.setPaymentId(acquirerOrder.getPaymentRequest().getPaymentUrlAndId().getPaymentId());
+
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			
+
 			System.out.println("PRE SLANJA PCC-u");
-			//poruka prema PCC-u i dalje u krug
-			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity, ResponseMessageDto.class);	
-			
-			
-			//rmdto.setMerchantOrderId(acquirerOrder.getPaymentRequest().getMerchantOrderId());
-			// TODO korak 10
-			
+			// poruka prema PCC-u i dalje u krug
+			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity,
+					ResponseMessageDto.class);
+
 			System.out.println("RMDTO: ");
 			System.out.println(rmdto.toString());
-			//poruka prema merchantu koja se prosledjuje od PCC-a
+			
+			
+//			TransactionResult rezultat = rmdto.getResult();
+//			BigDecimal balance = acquirerOrder.getAccount().getAccountBalance();
+//			BigDecimal toAdd = acquirerOrder.getTransactionAmount();
+//			
+//			System.out.println(rezultat + "  " + balance + "   " + toAdd);
+//			
+//			if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
+//				// dodati merchantu $$$
+//				balance = balance.add(toAdd);
+//				System.out.println(balance);
+//				accountService.save(acquirerOrder.getAccount());
+//			}
+
+			// TODO korak 10
+
+
+			// poruka prema merchantu koja se prosledjuje od PCC-a
 			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
 			urldto = client.postForObject("http://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
-			
-			System.out.println("Vracen string " + urldto.getMessage());
+
+			System.out.println("Vracen urldto: " + urldto.getMessage());
 			return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -95,9 +111,7 @@ public class AcquirerOrderController {
 	}
 
 	private AcquirerOrderDto createAcquirerOrderDto(AcquirerOrder acquirerOrder) {
-		
-		
-		
+
 		AcquirerOrderDto aodto = new AcquirerOrderDto();
 		aodto.setPan(acquirerOrder.getPan());
 		aodto.setSecurityCode(acquirerOrder.getSecurityCode());
@@ -113,7 +127,7 @@ public class AcquirerOrderController {
 		PaymentRequest paymentRequest = paymentRequestService.findByPaymentId(paymentInfo.getPaymentId());
 		AcquirerOrder acquirerOrder = new AcquirerOrder();
 		Random randomGenerator = new Random();
-		//korak 5.1 orderId Number(10)
+		// korak 5.1 orderId Number(10)
 		acquirerOrder.setAcquirerOrderId(randomGenerator.nextInt(1000));
 		acquirerOrder.setPan(paymentInfo.getPan());
 		acquirerOrder.setSecurityCode(paymentInfo.getSecurityCode());
