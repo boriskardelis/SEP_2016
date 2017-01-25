@@ -61,7 +61,9 @@ public class AcquirerOrderController {
 
 		// TODO korak 5.2 timestamp, proveriti svuda -> treba sertifikat
 		// acquirerOrder.setTimestamp(new Timestamp(null, null));
-
+		
+		System.out.println("PaymentID iz paymentINFO" + paymentInfo.getPaymentId());
+		
 		AcquirerOrder acquirerOrder = setAndSaveAcquirerOrder(paymentInfo);
 		AcquirerOrderDto aodto = createAcquirerOrderDto(acquirerOrder);
 
@@ -76,6 +78,10 @@ public class AcquirerOrderController {
 			// poruka prema PCC-u i dalje u krug
 			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity,
 					ResponseMessageDto.class);
+			
+			rmdto.setPaymentId(paymentInfo.getPaymentId()); //setujemo paymentID
+			
+			System.out.println("PaymentID NAKON SETOVANJA: " + rmdto.getPaymentId());
 
 			System.out.println("RMDTO: ");
 			System.out.println(rmdto.toString());
@@ -100,6 +106,9 @@ public class AcquirerOrderController {
 			// poruka prema merchantu koja se prosledjuje od PCC-a
 			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
 			urldto = client.postForObject("http://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
+			
+			//urldto.setUrl(urldto.getUrl()+ "?paymentId=" + paymentInfo.getPaymentId());
+		
 
 			System.out.println("Vracen urldto: " + urldto.getMessage());
 			return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);

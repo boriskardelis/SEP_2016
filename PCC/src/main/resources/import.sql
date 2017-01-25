@@ -1,2 +1,2 @@
-INSERT INTO bank (bank_pan, bank_port, bank_name) VALUES (123456, 7070, 'Intesa'); -- banka merchanta
-INSERT INTO bank (bank_pan, bank_port, bank_name) VALUES (654321, 7575, 'Neka Banka'); -- banka kupca
+INSERT INTO bank (bank_pan, bank_port, bank_name) VALUES (234567, 7070, 'Intesa'); -- banka merchanta
+INSERT INTO bank (bank_pan, bank_port, bank_name) VALUES (123456, 7575, 'Neka Banka'); -- banka kupca

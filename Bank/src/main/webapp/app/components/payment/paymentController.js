@@ -5,8 +5,8 @@
 		.module('bankApp')
 		.controller('PaymentCtrl', PaymentCtrl);
 
-	PaymentCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'PaymentService'];
-	function PaymentCtrl($scope, $stateParams, $timeout, PaymentService) {
+	PaymentCtrl.$inject = ['$scope', '$stateParams', '$timeout', 'PaymentService', '$window'];
+	function PaymentCtrl($scope, $stateParams, $timeout, PaymentService, $window) {
 		var vm = this;
 
 		var date = new Date();
@@ -29,11 +29,17 @@
 		vm.pay = function() {
 			console.log("placeno");
 			vm.card.paymentId = vm.paymentId;
+			console.log("CARD INFO:");
+			console.log(vm.card);
 			PaymentService.pay(vm.card).then(function(response) {
-				console.log("URADJEN PAY");
-				console.log(response);
-				//console.log(response.data);
-				alert(response);
+				console.log("Uradjen PAY");
+				console.log(response.data);
+				console.log("SLEDI REDIREKCIJA......");
+				
+				$timeout(function() {
+				   $window.location = response.data.url;
+				}, 1000);
+
 			
 			});
 		};

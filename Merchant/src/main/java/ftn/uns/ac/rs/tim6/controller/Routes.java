@@ -8,6 +8,7 @@ public  class Routes {
 
     @RequestMapping({
         "/about",
+        "/paymentSuccessful",
         "/buy",
         "/home",
         "/tracks/{id:\\w+}",

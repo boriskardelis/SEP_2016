@@ -30,6 +30,18 @@ public class PaymentService implements GenericService<Payment> {
 	public Payment findById(long id) {
 		return paymentRepository.findOne(id);
 	}
+
+	public Payment findByPaymentId(Long paymentId) {
+		List<Payment> payments = paymentRepository.findAll();
+		for (Payment payment : payments) {
+			if (payment.getPaymentId().longValue() == paymentId.longValue()) {
+				System.out.println("Nasao je paymentID i to je:"+payment.getPaymentId());
+				return payment;
+			}
+		}
+		System.out.println("Nije nasao paymentID");
+		return null;
+	}
 	
 	
 }

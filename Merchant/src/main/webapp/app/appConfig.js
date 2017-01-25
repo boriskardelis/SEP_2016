@@ -41,6 +41,21 @@
                            controllerAs: "vm"
                        }
                 } 
+       })
+      .state('paymentSuccessful', {
+        url: "/paymentSuccessful?paymentId",
+        views: {
+                 'content': {
+                           templateUrl: "app/components/url/paymentSuccessful.html",
+                           controller: "UrlCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
        }) 
       .state('buy', {
         url: "/buy",

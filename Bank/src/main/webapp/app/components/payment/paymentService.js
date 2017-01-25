@@ -21,17 +21,13 @@
 						});	
 			};
 
-		var pay = function(card) {
-		console.log(card);		
+		var pay = function(card) {	
 			return $http.post("api/payment/pay", card)
-						.then(function(response) {
-							console.log("Kod SERVISA");
-							console.log(response);			
+						.then(function(response) {		
 							return response;
 						})
 						.catch(function(response) {
 							console.log("Kod SERVISA DOSLO DO CATCH");
-							console.log(response);	
 							return response;
 						});	
 			};

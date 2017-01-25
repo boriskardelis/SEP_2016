@@ -12,7 +12,7 @@ public class ResponseMessageDto {
 	}
 	
 	private TransactionResult result;
-	private Integer paymentId;
+	private Long paymentId;
 	private Integer acquirerOrderId;
 	private Timestamp acquirerTimestamp;
 	private Integer merchantOrderId;
@@ -22,10 +22,10 @@ public class ResponseMessageDto {
 	public void setResult(TransactionResult result) {
 		this.result = result;
 	}
-	public Integer getPaymentId() {
+	public Long getPaymentId() {
 		return paymentId;
 	}
-	public void setPaymentId(Integer paymentId) {
+	public void setPaymentId(Long paymentId) {
 		this.paymentId = paymentId;
 	}
 	public Integer getAcquirerOrderId() {

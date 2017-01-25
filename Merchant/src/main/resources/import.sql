@@ -142,7 +142,7 @@ INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (12
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 39);
 
 
-INSERT INTO payment (payment_id, merchant_id, merchant_order_id) VALUES (123, 666, 123);
+--INSERT INTO payment (payment_id, merchant_id, merchant_order_id) VALUES (123, 666, 123);
 
 INSERT INTO vehicle (registration_number, make, owner_first_name, owner_jmbg, owner_last_name, type,vin_number, year_of_production, insurance_type_id) VALUES ('SO232-JL', 'Ford', 'Pera', '1323241543312', 'Peric', 'Kola', '2132', 2005, 1);
 

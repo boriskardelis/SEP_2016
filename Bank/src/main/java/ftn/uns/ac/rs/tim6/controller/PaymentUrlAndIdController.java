@@ -81,6 +81,8 @@ public class PaymentUrlAndIdController {
 			System.out.println(puid.getUrl());
 			System.out.println(puid.getPaymentId());
 			System.out.println("");
+			
+			
 
 			return puid;
 		}
