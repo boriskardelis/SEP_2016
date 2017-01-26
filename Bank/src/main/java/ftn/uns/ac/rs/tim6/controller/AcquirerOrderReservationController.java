@@ -42,16 +42,13 @@ public class AcquirerOrderReservationController {
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		Account account = accountService.findByPan(aodto.getPan());
 		MathContext mc = new MathContext(10);
-		BigDecimal b1 = account.getAccountBalance();
-		int res;
-
-		// TODO korak 8 provera pristiglog zahteva
-		// korak 8.1 provera novca
-		// dodati novce merchantu gde? - u njegovoj banci
 
 		System.out.println("stigli smo u banku B " + aodto.getPan());
-		res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
-
+		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
+		BigDecimal b1 = account.getAccountBalance();
+		//TODO provera kartice
+		
+		// TODO korak 8
 		if (res == 0) { // tacno
 
 			rmdto.setResult(TransactionResult.SUCCESSFUL);
@@ -69,8 +66,11 @@ public class AcquirerOrderReservationController {
 		} else if (res == -1) { // nema dovoljno
 
 			rmdto.setResult(TransactionResult.INSUFFICIENT_FUNDS);
-			
 		}
+		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
+		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
+		// TODO issuer order id rmdto.setPaymentId(aodto.get);
+		
 
 		try {
 			// TODO korak 9

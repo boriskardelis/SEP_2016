@@ -28,23 +28,4 @@ public class ResponseMessageController {
 		return new ResponseEntity<List<ResponseMessage>>(responsemessages, HttpStatus.OK);
 	}
 
-/*	@RequestMapping(value = "/response", method = RequestMethod.POST)
-	public void handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
-
-		// korak 9
-		RestTemplate client = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-
-		try {
-
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<ResponseMessageDto> entity = new HttpEntity<ResponseMessageDto>(rmdto, headers);
-			client.postForObject("http://localhost:7070/api/issuermessage", entity, String.class);
-			return;
-
-		} catch (Exception e) {
-			return;
-		}
-	}*/
-
 }

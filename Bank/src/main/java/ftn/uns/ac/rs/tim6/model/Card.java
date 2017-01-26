@@ -13,32 +13,32 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "CARD")
-public class Card implements Serializable{
-	
+public class Card implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "CARD_ID")
 	private Long id;
-	
+
 	@Column(name = "MONTH")
 	private int month;
-	
+
 	@Column(name = "YEAR")
 	private int year;
-	
+
 	@Column(name = "CARD_HOLDER_NAME")
 	private String cardHolderName;
-	
+
 	@Column(name = "PAN")
 	private Long pan;
-	
+
 	@Column(name = "SECURITY_CODE")
 	private Long securityCode;
-	
+
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn( name = "ACCOUNT", nullable = true)
+	@JoinColumn(name = "ACCOUNT", nullable = true)
 	private Account account;
 
 	public Long getId() {
@@ -80,8 +80,7 @@ public class Card implements Serializable{
 	public void setAccount(Account account) {
 		this.account = account;
 	}
-	
-	
+
 	public int getMonth() {
 		return month;
 	}
@@ -97,9 +96,7 @@ public class Card implements Serializable{
 	public void setYear(int year) {
 		this.year = year;
 	}
-	
-	
-	
+
 	public Card(Long id, int month, int year, String cardHolderName, Long pan, Long securityCode, Account account) {
 		super();
 		this.id = id;
@@ -114,7 +111,5 @@ public class Card implements Serializable{
 	public Card() {
 		super();
 	}
-	
-	
 
 }

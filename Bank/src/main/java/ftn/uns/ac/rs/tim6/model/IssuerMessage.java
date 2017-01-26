@@ -12,38 +12,36 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
+
 @Entity
 @Table(name = "ISSUER_MESSAGE")
 public class IssuerMessage implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "ISSUER_MESSAGE_ID")
 	private Long id;
-	
-	//@Column(name = "ACQUIRER_ORDER_ID")
-	//private Long acquirerOrderId;
-	
+
+	@Column(name = "TRANSACTION_RESULT")
+	private TransactionResult transactionResult;
+
+	@Column(name = "ACQUIRER_ORDER_ID")
+	private Integer acquirerOrderId;
+
 	@Column(name = "ACQUIRER_TIMESTAMP")
 	private Timestamp acquirerTimestamp;
-	
+
 	@Column(name = "ISSUER_ORDER_ID")
-	private Long issuerOrderId;
-	
+	private Integer issuerOrderId;
+
 	@Column(name = "ISSUER_TIMESTAMP")
 	private Timestamp issuerTimestamp;
-	
-	@Column(name = "TRANSACTION_RESULT" )
-	private Boolean transactionResult;
-	
-	//?
-	@Column(name = "DIRECTION")
-	private String string;
-	
+
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "ACQUIRER_ORDER_ID" )
+	@JoinColumn(name = "ACQUIRER_ORDER")
 	private AcquirerOrder acquirerOrder;
 
 	public Long getId() {
@@ -54,6 +52,22 @@ public class IssuerMessage implements Serializable {
 		this.id = id;
 	}
 
+	public TransactionResult getTransactionResult() {
+		return transactionResult;
+	}
+
+	public void setTransactionResult(TransactionResult transactionResult) {
+		this.transactionResult = transactionResult;
+	}
+
+	public Integer getAcquirerOrderId() {
+		return acquirerOrderId;
+	}
+
+	public void setAcquirerOrderId(Integer acquirerOrderId) {
+		this.acquirerOrderId = acquirerOrderId;
+	}
+
 	public Timestamp getAcquirerTimestamp() {
 		return acquirerTimestamp;
 	}
@@ -62,11 +76,11 @@ public class IssuerMessage implements Serializable {
 		this.acquirerTimestamp = acquirerTimestamp;
 	}
 
-	public Long getIssuerOrderId() {
+	public Integer getIssuerOrderId() {
 		return issuerOrderId;
 	}
 
-	public void setIssuerOrderId(Long issuerOrderId) {
+	public void setIssuerOrderId(Integer issuerOrderId) {
 		this.issuerOrderId = issuerOrderId;
 	}
 
@@ -78,22 +92,6 @@ public class IssuerMessage implements Serializable {
 		this.issuerTimestamp = issuerTimestamp;
 	}
 
-	public Boolean getTransactionResult() {
-		return transactionResult;
-	}
-
-	public void setTransactionResult(Boolean transactionResult) {
-		this.transactionResult = transactionResult;
-	}
-
-	public String getString() {
-		return string;
-	}
-
-	public void setString(String string) {
-		this.string = string;
-	}
-
 	public AcquirerOrder getAcquirerOrder() {
 		return acquirerOrder;
 	}
@@ -102,22 +100,24 @@ public class IssuerMessage implements Serializable {
 		this.acquirerOrder = acquirerOrder;
 	}
 
-	public IssuerMessage(Long id, Timestamp acquirerTimestamp, Long issuerOrderId, Timestamp issuerTimestamp,
-			Boolean transactionResult, String string, AcquirerOrder acquirerOrder) {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public IssuerMessage(Long id, TransactionResult transactionResult, Integer acquirerOrderId,
+			Timestamp acquirerTimestamp, Integer issuerOrderId, Timestamp issuerTimestamp, AcquirerOrder acquirerOrder) {
 		super();
 		this.id = id;
+		this.transactionResult = transactionResult;
+		this.acquirerOrderId = acquirerOrderId;
 		this.acquirerTimestamp = acquirerTimestamp;
 		this.issuerOrderId = issuerOrderId;
 		this.issuerTimestamp = issuerTimestamp;
-		this.transactionResult = transactionResult;
-		this.string = string;
 		this.acquirerOrder = acquirerOrder;
 	}
 
 	public IssuerMessage() {
 		super();
 	}
-	
-	
 
 }

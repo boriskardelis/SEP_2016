@@ -44,23 +44,21 @@ public class PaymentUrlAndIdController {
 	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) {
 
 		// TODO korak 3
+		PaymentUrlIdDto puid = new PaymentUrlIdDto();
+		Random randomGenerator = new Random();
+		PaymentRequest paymentRequest = new PaymentRequest();
+		PaymentUrlAndId puidDb = new PaymentUrlAndId();
 
 		if (merchantCheck(mdto)) {
-			PaymentUrlIdDto puid = new PaymentUrlIdDto();
-			Random randomGenerator = new Random();
-			PaymentRequest paymentRequest = new PaymentRequest();
-			PaymentUrlAndId puidDb = new PaymentUrlAndId();
 
-			// korak 3.1 id je Number(10) -> Integer
 			puid.setPaymentId(randomGenerator.nextInt(1000));
-			
+
 			// TODO korak 4
 			puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 
 			puidDb.setPaymentId(puid.getPaymentId());
 			puidDb.setPaymentUrl(puid.getUrl());
 
-			//korak 3.2 pravimo payment request pa u koraku 5 AcquirerOrder!
 			paymentRequest.setMerchantOrderId(mdto.getMerchantOrderID());
 			paymentRequest.setMerchantId(mdto.getMerchantId());
 			paymentRequest.setMerchantPassword(mdto.getMerchantPassword());
@@ -81,14 +79,11 @@ public class PaymentUrlAndIdController {
 			System.out.println(puid.getUrl());
 			System.out.println(puid.getPaymentId());
 			System.out.println("");
-			
-			
 
 			return puid;
 		}
 		return null;
 
-		
 	}
 
 	private boolean merchantCheck(MerchantDto mdto) {

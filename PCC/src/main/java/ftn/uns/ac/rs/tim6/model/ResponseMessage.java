@@ -12,35 +12,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
+
 @Entity
 @Table(name = "RESPONSE_MESSAGE")
-public class ResponseMessage implements Serializable{
+public class ResponseMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "RESPONSE_MESSAGE_ID")
 	private Long id;
-	
+
 	@Column(name = "ACQUIRER_ORDER_ID")
-	private Long acquirerOrderId;
-	
-	@Column (name = "RESULT")
-	private Boolean result;
-	
+	private Integer acquirerOrderId;
+
 	@Column(name = "ACQUIRER_TIMESTAMP")
 	private Timestamp acquirerTimestamp;
-	
+
 	@Column(name = "ISSUER_ORDER_ID")
-	private Long issuerOrderId;
-	
+	private Integer issuerOrderId;
+
 	@Column(name = "ISSUER_TIMESTAMP")
 	private Timestamp issuerTimestamp;
-	
+
+	@Column(name = "RESULT")
+	private TransactionResult result;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BANK")
 	private Bank bank;
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -49,20 +51,12 @@ public class ResponseMessage implements Serializable{
 		this.id = id;
 	}
 
-	public Long getAcquirerOrderId() {
+	public Integer getAcquirerOrderId() {
 		return acquirerOrderId;
 	}
 
-	public void setAcquirerOrderId(Long acquirerOrderId) {
+	public void setAcquirerOrderId(Integer acquirerOrderId) {
 		this.acquirerOrderId = acquirerOrderId;
-	}
-
-	public Boolean getResult() {
-		return result;
-	}
-
-	public void setResult(Boolean result) {
-		this.result = result;
 	}
 
 	public Timestamp getAcquirerTimestamp() {
@@ -73,11 +67,11 @@ public class ResponseMessage implements Serializable{
 		this.acquirerTimestamp = acquirerTimestamp;
 	}
 
-	public Long getIssuerOrderId() {
+	public Integer getIssuerOrderId() {
 		return issuerOrderId;
 	}
 
-	public void setIssuerOrderId(Long issuerOrderId) {
+	public void setIssuerOrderId(Integer issuerOrderId) {
 		this.issuerOrderId = issuerOrderId;
 	}
 
@@ -89,6 +83,14 @@ public class ResponseMessage implements Serializable{
 		this.issuerTimestamp = issuerTimestamp;
 	}
 
+	public TransactionResult getResult() {
+		return result;
+	}
+
+	public void setResult(TransactionResult result) {
+		this.result = result;
+	}
+
 	public Bank getBank() {
 		return bank;
 	}
@@ -96,23 +98,25 @@ public class ResponseMessage implements Serializable{
 	public void setBank(Bank bank) {
 		this.bank = bank;
 	}
-	
 
-	public ResponseMessage(Long id, Long acquirerOrderId, Boolean result, Timestamp acquirerTimestamp,
-			Long issuerOrderId, Timestamp issuerTimestamp, Bank bank) {
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public ResponseMessage(Long id, Integer acquirerOrderId, Timestamp acquirerTimestamp, Integer issuerOrderId,
+			Timestamp issuerTimestamp, TransactionResult result, Bank bank) {
 		super();
 		this.id = id;
 		this.acquirerOrderId = acquirerOrderId;
-		this.result = result;
 		this.acquirerTimestamp = acquirerTimestamp;
 		this.issuerOrderId = issuerOrderId;
 		this.issuerTimestamp = issuerTimestamp;
+		this.result = result;
 		this.bank = bank;
 	}
 
 	public ResponseMessage() {
 		super();
 	}
-	
-	
+
 }
