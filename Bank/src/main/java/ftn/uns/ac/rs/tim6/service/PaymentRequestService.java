@@ -31,15 +31,12 @@ public class PaymentRequestService implements GenericService<PaymentRequest> {
 		return paymentRequestRepository.findOne(id);
 	}
 
-	public PaymentRequest findByPaymentId(Long id) {
-
+	public PaymentRequest findByPaymentId(Integer id) {
 		List<PaymentRequest> paymentRequestList = new ArrayList<PaymentRequest>();
 		paymentRequestList = paymentRequestRepository.findAll();
 		for (PaymentRequest paymentRequest : paymentRequestList) {
-
-			if (paymentRequest.getPaymentUrlAndId().getPaymentId().longValue() == id.longValue()) {
+			if (paymentRequest.getPaymentUrlAndId().getPaymentId().intValue() == id.intValue()) {
 				return paymentRequest;
-
 			}
 		}
 		return null;

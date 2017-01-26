@@ -6,7 +6,7 @@ public class PaymentInfoDto {
 	private Long securityCode;
 	private Long month;
 	private Long year;
-	private Long paymentId;
+	private Integer paymentId;
 
 	public Long getPan() {
 		return pan;
@@ -40,11 +40,11 @@ public class PaymentInfoDto {
 		this.year = year;
 	}
 
-	public Long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 

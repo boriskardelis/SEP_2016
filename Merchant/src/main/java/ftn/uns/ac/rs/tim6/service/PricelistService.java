@@ -38,20 +38,20 @@ public class PricelistService implements GenericService<Pricelist> {
 	public Pricelist getCurrentPricelist() {
 		List<Pricelist> allPricelists = pricelistRepository.findAll();
 		Date danas = new Date();
-//		Date uporedi = new Date();
+		// Date uporedi = new Date();
 
 		System.out.println("new Date danas +++ " + danas);
 
 		for (Pricelist pricelist : allPricelists) {
-			
+
 			Date noviDatum = DateConverter.convertToJavaDate(pricelist.getStartDate());
 			System.out.println("1 svi pricelist datumi: " + noviDatum);
 			if (noviDatum.after(danas)) {
-				//jos ne vazi
+				// jos ne vazi
 				System.out.println("2 jos ne vazi datumi: " + noviDatum);
-			}else if (noviDatum.before(danas)) {
-				//TODO nadji najnoviji
-				//vracam prvi validan
+			} else if (noviDatum.before(danas)) {
+				// TODO nadji najnoviji cenovnik
+				// vracam prvi validan
 				System.out.println("2 nadji najnoviji datumi: " + noviDatum);
 				return pricelist;
 			}
@@ -71,7 +71,7 @@ public class PricelistService implements GenericService<Pricelist> {
 		System.out.println("izvlacimo subCategory ");
 		for (PricelistItem listItem : pricelistItems) {
 			riskSubcategories.add(listItem.getRiskSubcategory());
-//			System.out.println(listItem.getRiskSubcategory().getName());
+			// System.out.println(listItem.getRiskSubcategory().getName());
 		}
 
 		return riskSubcategories;

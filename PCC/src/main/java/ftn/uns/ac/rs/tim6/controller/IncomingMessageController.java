@@ -32,7 +32,7 @@ public class IncomingMessageController {
 
 	@Autowired
 	BankService bankService;
-	
+
 	@Autowired
 	ResponseMessageService responseMessageService;
 
@@ -53,8 +53,7 @@ public class IncomingMessageController {
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		setAndSaveIncomingMessage(aodto);
-		
-		
+
 		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 
@@ -62,7 +61,8 @@ public class IncomingMessageController {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			rmdto = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity, ResponseMessageDto.class);
+			rmdto = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity,
+					ResponseMessageDto.class);
 			setAndSaveResponseMessage(rmdto);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
@@ -79,8 +79,7 @@ public class IncomingMessageController {
 		rm.setIssuerTimestamp(rmdto.getMerchantTimestamp());
 		rm.setResult(rmdto.getResult());
 		responseMessageService.save(rm);
-		
-		
+
 	}
 
 	private void setAndSaveIncomingMessage(AcquirerOrderDto aodto) {
@@ -94,7 +93,7 @@ public class IncomingMessageController {
 		im.setExpDateMonth(aodto.getExpDateMonth());
 		im.setAmount(aodto.getTransactionAmount());
 		incomingMessageService.save(im);
-		
+
 	}
 
 	private Bank findBankByPan(Long pan) {

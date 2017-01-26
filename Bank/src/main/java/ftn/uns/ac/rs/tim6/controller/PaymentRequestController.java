@@ -27,13 +27,21 @@ public class PaymentRequestController {
 	}
 
 	@RequestMapping(value = "/payment/{id}", method = RequestMethod.GET)
-	public ResponseEntity<AmountDto> handleGetPaymentAmmount(@PathVariable("id") Long id) {
+	public ResponseEntity<AmountDto> handleGetPaymentAmmount(@PathVariable("id") Integer id) {
 
 		AmountDto adto = new AmountDto();
-		PaymentRequest paymentRequest = paymentRequestService.findByPaymentId(id);
-		adto.setAmount(paymentRequest.getAmount());
 
-		return new ResponseEntity<AmountDto>(adto, HttpStatus.OK);
+		try {
+			PaymentRequest paymentRequest = paymentRequestService.findByPaymentId(id);
+			adto.setAmount(paymentRequest.getAmount());
+
+			return new ResponseEntity<AmountDto>(adto, HttpStatus.OK);
+
+		} catch (Exception e) {
+
+			return new ResponseEntity<AmountDto>(adto, HttpStatus.BAD_REQUEST);
+		}
+
 	}
 
 }

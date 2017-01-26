@@ -5,11 +5,11 @@ import java.sql.Timestamp;
 public class ResponseMessageDto {
 
 	public enum TransactionResult {
-		SUCCESSFUL, INSUFFICIENT_FUNDS, INVALID_DATE, CVC_INVALID, ERROR
+		SUCCESSFUL, INSUFFICIENT_FUNDS, INVALID_DATE, CVC_INVALID, ERROR, NOT_STARTED
 	}
 
 	private TransactionResult result;
-	private Long paymentId;
+	private Integer paymentId;
 	private Integer acquirerOrderId;
 	private Timestamp acquirerTimestamp;
 	private Integer merchantOrderId;
@@ -23,11 +23,11 @@ public class ResponseMessageDto {
 		this.result = result;
 	}
 
-	public Long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 

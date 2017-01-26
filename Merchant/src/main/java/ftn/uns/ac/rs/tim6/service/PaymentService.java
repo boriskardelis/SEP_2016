@@ -31,17 +31,18 @@ public class PaymentService implements GenericService<Payment> {
 		return paymentRepository.findOne(id);
 	}
 
-	public Payment findByPaymentId(Long paymentId) {
+	public Payment findByPaymentId(Integer paymentId) {
 		List<Payment> payments = paymentRepository.findAll();
 		for (Payment payment : payments) {
-			if (payment.getPaymentId().longValue() == paymentId.longValue()) {
-				System.out.println("Nasao je paymentID i to je:"+payment.getPaymentId());
+			System.out.println("findByPaymentId " + payment.getPaymentId());
+			System.out.println(payment.getPaymentId().intValue() + " == " + paymentId.intValue());
+			if (payment.getPaymentId().intValue() == paymentId.intValue()) {
+				System.out.println("Nasao je paymentID i to je: " + payment.getPaymentId());
 				return payment;
 			}
 		}
 		System.out.println("Nije nasao paymentID");
 		return null;
 	}
-	
-	
+
 }

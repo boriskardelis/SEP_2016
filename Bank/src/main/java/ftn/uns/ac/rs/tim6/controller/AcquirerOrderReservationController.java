@@ -46,32 +46,33 @@ public class AcquirerOrderReservationController {
 		System.out.println("stigli smo u banku B " + aodto.getPan());
 		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
 		BigDecimal b1 = account.getAccountBalance();
-		//TODO provera kartice
-		
-		// TODO korak 8
-		if (res == 0) { // tacno
 
-			rmdto.setResult(TransactionResult.SUCCESSFUL);
-			b1 = account.getAccountBalance().subtract(aodto.getTransactionAmount(), mc);
-			account.setAccountBalance(b1);
-			accountService.save(account);
+		Boolean card = cardCheck(aodto);
 
-		} else if (res == 1) { // ima vise
+		if (card) {
+			// TODO korak 8
+			if (res == 0) { // tacno
 
-			rmdto.setResult(TransactionResult.SUCCESSFUL);
-			b1 = account.getAccountBalance().subtract(aodto.getTransactionAmount(), mc);
-			account.setAccountBalance(b1);
-			accountService.save(account);
+				rmdto.setResult(TransactionResult.SUCCESSFUL);
+				b1 = account.getAccountBalance().subtract(aodto.getTransactionAmount(), mc);
+				account.setAccountBalance(b1);
+				accountService.save(account);
 
-		} else if (res == -1) { // nema dovoljno
+			} else if (res == 1) { // ima vise
 
-			rmdto.setResult(TransactionResult.INSUFFICIENT_FUNDS);
+				rmdto.setResult(TransactionResult.SUCCESSFUL);
+				b1 = account.getAccountBalance().subtract(aodto.getTransactionAmount(), mc);
+				account.setAccountBalance(b1);
+				accountService.save(account);
+
+			} else if (res == -1) { // nema dovoljno
+
+				rmdto.setResult(TransactionResult.INSUFFICIENT_FUNDS);
+			}
+			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
+			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
+			// TODO issuer order id rmdto.setPaymentId(aodto.get);
 		}
-		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
-		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
-		// TODO issuer order id rmdto.setPaymentId(aodto.get);
-		
-
 		try {
 			// TODO korak 9
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
@@ -80,5 +81,10 @@ public class AcquirerOrderReservationController {
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
 
+	}
+
+	private Boolean cardCheck(AcquirerOrderDto aodto) {
+		// TODO provera kartice
+		return true;
 	}
 }

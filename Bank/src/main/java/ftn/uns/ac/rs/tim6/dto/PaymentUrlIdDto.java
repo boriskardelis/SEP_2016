@@ -3,7 +3,7 @@ package ftn.uns.ac.rs.tim6.dto;
 public class PaymentUrlIdDto {
 
 	private String url;
-	private long paymentId;
+	private Integer paymentId;
 
 	public String getUrl() {
 		return url;
@@ -13,11 +13,11 @@ public class PaymentUrlIdDto {
 		this.url = url;
 	}
 
-	public long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 

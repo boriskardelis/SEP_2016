@@ -22,7 +22,7 @@ public class Payment implements Serializable {
 	private Long id;
 
 	@Column(name = "PAYMENT_ID_ID")
-	private Long paymentId;
+	private Integer paymentId;
 
 	@Column(name = "MERCHANT_ID")
 	private String merchantId;
@@ -44,11 +44,11 @@ public class Payment implements Serializable {
 		this.id = id;
 	}
 
-	public Long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -88,7 +88,7 @@ public class Payment implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Payment(Long id, Long paymentId, String merchantId, Integer merchantOrderId,
+	public Payment(Long id, Integer paymentId, String merchantId, Integer merchantOrderId,
 			TransactionResult transactionResult, Status paymentStatus) {
 		super();
 		this.id = id;

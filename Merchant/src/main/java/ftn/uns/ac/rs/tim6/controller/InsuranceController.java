@@ -27,10 +27,13 @@ import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.model.Insurance;
+import ftn.uns.ac.rs.tim6.model.Payment;
 import ftn.uns.ac.rs.tim6.model.PricelistItem;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
+import ftn.uns.ac.rs.tim6.service.PaymentService;
 import ftn.uns.ac.rs.tim6.service.PricelistService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
@@ -47,6 +50,9 @@ public class InsuranceController {
 
 	@Autowired
 	PricelistService pricelistService;
+
+	@Autowired
+	PaymentService paymentService;
 
 	@RequestMapping(value = "/insurances", method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> handleGetAllInsurances() {
@@ -110,29 +116,46 @@ public class InsuranceController {
 		// TODO korak 2
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
-		Random randomGenerator = new Random();
-		MerchantDto mdto = new MerchantDto();
+
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-
-		mdto.setMerchantId("chuck");
-		mdto.setMerchantPassword("norris");
-		mdto.setAmount(suma);
-		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
-		mdto.setMerchantTimestamp(new Timestamp(System.currentTimeMillis()));
-		// TODO korak 2.3 univerzalan url?
+		MerchantDto mdto = setMerchantDto(suma);
 
 		try {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
 			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
+			setAndSavePayment(mdto, puid);
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.BAD_REQUEST);
 		}
 
+	}
+
+	private void setAndSavePayment(MerchantDto mdto, PaymentUrlIdDto puid) {
+		Payment p = new Payment();
+		p.setPaymentId(puid.getPaymentId());
+		p.setTransactionResult(TransactionResult.NOT_STARTED);
+		p.setPaymentStatus(null);
+		p.setMerchantId(mdto.getMerchantId());
+		p.setMerchantOrderId(mdto.getMerchantOrderID());
+		paymentService.save(p);
+
+	}
+
+	private MerchantDto setMerchantDto(BigDecimal suma) {
+		MerchantDto mdto = new MerchantDto();
+		Random randomGenerator = new Random();
+		mdto.setMerchantId("chuck");
+		mdto.setMerchantPassword("norris");
+		mdto.setAmount(suma);
+		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
+		mdto.setMerchantTimestamp(new Timestamp(System.currentTimeMillis()));
+		// TODO korak 2.3 univerzalan url?
+		return mdto;
 	}
 
 	private ArrayList<AgeSubCategoryDto> citanjeAgeKategorija(Object ageType) {

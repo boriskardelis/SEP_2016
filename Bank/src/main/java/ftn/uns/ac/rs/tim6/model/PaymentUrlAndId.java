@@ -16,22 +16,22 @@ import org.hibernate.validator.constraints.URL;
 @Entity
 @Table(name = "PAYMENT_URL_AND_ID")
 public class PaymentUrlAndId implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "PAYMENT_URL_AND_ID")
 	private Long id;
-	
+
 	@Column(name = "PAYMENT_ID")
-	private Long paymentId;
-	
+	private Integer paymentId;
+
 	@URL
 	@Column(name = "PAYMENT_URL")
 	private String paymentUrl;
-		
-	@OneToOne(fetch = FetchType.LAZY, mappedBy= "paymentUrlAndId", cascade=CascadeType.ALL)
+
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "paymentUrlAndId", cascade = CascadeType.ALL)
 	private PaymentRequest paymentRequest;
 
 	public Long getId() {
@@ -42,11 +42,11 @@ public class PaymentUrlAndId implements Serializable {
 		this.id = id;
 	}
 
-	public Long getPaymentId() {
+	public Integer getPaymentId() {
 		return paymentId;
 	}
 
-	public void setPaymentId(Long paymentId) {
+	public void setPaymentId(Integer paymentId) {
 		this.paymentId = paymentId;
 	}
 
@@ -66,7 +66,7 @@ public class PaymentUrlAndId implements Serializable {
 		this.paymentRequest = paymentRequest;
 	}
 
-	public PaymentUrlAndId(Long id, Long paymentId, String paymentUrl, PaymentRequest paymentRequest) {
+	public PaymentUrlAndId(Long id, Integer paymentId, String paymentUrl, PaymentRequest paymentRequest) {
 		super();
 		this.id = id;
 		this.paymentId = paymentId;
@@ -77,7 +77,5 @@ public class PaymentUrlAndId implements Serializable {
 	public PaymentUrlAndId() {
 		super();
 	}
-	
-	
 
 }

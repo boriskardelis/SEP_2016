@@ -46,44 +46,37 @@ public class PaymentUrlAndIdController {
 		// TODO korak 3
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
-		PaymentRequest paymentRequest = new PaymentRequest();
 		PaymentUrlAndId puidDb = new PaymentUrlAndId();
 
 		if (merchantCheck(mdto)) {
 
-			puid.setPaymentId(randomGenerator.nextInt(1000));
-
 			// TODO korak 4
+			puid.setPaymentId(randomGenerator.nextInt(1000));
 			puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 
 			puidDb.setPaymentId(puid.getPaymentId());
 			puidDb.setPaymentUrl(puid.getUrl());
 
-			paymentRequest.setMerchantOrderId(mdto.getMerchantOrderID());
-			paymentRequest.setMerchantId(mdto.getMerchantId());
-			paymentRequest.setMerchantPassword(mdto.getMerchantPassword());
-			paymentRequest.setMerchantTimestamp(mdto.getMerchantTimestamp());
-			paymentRequest.setAmount(mdto.getAmount());
-			// paymentRequest.setErrorUrl(mdto.getErrorUrl());
-			paymentRequest.setPaymentUrlAndId(puidDb);
-			paymentRequestService.save(paymentRequest);
-
-			System.out.println("PAYMENT REQUEST");
-			System.out.println(paymentRequest.getAmount());
-			System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentUrl());
-			System.out.println(paymentRequest.getPaymentUrlAndId().getPaymentId());
-			System.out.println("");
-
-			System.out.println("SUMA URL I ID U BANCI!!!");
-			System.out.println(mdto.getAmount());
-			System.out.println(puid.getUrl());
-			System.out.println(puid.getPaymentId());
-			System.out.println("");
+			setAndSavePaymentRequest(mdto, puidDb);
 
 			return puid;
 		}
 		return null;
 
+	}
+
+	private void setAndSavePaymentRequest(MerchantDto mdto, PaymentUrlAndId puidDb) {
+
+		PaymentRequest paymentRequest = new PaymentRequest();
+		paymentRequest.setMerchantOrderId(mdto.getMerchantOrderID());
+		paymentRequest.setMerchantId(mdto.getMerchantId());
+		paymentRequest.setMerchantPassword(mdto.getMerchantPassword());
+		paymentRequest.setMerchantTimestamp(mdto.getMerchantTimestamp());
+		paymentRequest.setAmount(mdto.getAmount());
+		// paymentRequest.setErrorUrl(mdto.getErrorUrl());
+		paymentRequest.setPaymentUrlAndId(puidDb);
+		paymentRequestService.save(paymentRequest);
+		return;
 	}
 
 	private boolean merchantCheck(MerchantDto mdto) {

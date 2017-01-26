@@ -34,14 +34,14 @@ public class PaymentController {
 
 		URLDto urldto = new URLDto();
 
-		System.out.println("Usao u MERCHANT za URL");
-		System.out.println(rmdto.getResult().toString());
+		System.out.println("PaymentController paymentID: ");
+		System.out.println(rmdto.getPaymentId());
 
 		// TODO korak 11
 
 		TransactionResult rezultat = rmdto.getResult();
 
-		System.out.println("paymentID:" + rmdto.getPaymentId());
+		System.out.println("paymentID: " + rmdto.getPaymentId());
 
 		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
 			urldto.setUrl("http://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());
@@ -70,7 +70,7 @@ public class PaymentController {
 	}
 
 	@RequestMapping(value = "/paymentMessage", method = RequestMethod.POST)
-	public ResponseEntity<URLDto> handlePaymentID(@RequestBody Long paymentId) {
+	public ResponseEntity<URLDto> handlePaymentID(@RequestBody Integer paymentId) {
 
 		Payment p = paymentService.findByPaymentId(paymentId);
 		URLDto urldto = new URLDto();
@@ -83,12 +83,9 @@ public class PaymentController {
 
 	private void setAndSavePayment(ResponseMessageDto rmdto, URLDto urldto) {
 
-		Payment p = new Payment();
-		p.setPaymentId(rmdto.getPaymentId());
+		Payment p = paymentService.findByPaymentId(rmdto.getPaymentId());
 		p.setTransactionResult(rmdto.getResult());
 		p.setPaymentStatus(urldto.getStatus());
-		// p.setMerchantId();
-		p.setMerchantOrderId(rmdto.getMerchantOrderId());
 		paymentService.save(p);
 	}
 

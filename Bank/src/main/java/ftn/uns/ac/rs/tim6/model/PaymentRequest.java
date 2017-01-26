@@ -20,42 +20,42 @@ import org.hibernate.validator.constraints.URL;
 @Entity
 @Table(name = "PAYMENT_REQUEST")
 public class PaymentRequest implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "PAYMENT_REQUEST_ID")
 	private Long id;
-	
+
 	@Column(name = "MERCHANT_ORDER_ID")
 	private Integer merchantOrderId;
-	
+
 	@Column(name = "MERCHANT_ID")
 	private String merchantId;
-	
+
 	@Column(name = "MERCHANT_PASSWORD")
 	private String merchantPassword;
-	
+
 	@Column(name = "MERCHANT_TIMESTAMP")
 	private Date merchantTimestamp;
-	
+
 	@Column(name = "AMOUNT")
 	private BigDecimal amount;
-	
+
 	@URL
 	@Column(name = "ERROR_URL")
 	private String errorUrl;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn( name = "PAYMENT_REQUEST_MERCHANT")
+	@JoinColumn(name = "PAYMENT_REQUEST_MERCHANT")
 	private Merchant merchant;
-	
+
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ACQUIRER_ORDER_ID")
 	private AcquirerOrder acquirerOrder;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "PAYMENT_URL_AND_ID")
 	private PaymentUrlAndId paymentUrlAndId;
 
@@ -99,7 +99,6 @@ public class PaymentRequest implements Serializable {
 		this.merchantTimestamp = merchantTimestamp;
 	}
 
-
 	public BigDecimal getAmount() {
 		return amount;
 	}
@@ -140,8 +139,6 @@ public class PaymentRequest implements Serializable {
 		this.paymentUrlAndId = paymentUrlAndId;
 	}
 
-	
-
 	public PaymentRequest(Long id, Integer merchantOrderId, String merchantId, String merchantPassword,
 			Date merchantTimestamp, BigDecimal amount, String errorUrl, Merchant merchant, AcquirerOrder acquirerOrder,
 			PaymentUrlAndId paymentUrlAndId) {
@@ -161,8 +158,5 @@ public class PaymentRequest implements Serializable {
 	public PaymentRequest() {
 		super();
 	}
-	
-	
-	
 
 }

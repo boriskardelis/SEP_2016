@@ -40,7 +40,7 @@ public class AcquirerOrderController {
 
 	@Autowired
 	PaymentRequestService paymentRequestService;
-	
+
 	@Autowired
 	IssuerMessageService issuerMessageService;
 
@@ -58,7 +58,6 @@ public class AcquirerOrderController {
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		URLDto urldto = new URLDto();
-		
 
 		// TODO korak 5
 		AcquirerOrder acquirerOrder = setAndSaveAcquirerOrder(paymentInfo);
@@ -70,15 +69,16 @@ public class AcquirerOrderController {
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
 
 			System.out.println("PRE SLANJA PCC-u");
+			System.out.println(paymentInfo.getPaymentId());
 			// poruka prema PCC-u i dalje u krug
 			// TODO korak 6
+			rmdto.setPaymentId(paymentInfo.getPaymentId());
 			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity,
 					ResponseMessageDto.class);
 			rmdto.setPaymentId(paymentInfo.getPaymentId());
-			//TODO rmdto.setMerchantOrderId();
-			
+
 			createAndSaveIssuerMessage(rmdto);
-			
+
 			System.out.println("PaymentID NAKON SETOVANJA: " + rmdto.getPaymentId());
 
 			// TODO korak 10 + 11
