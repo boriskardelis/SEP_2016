@@ -1,8 +1,6 @@
 package ftn.uns.ac.rs.tim6.controller;
 
 import java.util.List;
-import java.util.Random;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,8 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import ftn.uns.ac.rs.tim6.dto.MerchantDto;
-import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.dto.URLDto;
@@ -49,39 +45,28 @@ public class PaymentController {
 
 		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
 			urldto.setUrl("http://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());
-			urldto.setMessage("Your payment hes been successfull");
 			urldto.setStatus(Status.SUCCESSFUL);
 
 		} else if (rezultat.equals(TransactionResult.CVC_INVALID)) {
-			urldto.setUrl("http://localhost:8080/paymentError");
-			urldto.setMessage("Your CVC is invalid");
+			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
-			
+
 		} else if (rezultat.equals(TransactionResult.INSUFFICIENT_FUNDS)) {
-			urldto.setUrl("http://localhost:8080/paymentError");
-			urldto.setMessage("Insufficient funds");
+			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
-			
+
 		} else if (rezultat.equals(TransactionResult.INVALID_DATE)) {
-			urldto.setUrl("http://localhost:8080/paymentError");
-			urldto.setMessage("Your card date is not valid");
+			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
-			
+
+		} else if (rezultat.equals(TransactionResult.ERROR)) {
+			urldto.setUrl("http://localhost:8080/paymentError?paymentId=" + rmdto.getPaymentId());
+			urldto.setStatus(Status.ERROR);
+
 		}
 		setAndSavePayment(rmdto, urldto);
 
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
-	}
-
-	private void setAndSavePayment(ResponseMessageDto rmdto, URLDto urldto) {
-
-		Payment p = new Payment();
-		p.setPaymentId(rmdto.getPaymentId());
-		p.setPaymentMessage(urldto.getMessage());
-		p.setPaymentStatus(urldto.getStatus());
-		// p.setMerchantId();
-		p.setMerchantOrderId(rmdto.getMerchantOrderId());
-		paymentService.save(p);
 	}
 
 	@RequestMapping(value = "/paymentMessage", method = RequestMethod.POST)
@@ -90,10 +75,21 @@ public class PaymentController {
 		Payment p = paymentService.findByPaymentId(paymentId);
 		URLDto urldto = new URLDto();
 
-		urldto.setMessage(p.getPaymentMessage());
+		urldto.setResult(p.getTransactionResult());
 		urldto.setStatus(p.getPaymentStatus());
 
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
+	}
+
+	private void setAndSavePayment(ResponseMessageDto rmdto, URLDto urldto) {
+
+		Payment p = new Payment();
+		p.setPaymentId(rmdto.getPaymentId());
+		p.setTransactionResult(rmdto.getResult());
+		p.setPaymentStatus(urldto.getStatus());
+		// p.setMerchantId();
+		p.setMerchantOrderId(rmdto.getMerchantOrderId());
+		paymentService.save(p);
 	}
 
 }

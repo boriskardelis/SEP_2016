@@ -2,8 +2,8 @@ package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Random;
 
@@ -107,7 +107,7 @@ public class InsuranceController {
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
 	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody BigDecimal suma) throws IOException {
 
-		//TODO korak 2
+		// TODO korak 2
 		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
 		Random randomGenerator = new Random();
@@ -115,22 +115,17 @@ public class InsuranceController {
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 
-		//korak 2. setovati sve atribute u merchantu
 		mdto.setMerchantId("chuck");
 		mdto.setMerchantPassword("norris");
 		mdto.setAmount(suma);
-		//korak 2.1 Number(10) -> Integer
 		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
-		// TODO korak 2.2 kakav i odakle timestamp
-		mdto.setMerchantTimestamp(new Date());
+		mdto.setMerchantTimestamp(new Timestamp(System.currentTimeMillis()));
 		// TODO korak 2.3 univerzalan url?
-//		mdto.setErrorUrl("www.error.url");
 
 		try {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
-
 			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 

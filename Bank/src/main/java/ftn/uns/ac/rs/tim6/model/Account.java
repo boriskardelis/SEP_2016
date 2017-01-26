@@ -24,7 +24,6 @@ public class Account implements Serializable {
 	@Column(name = "ACCOUNT_ID")
 	private Long id;
 	
-	//TODO da li treba String? verovatno broj
 	@Column(name = "ACCOUNT_NUMBER")
 	private String accountNumber;
 

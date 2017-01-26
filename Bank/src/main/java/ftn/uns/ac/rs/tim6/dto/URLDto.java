@@ -1,17 +1,16 @@
 package ftn.uns.ac.rs.tim6.dto;
 
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
+
 public class URLDto {
-	
+
 	public enum Status {
-		SUCCESSFUL,
-		FAILED,
-		ERROR
+		SUCCESSFUL, FAILED, ERROR
 	}
-	
+
 	private String url;
-	private String message;
 	private Status status;
-	
+	private TransactionResult result;
 
 	public Status getStatus() {
 		return status;
@@ -21,20 +20,20 @@ public class URLDto {
 		this.status = status;
 	}
 
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
 	public String getUrl() {
 		return url;
 	}
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public TransactionResult getResult() {
+		return result;
+	}
+
+	public void setResult(TransactionResult result) {
+		this.result = result;
 	}
 
 }

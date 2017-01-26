@@ -18,8 +18,10 @@ import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.model.Bank;
 import ftn.uns.ac.rs.tim6.model.IncomingMessage;
+import ftn.uns.ac.rs.tim6.model.ResponseMessage;
 import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.IncomingMessageService;
+import ftn.uns.ac.rs.tim6.service.ResponseMessageService;
 
 @RestController
 @RequestMapping("/api")
@@ -30,6 +32,9 @@ public class IncomingMessageController {
 
 	@Autowired
 	BankService bankService;
+	
+	@Autowired
+	ResponseMessageService responseMessageService;
 
 	@RequestMapping(value = "/incomingmessages", method = RequestMethod.GET)
 
@@ -44,12 +49,11 @@ public class IncomingMessageController {
 		// TODO korak 7
 		Bank bank = findBankByPan(aodto.getPan());
 
-		// korak 7.1 nadjemo banku preko PAN-a
-		// prosledjujemo pristigli zahtev
-
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
+		setAndSaveIncomingMessage(aodto);
+		
 		
 		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
@@ -59,11 +63,38 @@ public class IncomingMessageController {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
 			rmdto = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity, ResponseMessageDto.class);
+			setAndSaveResponseMessage(rmdto);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
+	}
+
+	private void setAndSaveResponseMessage(ResponseMessageDto rmdto) {
+		ResponseMessage rm = new ResponseMessage();
+		rm.setAcquirerOrderId(rmdto.getAcquirerOrderId());
+		rm.setAcquirerTimestamp(rmdto.getAcquirerTimestamp());
+		rm.setIssuerOrderId(rmdto.getMerchantOrderId());
+		rm.setIssuerTimestamp(rmdto.getMerchantTimestamp());
+		rm.setResult(rmdto.getResult());
+		responseMessageService.save(rm);
+		
+		
+	}
+
+	private void setAndSaveIncomingMessage(AcquirerOrderDto aodto) {
+		IncomingMessage im = new IncomingMessage();
+		im.setAcquirerOrderId(aodto.getAcquirerOrderId());
+		im.setAcquirerTimestamp(aodto.getTimestamp());
+		im.setPan(aodto.getPan());
+		im.setSecurityCode(aodto.getSecurityCode());
+		im.setCardHolderName(aodto.getCardHolder());
+		im.setExpDateYear(aodto.getExpDateYear());
+		im.setExpDateMonth(aodto.getExpDateMonth());
+		im.setAmount(aodto.getTransactionAmount());
+		incomingMessageService.save(im);
+		
 	}
 
 	private Bank findBankByPan(Long pan) {
@@ -73,7 +104,7 @@ public class IncomingMessageController {
 		banke = bankService.getAll();
 		for (Bank bank : banke) {
 			if (bank.getPan().longValue() == panBanke.longValue()) {
-				System.out.println("NASLI SMO BANKU");
+				System.out.println("NASLI SMO BANKU sa portom: ");
 				System.out.println(bank.getPort());
 				return bank;
 			}

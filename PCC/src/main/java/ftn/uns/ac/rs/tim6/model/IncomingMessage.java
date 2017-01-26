@@ -24,7 +24,7 @@ public class IncomingMessage implements Serializable {
 	private Long id;
 	
 	@Column(name = "ACQUIRER_ORDER_ID")
-	private Long acquirerOrderId;
+	private Integer acquirerOrderId;
 	
 	@Column(name = "ACQUIRER_TIMESTAMP")
 	private Timestamp acquirerTimestamp;
@@ -59,11 +59,11 @@ public class IncomingMessage implements Serializable {
 		this.id = id;
 	}
 
-	public Long getAcquirerOrderId() {
+	public Integer getAcquirerOrderId() {
 		return acquirerOrderId;
 	}
 
-	public void setAcquirerOrderId(Long acquirerOrderId) {
+	public void setAcquirerOrderId(Integer acquirerOrderId) {
 		this.acquirerOrderId = acquirerOrderId;
 	}
 
@@ -139,7 +139,7 @@ public class IncomingMessage implements Serializable {
 		super();
 	}
 
-	public IncomingMessage(Long id, Long acquirerOrderId, Timestamp acquirerTimestamp, Long pan, Long securityCode,
+	public IncomingMessage(Long id, Integer acquirerOrderId, Timestamp acquirerTimestamp, Long pan, Long securityCode,
 			String cardHolderName, Long expDateYear, Long expDateMonth, BigDecimal amount, Bank bank) {
 		super();
 		this.id = id;
