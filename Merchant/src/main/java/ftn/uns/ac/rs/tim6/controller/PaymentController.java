@@ -23,70 +23,77 @@ import ftn.uns.ac.rs.tim6.service.PaymentService;
 @RestController
 @RequestMapping("/api")
 public class PaymentController {
-	
+
 	@Autowired
 	PaymentService paymentService;
-	
+
 	@RequestMapping(value = "/payments", method = RequestMethod.GET)
 	public ResponseEntity<List<Payment>> handleGetAllPayments() {
 		List<Payment> payments = (List<Payment>) paymentService.getAll();
 		return new ResponseEntity<List<Payment>>(payments, HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/incomingresult", method = RequestMethod.POST)
 	public ResponseEntity<URLDto> handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
-		
+
 		URLDto urldto = new URLDto();
-		
+
 		System.out.println("Usao u MERCHANT za URL");
 		System.out.println(rmdto.getResult().toString());
-		
-		//TODO korak 11
+
+		// TODO korak 11
 
 		TransactionResult rezultat = rmdto.getResult();
-		
-		
-		Payment p = new Payment();
-		
+
 		System.out.println("paymentID:" + rmdto.getPaymentId());
-		p.setPaymentId(rmdto.getPaymentId());
-		
-		
-		
-		
-		if ( rezultat.equals(TransactionResult.SUCCESSFUL) ) {
+
+		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
 			urldto.setUrl("http://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());
 			urldto.setMessage("Your payment hes been successfull");
-			p.setPaymentStatus(Status.SUCCESSFUL);
+			urldto.setStatus(Status.SUCCESSFUL);
+
 		} else if (rezultat.equals(TransactionResult.CVC_INVALID)) {
 			urldto.setUrl("http://localhost:8080/paymentError");
 			urldto.setMessage("Your CVC is invalid");
+			urldto.setStatus(Status.FAILED);
+			
 		} else if (rezultat.equals(TransactionResult.INSUFFICIENT_FUNDS)) {
 			urldto.setUrl("http://localhost:8080/paymentError");
 			urldto.setMessage("Insufficient funds");
+			urldto.setStatus(Status.FAILED);
+			
 		} else if (rezultat.equals(TransactionResult.INVALID_DATE)) {
 			urldto.setUrl("http://localhost:8080/paymentError");
 			urldto.setMessage("Your card date is not valid");
-		} 
-		
-		p.setPaymentMessage(urldto.getMessage());
-		paymentService.save(p);
-		
+			urldto.setStatus(Status.FAILED);
+			
+		}
+		setAndSavePayment(rmdto, urldto);
+
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 	}
-	
+
+	private void setAndSavePayment(ResponseMessageDto rmdto, URLDto urldto) {
+
+		Payment p = new Payment();
+		p.setPaymentId(rmdto.getPaymentId());
+		p.setPaymentMessage(urldto.getMessage());
+		p.setPaymentStatus(urldto.getStatus());
+		// p.setMerchantId();
+		p.setMerchantOrderId(rmdto.getMerchantOrderId());
+		paymentService.save(p);
+	}
+
 	@RequestMapping(value = "/paymentMessage", method = RequestMethod.POST)
 	public ResponseEntity<URLDto> handlePaymentID(@RequestBody Long paymentId) {
-		
+
 		Payment p = paymentService.findByPaymentId(paymentId);
 		URLDto urldto = new URLDto();
-		
+
 		urldto.setMessage(p.getPaymentMessage());
-		urldto.setStatus(p.getPaymentStatus());	
-		
+		urldto.setStatus(p.getPaymentStatus());
+
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 	}
-	
-	
 
 }
