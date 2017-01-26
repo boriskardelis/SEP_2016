@@ -46,7 +46,22 @@
         url: "/paymentSuccessful?paymentId",
         views: {
                  'content': {
-                           templateUrl: "app/components/url/paymentSuccessful.html",
+                           templateUrl: "app/components/url/url.html",
+                           controller: "UrlCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
+       })
+       .state('paymentFailed', {
+        url: "/paymentFailed?paymentId",
+        views: {
+                 'content': {
+                           templateUrl: "app/components/url/url.html",
                            controller: "UrlCtrl",
                            controllerAs: "vm"
                        },
@@ -57,6 +72,21 @@
                        }
                 } 
        }) 
+       .state('paymentError', {
+        url: "/paymentError?paymentId",
+        views: {
+                 'content': {
+                           templateUrl: "app/components/url/url.html",
+                           controller: "UrlCtrl",
+                           controllerAs: "vm"
+                       },
+                  'navigation':{
+                           templateUrl: 'app/components/navigation/navigation.html',
+                           controller: "NavigationCtrl",
+                           controllerAs: "vm"
+                       }
+                } 
+       })  
       .state('buy', {
         url: "/buy",
         views: {
@@ -92,7 +122,6 @@
             url: '/fifthStep',
             templateUrl: 'app/components/buy/views/buyFifthStep.html'
         });
-
 
      //Koristim da bi izbacio # iz url-a. Jos u server.js koristim rewrite mehanizam // to ked osm pravel XO makso
     $locationProvider.html5Mode(true); 

@@ -4,6 +4,24 @@
 }
 .buy-lable {
 	 /*padding-left:100px;*/
+.home-font {
+	font-size: 26px;
+	text-align: center;
+	font-style: bold;
+	text-decoration: underline;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.about-font {
+	font-size: 20px;
+	text-align: center;
+	font-style: bold;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
+.a-font {
+	font-size: 18px;
+}
+.url-font {
+	font-size: 18px;
 }
 .inper {
 	width: 100px;
