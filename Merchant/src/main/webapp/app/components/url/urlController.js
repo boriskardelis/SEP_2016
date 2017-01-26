@@ -19,8 +19,7 @@
 			vm.result = response.data.result;
 			console.log(vm.status);
 			console.log(vm.result);
-			vm.status = "FAILED";
-			vm.result = "INVALID_DATE";
+			
 			//status 0-SUCCESSFUL 1-FAILED 2-ERROR
 			//result 0-SUCCESSFUL, 1-INSUFFICIENT_FUNDS, 2-INVALID_DATE, 3-CVC_INVALID
 			if (vm.status == "SUCCESSFUL") {
