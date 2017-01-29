@@ -8,7 +8,9 @@
 
  function config($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
   
+  
  	$urlRouterProvider.otherwise('/home');
+
  		
      $stateProvider
       

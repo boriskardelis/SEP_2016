@@ -2,10 +2,14 @@ package ftn.uns.ac.rs.tim6.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -36,6 +40,7 @@ import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.PaymentService;
 import ftn.uns.ac.rs.tim6.service.PricelistService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
+import ftn.uns.ac.rs.tim6.util.CheckerCertificates;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
 
 @RestController
@@ -125,7 +130,15 @@ public class InsuranceController {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
-			puid = client.postForObject("http://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
+			
+			// connecting to URL	
+			CheckerCertificates checkerCertificate = new CheckerCertificates();
+			checkerCertificate.doTrustToCertificates();
+		     URL url = new URL("https://localhost:7070/api/urlid");
+		     HttpURLConnection conn = (HttpURLConnection)url.openConnection(); 
+		     System.out.println("ResponseCoede ="+conn.getResponseCode());
+		     
+			puid = client.postForObject("https://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
 			setAndSavePayment(mdto, puid);
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 
@@ -134,6 +147,8 @@ public class InsuranceController {
 		}
 
 	}
+	
+	
 
 	private void setAndSavePayment(MerchantDto mdto, PaymentUrlIdDto puid) {
 		Payment p = new Payment();

@@ -52,7 +52,7 @@ public class PaymentUrlAndIdController {
 
 			// TODO korak 4
 			puid.setPaymentId(randomGenerator.nextInt(1000));
-			puid.setUrl("http://localhost:7070/payment?paymentId=" + puid.getPaymentId());
+			puid.setUrl("https://localhost:7070/payment?paymentId=" + puid.getPaymentId());
 
 			puidDb.setPaymentId(puid.getPaymentId());
 			puidDb.setPaymentUrl(puid.getUrl());

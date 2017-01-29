@@ -27,6 +27,7 @@ import ftn.uns.ac.rs.tim6.service.AccountService;
 import ftn.uns.ac.rs.tim6.service.AcquirerOrderService;
 import ftn.uns.ac.rs.tim6.service.IssuerMessageService;
 import ftn.uns.ac.rs.tim6.service.PaymentRequestService;
+import ftn.uns.ac.rs.tim6.util.CheckerCertificates;
 
 @RestController
 @RequestMapping("/api")
@@ -72,8 +73,13 @@ public class AcquirerOrderController {
 			System.out.println(paymentInfo.getPaymentId());
 			// poruka prema PCC-u i dalje u krug
 			// TODO korak 6
+			
+			// check certificates
+			CheckerCertificates checkerCertificate = new CheckerCertificates();
+			checkerCertificate.doTrustToCertificates();
+			
 			rmdto.setPaymentId(paymentInfo.getPaymentId());
-			rmdto = client.postForObject("http://localhost:9090/api/incomingacquirerorder", entity,
+			rmdto = client.postForObject("https://localhost:9090/api/incomingacquirerorder", entity,
 					ResponseMessageDto.class);
 			rmdto.setPaymentId(paymentInfo.getPaymentId());
 
@@ -84,7 +90,7 @@ public class AcquirerOrderController {
 			// TODO korak 10 + 11
 			// poruka prema merchantu koja se prosledjuje od PCC-a
 			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
-			urldto = client.postForObject("http://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
+			urldto = client.postForObject("https://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
 
 			return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 

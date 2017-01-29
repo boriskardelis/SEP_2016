@@ -44,23 +44,23 @@ public class PaymentController {
 		System.out.println("paymentID: " + rmdto.getPaymentId());
 
 		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
-			urldto.setUrl("http://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());
+			urldto.setUrl("https://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.SUCCESSFUL);
 
 		} else if (rezultat.equals(TransactionResult.CVC_INVALID)) {
-			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
+			urldto.setUrl("https://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
 
 		} else if (rezultat.equals(TransactionResult.INSUFFICIENT_FUNDS)) {
-			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
+			urldto.setUrl("https://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
 
 		} else if (rezultat.equals(TransactionResult.INVALID_DATE)) {
-			urldto.setUrl("http://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
+			urldto.setUrl("https://localhost:8080/paymentFailed?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.FAILED);
 
 		} else if (rezultat.equals(TransactionResult.ERROR)) {
-			urldto.setUrl("http://localhost:8080/paymentError?paymentId=" + rmdto.getPaymentId());
+			urldto.setUrl("https://localhost:8080/paymentError?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.ERROR);
 
 		}

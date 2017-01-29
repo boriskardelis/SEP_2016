@@ -22,6 +22,7 @@ import ftn.uns.ac.rs.tim6.model.ResponseMessage;
 import ftn.uns.ac.rs.tim6.service.BankService;
 import ftn.uns.ac.rs.tim6.service.IncomingMessageService;
 import ftn.uns.ac.rs.tim6.service.ResponseMessageService;
+import ftn.uns.ac.rs.tim6.util.CheckerCertificates;
 
 @RestController
 @RequestMapping("/api")
@@ -61,7 +62,10 @@ public class IncomingMessageController {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			rmdto = client.postForObject("http://localhost:" + bank.getPort() + "/api/reservation", entity,
+			// check certificates	
+			CheckerCertificates checkerCertificate = new CheckerCertificates();
+			checkerCertificate.doTrustToCertificates();
+			rmdto = client.postForObject("https://localhost:" + bank.getPort() + "/api/reservation", entity,
 					ResponseMessageDto.class);
 			setAndSaveResponseMessage(rmdto);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
