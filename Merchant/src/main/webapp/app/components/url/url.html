@@ -1,0 +1,26 @@
+<br><br><br><br><br>
+
+
+<div ng-if="vm.status == 'SUCCESSFUL'" class="col-md-8 col-md-offset-2 form-div">
+    <p class="h3 bg-success" align="center">Payment successful</p>
+    <br>
+    <p class="url-font">&nbsp{{vm.message}}</p>
+    <br>
+    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+</div>
+
+<div ng-if="vm.status == 'ERROR'" class="col-md-8 col-md-offset-2 form-div">
+    <p class="h3 bg-danger" align="center">Error has occurred</p>
+    <br>
+    <p class="url-font">&nbsp{{vm.message}}</p>
+    <br>
+    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+</div>
+
+<div ng-if="vm.status == 'FAILED'" class="col-md-8 col-md-offset-2 form-div">
+    <p class="h3 bg-danger" align="center">Payment failed</p>
+    <br>
+    <p class="url-font">&nbsp{{vm.message}}</p>
+    <br>
+    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+</div>
