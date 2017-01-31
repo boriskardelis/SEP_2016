@@ -19,10 +19,10 @@
       </div> -->
 
 	<div class="form-group row celina">
-		<div class="col-md-3">
+		<div class="col-xs-3">
 			<label class="right" for="region" translate="region"></label>
 		</div>
-		<div class="col-md-9">
+		<div class="col-xs-9">
 		    <select ng-model="vm.regionSelected" ng-options="region.name for region in vm.regions">
 		  	     <option value="" translate="selectDestination"> </option>
 				<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
@@ -31,10 +31,10 @@
 	</div>
 
 	<div class="form-group row celina">
-		<div class="col-md-3">
+		<div class="col-xs-3">
 	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
 	 	</div>
-	 	<div class="col-md-9">		
+	 	<div class="col-xs-9">		
 		   	<span ng-repeat="sum in vm.sumTo">
 			    <input type="radio" ng-model="vm.sumToSelected" ng-value="sum"  name="sumToinsur">    
 				<label for="sum.name{{sum.name}}">{{sum.name}}</label>
@@ -43,20 +43,21 @@
 		</div>
 	</div>
 
-	<div class="form-group row celina">
+	<!-- age carrier nam vise ne treba -->
+	<!-- <div class="form-group row celina">
 		<div class="col-md-3">
 			<label class="right" for="ageCarrier" translate="ageInsuranceCarrier"></label>
 		</div>
 		<div class="col-md-9">
-		    <select ng-model="vm.ageSelected" ng-options="age.name for age in vm.ages">
+		    <select ng-model="vm.ageSelected" ng-options="age.name for age in vm.agesWithoutTo18">
 		   	    <option value="" translate="selectAge"></option>
 			</select>
 		</div>
-	</div>
+	</div> -->
 
 	<!-- Persons preko DIREKTIVE!!! -->
     <div class="form-group row celina">
-    	<div class="col-md-3">
+    	<div class="col-xs-3">
 			<label class="right" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
 		</div>
 		<span ng-repeat="(ageIndex, age) in vm.ages">
@@ -66,10 +67,10 @@
 
 	<!-- Za DatePicker -->
 	<div class="form-group row celina">
-		<div class="col-md-3">
+		<div class="col-xs-3">
 			<label class="right" for="duration" translate="durationOfInsurance"></label>
 		</div>
-			<div class="form-group col-md-3">
+			<div class="form-group col-xs-3">
 				<label class="buy-lable" for="startDate" translate="from"></label>
 			    <p class="input-group">
 			      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" is-open="vm.startOpened" datepicker-options="vm.dateOptions" ng-change="vm.startDatePicked()" ng-required="true" close-text="Close" />
@@ -78,7 +79,7 @@
 			      </span>
 			    </p>
 			</div>
-			<div class="form-group col-md-3">
+			<div class="form-group col-xs-3">
 				<label class="buy-lable" for="endDate" translate="to"></label>
 			    <p class="input-group">
 			      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" is-open="vm.endOpened" datepicker-options="vm.dateOptions" ng-change="vm.endDatePicked()" ng-required="true" close-text="Close" />
@@ -90,17 +91,17 @@
 	</div>
 	 
 	<div class="form-group row celina">
-		<div class="col-md-3">
+		<div class="col-xs-3">
 			<label class="right" for="sport">Sport:</label>
 		</div>
-		<div class="col-md-9">
+		<div class="col-xs-9">
 			<span ng-if="currentLanguage == 'en'">
 				<select ng-model="vm.sportSelected" ng-options="sport.name for sport in vm.sports">
 			  	     <option value="" translate="selectSport"> </option>
 				</select>
 			</span>
 		</div>
-		<div class="col-md-9">
+		<div class="col-xs-9">
 			<span ng-if="currentLanguage == 'sr'">
 				<select ng-model="vm.sportSelected" ng-options="sport.nameSerbian for sport in vm.sports">
 			  	     <option value="" translate="selectSport"> </option>

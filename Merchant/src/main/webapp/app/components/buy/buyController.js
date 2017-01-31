@@ -8,22 +8,17 @@
 	BuyCtrl.$inject = ['$scope', 'BuyService', '$state', '$timeout', '$window'];
 	function BuyCtrl($scope, BuyService, $state, $timeout, $window) {
 		var vm = this;
-
-		//vm.test = "asd";
 		
 		BuyService.getRiskSubcategories().then(function(response) {
-			/*console.log(response.data[1].name);
-			console.log(response.data[1].coefficient);
-			console.log(response.data[1]);
-			console.log(response.data[1].riskCategory);
-			console.log(response.data[1].riskCategory.name);*/
+			
 			vm.subcategories = response.data;
 
-			console.log(response.data[1].riskCategory.id)
+			console.log(response.data[1].riskCategory.id);
+			console.log(response.data);
 	
 			//@subcategories, @category
 			vm.regions = BuyService.getSubsForCat(response.data, "region");
-			vm.ages = BuyService.getSubsForCat(response.data, "age");
+			vm.ages  = BuyService.getSubsForCat(response.data, "age");
 			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
 			vm.sports = BuyService.getSubsForCat(response.data, "sport");
 
@@ -36,13 +31,12 @@
 			vm.ageApartments = BuyService.getSubsForCat(response.data, "ageApartment");
 			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
 			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
-			
-
+		
 		});
 
+		//ne koristim trenutno
 		BuyService.getRiskCategories().then(function(response) {
-			vm.catgories = response.data;
-			
+			vm.catgories = response.data;	
 		});
 
 		BuyService.getInsuranceTypes().then(function(response) {
@@ -52,8 +46,8 @@
 		BuyService.getVehicle().then(function(response) {
 			vm.vehciles = response.data;
 		});
-		 
-	   /* BuyService.getRegions().then(function(response) {
+		 	
+	    /* BuyService.getRegions().then(function(response) {
 							console.log('response.data');
 							console.log(response.data);
 							console.log('res prvog elementa, response.data[0]');
@@ -69,9 +63,7 @@
 							vm.region = response.data;							
 						});*/
 
-
-
-	     vm.processForm = function() {
+	    vm.processForm = function() {
        		//alert('awesome!');
        		console.log(vm.regionSelected);
        		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
@@ -84,10 +76,6 @@
 				   $window.location = vm.paymentUrlAndID.url;
 				}, 1000);
 		    });
-
-		
-       	
-
     	};
 
 		vm.startDate = new Date();
@@ -123,7 +111,7 @@
 		    startingDay: 1
 		};
 		vm.calculateFirstStep = function() {
-			//Parsiranje datuma
+			//Parsiranje datuma za prikazevanje u petom koraku
 			var startDay = vm.startDate.getDate();
 			var startMonth = vm.startDate.getMonth()+1;
 			var startYear = vm.startDate.getFullYear();
@@ -195,15 +183,27 @@
 			
 			console.log(vm.vehicle);
 			console.log(vm.home);
-			*/			
-		
+			*/	
+			var ageId = [];
+			var ageCount = [];
+			var ageList = [];
+			var sizeAge = Object.keys(vm.ages).length;
+			console.log(vm.ageTyped.idAgeSub[0]);
+			for (var i=0;  i <sizeAge; i++) {
+				 ageId[i] = vm.ageTyped.idAgeSub[i];
+				ageCount[i] = vm.ageTyped[i];
+				ageList.push({ageId: ageId[i], ageCount: ageCount[i]})
+			}
+			console.log("LISTA");
+			console.log(ageList);
+
 			//napravim listu itema koji uticu na cenu, koje treba da posaljem bekendu da bi izracuno cenu
-			var listItemsForDrools = [vm.regionSelected, vm.sumToSelected, vm.ageSelected,
-			 vm.sportSelected,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
+			var listItemsForDrools = [vm.regionSelected, vm.sumToSelected, vm.sportSelected,  vm.towingSelected,
+			 vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
 			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected];
 
 			 //napravim objekat
-			var itemsForDrools = {itemsListForDrools: listItemsForDrools, ageTyped: vm.ageTyped, startDate: vm.startDate, endDate: vm.endDate};
+			var itemsForDrools = {itemsListForDrools: listItemsForDrools, ageList: ageList, startDate: vm.startDate, endDate: vm.endDate};
 			//vm.itemsForDrools = itemsForDrools;
 
 			console.log("ITEMS FOR DROOLS");
