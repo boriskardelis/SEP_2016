@@ -58,66 +58,66 @@
 		 		<br>
 		 		
 		 		<div class="form-group row">	
-		 			<div class="col-md-3">		
+		 			<div class="col-xs-3">		
 						<label class="right">{{ 'registrationNumber' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.registration_number" class="form-control" placeholder="{{ 'registrationNumber' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'vehicleMake' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'vehicleOwnerFN' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.owner_first_name" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'vehicleOwnerLN' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.owner_last_name" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'vehicleOwnerJMBG' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.owner_jmbg" class="form-control" placeholder="JMBG">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">					
+					<div class="col-xs-3">					
 						<label class="right">{{ 'vehicleType' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.type" class="form-control" placeholder="{{ 'vehicleType' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'vinNumber' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.vin_number" class="form-control" placeholder="{{ 'vinNumber' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row celina">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'yearOfProduction' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="vehicle.year_of_production" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}">
 					</div>
 				</div>
@@ -130,73 +130,73 @@
 			 		<p class="h4 bg-success" align="center">{{ 'homeInfo' | translate }}</p>
 			 		<br>
 				<div class="form-group row">
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<label class="right">{{ 'address' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="home.address" class="form-control" placeholder="{{ 'address' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'homeOwnerFN' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="home.owner_first_name" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'homeOwnerLN' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="home.owner_last_name" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}">
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">			
+					<div class="col-xs-3">			
 						<label class="right">{{ 'homeOwnerJMBG' | translate }}</label>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-3">
 						<input type="text" ng-model="home.owner_jmbg" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}">
 					</div>
 				</div>
 
 				<div class="form-group row">
-					<div class="col-md-3">	
+					<div class="col-xs-3">	
 						<label class="right">{{ 'surface' | translate }}</label>
 					</div>
-					<div class="col-md-9">
+					<div class="col-xs-9">
 						<select ng-model="surfaceSelected" ng-options="surface.name for surface in surfaces">
 					  	     <option value="">{{ 'selectSurface' | translate }}</option>			
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">		
+					<div class="col-xs-3">		
 						<label class="right">{{ 'ageOfHome' | translate }}</label>
 					</div>
-					<div class="col-md-9">
+					<div class="col-xs-9">
 						<select ng-model="ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
 					  	     <option value="">{{ 'selectAge' | translate }}</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">	
+					<div class="col-xs-3">	
 						<label class="right">{{ 'estimatedValue' | translate }}</label>
 					</div>
-					<div class="col-md-9">		
+					<div class="col-xs-9">		
 						<select ng-model="valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
 					  	     <option value="">{{ 'selectValue' | translate }}</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group row">
-					<div class="col-md-3">	
+					<div class="col-xs-3">	
 						<label class="right">{{ 'insureFrom' | translate }}</label>
 					</div>
-					<div class="col-md-9">	
+					<div class="col-xs-9">	
 						<select ng-model="disasterSelected" ng-options="disaster.name for disaster in disasters">
 					  	     <option value="">{{ 'selectType' | translate }}</option>
 						</select>
