@@ -76,9 +76,8 @@
 						});	
 			};
 
-		var postCalculate = function(region, sum, ageCarrier, sport, ageType,towing, repair, accommodation, altRide, surface, ageApartment, valueApartment, disaster) {		
-			return $http.post('api/price', {region: region, sum: sum, ageCarrier: ageCarrier, sport: sport, ageType: ageType, towing: towing, 
-				repair: repair, accommodation: accommodation, altRide: altRide, surface: surface, ageApartment: ageApartment, valueApartment: valueApartment, disaster: disaster})
+		var postCalculate = function(itemsForDrools) {		
+			return $http.post('api/price', itemsForDrools)
 						.then(function(response) {
 							console.log("CKEDA ODGOVOR");
 							console.log(response);

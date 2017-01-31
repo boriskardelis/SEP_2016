@@ -196,17 +196,26 @@
 			console.log(vm.vehicle);
 			console.log(vm.home);
 			*/			
-			
-			BuyService.postCalculate(vm.regionSelected, vm.sumToSelected, vm.ageSelected,
-			 vm.sportSelected, vm.ageTyped,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
-			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected)
+		
+			//napravim listu itema koji uticu na cenu, koje treba da posaljem bekendu da bi izracuno cenu
+			var listItemsForDrools = [vm.regionSelected, vm.sumToSelected, vm.ageSelected,
+			 vm.sportSelected,  vm.towingSelected, vm.repairSelected, vm.accommodationSelected, vm.alternativeRideSelected,
+			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected];
+
+			 //napravim objekat
+			var itemsForDrools = {itemsListForDrools: listItemsForDrools, ageTyped: vm.ageTyped, startDate: vm.startDate, endDate: vm.endDate};
+			//vm.itemsForDrools = itemsForDrools;
+
+			console.log("ITEMS FOR DROOLS");
+			console.log(itemsForDrools);
+
+			BuyService.postCalculate(itemsForDrools)
 				.then(function(response) {
-			 		
 			 		vm.droolPrices = response.data;
-			 });
+			});
 		};
 
-    	vm.insuranceType = ["Putno", "Home"];
+    	//.insuranceType = ["Putno", "Home"];
     	vm.checked = [];
 
     	//Prepravi jer kad reloadujes prelazi na prvo stanje

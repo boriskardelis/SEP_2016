@@ -9,7 +9,7 @@
 	function HomeService($http) {
 
 		var sayHello = function() {
-			return "Hello madafaka";
+			return "Hello ";
 		};
 
 
