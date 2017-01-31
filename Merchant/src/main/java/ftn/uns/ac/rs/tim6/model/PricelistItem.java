@@ -12,37 +12,37 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PRICELIST_ITEM")
 public class PricelistItem implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "PRICELIST_ITEM_ID")
-	 private long id;
-	 
-	 @Column(name = "COEFFICIENT")
-	 private BigDecimal coefficient;
-	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "PRICELIST")
-	 @JsonManagedReference
-	 private Pricelist pricelist;
-	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "RISK_SUBCATEGORY")
-	 @JsonManagedReference
-	 private RiskSubcategory riskSubcategory;
 
-	public long getId() {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "PRICELIST_ITEM_ID")
+	private Integer id;
+
+	@Column(name = "COEFFICIENT")
+	private BigDecimal coefficient;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "PRICELIST")
+	@JsonIgnore
+	private Pricelist pricelist;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "RISK_SUBCATEGORY")
+	@JsonIgnore
+	private RiskSubcategory riskSubcategory;
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -70,19 +70,16 @@ public class PricelistItem implements Serializable {
 		this.riskSubcategory = riskSubcategory;
 	}
 
-	public PricelistItem(long id, BigDecimal coefficient, Pricelist pricelist, RiskSubcategory riskSubcategory) {
+	public PricelistItem(Integer id, BigDecimal coefficient, Pricelist pricelist, RiskSubcategory riskSubcategory) {
 		super();
 		this.id = id;
 		this.coefficient = coefficient;
 		this.pricelist = pricelist;
 		this.riskSubcategory = riskSubcategory;
 	}
-	
+
 	public PricelistItem() {
 		super();
 	}
-	
-	
-	 
-	 
+
 }

@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PRICELIST")
@@ -26,7 +26,7 @@ public class Pricelist implements Serializable {
 	 private List<Insurance> insurance;
 	 
 	 @OneToMany(mappedBy = "pricelist",  cascade = CascadeType.ALL)
-	 @JsonBackReference
+	 @JsonIgnore
 	 private List<PricelistItem> pricelistItems;
 	 
 

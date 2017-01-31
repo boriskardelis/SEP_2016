@@ -1,54 +1,45 @@
 package ftn.uns.ac.rs.tim6.model;
+
 import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "RISK_SUBCATEGORY")
 
 public class RiskSubcategory implements Serializable {
-	
-	private static final long serialVersionUID = 1L;	
-	 
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "RISK_SUBCATEGORY_ID")
-	 private long id;
-	 
-	/* @Column(name = "COEFFICIENT")
-	 private BigDecimal coefficient;*/
-	 
-	 @Column(name = "NAME")
-	 private String name;
-	 
-	 @Column(name = "NAME_SERBIAN")
-	 private String nameSerbian;
-	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "RISK_CATEGORY")
-	 private RiskCategory riskCategory;
-	 
-	 @OneToMany(mappedBy = "riskSubcategory", cascade = CascadeType.ALL)
-	 @JsonBackReference
-	 private List<PricelistItem> pricelistItems;
 
-	public long getId() {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "RISK_SUBCATEGORY_ID")
+	private Integer id;
+
+	@Column(name = "NAME")
+	private String name;
+
+	@Column(name = "NAME_SERBIAN")
+	private String nameSerbian;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "RISK_CATEGORY")
+	private RiskCategory riskCategory;
+
+	@OneToMany(mappedBy = "riskSubcategory", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<PricelistItem> pricelistItems;
+
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-
-	/*public BigDecimal getCoefficient() {
-		return coefficient;
-	}
-	public void setCoefficient(BigDecimal coefficient) {
-		this.coefficient = coefficient;
-	}*/
 
 	public String getName() {
 		return name;
@@ -57,8 +48,6 @@ public class RiskSubcategory implements Serializable {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 	public String getNameSerbian() {
 		return nameSerbian;
@@ -76,8 +65,6 @@ public class RiskSubcategory implements Serializable {
 		this.riskCategory = riskCategory;
 	}
 
-	
-
 	public List<PricelistItem> getPricelistItems() {
 		return pricelistItems;
 	}
@@ -86,9 +73,7 @@ public class RiskSubcategory implements Serializable {
 		this.pricelistItems = pricelistItems;
 	}
 
-	
-
-	public RiskSubcategory(long id, String name, String nameSerbian, RiskCategory riskCategory,
+	public RiskSubcategory(Integer id, String name, String nameSerbian, RiskCategory riskCategory,
 			List<PricelistItem> pricelistItems) {
 		super();
 		this.id = id;
@@ -101,8 +86,5 @@ public class RiskSubcategory implements Serializable {
 	public RiskSubcategory() {
 		super();
 	}
-	 
-	 
-	 
 
 }

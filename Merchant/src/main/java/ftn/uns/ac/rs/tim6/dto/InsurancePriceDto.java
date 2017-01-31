@@ -1,8 +1,6 @@
 package ftn.uns.ac.rs.tim6.dto;
 
 import java.util.ArrayList;
-import java.util.List;
-
 import ftn.uns.ac.rs.tim6.model.PricelistItem;
 
 public class InsurancePriceDto {
@@ -13,9 +11,9 @@ public class InsurancePriceDto {
 	private double totalPrice;
 
 	private int days;
+	private int persons;
 
 	private ArrayList<PricelistItem> items = new ArrayList<PricelistItem>();
-	private ArrayList<AgeSubCategoryDto> ages = new ArrayList<AgeSubCategoryDto>();
 
 	public double getPremiumPrice() {
 		return premiumPrice;
@@ -57,10 +55,6 @@ public class InsurancePriceDto {
 		this.days = days;
 	}
 
-	public List<AgeSubCategoryDto> getAges() {
-		return ages;
-	}
-
 	public ArrayList<PricelistItem> getItems() {
 		return items;
 	}
@@ -69,8 +63,12 @@ public class InsurancePriceDto {
 		this.items = items;
 	}
 
-	public void setAges(ArrayList<AgeSubCategoryDto> ages) {
-		this.ages = ages;
+	public int getPersons() {
+		return persons;
+	}
+
+	public void setPersons(int persons) {
+		this.persons = persons;
 	}
 
 }

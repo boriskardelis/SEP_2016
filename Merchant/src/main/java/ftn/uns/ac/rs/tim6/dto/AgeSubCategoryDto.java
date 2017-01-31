@@ -2,24 +2,20 @@ package ftn.uns.ac.rs.tim6.dto;
 
 public class AgeSubCategoryDto {
 
-	private long id;
-
-	private int number;
-
-	public long getId() {
-		return id;
+	private long ageId;
+	private int ageCount;
+	
+	public long getAgeId() {
+		return ageId;
 	}
-
-	public void setId(long id) {
-		this.id = id;
+	public void setAgeId(long ageId) {
+		this.ageId = ageId;
 	}
-
-	public int getNumber() {
-		return number;
+	public int getAgeCount() {
+		return ageCount;
 	}
-
-	public void setNumber(int number) {
-		this.number = number;
+	public void setAgeCount(int ageCount) {
+		this.ageCount = ageCount;
 	}
 
 	
