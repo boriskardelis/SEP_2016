@@ -1,5 +1,6 @@
 package ftn.uns.ac.rs.tim6.util;
 
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,5 +19,18 @@ public class DateConverter {
 		
 		return null;
 	}
+	
+	public static String convertToDataBase(String string) {
+		  try {
+		   Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss z YYYY").parse(string);
+		   return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
+		  } catch (ParseException e) {
+		   
+		   e.printStackTrace();
+		  }
+		  
+		  return null;
+		  
+		 }
 
 }

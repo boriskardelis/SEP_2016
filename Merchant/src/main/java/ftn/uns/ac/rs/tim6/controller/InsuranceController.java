@@ -91,7 +91,7 @@ public class InsuranceController {
 		for (RiskSubcategory risk : idto.getItemsListForDrools()) {
 			if (risk != null) {
 				for (PricelistItem item : curentPricelistItems) {
-					if (item.getRiskSubcategory().getName().equals(risk.getName())) {
+					if (item.getRiskSubcategory().getId() == risk.getId()) {
 						dto.getItems().add(item);
 					}
 				}

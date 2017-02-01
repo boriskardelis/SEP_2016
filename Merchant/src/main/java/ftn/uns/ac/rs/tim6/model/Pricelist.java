@@ -17,7 +17,7 @@ public class Pricelist implements Serializable {
 	 @Id
 	 @GeneratedValue
 	 @Column(name = "PRICELIST_ID")
-	 private long id;
+	 private Integer id;
 	 
 	 @Column(name = "START_DATE")
 	 private Date startDate;
@@ -30,11 +30,11 @@ public class Pricelist implements Serializable {
 	 private List<PricelistItem> pricelistItems;
 	 
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -66,7 +66,7 @@ public class Pricelist implements Serializable {
 	}
 	
 
-	public Pricelist(long id, Date startDate, List<Insurance> insurance,
+	public Pricelist(Integer id, Date startDate, List<Insurance> insurance,
 			List<PricelistItem> pricelistItems) {
 		super();
 		this.id = id;

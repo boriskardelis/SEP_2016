@@ -8,8 +8,8 @@
 	BuyService.$inject = ['$http'];
 	function BuyService($http) {
 
-		var getRiskSubcategories = function() {
-			return $http.get("api/risksubcategories")
+		var getRiskSubcategories = function(language) {
+			return $http.post("api/risksubcategories", language)
 						.then(function(response) {					
 							//console.log('RESPONSE OD SERVISA  ' + response.data[2].region);
 							//console.log('RESPONSE OD SERVISA  ' + response.data);

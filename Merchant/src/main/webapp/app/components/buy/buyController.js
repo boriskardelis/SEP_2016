@@ -9,7 +9,7 @@
 	function BuyCtrl($scope, BuyService, $state, $timeout, $window) {
 		var vm = this;
 		
-		BuyService.getRiskSubcategories().then(function(response) {
+		/*BuyService.getRiskSubcategories().then(function(response) {
 			
 			vm.subcategories = response.data;
 
@@ -32,6 +32,16 @@
 			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
 			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
 		
+		});*/
+
+		BuyService.getRiskSubcategories("English").then(function(response) {
+			console.log(response.data);
+			console.log(response.data[0].nameTranslate.name);
+			console.log(response.data[0].nameTranslate);
+			vm.regions = BuyService.getSubsForCat(response.data, "region");
+
+			console.log("regions:");
+			console.log(vm.regions);
 		});
 
 		//ne koristim trenutno

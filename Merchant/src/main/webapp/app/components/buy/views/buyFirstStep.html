@@ -23,7 +23,7 @@
 			<label class="right" for="region" translate="region"></label>
 		</div>
 		<div class="col-xs-9">
-		    <select ng-model="vm.regionSelected" ng-options="region.name for region in vm.regions">
+		    <select ng-model="vm.regionSelected" ng-options="region.nameTranslate.name for region in vm.regions">
 		  	     <option value="" translate="selectDestination"> </option>
 				<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
 			</select>
