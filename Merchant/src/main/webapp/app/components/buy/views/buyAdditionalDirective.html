@@ -15,7 +15,7 @@
 					<label>{{ 'towing' | translate }}</label>
 					<br/>
 					<div class="form-group">		
-						<select ng-show="towings[$index]" ng-model="towingSelected" ng-options="towing.name for towing in towings">
+						<select ng-show="towings[$index]" ng-model="towingSelected" ng-options="towing.nameTranslate.name for towing in towings">
 					  	    <option value="">{{ 'selectMileage' | translate }}</option>
 						</select>
 					</div>
@@ -25,7 +25,7 @@
 					<label>{{ 'repairsTo' | translate }}</label>
 					<br>
 					<div class="form-group">		
-						<select ng-show="repairs[$index]" ng-model="repairSelected" ng-options="repair.name for repair in repairs">
+						<select ng-show="repairs[$index]" ng-model="repairSelected" ng-options="repair.nameTranslate.name for repair in repairs">
 						  	<option value="">{{ 'selectPrice' | translate }}</option>
 						</select>
 					</div>
@@ -35,7 +35,7 @@
 					<label>{{ 'accommodation' | translate }}</label>
 					<br/>
 						<div class="form-group">		
-							<select ng-show="accommodations[$index]" ng-model="accommodationSelected" ng-options="accommodation.name for accommodation in accommodations">
+							<select ng-show="accommodations[$index]" ng-model="accommodationSelected" ng-options="accommodation.nameTranslate.name for accommodation in accommodations">
 						  	     <option value=""> {{ 'selectNumberOfDays' | translate }} </option>
 							</select>
 						</div>
@@ -45,7 +45,7 @@
 					<label>{{ 'alternativeRide' | translate }}</label>
 					<br/>
 						<div class="form-group">		
-							<select ng-show="alternativeRides[$index]" ng-model="alternativeRideSelected" ng-options="alternativeRide.name for alternativeRide in alternativeRides">
+							<select ng-show="alternativeRides[$index]" ng-model="alternativeRideSelected" ng-options="alternativeRide.nameTranslate.name for alternativeRide in alternativeRides">
 						  	     <option value="">{{ 'selectRide' | translate }}</option>
 							</select>
 						</div>
@@ -167,7 +167,7 @@
 						<label class="right">{{ 'surface' | translate }}</label>
 					</div>
 					<div class="col-xs-9">
-						<select ng-model="surfaceSelected" ng-options="surface.name for surface in surfaces">
+						<select ng-model="surfaceSelected" ng-options="surface.nameTranslate.name for surface in surfaces">
 					  	     <option value="">{{ 'selectSurface' | translate }}</option>			
 						</select>
 					</div>
@@ -177,7 +177,7 @@
 						<label class="right">{{ 'ageOfHome' | translate }}</label>
 					</div>
 					<div class="col-xs-9">
-						<select ng-model="ageApartmentSelected" ng-options="ageApartment.name for ageApartment in ageApartments">
+						<select ng-model="ageApartmentSelected" ng-options="ageApartment.nameTranslate.name for ageApartment in ageApartments">
 					  	     <option value="">{{ 'selectAge' | translate }}</option>
 						</select>
 					</div>
@@ -187,7 +187,7 @@
 						<label class="right">{{ 'estimatedValue' | translate }}</label>
 					</div>
 					<div class="col-xs-9">		
-						<select ng-model="valueApartmentSelected" ng-options="valueApartment.name for valueApartment in valueApartments">
+						<select ng-model="valueApartmentSelected" ng-options="valueApartment.nameTranslate.name for valueApartment in valueApartments">
 					  	     <option value="">{{ 'selectValue' | translate }}</option>
 						</select>
 					</div>
@@ -197,7 +197,7 @@
 						<label class="right">{{ 'insureFrom' | translate }}</label>
 					</div>
 					<div class="col-xs-9">	
-						<select ng-model="disasterSelected" ng-options="disaster.name for disaster in disasters">
+						<select ng-model="disasterSelected" ng-options="disaster.nameTranslate.name for disaster in disasters">
 					  	     <option value="">{{ 'selectType' | translate }}</option>
 						</select>
 					</div>

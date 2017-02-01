@@ -16,8 +16,8 @@
 			{{test}} -->
 
 		 <div class="form-group col-xs-2">			
-				<label  class="center" for="{{age.name}}" translate="age_replacement" translate-values="{ name: '{{age.name}}'}"></label>
-				<input type="text" ng-model="ageTyped[ageIndex]" class="form-control" id="{{age.name}}" name="{{age.name}}" placeholder="0">
+				<label  class="center" for="{{age.nameTranslate.name}}" translate="age_replacement" translate-values="{ name: '{{age.nameTranslate.name}}'}"></label>
+				<input type="text" ng-model="ageTyped[ageIndex]" class="form-control" id="{{age.nameTranslate.name}}" name="{{age.nameTranslate.name}}" placeholder="0">
 			</div>
 
 			<!-- NE mogu da izbacim nikako $parent odavde. Jer ng-init inicira samo prvi element u nizu. ZASTO? -->

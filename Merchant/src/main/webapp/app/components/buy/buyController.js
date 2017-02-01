@@ -34,11 +34,24 @@
 		
 		});*/
 
-		BuyService.getRiskSubcategories("English").then(function(response) {
+		BuyService.getRiskSubcategoriesBasedOnLanguage("English").then(function(response) {
 			console.log(response.data);
 			console.log(response.data[0].nameTranslate.name);
 			console.log(response.data[0].nameTranslate);
 			vm.regions = BuyService.getSubsForCat(response.data, "region");
+			vm.ages  = BuyService.getSubsForCat(response.data, "age");
+			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
+			vm.sports = BuyService.getSubsForCat(response.data, "sport");
+
+			vm.towings = BuyService.getSubsForCat(response.data, "towing");
+			vm.repairs = BuyService.getSubsForCat(response.data, "repairs");
+			vm.accommodations = BuyService.getSubsForCat(response.data, "accommodation");
+			vm.alternativeRides = BuyService.getSubsForCat(response.data, "alternativeRide");
+
+			vm.surfaces = BuyService.getSubsForCat(response.data, "surface");
+			vm.ageApartments = BuyService.getSubsForCat(response.data, "ageApartment");
+			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
+			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
 
 			console.log("regions:");
 			console.log(vm.regions);
@@ -163,6 +176,7 @@
 			vm.getNumber = function(num) {
 			    return new Array(num);   
 			}
+
 		};
 
 		vm.calculateSecondStep = function() {
