@@ -196,8 +196,8 @@
             firstName : "First name",
             lastName : "Last name",
             jmbg : "Identification number",
-            passportNumber : "Passport number",
-            phoneNumber : "Phone number",
+            passportNumber : "Passport num.",
+            phoneNumber : "Phone num.",
             insuranceContractor : "Insurance contractor is:",
             spaic : " a same person as insurance carrier.",
             nspaic : "NOT a same person as insurance carrier.",
@@ -278,29 +278,23 @@
             firstName : "Ime",
             lastName : "Prezime",
             jmbg : "JMBG",
-            passportNumber : "Broj pasoša",
-            phoneNumber : "Broj telefona",
+            passportNumber : "Br. pasoša",
+            phoneNumber : "Br. telefona",
             insuranceContractor : "Ugovarač osiguranja je:",
             spaic : "nosilac osiguranja.",
             nspaic : "druga osoba koja nije nosilac osiguranja.",
             insuranceInformation : "Informacije o osiguranju",
             additionalInsurances : "Dodatna osiguranja",
-            to1 : "do",
-
-
-
-
-          
-
-          
+            to1 : "do",        
             
         };
 
 
     $translateProvider
-		.translations('en', eng)
-		.translations('sr', ser)
-    .preferredLanguage('en');
+		.translations('English', eng)
+		.translations('Serbian', ser)
+    .preferredLanguage('English');
+
     
     $translateProvider.useSanitizeValueStrategy('escaped');
 

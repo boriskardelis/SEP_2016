@@ -5,36 +5,13 @@
 		.module('merchantApp')
 		.controller('BuyCtrl', BuyCtrl);
 
-	BuyCtrl.$inject = ['$scope', 'BuyService', '$state', '$timeout', '$window'];
-	function BuyCtrl($scope, BuyService, $state, $timeout, $window) {
+	BuyCtrl.$inject = ['$scope', '$rootScope', 'BuyService', '$state', '$timeout', '$window', '$translate'];
+	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate) {
 		var vm = this;
 		
-		/*BuyService.getRiskSubcategories().then(function(response) {
-			
-			vm.subcategories = response.data;
+		console.log($translate.use());
 
-			console.log(response.data[1].riskCategory.id);
-			console.log(response.data);
-	
-			//@subcategories, @category
-			vm.regions = BuyService.getSubsForCat(response.data, "region");
-			vm.ages  = BuyService.getSubsForCat(response.data, "age");
-			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
-			vm.sports = BuyService.getSubsForCat(response.data, "sport");
-
-			vm.towings = BuyService.getSubsForCat(response.data, "towing");
-			vm.repairs = BuyService.getSubsForCat(response.data, "repairs");
-			vm.accommodations = BuyService.getSubsForCat(response.data, "accommodation");
-			vm.alternativeRides = BuyService.getSubsForCat(response.data, "alternativeRide");
-
-			vm.surfaces = BuyService.getSubsForCat(response.data, "surface");
-			vm.ageApartments = BuyService.getSubsForCat(response.data, "ageApartment");
-			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
-			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
-		
-		});*/
-
-		BuyService.getRiskSubcategoriesBasedOnLanguage("English").then(function(response) {
+		BuyService.getRiskSubcategoriesBasedOnLanguage($translate.use()).then(function(response) {
 			console.log(response.data);
 			console.log(response.data[0].nameTranslate.name);
 			console.log(response.data[0].nameTranslate);
@@ -185,37 +162,8 @@
 		};
 
 		vm.calculateSecondStep = function() {
-
-			
+		
 			console.log("CALCULATE");
-			/*console.log(vm.regionSelected);
-			console.log(vm.sumToSelected);
-			console.log(vm.ageSelected);
-			console.log(vm.sportSelected);
-			console.log(vm.ageTyped);
-
-			//DOdaj u listu ako treba
-			console.log(vm.startDate);
-			console.log(vm.endDate);
-
-			//Ne ulaze u cenu
-			//console.log(vm.vehicle);
-			//console.log(vm.home);
-			
-			
-			console.log(vm.towingSelected);
-			console.log(vm.repairSelected);
-			console.log(vm.accommodationSelected);
-			console.log(vm.alternativeRideSelected);
-			console.log(vm.surfaceSelected);
-			console.log(vm.valueApartmentSelected);
-			console.log(vm.disasterSelected);
-			console.log(vm.ageTyped);
-			
-			console.log(vm.vehicle);
-			console.log(vm.home);
-			*/	
-
 			//Napravim objeka koji kasnije saljem za drools da bi se izracunala cena
 			var ageId = [];
 			var ageCount = [];

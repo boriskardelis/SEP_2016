@@ -8,12 +8,11 @@
 	NavigationCtrl.$inject = ['$scope', '$translate', '$rootScope'];
 	function NavigationCtrl($scope, $translate, $rootScope) {
 		var vm = this;
-		$rootScope.currentLanguage = 'en';
-
+	
 		vm.changeCurrentLanguage = function(key){
             $translate.use(key);
-            $rootScope.currentLanguage = key;
-            console.log($rootScope.currentLanguage);
+            //$rootScope.currentLanguage = key;
+            console.log($translate.use());
 
             console.log("Poziva metod");
         };
