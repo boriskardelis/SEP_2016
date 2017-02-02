@@ -199,9 +199,6 @@
     	//.insuranceType = ["Putno", "Home"];
     	vm.checked = [];
 
-    	//Prepravi jer kad reloadujes prelazi na prvo stanje
-	   	$state.go('buy.firstStep');
-
 	}
 
 })();

@@ -10,6 +10,8 @@
   
   
  	$urlRouterProvider.otherwise('/home');
+  //Posto koristim nested views, treba mi da kada pogodim parenta (buy), redirektuje me na child (firstStep), a pritom da ostavim url
+  $urlRouterProvider.when('/buy', '/buy/firstStep' );
 
  		
      $stateProvider
@@ -101,8 +103,9 @@
                            templateUrl: 'app/components/navigation/navigation.html',
                            controller: "NavigationCtrl",
                            controllerAs: "vm"
-                       }
-                } 
+                       }     
+                },
+        abstract:true
        })//Nested Views for buy
        .state('buy.firstStep', {
             url: '/firstStep',
