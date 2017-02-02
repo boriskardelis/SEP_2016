@@ -15,6 +15,7 @@ import javax.net.ssl.X509TrustManager;
 public class CheckerCertificates {
 	
 	// trusting all certificate 
+		@SuppressWarnings("restriction")
 		public void doTrustToCertificates() throws Exception {
 	        Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
 	        TrustManager[] trustAllCerts = new TrustManager[]{
