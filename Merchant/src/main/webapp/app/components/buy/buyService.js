@@ -64,8 +64,8 @@
 						});	
 		};*/
 
-			var buy = function(totalPrice) {			
-			return $http.post("api/buy", totalPrice)
+			var buy = function(insuranceInfo) {			
+			return $http.post("api/buy", insuranceInfo)
 						.then(function(response) {	
 							console.log("Vracen odgovor from BUY");				
 							return response;

@@ -71,7 +71,7 @@
 			console.log("InsuranceInfo: ");
        		console.log(insuranceInfo);
        	
-       		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
+       		BuyService.buy(insuranceInfo).then(function(response) {
 			 	console.log("Odgovor iz buy");
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
