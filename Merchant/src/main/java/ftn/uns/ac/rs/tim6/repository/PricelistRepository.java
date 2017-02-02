@@ -9,7 +9,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import ftn.uns.ac.rs.tim6.model.Pricelist;
-import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 
 @Repository
 public interface PricelistRepository extends JpaRepository<Pricelist, Long> {

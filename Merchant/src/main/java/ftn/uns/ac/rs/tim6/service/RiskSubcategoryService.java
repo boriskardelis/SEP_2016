@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.tim6.service;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,10 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 import ftn.uns.ac.rs.tim6.model.Pricelist;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.repository.RiskSubcategoryRepository;
+
 @Service
 @Transactional
-public class RiskSubcategoryService implements GenericService<RiskSubcategory>{
-	
+public class RiskSubcategoryService implements GenericService<RiskSubcategory> {
+
 	@Autowired
 	private RiskSubcategoryRepository riskSubcategoryRepository;
 
@@ -30,7 +30,7 @@ public class RiskSubcategoryService implements GenericService<RiskSubcategory>{
 	public RiskSubcategory findById(long id) {
 		return riskSubcategoryRepository.findOne(id);
 	}
-	
+
 	public List<RiskSubcategory> findSubcategoriesByLanguage(String language, Pricelist p) {
 		System.out.println("PROSAO U SERVIS" + riskSubcategoryRepository.findSubcategoriesByLanguage(language, p));
 		return riskSubcategoryRepository.findSubcategoriesByLanguage(language, p);

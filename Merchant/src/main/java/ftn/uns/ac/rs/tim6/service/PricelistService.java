@@ -12,7 +12,6 @@ import ftn.uns.ac.rs.tim6.model.Pricelist;
 import ftn.uns.ac.rs.tim6.model.PricelistItem;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 import ftn.uns.ac.rs.tim6.repository.PricelistRepository;
-import ftn.uns.ac.rs.tim6.util.DateConverter;
 
 @Service
 @Transactional
@@ -34,56 +33,28 @@ public class PricelistService implements GenericService<Pricelist> {
 	public Pricelist findById(long id) {
 		return pricelistRepository.findOne(id);
 	}
-	
-	
-	public List<Pricelist> findCurrentPriceList(Date sqlDate) {
-		return pricelistRepository.findCurrentPriceList(sqlDate);
-	}
 
-	public Pricelist getCurrentPricelist() {
-		List<Pricelist> allPricelists = pricelistRepository.findAll();
-		Date danas = new Date();
-		// Date uporedi = new Date();
-
-		System.out.println("new Date danas +++ " + danas);
-
-		for (Pricelist pricelist : allPricelists) {
-
-			Date noviDatum = DateConverter.convertToJavaDate(pricelist.getStartDate());
-			System.out.println("1 svi pricelist datumi: " + noviDatum);
-			if (noviDatum.after(danas)) {
-				// jos ne vazi
-				System.out.println("2 jos ne vazi datumi: " + noviDatum);
-			} else if (noviDatum.before(danas)) {
-				// TODO nadji najnoviji cenovnik
-				// vracam prvi validan
-				System.out.println("2 nadji najnoviji datumi: " + noviDatum);
-				return pricelist;
-			}
-
-		}
-
-		return null;
-
+	public Pricelist findCurrentPriceList(Date sqlDate) {
+		List<Pricelist> lista = pricelistRepository.findCurrentPriceList(sqlDate);
+		return lista.get(0);
 	}
 
 	public List<RiskSubcategory> getCurrentPricelistSubcategories() {
 
-		Pricelist p = getCurrentPricelist();
+		Pricelist p = findCurrentPriceList(new Date());
 		List<PricelistItem> pricelistItems = p.getPricelistItems();
 		List<RiskSubcategory> riskSubcategories = new ArrayList<RiskSubcategory>();
 
 		System.out.println("izvlacimo subCategory ");
 		for (PricelistItem listItem : pricelistItems) {
 			riskSubcategories.add(listItem.getRiskSubcategory());
-			// System.out.println(listItem.getRiskSubcategory().getName());
 		}
 
 		return riskSubcategories;
-	} 
+	}
 
 	public List<PricelistItem> getCurrentPricelistItems() {
-		Pricelist p = getCurrentPricelist();
+		Pricelist p = findCurrentPriceList(new Date());
 		List<PricelistItem> pricelistItems = p.getPricelistItems();
 		return pricelistItems;
 	}
