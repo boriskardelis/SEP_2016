@@ -21,12 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.joda.time.Days;
 import org.joda.time.LocalDate;
 
 import ftn.uns.ac.rs.tim6.dto.AgeSubCategoryDto;
 import ftn.uns.ac.rs.tim6.dto.InsuranceDto;
+import ftn.uns.ac.rs.tim6.dto.InsuranceInfoDto;
 import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
@@ -68,31 +70,32 @@ public class InsuranceController {
 	public InsurancePriceDto handlePrice(@RequestBody InsuranceDto idto) throws IOException {
 
 		// TODO Drools
-		InsurancePriceDto dto = new InsurancePriceDto();
+		InsurancePriceDto insurancePriceDto = new InsurancePriceDto();
 		DroolsReadKnowlageBase kbase = new DroolsReadKnowlageBase();
 		List<PricelistItem> curentPricelistItems = pricelistService.getCurrentPricelistItems();
-		
-		LocalDate start = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(idto.getStartDate()) );
-		LocalDate end = LocalDate.parse( new SimpleDateFormat("yyyy-MM-dd").format(idto.getEndDate()) );
-		dto.setDays( Days.daysBetween(start, end).getDays() );
-		System.out.println("dani " + dto.getDays());
-		
-		
+
+		LocalDate start = LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(idto.getStartDate()));
+		LocalDate end = LocalDate.parse(new SimpleDateFormat("yyyy-MM-dd").format(idto.getEndDate()));
+		insurancePriceDto.setDays(Days.daysBetween(start, end).getDays());
+		System.out.println("dani " + insurancePriceDto.getDays());
+
 		for (AgeSubCategoryDto a : idto.getAgeList()) {
-			dto.setPersons(dto.getPersons() + a.getAgeCount());
+			insurancePriceDto.setPersons(insurancePriceDto.getPersons() + a.getAgeCount()); // sabiramo
+			// broj
+			// osoba
 			for (PricelistItem item : curentPricelistItems) {
 				if (item.getRiskSubcategory().getId() == a.getAgeId()) {
-					dto.getItems().add(item);
+					insurancePriceDto.getItems().add(item);
 				}
 			}
 		}
-		System.out.println("broj osoba " + dto.getPersons());
+		System.out.println("broj osoba " + insurancePriceDto.getPersons());
 
 		for (RiskSubcategory risk : idto.getItemsListForDrools()) {
 			if (risk != null) {
 				for (PricelistItem item : curentPricelistItems) {
 					if (item.getRiskSubcategory().getId() == risk.getId()) {
-						dto.getItems().add(item);
+						insurancePriceDto.getItems().add(item);
 					}
 				}
 			}
@@ -103,7 +106,7 @@ public class InsuranceController {
 
 			System.out.println(" ULAZIMO U DROOLS ");
 			StatefulKnowledgeSession ksession = kbase.getSession();
-			ksession.insert(dto);
+			ksession.insert(insurancePriceDto);
 			ksession.fireAllRules();
 
 		} catch (Exception e) {
@@ -111,21 +114,19 @@ public class InsuranceController {
 			e.printStackTrace();
 		}
 
-		System.out.println("izasli iz drools-a, cena: " + dto.getTotalPrice());
-
-		return dto;
+		System.out.println("izasli iz drools-a, cena: " + insurancePriceDto.getTotalPrice());
+		
+		return insurancePriceDto;
 	}
 
 	@RequestMapping(value = "/buy", method = RequestMethod.POST)
-	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody BigDecimal suma) throws IOException {
+	public ResponseEntity<PaymentUrlIdDto> handleBuy(@RequestBody InsuranceInfoDto iidto) throws IOException {
 
 		// TODO korak 2
-		System.out.println("suma od frontenda: " + suma);
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();
-
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		MerchantDto mdto = setMerchantDto(suma);
+		MerchantDto mdto = setMerchantDto(iidto.getTotalPrice());
 
 		try {
 
@@ -140,13 +141,38 @@ public class InsuranceController {
 			System.out.println("ResponseCoede =" + conn.getResponseCode());
 
 			puid = client.postForObject("https://localhost:7070/api/urlid", entity, PaymentUrlIdDto.class);
+
 			setAndSavePayment(mdto, puid);
+			setAndSaveInsurance(iidto, puid);
+
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.OK);
 
 		} catch (Exception e) {
 			return new ResponseEntity<PaymentUrlIdDto>(puid, HttpStatus.BAD_REQUEST);
 		}
 
+	}
+
+	private void setAndSaveInsurance(InsuranceInfoDto iidto, PaymentUrlIdDto puid) {
+		// pravimo Insurance
+		System.out.println(" cuvamo insurance u bazi ");
+		Insurance i = new Insurance();
+		i.setStartDate(iidto.getItemsForDrools().getStartDate());
+		i.setEndDate(iidto.getItemsForDrools().getEndDate());
+		i.setNumberOfPersons(iidto.getPersons().size());
+		i.setTotalPrice(iidto.getTotalPrice());
+		i.setDiscountPrice(iidto.getDiscountPrice());
+		i.setTaxPrice(iidto.getTaxPrice());
+		i.setPremiumPrice(iidto.getPremiumPrice());
+//		i.setPricelist(pricelistService.findCurrentPriceList());
+//		i.setPersons(iidto.getPersons());
+//		if (!iidto.isContractor()) {
+//			i.getPersons().add(iidto.getPersonHolder());
+//		}
+//		i.setBuyer(iidto.getBuyer());
+		i.setPaymentId(puid.getPaymentId());
+		insuranceService.save(i);
+		System.out.println(" sacuvali insurance u bazi ");
 	}
 
 	private void setAndSavePayment(MerchantDto mdto, PaymentUrlIdDto puid) {
@@ -160,16 +186,14 @@ public class InsuranceController {
 
 	}
 
-	private MerchantDto setMerchantDto(BigDecimal suma) {
+	private MerchantDto setMerchantDto(BigDecimal d) {
 		MerchantDto mdto = new MerchantDto();
 		Random randomGenerator = new Random();
 		mdto.setMerchantId("chuck");
 		mdto.setMerchantPassword("norris");
-		mdto.setAmount(suma);
+		mdto.setAmount(d);
 		mdto.setMerchantOrderID(randomGenerator.nextInt(1000));
 		mdto.setMerchantTimestamp(new Timestamp(System.currentTimeMillis()));
-		// TODO korak 2.3 univerzalan url?
 		return mdto;
 	}
-
 }

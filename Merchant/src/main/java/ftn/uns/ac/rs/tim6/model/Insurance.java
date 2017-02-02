@@ -1,6 +1,7 @@
 package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Insurance implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "INSURANCE_ID")
-	private long id;
+	private Integer id;
 
 	@Column(name = "NUMBER_OF_PERSONS")
 	private int numberOfPersons;
@@ -27,16 +28,19 @@ public class Insurance implements Serializable {
 	private Date endDate;
 
 	@Column(name = "TOTAL_PRICE")
-	private double totalPrice;
+	private BigDecimal totalPrice;
 
-	/*
-	 * @ManyToMany(cascade = CascadeType.ALL)
-	 * 
-	 * @JoinTable(name = "INSURANCE_RISK",
-	 * joinColumns=@JoinColumn(name="INSURANCE_ID"),
-	 * inverseJoinColumns=@JoinColumn(name="RISK_CATEGORY_ID")) private
-	 * List<RiskCategory> riskCategories;
-	 */
+	@Column(name = "DISCOUNT_PRICE")
+	private BigDecimal discountPrice;
+
+	@Column(name = "TAX_PRICE")
+	private BigDecimal taxPrice;
+
+	@Column(name = "PREMIUM_PRICE")
+	private BigDecimal premiumPrice;
+
+	@Column(name = "PAYMENT_ID")
+	private Integer paymentId;
 
 	@OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
 	private List<InsuranceType> insuranceTypes;
@@ -52,11 +56,11 @@ public class Insurance implements Serializable {
 	@JoinColumn(name = "BUYER")
 	private Buyer buyer;
 
-	public long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -84,19 +88,13 @@ public class Insurance implements Serializable {
 		this.endDate = endDate;
 	}
 
-	public double getTotalPrice() {
+	public BigDecimal getTotalPrice() {
 		return totalPrice;
 	}
 
-	public void setTotalPrice(double totalPrice) {
+	public void setTotalPrice(BigDecimal totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
-	/*
-	 * public List<RiskCategory> getRiskCategories() { return riskCategories; }
-	 * public void setRiskCategories(List<RiskCategory> riskCategories) {
-	 * this.riskCategories = riskCategories; }
-	 */
 
 	public List<InsuranceType> getInsuranceTypes() {
 		return insuranceTypes;
@@ -130,7 +128,46 @@ public class Insurance implements Serializable {
 		this.pricelist = pricelist;
 	}
 
-	public Insurance(long id, int numberOfPersons, Date startDate, Date endDate, double totalPrice,
+	public Integer getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(Integer paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
+
+	public BigDecimal getDiscountPrice() {
+		return discountPrice;
+	}
+
+	public void setDiscountPrice(BigDecimal discountPrice) {
+		this.discountPrice = discountPrice;
+	}
+
+	public BigDecimal getTaxPrice() {
+		return taxPrice;
+	}
+
+	public void setTaxPrice(BigDecimal taxPrice) {
+		this.taxPrice = taxPrice;
+	}
+
+	public BigDecimal getPremiumPrice() {
+		return premiumPrice;
+	}
+
+	public void setPremiumPrice(BigDecimal premiumPrice) {
+		this.premiumPrice = premiumPrice;
+	}
+
+	public Insurance(Integer id, int numberOfPersons, Date startDate, Date endDate, BigDecimal totalPrice,
+			BigDecimal discountPrice, BigDecimal taxPrice, BigDecimal premiumPrice, Integer paymentId,
 			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer) {
 		super();
 		this.id = id;
@@ -138,14 +175,19 @@ public class Insurance implements Serializable {
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.totalPrice = totalPrice;
+		this.discountPrice = discountPrice;
+		this.taxPrice = taxPrice;
+		this.premiumPrice = premiumPrice;
+		this.paymentId = paymentId;
 		this.insuranceTypes = insuranceTypes;
 		this.persons = persons;
 		this.pricelist = pricelist;
 		this.buyer = buyer;
 	}
-
+	
 	public Insurance() {
 		super();
 	}
+	
 
 }

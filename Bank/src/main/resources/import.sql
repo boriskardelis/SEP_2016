@@ -1,5 +1,5 @@
 INSERT INTO account (account_number, account_balance) VALUES ('503-0000200103212-03', 1500);
-INSERT INTO account (account_number, account_balance) VALUES ('530-0000200103212-03', 2000);
+INSERT INTO account (account_number, account_balance) VALUES ('530-0000200103212-03', 20000);
 INSERT INTO account (account_number, account_balance) VALUES ('528-0000200103212-03', 300);
 
 INSERT INTO card (month, year, pan, security_code, account) VALUES ('11', '2017', 1234567899, 123, 2);

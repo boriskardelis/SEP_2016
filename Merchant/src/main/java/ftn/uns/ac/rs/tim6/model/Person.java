@@ -6,36 +6,35 @@ import javax.persistence.*;
 @Entity
 @Table(name = "PERSON")
 public class Person implements Serializable {
-	
-	
-	 private static final long serialVersionUID = 1L;	
-	 
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "PERSON_ID")
-	 private long id;
-	 
-	 @Column(name = "FIRST_NAME")
-	 private String firstName;
-	 
-	 @Column(name = "LAST_NAME")
-	 private String lastName;
-	 
-	 @Column(name = "JMBG")
-	 private Long jmbg;
-	 
-	 @Column(name = "PASSPORT_NUMBER")
-	 private String passportNumber;
-	 
-	 @Column(name = "ADRESS")
-	 private String adress;
-	 
-	 @Column(name = "PHONE_NUMBER")
-	 private String phoneNumber;
-	 
-	 @ManyToOne(fetch = FetchType.EAGER)
-	 @JoinColumn(name = "INSURANCE")
-	 private Insurance insurance;
+
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue
+	@Column(name = "PERSON_ID")
+	private long id;
+
+	@Column(name = "FIRST_NAME")
+	private String firstName;
+
+	@Column(name = "LAST_NAME")
+	private String lastName;
+
+	@Column(name = "JMBG")
+	private Long jmbg;
+
+	@Column(name = "PASSPORT_NUMBER")
+	private String passportNumber;
+
+	@Column(name = "ADRESS")
+	private String adress;
+
+	@Column(name = "PHONE_NUMBER")
+	private String phoneNumber;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "INSURANCE")
+	private Insurance insurance;
 
 	public long getId() {
 		return id;
@@ -117,7 +116,5 @@ public class Person implements Serializable {
 	public Person() {
 		super();
 	}
-	 
-	 
-	 
+
 }

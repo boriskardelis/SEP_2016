@@ -10,133 +10,99 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "BUYER")
-public class Buyer implements Serializable{
-	
+public class Buyer implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue
 	@Column(name = "BUYER_ID")
 	private Long id;
-	
+
 	@Column(name = "LAST_NAME")
 	private String lastName;
-	
+
 	@Column(name = "JMBG")
 	private int jmbg;
-	
+
 	@Column(name = "PASSPORT_NUMBER")
 	private int passportNumber;
-	
+
 	@Column(name = "EMAIL")
 	private String email;
-	
+
 	@Column(name = "FIRST_NAME")
 	private String firstName;
-	
+
 	@Column(name = "ADDRESS")
 	private String address;
-	
+
 	@Column(name = "PHONE_NUMBER")
 	private int phoneNumber;
-	
-	
 
 	public Long getId() {
 		return id;
 	}
 
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	public String getLastName() {
 		return lastName;
 	}
 
-
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-
 
 	public int getJMBG() {
 		return jmbg;
 	}
 
-
-
 	public void setJMBG(int jMBG) {
 		this.jmbg = jMBG;
 	}
-
-
 
 	public int getPassportNumber() {
 		return passportNumber;
 	}
 
-
-
 	public void setPassportNumber(int passportNumber) {
 		this.passportNumber = passportNumber;
 	}
-
-
 
 	public String getEmail() {
 		return email;
 	}
 
-
-
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-
 
 	public String getFirstName() {
 		return firstName;
 	}
 
-
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
-
 
 	public String getAddress() {
 		return address;
 	}
 
-
-
 	public void setAddress(String address) {
 		this.address = address;
 	}
-
-
 
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
 
-
-
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-    
 
 	public Buyer(Long id, String lastName, int jMBG, int passportNumber, String email, String firstName, String address,
 			int phoneNumber) {
@@ -150,22 +116,14 @@ public class Buyer implements Serializable{
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
-	
-	//test
-	public Buyer(int phoneNumber){
+
+	// test
+	public Buyer(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-
 
 	public Buyer() {
 		super();
 	}
-	
-	
 
-	
-	
-	
-	
 }

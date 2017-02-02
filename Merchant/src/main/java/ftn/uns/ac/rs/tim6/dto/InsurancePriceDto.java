@@ -55,20 +55,20 @@ public class InsurancePriceDto {
 		this.days = days;
 	}
 
-	public ArrayList<PricelistItem> getItems() {
-		return items;
-	}
-
-	public void setItems(ArrayList<PricelistItem> items) {
-		this.items = items;
-	}
-
 	public int getPersons() {
 		return persons;
 	}
 
 	public void setPersons(int persons) {
 		this.persons = persons;
+	}
+
+	public ArrayList<PricelistItem> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<PricelistItem> items) {
+		this.items = items;
 	}
 
 }

@@ -1,6 +1,5 @@
 package ftn.uns.ac.rs.tim6.controller;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,11 +28,7 @@ public class RiskSubcategoryController {
 	@RequestMapping(value = "/risksubcategories", method = RequestMethod.POST)
 	public ResponseEntity<List<RiskSubcategory>> getSubcategories(@RequestBody String language) {
 
-		Date sqlDate = new Date();
-
-		System.out.println("SQL kreiran datum: " + sqlDate);
-
-		Pricelist p = pricelistService.findCurrentPriceList(sqlDate);
+		Pricelist p = pricelistService.findCurrentPriceList();
 		System.out.println("PRVA list pricelistL " + p.getId());
 
 		List<RiskSubcategory> listSubs = riskSubcategoryService.findSubcategoriesByLanguage(language, p);

@@ -34,14 +34,14 @@ public class PricelistService implements GenericService<Pricelist> {
 		return pricelistRepository.findOne(id);
 	}
 
-	public Pricelist findCurrentPriceList(Date sqlDate) {
-		List<Pricelist> lista = pricelistRepository.findCurrentPriceList(sqlDate);
+	public Pricelist findCurrentPriceList() {
+		List<Pricelist> lista = pricelistRepository.findCurrentPriceList(new Date());
 		return lista.get(0);
 	}
 
 	public List<RiskSubcategory> getCurrentPricelistSubcategories() {
 
-		Pricelist p = findCurrentPriceList(new Date());
+		Pricelist p = findCurrentPriceList();
 		List<PricelistItem> pricelistItems = p.getPricelistItems();
 		List<RiskSubcategory> riskSubcategories = new ArrayList<RiskSubcategory>();
 
@@ -54,7 +54,7 @@ public class PricelistService implements GenericService<Pricelist> {
 	}
 
 	public List<PricelistItem> getCurrentPricelistItems() {
-		Pricelist p = findCurrentPriceList(new Date());
+		Pricelist p = findCurrentPriceList();
 		List<PricelistItem> pricelistItems = p.getPricelistItems();
 		return pricelistItems;
 	}

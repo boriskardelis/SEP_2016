@@ -1,4 +1,5 @@
 package ftn.uns.ac.rs.tim6.model;
+
 import java.io.Serializable;
 
 import javax.persistence.*;
@@ -6,43 +7,41 @@ import javax.persistence.*;
 @Entity
 @Table(name = "VEHICLE")
 public class Vehicle implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "VEHICLE_ID")
-	 private long id;
-	
+	@Id
+	@GeneratedValue
+	@Column(name = "VEHICLE_ID")
+	private long id;
+
 	@Column(name = "VIN_NUMBER")
 	private String vinNumber;
-	
+
 	@Column(name = "MAKE")
 	private String make;
-	
+
 	@Column(name = "TYPE")
 	private String type;
-	
-	
+
 	@Column(name = "YEAR_OF_PRODUCTION")
 	private int yearOfProduction;
-	
+
 	@Column(name = "REGISTRATION_NUMBER")
 	private String registrationNumber;
-	
+
 	@Column(name = "OWNER_FIRST_NAME")
 	private String ownerFirstName;
-	
+
 	@Column(name = "OWNER_LAST_NAME")
 	private String ownerLastName;
-	
+
 	@Column(name = "OWNER_JMBG")
 	private String ownerJmbg;
-	
-	@OneToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name="INSURANCE_TYPE_ID")
-	private InsuranceType insuranceType;
 
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "INSURANCE_TYPE_ID")
+	private InsuranceType insuranceType;
 
 	public long getId() {
 		return id;
@@ -89,7 +88,7 @@ public class Vehicle implements Serializable {
 	}
 
 	public void setRegistrationNumber(String registrationNumber) {
-		registrationNumber = registrationNumber;
+		this.registrationNumber = registrationNumber;
 	}
 
 	public String getOwnerFirstName() {
@@ -116,8 +115,6 @@ public class Vehicle implements Serializable {
 		this.ownerJmbg = ownerJmbg;
 	}
 
-	
-
 	public InsuranceType getInsuranceType() {
 		return insuranceType;
 	}
@@ -125,8 +122,6 @@ public class Vehicle implements Serializable {
 	public void setInsuranceType(InsuranceType insuranceType) {
 		this.insuranceType = insuranceType;
 	}
-	
-	
 
 	public Vehicle(long id, String vinNumber, String make, String type, int yearOfProduction, String registrationNumber,
 			String ownerFirstName, String ownerLastName, String ownerJmbg, InsuranceType insuranceType) {
@@ -146,11 +141,5 @@ public class Vehicle implements Serializable {
 	public Vehicle() {
 		super();
 	}
-	
-	
-	
 
-	
-	
-	
 }
