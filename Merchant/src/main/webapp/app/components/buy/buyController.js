@@ -38,6 +38,8 @@
 			console.log(response.data);
 			console.log(response.data[0].nameTranslate.name);
 			console.log(response.data[0].nameTranslate);
+
+			//@subcategories, @category
 			vm.regions = BuyService.getSubsForCat(response.data, "region");
 			vm.ages  = BuyService.getSubsForCat(response.data, "age");
 			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
@@ -69,26 +71,29 @@
 		BuyService.getVehicle().then(function(response) {
 			vm.vehciles = response.data;
 		});
-		 	
-	    /* BuyService.getRegions().then(function(response) {
-							console.log('response.data');
-							console.log(response.data);
-							console.log('res prvog elementa, response.data[0]');
-							console.log(response.data[0]);
-							console.log('region njegovog elementa, response.data[0].region');
-							console.log(response.data[0].region);
-							console.log(' response');
-							console.log(response);
-							console.log("HttpStatus");
-							console.log(response.status);
-							
-							vm.HttpStatus = response.status;
-							vm.region = response.data;							
-						});*/
 
 	    vm.processForm = function() {
-       		//alert('awesome!');
-       		console.log(vm.regionSelected);
+  
+       		var persons = [];
+       		var personFormating = {};
+       		console.log(vm.person);
+       		for (var i=0;  i < vm.totalPersons - 1; i++) {
+				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], address: vm.person.address[i], 
+					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
+
+				persons.push(personFormating);		
+			}
+			console.log("LISTA PERSONA");
+			console.log(persons);
+
+       		var insuranceInfo = {};
+       		insuranceInfo = {contractor: vm.contractor, vehicle: vm.vehicle, home: vm.home, personHolder: vm.personHolder, persons: persons,
+       		 buyer: vm.buyer, itemsForDrools: vm.itemsForDrools, premiumPrice: vm.droolPrices.premiumPrice, 
+       		 discountPrice: vm.droolPrices.discountPrice, taxPrice: vm.droolPrices.taxPrice, totalPrice: vm.droolPrices.totalPrice};
+			
+			console.log("InsuranceInfo: ");
+       		console.log(insuranceInfo);
+       	
        		BuyService.buy(vm.droolPrices.totalPrice).then(function(response) {
 			 	console.log("Odgovor iz buy");
 			 	vm.paymentUrlAndID = response.data;
@@ -180,6 +185,8 @@
 		};
 
 		vm.calculateSecondStep = function() {
+
+			
 			console.log("CALCULATE");
 			/*console.log(vm.regionSelected);
 			console.log(vm.sumToSelected);
@@ -208,6 +215,8 @@
 			console.log(vm.vehicle);
 			console.log(vm.home);
 			*/	
+
+			//Napravim objeka koji kasnije saljem za drools da bi se izracunala cena
 			var ageId = [];
 			var ageCount = [];
 			var ageList = [];
@@ -227,13 +236,13 @@
 			 vm.surfaceSelected, vm.ageApartmentSelected, vm.valueApartmentSelected, vm.disasterSelected];
 
 			 //napravim objekat
-			var itemsForDrools = {itemsListForDrools: listItemsForDrools, ageList: ageList, startDate: vm.startDate, endDate: vm.endDate};
+			 vm.itemsForDrools = {itemsListForDrools: listItemsForDrools, ageList: ageList, startDate: vm.startDate, endDate: vm.endDate};
 			//vm.itemsForDrools = itemsForDrools;
 
 			console.log("ITEMS FOR DROOLS");
-			console.log(itemsForDrools);
+			console.log(vm.itemsForDrools);
 
-			BuyService.postCalculate(itemsForDrools)
+			BuyService.postCalculate(vm.itemsForDrools)
 				.then(function(response) {
 			 		vm.droolPrices = response.data;
 			});
@@ -244,8 +253,6 @@
 
     	//Prepravi jer kad reloadujes prelazi na prvo stanje
 	   	$state.go('buy.firstStep');
-
-
 
 	}
 

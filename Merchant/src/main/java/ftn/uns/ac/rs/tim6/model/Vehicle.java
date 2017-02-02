@@ -28,7 +28,7 @@ public class Vehicle implements Serializable {
 	private int yearOfProduction;
 	
 	@Column(name = "REGISTRATION_NUMBER")
-	private String RegistrationNumber;
+	private String registrationNumber;
 	
 	@Column(name = "OWNER_FIRST_NAME")
 	private String ownerFirstName;
@@ -85,11 +85,11 @@ public class Vehicle implements Serializable {
 	}
 
 	public String getRegistrationNumber() {
-		return RegistrationNumber;
+		return registrationNumber;
 	}
 
 	public void setRegistrationNumber(String registrationNumber) {
-		RegistrationNumber = registrationNumber;
+		registrationNumber = registrationNumber;
 	}
 
 	public String getOwnerFirstName() {
@@ -136,7 +136,7 @@ public class Vehicle implements Serializable {
 		this.make = make;
 		this.type = type;
 		this.yearOfProduction = yearOfProduction;
-		RegistrationNumber = registrationNumber;
+		this.registrationNumber = registrationNumber;
 		this.ownerFirstName = ownerFirstName;
 		this.ownerLastName = ownerLastName;
 		this.ownerJmbg = ownerJmbg;

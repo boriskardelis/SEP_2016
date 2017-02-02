@@ -8,7 +8,7 @@
                 <label class="right">{{ 'firstName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.first_name" class="form-control" placeholder="{{ 'firstName' | translate }}">
+                <input type="text" ng-model="vm.buyer.firstName" class="form-control" placeholder="{{ 'firstName' | translate }}">
             </div>
         </div>
         <div class="form-group row">
@@ -16,7 +16,7 @@
                 <label class="right">{{ 'lastName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.last_name" class="form-control" placeholder="{{ 'lastName' | translate }}">
+                <input type="text" ng-model="vm.buyer.lastName" class="form-control" placeholder="{{ 'lastName' | translate }}">
             </div>
         </div>
         <div class="form-group row">
@@ -32,7 +32,7 @@
                 <label class="right">{{ 'passportNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.passport_number" class="form-control" placeholder="{{ 'passportNumber' | translate }}">
+                <input type="text" ng-model="vm.buyer.passportNumber" class="form-control" placeholder="{{ 'passportNumber' | translate }}">
             </div>
         </div>
         <div class="form-group row">
@@ -48,7 +48,7 @@
                 <label class="right">{{ 'phoneNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.phone_number" class="form-control" placeholder="{{ 'phoneNumber' | translate }}">
+                <input type="text" ng-model="vm.buyer.phoneNumber" class="form-control" placeholder="{{ 'phoneNumber' | translate }}">
             </div>
         </div>
           <div class="form-group row celina">
@@ -65,18 +65,18 @@
             <div class="col-xs-3">
                 <label class="right" for="sumTo">{{ 'insuranceContractor' | translate }}</label>
             </div>
-            <div class="col-xs-9">     
-                <input type="radio" ng-model="vm.contractor" name="contractor" ng-value="contractor">    
+            <div class="col-xs-9" ng-init="vm.contractor= true">     
+                <input type="radio" ng-model="vm.contractor" name="contractor" value="true" ng-checked="true">    
                 <label>{{ 'spaic' | translate }}</label>
                 <br>  
-                <input type="radio" ng-model="vm.contractor" name="not" value="notContractor" ng-change="">    
+                <input type="radio" ng-model="vm.contractor" name="contractor" value="false" ng-change="">    
                 <label>{{ 'nspaic' | translate }}</label>
                 <br>                 
              </div>
         </div>
 
              <!-- Ako nije ista osoba kao ugovarac osiguranja -->
-             <div ng-if="vm.contractor == 'notContractor'">
+             <div ng-if="vm.contractor == 'false'">
                     <label>&nbsp&nbsp Insurance carrier informations:</label>
                     <br><br>
                 <!-- <p class="h4" align="left">Insurance carrier informations:</p> -->
@@ -88,23 +88,23 @@
 
                      <div class="form-group col-xs-2">
                             <label class="center" for="name" >{{ 'firstName' | translate }}</label>
-                            <input type="text" ng-model="vm.person.first_name_holder" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}">
+                            <input type="text" ng-model="vm.personHolder.firstName" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}">
                      </div>
                       <div class="form-group  col-xs-2">
                             <label class="center" for="last" >{{ 'lastName' | translate }}</label>
-                            <input type="text" ng-model="vm.person.last_name_holder" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}">
+                            <input type="text" ng-model="vm.personHolder.lastName" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}">
                      </div>
                      <div class="form-group  col-xs-3">
                             <label class="center" for="address" >{{ 'address' | translate }}</label>
-                            <input type="text" ng-model="vm.person.address_holder" class="form-control" id="address" placeholder="{{ 'address' | translate }}">
+                            <input type="text" ng-model="vm.personHolder.address" class="form-control" id="address" placeholder="{{ 'address' | translate }}">
                      </div>
                      <div class="form-group col-xs-2">
                             <label class="center" for="passport" >{{ 'passportNumber' | translate }}</label>
-                            <input type="text" ng-model="vm.person.passport_number_holder" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}">
+                            <input type="text" ng-model="vm.personHolder.passportNumber" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}">
                      </div>
                      <div class="form-group col-xs-2">
                             <label class="center" for="phone" >{{ 'phoneNumber' | translate }}</label>
-                            <input type="text" ng-model="vm.person.phone_number_holder" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}">
+                            <input type="text" ng-model="vm.personHolder.phoneNumber" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}">
                      </div>
                 </div>        
              </div>

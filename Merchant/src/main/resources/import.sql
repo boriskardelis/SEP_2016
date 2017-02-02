@@ -206,11 +206,11 @@ INSERT INTO pricelist (start_date) VALUES ('2019-3-11 00:00:00');
 INSERT INTO pricelist (start_date) VALUES ('2012-11-11 00:00:00');
 
 
-
+--Age
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (2, 1, 1);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 1, 2);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (4, 1, 3);
-
+--region
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (1, 1, 4);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 1, 5);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (5, 1, 6);
@@ -246,26 +246,60 @@ INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (2,
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (4, 1, 29);
 INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (7, 1, 30);
 
-INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (2, 2, 31);
-INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 2, 32);
-INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (4, 3, 3);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (8, 1, 31);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (10, 1, 32);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (11, 1, 33);
 
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (8, 1, 31);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (10, 1, 32);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (11, 1, 33);
---
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (1, 1, 34);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 1, 35);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (5, 1, 36);
---
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (6, 1, 37);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (12, 1, 38);
---INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 39);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (1, 1, 34);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (3, 1, 35);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (5, 1, 36);
 
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (6, 1, 37);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (12, 1, 38);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 39);
 
-
-
-
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 40);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 41);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 42);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 43);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 44);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 45);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 46);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 47);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 48);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 49);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 50);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 51);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 52);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 53);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 54);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 55);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 56);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 57);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 58);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 59);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 60);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 61);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 62);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 63);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 64);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 65);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 66);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 67);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 68);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 69);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 70);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 71);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 72);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 73);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 74);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 75);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 76);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 77);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 1, 78);
+--bezveze
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 2, 79);
+INSERT INTO pricelist_item (coefficient, pricelist, risk_subcategory) VALUES (18, 2, 80);
 
 --INSERT INTO payment (payment_id, merchant_id, merchant_order_id) VALUES (123, 666, 123);
 

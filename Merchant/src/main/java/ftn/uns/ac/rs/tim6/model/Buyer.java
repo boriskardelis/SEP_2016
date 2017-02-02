@@ -23,7 +23,7 @@ public class Buyer implements Serializable{
 	private String lastName;
 	
 	@Column(name = "JMBG")
-	private int JMBG;
+	private int jmbg;
 	
 	@Column(name = "PASSPORT_NUMBER")
 	private int passportNumber;
@@ -67,13 +67,13 @@ public class Buyer implements Serializable{
 
 
 	public int getJMBG() {
-		return JMBG;
+		return jmbg;
 	}
 
 
 
 	public void setJMBG(int jMBG) {
-		JMBG = jMBG;
+		this.jmbg = jMBG;
 	}
 
 
@@ -143,7 +143,7 @@ public class Buyer implements Serializable{
 		super();
 		this.id = id;
 		this.lastName = lastName;
-		JMBG = jMBG;
+		this.jmbg = jMBG;
 		this.passportNumber = passportNumber;
 		this.email = email;
 		this.firstName = firstName;
