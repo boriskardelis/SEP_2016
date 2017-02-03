@@ -9,23 +9,23 @@ import ftn.uns.ac.rs.tim6.repository.LanguageRepository;
 
 @Service
 @Transactional
-public class LanguageService  implements GenericService<Language>{
- 
- @Autowired
- private LanguageRepository languageRepository;
-  
- public List<Language> getAll() {
-  return languageRepository.findAll();
- }
+public class LanguageService implements GenericService<Language> {
 
- @Override
- public Language save(Language t) {
-  return languageRepository.save(t);
- }
+	@Autowired
+	private LanguageRepository languageRepository;
 
- @Override
- public Language findById(long id) {
-  return languageRepository.findOne(id);
- }
+	public List<Language> getAll() {
+		return languageRepository.findAll();
+	}
+
+	@Override
+	public Language save(Language t) {
+		return languageRepository.save(t);
+	}
+
+	@Override
+	public Language findById(long id) {
+		return languageRepository.findOne(id);
+	}
 
 }

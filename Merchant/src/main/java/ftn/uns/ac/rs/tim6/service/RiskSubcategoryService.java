@@ -32,7 +32,6 @@ public class RiskSubcategoryService implements GenericService<RiskSubcategory> {
 	}
 
 	public List<RiskSubcategory> findSubcategoriesByLanguage(String language, Pricelist p) {
-		System.out.println("PROSAO U SERVIS" + riskSubcategoryRepository.findSubcategoriesByLanguage(language, p));
 		return riskSubcategoryRepository.findSubcategoriesByLanguage(language, p);
 	}
 

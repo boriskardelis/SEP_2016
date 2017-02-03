@@ -9,24 +9,23 @@ import javax.persistence.*;
 public class Home implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
-	 @Id
-	 @GeneratedValue
-	 @Column(name = "HOME_ID")
-	 private long id;
-	 
-	 @Column(name = "ADDRESS")
-	 private String  address;
-	 
-	 @Column(name = "OWNER_FIRST_NAME")
-	 private String  ownerFirstName;
-	 
-	 @Column(name = "OWNER_LAST_NAME")
-	 private String  ownerLastName;
-	 
-	 @Column(name = "OWNER_JMBG")
-	 private Long ownerJMBG;
-	 
+
+	@Id
+	@GeneratedValue
+	@Column(name = "HOME_ID")
+	private long id;
+
+	@Column(name = "ADDRESS")
+	private String address;
+
+	@Column(name = "OWNER_FIRST_NAME")
+	private String ownerFirstName;
+
+	@Column(name = "OWNER_LAST_NAME")
+	private String ownerLastName;
+
+	@Column(name = "OWNER_JMBG")
+	private Long ownerJMBG;
 
 	public long getId() {
 		return id;
@@ -68,10 +67,6 @@ public class Home implements Serializable {
 		this.ownerJMBG = ownerJMBG;
 	}
 
-
-	
-	
-	
 	public Home(long id, String address, String ownerFirstName, String ownerLastName, Long ownerJMBG) {
 		super();
 		this.id = id;
@@ -84,8 +79,5 @@ public class Home implements Serializable {
 	public Home() {
 		super();
 	}
-	 
-	 
 
-	 
 }

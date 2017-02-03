@@ -39,8 +39,6 @@ public class Vehicle implements Serializable {
 	@Column(name = "OWNER_JMBG")
 	private String ownerJmbg;
 
-	
-
 	public long getId() {
 		return id;
 	}
@@ -112,8 +110,6 @@ public class Vehicle implements Serializable {
 	public void setOwnerJmbg(String ownerJmbg) {
 		this.ownerJmbg = ownerJmbg;
 	}
-
-	
 
 	public Vehicle(long id, String vinNumber, String make, String type, int yearOfProduction, String registrationNumber,
 			String ownerFirstName, String ownerLastName, String ownerJmbg) {

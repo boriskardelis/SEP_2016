@@ -9,23 +9,23 @@ import ftn.uns.ac.rs.tim6.repository.NameTranslateRepository;
 
 @Service
 @Transactional
-public class NameTranslateService implements GenericService<NameTranslate>{
- 
- @Autowired
- private NameTranslateRepository nameTranslateRepository;
-  
- public List<NameTranslate> getAll() {
-  return nameTranslateRepository.findAll();
- }
+public class NameTranslateService implements GenericService<NameTranslate> {
 
- @Override
- public NameTranslate save(NameTranslate t) {
-  return nameTranslateRepository.save(t);
- }
+	@Autowired
+	private NameTranslateRepository nameTranslateRepository;
 
- @Override
- public NameTranslate findById(long id) {
-  return nameTranslateRepository.findOne(id);
- }
+	public List<NameTranslate> getAll() {
+		return nameTranslateRepository.findAll();
+	}
+
+	@Override
+	public NameTranslate save(NameTranslate t) {
+		return nameTranslateRepository.save(t);
+	}
+
+	@Override
+	public NameTranslate findById(long id) {
+		return nameTranslateRepository.findOne(id);
+	}
 
 }

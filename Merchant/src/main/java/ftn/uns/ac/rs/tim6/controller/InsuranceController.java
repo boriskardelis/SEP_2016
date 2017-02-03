@@ -198,6 +198,17 @@ public class InsuranceController {
 		buyerService.save(b);
 		i.setBuyer(b);
 
+		if (iidto.getHome() != null && !iidto.getHome().getOwnerFirstName().isEmpty()) {
+			Home h = iidto.getHome();
+			homeService.save(h);
+			i.setHome(h);
+		}
+
+		if (iidto.getVehicle() != null && !iidto.getVehicle().getOwnerFirstName().isEmpty()) {
+			Vehicle v = iidto.getVehicle();
+			vehicleService.save(v);
+			i.setVehicle(v);
+		}
 		insuranceService.save(i);
 
 		List<Person> persons = iidto.getPersons();
@@ -211,12 +222,6 @@ public class InsuranceController {
 			holder.setInsurance(i);
 			personService.save(holder);
 		}
-
-		Home h = iidto.getHome();
-		homeService.save(h);
-
-		Vehicle v = iidto.getVehicle();
-		vehicleService.save(v);
 
 		System.out.println(" sacuvali insurance u bazi ");
 	}

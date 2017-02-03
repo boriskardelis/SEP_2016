@@ -45,7 +45,6 @@ public class PricelistService implements GenericService<Pricelist> {
 		List<PricelistItem> pricelistItems = p.getPricelistItems();
 		List<RiskSubcategory> riskSubcategories = new ArrayList<RiskSubcategory>();
 
-		System.out.println("izvlacimo subCategory ");
 		for (PricelistItem listItem : pricelistItems) {
 			riskSubcategories.add(listItem.getRiskSubcategory());
 		}

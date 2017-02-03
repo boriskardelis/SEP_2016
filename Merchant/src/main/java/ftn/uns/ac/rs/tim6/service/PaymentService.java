@@ -34,8 +34,6 @@ public class PaymentService implements GenericService<Payment> {
 	public Payment findByPaymentId(Integer paymentId) {
 		List<Payment> payments = paymentRepository.findAll();
 		for (Payment payment : payments) {
-			System.out.println("findByPaymentId " + payment.getPaymentId());
-			System.out.println(payment.getPaymentId().intValue() + " == " + paymentId.intValue());
 			if (payment.getPaymentId().intValue() == paymentId.intValue()) {
 				System.out.println("Nasao je paymentID i to je: " + payment.getPaymentId());
 				return payment;
