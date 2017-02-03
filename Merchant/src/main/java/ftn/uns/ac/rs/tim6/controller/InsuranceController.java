@@ -33,14 +33,22 @@ import ftn.uns.ac.rs.tim6.dto.InsurancePriceDto;
 import ftn.uns.ac.rs.tim6.dto.MerchantDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentUrlIdDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
+import ftn.uns.ac.rs.tim6.model.Buyer;
+import ftn.uns.ac.rs.tim6.model.Home;
 import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.Payment;
+import ftn.uns.ac.rs.tim6.model.Person;
 import ftn.uns.ac.rs.tim6.model.PricelistItem;
 import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
+import ftn.uns.ac.rs.tim6.model.Vehicle;
+import ftn.uns.ac.rs.tim6.service.BuyerService;
+import ftn.uns.ac.rs.tim6.service.HomeService;
 import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.PaymentService;
+import ftn.uns.ac.rs.tim6.service.PersonService;
 import ftn.uns.ac.rs.tim6.service.PricelistService;
 import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
+import ftn.uns.ac.rs.tim6.service.VehicleService;
 import ftn.uns.ac.rs.tim6.util.CheckerCertificates;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
 
@@ -59,6 +67,18 @@ public class InsuranceController {
 
 	@Autowired
 	PaymentService paymentService;
+
+	@Autowired
+	PersonService personService;
+
+	@Autowired
+	BuyerService buyerService;
+
+	@Autowired
+	HomeService homeService;
+
+	@Autowired
+	VehicleService vehicleService;
 
 	@RequestMapping(value = "/insurances", method = RequestMethod.GET)
 	public ResponseEntity<List<Insurance>> handleGetAllInsurances() {
@@ -115,7 +135,7 @@ public class InsuranceController {
 		}
 
 		System.out.println("izasli iz drools-a, cena: " + insurancePriceDto.getTotalPrice());
-		
+
 		return insurancePriceDto;
 	}
 
@@ -154,24 +174,50 @@ public class InsuranceController {
 	}
 
 	private void setAndSaveInsurance(InsuranceInfoDto iidto, PaymentUrlIdDto puid) {
-		// pravimo Insurance
+
 		System.out.println(" cuvamo insurance u bazi ");
+
 		Insurance i = new Insurance();
 		i.setStartDate(iidto.getItemsForDrools().getStartDate());
 		i.setEndDate(iidto.getItemsForDrools().getEndDate());
-		i.setNumberOfPersons(iidto.getPersons().size());
+
+		if (iidto.isContractor()) {
+			i.setNumberOfPersons(iidto.getPersons().size() + 1);
+		} else {
+			i.setNumberOfPersons(iidto.getPersons().size());
+		}
+
 		i.setTotalPrice(iidto.getTotalPrice());
 		i.setDiscountPrice(iidto.getDiscountPrice());
 		i.setTaxPrice(iidto.getTaxPrice());
 		i.setPremiumPrice(iidto.getPremiumPrice());
-//		i.setPricelist(pricelistService.findCurrentPriceList());
-//		i.setPersons(iidto.getPersons());
-//		if (!iidto.isContractor()) {
-//			i.getPersons().add(iidto.getPersonHolder());
-//		}
-//		i.setBuyer(iidto.getBuyer());
+		i.setPricelist(pricelistService.findCurrentPriceList());
 		i.setPaymentId(puid.getPaymentId());
+
+		Buyer b = iidto.getBuyer();
+		buyerService.save(b);
+		i.setBuyer(b);
+
 		insuranceService.save(i);
+
+		List<Person> persons = iidto.getPersons();
+		for (Person p : persons) {
+			p.setInsurance(i);
+			personService.save(p);
+		}
+
+		if (!iidto.isContractor()) {
+			Person holder = iidto.getPersonHolder();
+			holder.setInsurance(i);
+			personService.save(holder);
+		}
+
+		Home h = iidto.getHome();
+		homeService.save(h);
+
+		Vehicle v = iidto.getVehicle();
+		vehicleService.save(v);
+
 		System.out.println(" sacuvali insurance u bazi ");
 	}
 

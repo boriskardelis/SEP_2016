@@ -23,10 +23,10 @@ public class Buyer implements Serializable {
 	private String lastName;
 
 	@Column(name = "JMBG")
-	private int jmbg;
+	private Long jmbg;
 
 	@Column(name = "PASSPORT_NUMBER")
-	private int passportNumber;
+	private Long passportNumber;
 
 	@Column(name = "EMAIL")
 	private String email;
@@ -38,7 +38,7 @@ public class Buyer implements Serializable {
 	private String address;
 
 	@Column(name = "PHONE_NUMBER")
-	private int phoneNumber;
+	private String phoneNumber;
 
 	public Long getId() {
 		return id;
@@ -56,19 +56,19 @@ public class Buyer implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public int getJMBG() {
+	public Long getJMBG() {
 		return jmbg;
 	}
 
-	public void setJMBG(int jMBG) {
+	public void setJMBG(Long jMBG) {
 		this.jmbg = jMBG;
 	}
 
-	public int getPassportNumber() {
+	public Long getPassportNumber() {
 		return passportNumber;
 	}
 
-	public void setPassportNumber(int passportNumber) {
+	public void setPassportNumber(Long passportNumber) {
 		this.passportNumber = passportNumber;
 	}
 
@@ -96,16 +96,16 @@ public class Buyer implements Serializable {
 		this.address = address;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Buyer(Long id, String lastName, int jMBG, int passportNumber, String email, String firstName, String address,
-			int phoneNumber) {
+	public Buyer(Long id, String lastName, Long jMBG, Long passportNumber, String email, String firstName,
+			String address, String phoneNumber) {
 		super();
 		this.id = id;
 		this.lastName = lastName;
@@ -114,11 +114,6 @@ public class Buyer implements Serializable {
 		this.email = email;
 		this.firstName = firstName;
 		this.address = address;
-		this.phoneNumber = phoneNumber;
-	}
-
-	// test
-	public Buyer(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

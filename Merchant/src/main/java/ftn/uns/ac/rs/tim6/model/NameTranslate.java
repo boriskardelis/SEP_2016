@@ -11,67 +11,58 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
-
 @Entity
 @Table(name = "NAME_TRANSLATE")
-public class NameTranslate implements Serializable  {
- 
- private static final long serialVersionUID = 1L;
- 
-  @Id
-  @GeneratedValue
-  @Column(name = "NAME_TRANSLATE_ID")
-  private long id;
-  
-  @Column(name = "NAME")
-  private String name;
-  
-  
-  
-  @ManyToOne(fetch = FetchType.EAGER)
-  @JoinColumn(name = "LANGUAGE")
-  //@JsonManagedReference
-  private Language language;
+public class NameTranslate implements Serializable {
 
- public long getId() {
-  return id;
- }
+	private static final long serialVersionUID = 1L;
 
- public void setId(long id) {
-  this.id = id;
- }
+	@Id
+	@GeneratedValue
+	@Column(name = "NAME_TRANSLATE_ID")
+	private long id;
 
- 
+	@Column(name = "NAME")
+	private String name;
 
- public String getName() {
-  return name;
- }
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "LANGUAGE")
+	// @JsonManagedReference
+	private Language language;
 
- public void setName(String name) {
-  this.name = name;
- }
+	public long getId() {
+		return id;
+	}
 
- public Language getLanguage() {
-  return language;
- }
+	public void setId(long id) {
+		this.id = id;
+	}
 
- public void setLanguage(Language language) {
-  this.language = language;
- }
+	public String getName() {
+		return name;
+	}
 
- public NameTranslate(long id, String name, Language language) {
-  super();
-  this.id = id;
-  this.name = name;
-  this.language = language;
- }
+	public void setName(String name) {
+		this.name = name;
+	}
 
- public NameTranslate() {
-  super();
-  // TODO Auto-generated constructor stub
- }
-  
-  
+	public Language getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
+
+	public NameTranslate(long id, String name, Language language) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.language = language;
+	}
+
+	public NameTranslate() {
+		super();
+	}
 
 }

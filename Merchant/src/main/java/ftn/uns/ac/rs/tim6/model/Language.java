@@ -15,59 +15,55 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "LANGUAGE")
-public class Language implements Serializable{
- 
- private static final long serialVersionUID = 1L;
- 
-  @Id
-  @GeneratedValue
-  @Column(name = "LANGUAGE_ID")
-  private long id;
-  
-  @Column(name = "LANGUAGE_NAME")
-  private String languageName;
-  
-  
-  @OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
-  @JsonBackReference
-  private List<NameTranslate> nameTranslate;
+public class Language implements Serializable {
 
- public long getId() {
-  return id;
- }
+	private static final long serialVersionUID = 1L;
 
- public void setId(long id) {
-  this.id = id;
- }
+	@Id
+	@GeneratedValue
+	@Column(name = "LANGUAGE_ID")
+	private long id;
 
- public String getLanguageName() {
-  return languageName;
- }
+	@Column(name = "LANGUAGE_NAME")
+	private String languageName;
 
- public void setLanguageName(String languageName) {
-  this.languageName = languageName;
- }
+	@OneToMany(mappedBy = "language", cascade = CascadeType.ALL)
+	@JsonBackReference
+	private List<NameTranslate> nameTranslate;
 
- public List<NameTranslate> getNameTranslate() {
-  return nameTranslate;
- }
+	public long getId() {
+		return id;
+	}
 
- public void setNameTranslate(List<NameTranslate> nameTranslate) {
-  this.nameTranslate = nameTranslate;
- } 
+	public void setId(long id) {
+		this.id = id;
+	}
 
- public Language(long id, String languageName, List<NameTranslate> nameTranslate) {
-  super();
-  this.id = id;
-  this.languageName = languageName;
-  this.nameTranslate = nameTranslate;
- }
+	public String getLanguageName() {
+		return languageName;
+	}
 
- public Language() {
-  super();
-  // TODO Auto-generated constructor stub
- }
-  
- 
+	public void setLanguageName(String languageName) {
+		this.languageName = languageName;
+	}
+
+	public List<NameTranslate> getNameTranslate() {
+		return nameTranslate;
+	}
+
+	public void setNameTranslate(List<NameTranslate> nameTranslate) {
+		this.nameTranslate = nameTranslate;
+	}
+
+	public Language(long id, String languageName, List<NameTranslate> nameTranslate) {
+		super();
+		this.id = id;
+		this.languageName = languageName;
+		this.nameTranslate = nameTranslate;
+	}
+
+	public Language() {
+		super();
+	}
 
 }

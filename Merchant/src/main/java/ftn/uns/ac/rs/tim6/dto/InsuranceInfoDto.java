@@ -21,6 +21,7 @@ public class InsuranceInfoDto {
 	private BigDecimal discountPrice;
 	private BigDecimal totalPrice;
 	private boolean contractor;
+//	private ArrayList<InsuranceType> insuranceTypes = new ArrayList<InsuranceType>();
 
 	public Vehicle getVehicle() {
 		return vehicle;

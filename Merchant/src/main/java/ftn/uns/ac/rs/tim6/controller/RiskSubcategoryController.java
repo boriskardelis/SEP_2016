@@ -32,14 +32,14 @@ public class RiskSubcategoryController {
 		System.out.println("PRVA list pricelistL " + p.getId());
 
 		List<RiskSubcategory> listSubs = riskSubcategoryService.findSubcategoriesByLanguage(language, p);
-		for (RiskSubcategory riskSubcategory : listSubs) {
-			System.out.println("listSubs: " + riskSubcategory.getPricelistItems().size());
-
-		}
-		System.out.println("DUZINA LISTE: " + listSubs.size());
-		System.out.println("LISTA PREMA ENGL: " + listSubs);
-		System.out.println("PRVI: " + listSubs.get(0).getNameTranslate().getName());
-		System.out.println("DRUGI: " + listSubs.get(1).getNameTranslate().getName());
+//		for (RiskSubcategory riskSubcategory : listSubs) {
+//			System.out.println("listSubs: " + riskSubcategory.getPricelistItems().size());
+//
+//		}
+//		System.out.println("DUZINA LISTE: " + listSubs.size());
+//		System.out.println("LISTA PREMA ENGL: " + listSubs);
+//		System.out.println("PRVI: " + listSubs.get(0).getNameTranslate().getName());
+//		System.out.println("DRUGI: " + listSubs.get(1).getNameTranslate().getName());
 
 		return new ResponseEntity<List<RiskSubcategory>>(listSubs, HttpStatus.OK);
 	}

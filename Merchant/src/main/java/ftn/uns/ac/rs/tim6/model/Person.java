@@ -12,7 +12,7 @@ public class Person implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "PERSON_ID")
-	private long id;
+	private Long id;
 
 	@Column(name = "FIRST_NAME")
 	private String firstName;
@@ -26,8 +26,8 @@ public class Person implements Serializable {
 	@Column(name = "PASSPORT_NUMBER")
 	private String passportNumber;
 
-	@Column(name = "ADRESS")
-	private String adress;
+	@Column(name = "ADDRESS")
+	private String address;
 
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
@@ -36,11 +36,11 @@ public class Person implements Serializable {
 	@JoinColumn(name = "INSURANCE")
 	private Insurance insurance;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -76,12 +76,12 @@ public class Person implements Serializable {
 		this.passportNumber = passportNumber;
 	}
 
-	public String getAdress() {
-		return adress;
+	public String getAddress() {
+		return address;
 	}
 
-	public void setAdress(String adress) {
-		this.adress = adress;
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	public String getPhoneNumber() {
@@ -100,7 +100,7 @@ public class Person implements Serializable {
 		this.insurance = insurance;
 	}
 
-	public Person(long id, String firstName, String lastName, Long jmbg, String passportNumber, String adress,
+	public Person(Long id, String firstName, String lastName, Long jmbg, String passportNumber, String address,
 			String phoneNumber, Insurance insurance) {
 		super();
 		this.id = id;
@@ -108,7 +108,7 @@ public class Person implements Serializable {
 		this.lastName = lastName;
 		this.jmbg = jmbg;
 		this.passportNumber = passportNumber;
-		this.adress = adress;
+		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.insurance = insurance;
 	}
