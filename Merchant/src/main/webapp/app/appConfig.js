@@ -134,6 +134,9 @@
         var eng =
         {
             cn : "Chuck Norris Insurance",
+            eng : "English (En)",
+            srb : "Serbian (Sr)",
+            language : "Language",
             home : "Home",
             buyInsurance : "Buy insurance",
             about : "About",
@@ -216,6 +219,9 @@
         var ser =
         {   
             cn : "Chuck Norris osiuguranje",
+            eng : "Engleski (En)",
+            srb : "Srpski (Sr)",
+            language : "Jezik",
             home : "Početna",
             buyInsurance : "Kupi osiguranje",
             about : "O nama",

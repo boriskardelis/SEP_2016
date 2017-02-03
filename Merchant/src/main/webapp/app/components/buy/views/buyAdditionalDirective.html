@@ -1,10 +1,8 @@
 
-	<input type="checkbox" ng-model="insuranceType[$index]"  > 
+	<input type="checkbox" ng-model="insuranceType[$index]"  > {{insuranceType.insuranceName}}
 		<!-- ng-change="nesto()" -->
 		<!-- {{insuranceType[$index]}}	true /false -->
-		
 
-		{{insuranceType.insuranceName}}
 		<div ng-show="insuranceType[$index] && insuranceType.insuranceName =='Road Insurance'">
 		
 	 		<div class="form-group">

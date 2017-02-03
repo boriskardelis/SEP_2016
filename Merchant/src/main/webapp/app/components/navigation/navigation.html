@@ -1,16 +1,35 @@
- <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <a class="navbar-brand" href="" translate="cn"></a>
-            </div>
-            <ul class="nav navbar-nav">
-              <!-- <li class="active"><a href="#">Home</a></li> -->
-              <li><a href="/home" translate="home"></a></li>
-              <li><a href="/buy" translate="buyInsurance"></a></li>
-              <li><a href="/about" translate="about"></a></li>        
-              <li style="padding-left: 200px;"><button type="button" class="btn-info btn-lg" ng-click="vm.changeCurrentLanguage('Serbian')" translate="serbian">Serbian</button></li>
-              <li><button type="button" class="btn-info btn-lg" ng-click="vm.changeCurrentLanguage('English')" translate="english">English</button></li>
-            </ul>
-           
-          </div>
-        </nav>
+
+  <!-- navbar-fixed-top ako mi zatreba -->
+  <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarMain">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="/home" translate="cn"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarMain">
+      <ul class="nav navbar-nav">      
+        <li><a href="/home" translate="home"></a></li>
+        <li><a href="/buy" translate="buyInsurance"></a></li>
+        <li><a href="/about" translate="about"></a></li>
+        <li class="dropdown">
+          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            <span translate="language"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="" ng-click="vm.changeCurrentLanguage('English')" translate="eng"></a></li>
+            <li><a href="" ng-click="vm.changeCurrentLanguage('Serbian')" translate="srb"></a></li>
+          </ul>
+        </li>
+      </ul>
+      <!-- Ako bude potrebe da se uradi preko buttona -->
+      <!--  <ul class="nav navbar-nav navbar-right">
+         <button class="btn btn-danger navbar-btn">Button</button>
+      </ul> -->
+    </div>
+  </div>
+</nav>

@@ -7,6 +7,11 @@
 /*.button-sections {
 	margin-bottom: 20px;
 }*/
+/*to make images responsive*/
+img {
+    max-width: 100%;
+    max-height: auto;
+}
 .home-font {
 	font-size: 26px;
 	text-align: center;
@@ -81,7 +86,7 @@ body {
 pre                             { margin-bottom:20px; }
 
 /* form styling */
-#form-container                { background:#2f2f2f; margin-bottom:20px;
+#form-container                { background:rgba(8,8,8, 0.62); margin-bottom:20px;
     border-radius:5px; }
 #form-container .page-header   { background:#151515; margin:0; padding:30px; 
     border-top-left-radius:5px; border-top-right-radius:5px; }
@@ -90,11 +95,11 @@ pre                             { margin-bottom:20px; }
 #status-buttons                 {  }
 #status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
 #status-buttons a:hover         { text-decoration:none; }
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
+#status-buttons span            { background: #222222; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
     border-radius:50%; }
 
 /* active buttons */
-#status-buttons a.active span   { background:#00BC8C; }
+#status-buttons a.active span   { background:#5bc0de; }
 
 /* ANIMATION STYLINGS
 ============================================================================= */
