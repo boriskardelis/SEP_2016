@@ -39,9 +39,7 @@ public class Vehicle implements Serializable {
 	@Column(name = "OWNER_JMBG")
 	private String ownerJmbg;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "INSURANCE_TYPE_ID")
-	private InsuranceType insuranceType;
+	
 
 	public long getId() {
 		return id;
@@ -115,16 +113,10 @@ public class Vehicle implements Serializable {
 		this.ownerJmbg = ownerJmbg;
 	}
 
-	public InsuranceType getInsuranceType() {
-		return insuranceType;
-	}
-
-	public void setInsuranceType(InsuranceType insuranceType) {
-		this.insuranceType = insuranceType;
-	}
+	
 
 	public Vehicle(long id, String vinNumber, String make, String type, int yearOfProduction, String registrationNumber,
-			String ownerFirstName, String ownerLastName, String ownerJmbg, InsuranceType insuranceType) {
+			String ownerFirstName, String ownerLastName, String ownerJmbg) {
 		super();
 		this.id = id;
 		this.vinNumber = vinNumber;
@@ -135,7 +127,6 @@ public class Vehicle implements Serializable {
 		this.ownerFirstName = ownerFirstName;
 		this.ownerLastName = ownerLastName;
 		this.ownerJmbg = ownerJmbg;
-		this.insuranceType = insuranceType;
 	}
 
 	public Vehicle() {

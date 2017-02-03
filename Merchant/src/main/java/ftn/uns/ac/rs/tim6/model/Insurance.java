@@ -55,6 +55,15 @@ public class Insurance implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "BUYER")
 	private Buyer buyer;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "HOME_ID")
+	private Home home;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "VEHICLE_ID")
+	private Vehicle vehicle;
+
 
 	public Integer getId() {
 		return id;
@@ -120,6 +129,22 @@ public class Insurance implements Serializable {
 		this.buyer = buyer;
 	}
 
+	public Home getHome() {
+		return home;
+	}
+
+	public void setHome(Home home) {
+		this.home = home;
+	}
+
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
 	public Pricelist getPricelist() {
 		return pricelist;
 	}
@@ -166,9 +191,11 @@ public class Insurance implements Serializable {
 		this.premiumPrice = premiumPrice;
 	}
 
+	
 	public Insurance(Integer id, int numberOfPersons, Date startDate, Date endDate, BigDecimal totalPrice,
 			BigDecimal discountPrice, BigDecimal taxPrice, BigDecimal premiumPrice, Integer paymentId,
-			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer) {
+			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer, Home home,
+			Vehicle vehicle) {
 		super();
 		this.id = id;
 		this.numberOfPersons = numberOfPersons;
@@ -183,8 +210,10 @@ public class Insurance implements Serializable {
 		this.persons = persons;
 		this.pricelist = pricelist;
 		this.buyer = buyer;
+		this.home = home;
+		this.vehicle = vehicle;
 	}
-	
+
 	public Insurance() {
 		super();
 	}

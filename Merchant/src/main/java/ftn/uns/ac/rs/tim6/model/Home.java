@@ -27,9 +27,6 @@ public class Home implements Serializable {
 	 @Column(name = "OWNER_JMBG")
 	 private Long ownerJMBG;
 	 
-	 @OneToOne(fetch=FetchType.EAGER)
-	 @JoinColumn(name="INSURANCE_TYPE_ID")
-	 private InsuranceType insuranceType;
 
 	public long getId() {
 		return id;
@@ -72,25 +69,16 @@ public class Home implements Serializable {
 	}
 
 
-	public InsuranceType getInsuranceType() {
-		return insuranceType;
-	}
-
-	public void setInsuranceType(InsuranceType insuranceType) {
-		this.insuranceType = insuranceType;
-	}
-
 	
 	
-	public Home(long id, String address, String ownerFirstName, String ownerLastName, Long ownerJMBG,
-			InsuranceType insuranceType) {
+	
+	public Home(long id, String address, String ownerFirstName, String ownerLastName, Long ownerJMBG) {
 		super();
 		this.id = id;
 		this.address = address;
 		this.ownerFirstName = ownerFirstName;
 		this.ownerLastName = ownerLastName;
 		this.ownerJMBG = ownerJMBG;
-		this.insuranceType = insuranceType;
 	}
 
 	public Home() {
