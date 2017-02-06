@@ -30,6 +30,16 @@ public class InsuranceService implements GenericService<Insurance>{
 	public Insurance findById(long id) {
 		return insuranceRepository.findOne(id);
 	}
+
+	public Insurance findByPaymentId(Integer paymentId) {
+		List<Insurance> insurances = insuranceRepository.findAll();
+		for (Insurance i : insurances) {
+			if (i.getPaymentId() == paymentId) {
+				return i;
+			}
+		}
+		return null;
+	}
 	
 	
 }
