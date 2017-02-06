@@ -25,27 +25,4 @@ public class IssuerMessageController {
 		return new ResponseEntity<List<IssuerMessage>>(issuerMessages, HttpStatus.OK);
 	}
 
-/*	@RequestMapping(value = "/issuermessage", method = RequestMethod.POST)
-	public void handleIncomingMessage(@RequestBody ResponseMessageDto rmdto) {
-
-		//korak 10
-		// primiti pravilan format poslati pravilan format
-		RestTemplate client = new RestTemplate();
-		HttpHeaders headers = new HttpHeaders();
-		
-		System.out.println("konacan odgovor u banci A: " + rmdto.getStatus());
-
-		try {
-
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<String> entity = new HttpEntity<String>("objekat koji saljem", headers);
-			// korak 10.1 na frontend banke?
-			client.postForObject("http://localhost:8080/api/paymentresult", entity, String.class); 
-			return;
-
-		} catch (Exception e) {
-			return;
-		}
-	}*/
-
 }

@@ -1,5 +1,7 @@
 package ftn.uns.ac.rs.tim6.controller;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Random;
@@ -19,7 +21,9 @@ import org.springframework.web.client.RestTemplate;
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.PaymentInfoDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.dto.URLDto;
+import ftn.uns.ac.rs.tim6.model.Account;
 import ftn.uns.ac.rs.tim6.model.AcquirerOrder;
 import ftn.uns.ac.rs.tim6.model.IssuerMessage;
 import ftn.uns.ac.rs.tim6.model.PaymentRequest;
@@ -59,6 +63,7 @@ public class AcquirerOrderController {
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		URLDto urldto = new URLDto();
+		MathContext mc = new MathContext(6);
 
 		// TODO korak 5
 		AcquirerOrder acquirerOrder = setAndSaveAcquirerOrder(paymentInfo);
@@ -69,23 +74,32 @@ public class AcquirerOrderController {
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
 
-			System.out.println("PRE SLANJA PCC-u");
-			System.out.println(paymentInfo.getPaymentId());
 			// poruka prema PCC-u i dalje u krug
 			// TODO korak 6
-			
+
 			// check certificates
 			CheckerCertificates checkerCertificate = new CheckerCertificates();
 			checkerCertificate.doTrustToCertificates();
-			
+
 			rmdto.setPaymentId(paymentInfo.getPaymentId());
 			rmdto = client.postForObject("https://localhost:9090/api/incomingacquirerorder", entity,
 					ResponseMessageDto.class);
 			rmdto.setPaymentId(paymentInfo.getPaymentId());
 
-			createAndSaveIssuerMessage(rmdto);
+			// dodajemo pare na merchantov racun
+			if (rmdto.getResult() == TransactionResult.SUCCESSFUL) {
 
-			System.out.println("PaymentID NAKON SETOVANJA: " + rmdto.getPaymentId());
+				Account a = accountService.findById(1L);
+				BigDecimal b1 = acquirerOrder.getTransactionAmount();
+				BigDecimal b2 = a.getAccountBalance();
+				System.out.println(b1 + " " + b2);
+				a.setAccountBalance(b1.add(b2, mc));
+				System.out.println(a.getAccountBalance());
+				accountService.save(a);
+
+			}
+
+			createAndSaveIssuerMessage(rmdto);
 
 			// TODO korak 10 + 11
 			// poruka prema merchantu koja se prosledjuje od PCC-a

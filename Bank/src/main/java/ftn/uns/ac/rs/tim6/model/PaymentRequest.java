@@ -2,7 +2,7 @@ package ftn.uns.ac.rs.tim6.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -38,7 +38,7 @@ public class PaymentRequest implements Serializable {
 	private String merchantPassword;
 
 	@Column(name = "MERCHANT_TIMESTAMP")
-	private Date merchantTimestamp;
+	private Timestamp merchantTimestamp;
 
 	@Column(name = "AMOUNT")
 	private BigDecimal amount;
@@ -91,14 +91,6 @@ public class PaymentRequest implements Serializable {
 		this.merchantPassword = merchantPassword;
 	}
 
-	public Date getMerchantTimestamp() {
-		return merchantTimestamp;
-	}
-
-	public void setMerchantTimestamp(Date merchantTimestamp) {
-		this.merchantTimestamp = merchantTimestamp;
-	}
-
 	public BigDecimal getAmount() {
 		return amount;
 	}
@@ -139,9 +131,21 @@ public class PaymentRequest implements Serializable {
 		this.paymentUrlAndId = paymentUrlAndId;
 	}
 
+	public Timestamp getMerchantTimestamp() {
+		return merchantTimestamp;
+	}
+
+	public void setMerchantTimestamp(Timestamp merchantTimestamp) {
+		this.merchantTimestamp = merchantTimestamp;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
 	public PaymentRequest(Long id, Integer merchantOrderId, String merchantId, String merchantPassword,
-			Date merchantTimestamp, BigDecimal amount, String errorUrl, Merchant merchant, AcquirerOrder acquirerOrder,
-			PaymentUrlAndId paymentUrlAndId) {
+			Timestamp merchantTimestamp, BigDecimal amount, String errorUrl, Merchant merchant,
+			AcquirerOrder acquirerOrder, PaymentUrlAndId paymentUrlAndId) {
 		super();
 		this.id = id;
 		this.merchantOrderId = merchantOrderId;

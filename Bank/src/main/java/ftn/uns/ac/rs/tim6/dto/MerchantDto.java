@@ -1,7 +1,7 @@
 package ftn.uns.ac.rs.tim6.dto;
 
 import java.math.BigDecimal;
-import java.util.Date;
+import java.sql.Timestamp;
 
 public class MerchantDto {
 
@@ -9,7 +9,7 @@ public class MerchantDto {
 	private String merchantPassword;
 	private BigDecimal amount;
 	private Integer merchantOrderID;
-	private Date merchantTimestamp;
+	private Timestamp merchantTimestamp;
 	private String errorUrl;
 
 	public String getMerchantId() {
@@ -44,20 +44,20 @@ public class MerchantDto {
 		this.merchantOrderID = merchantOrderID;
 	}
 
-	public Date getMerchantTimestamp() {
-		return merchantTimestamp;
-	}
-
-	public void setMerchantTimestamp(Date merchantTimestamp) {
-		this.merchantTimestamp = merchantTimestamp;
-	}
-
 	public String getErrorUrl() {
 		return errorUrl;
 	}
 
 	public void setErrorUrl(String errorUrl) {
 		this.errorUrl = errorUrl;
+	}
+
+	public Timestamp getMerchantTimestamp() {
+		return merchantTimestamp;
+	}
+
+	public void setMerchantTimestamp(Timestamp merchantTimestamp) {
+		this.merchantTimestamp = merchantTimestamp;
 	}
 
 }

@@ -71,6 +71,7 @@ public class AcquirerOrderReservationController {
 			}
 			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
+			rmdto.setMerchantTimestamp(aodto.getTimestamp());
 			// TODO issuer order id rmdto.setPaymentId(aodto.get);
 		}
 		try {

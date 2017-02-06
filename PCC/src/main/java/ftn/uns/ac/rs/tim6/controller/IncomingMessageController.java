@@ -53,7 +53,7 @@ public class IncomingMessageController {
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
-		setAndSaveIncomingMessage(aodto);
+		setAndSaveIncomingMessage(aodto, bank);
 
 		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
@@ -67,7 +67,7 @@ public class IncomingMessageController {
 			checkerCertificate.doTrustToCertificates();
 			rmdto = client.postForObject("https://localhost:" + bank.getPort() + "/api/reservation", entity,
 					ResponseMessageDto.class);
-			setAndSaveResponseMessage(rmdto);
+			setAndSaveResponseMessage(rmdto, bank);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
@@ -75,18 +75,19 @@ public class IncomingMessageController {
 		}
 	}
 
-	private void setAndSaveResponseMessage(ResponseMessageDto rmdto) {
+	private void setAndSaveResponseMessage(ResponseMessageDto rmdto, Bank bank) {
 		ResponseMessage rm = new ResponseMessage();
 		rm.setAcquirerOrderId(rmdto.getAcquirerOrderId());
 		rm.setAcquirerTimestamp(rmdto.getAcquirerTimestamp());
 		rm.setIssuerOrderId(rmdto.getMerchantOrderId());
 		rm.setIssuerTimestamp(rmdto.getMerchantTimestamp());
 		rm.setResult(rmdto.getResult());
+		rm.setBank(bank);
 		responseMessageService.save(rm);
 
 	}
 
-	private void setAndSaveIncomingMessage(AcquirerOrderDto aodto) {
+	private void setAndSaveIncomingMessage(AcquirerOrderDto aodto, Bank bank) {
 		IncomingMessage im = new IncomingMessage();
 		im.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		im.setAcquirerTimestamp(aodto.getTimestamp());
@@ -96,6 +97,7 @@ public class IncomingMessageController {
 		im.setExpDateYear(aodto.getExpDateYear());
 		im.setExpDateMonth(aodto.getExpDateMonth());
 		im.setAmount(aodto.getTransactionAmount());
+		im.setBank(bank);
 		incomingMessageService.save(im);
 
 	}
