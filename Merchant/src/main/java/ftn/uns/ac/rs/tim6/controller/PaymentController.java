@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.dto.URLDto;
+import ftn.uns.ac.rs.tim6.model.Insurance;
 import ftn.uns.ac.rs.tim6.model.Payment;
 import ftn.uns.ac.rs.tim6.model.Payment.Status;
+import ftn.uns.ac.rs.tim6.service.InsuranceService;
 import ftn.uns.ac.rs.tim6.service.PaymentService;
 
 @RestController
@@ -22,6 +24,9 @@ public class PaymentController {
 
 	@Autowired
 	PaymentService paymentService;
+	
+	@Autowired
+	InsuranceService insuranceService;
 
 	@RequestMapping(value = "/payments", method = RequestMethod.GET)
 	public ResponseEntity<List<Payment>> handleGetAllPayments() {
@@ -65,6 +70,14 @@ public class PaymentController {
 
 		}
 		setAndSavePayment(rmdto, urldto);
+		
+		//TODO e-mail
+		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
+			Insurance i = insuranceService.findByPaymentId(rmdto.getPaymentId());
+			//kreiraj dokument
+			//posalji mail
+		}
+		
 
 		return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 	}
