@@ -34,7 +34,9 @@ public class InsuranceService implements GenericService<Insurance>{
 	public Insurance findByPaymentId(Integer paymentId) {
 		List<Insurance> insurances = insuranceRepository.findAll();
 		for (Insurance i : insurances) {
-			if (i.getPaymentId() == paymentId) {
+			System.out.println(i.getStartDate());
+			System.out.println(i.getPaymentId() + " == " + paymentId);
+			if (i.getPaymentId().intValue() == paymentId.intValue()) {
 				return i;
 			}
 		}
