@@ -29,5 +29,15 @@ public class CardService implements GenericService<Card>{
 	public Card findById(long id) {
 		return cardRepository.findOne(id);
 	}
+
+	public Card findByPan(Long pan) {
+		List<Card> cards = cardRepository.findAll();
+		for (Card c : cards) {
+			if (c.getPan().longValue() == pan.longValue()) {
+				return c;
+			}
+		}
+		return null;
+	}
 	
 }

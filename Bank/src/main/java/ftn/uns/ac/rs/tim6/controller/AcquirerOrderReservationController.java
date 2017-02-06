@@ -16,8 +16,10 @@ import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.model.Account;
 import ftn.uns.ac.rs.tim6.model.AcquirerOrderReservation;
+import ftn.uns.ac.rs.tim6.model.Card;
 import ftn.uns.ac.rs.tim6.service.AccountService;
 import ftn.uns.ac.rs.tim6.service.AcquirerOrderReservationService;
+import ftn.uns.ac.rs.tim6.service.CardService;
 
 @RestController
 @RequestMapping("/api")
@@ -28,6 +30,9 @@ public class AcquirerOrderReservationController {
 
 	@Autowired
 	AccountService accountService;
+
+	@Autowired
+	CardService cardService;
 
 	@RequestMapping(value = "/acquirerOrderReservations", method = RequestMethod.GET)
 	public ResponseEntity<List<AcquirerOrderReservation>> handleGetAllAcquirerOrderReservations() {
@@ -47,9 +52,11 @@ public class AcquirerOrderReservationController {
 		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
 		BigDecimal b1 = account.getAccountBalance();
 
-		Boolean card = cardCheck(aodto);
+		Card card = cardService.findByPan(aodto.getPan());
+		Boolean valid = cardCheck(card, aodto, rmdto);
 
-		if (card) {
+		if (valid) {
+
 			// TODO korak 8
 			if (res == 0) { // tacno
 
@@ -72,8 +79,13 @@ public class AcquirerOrderReservationController {
 			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 			rmdto.setMerchantTimestamp(aodto.getTimestamp());
-			// TODO issuer order id rmdto.setPaymentId(aodto.get);
+			
+		} else {
+
+			System.out.println("kartica nije validna");
+			
 		}
+
 		try {
 			// TODO korak 9
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
@@ -84,8 +96,21 @@ public class AcquirerOrderReservationController {
 
 	}
 
-	private Boolean cardCheck(AcquirerOrderDto aodto) {
-		// TODO provera kartice
-		return true;
+	private Boolean cardCheck(Card card, AcquirerOrderDto aodto, ResponseMessageDto rmdto) {
+		if (card.getMonth().longValue() == aodto.getExpDateMonth().longValue()
+				&& card.getYear().longValue() == aodto.getExpDateYear().longValue()
+				&& card.getSecurityCode().longValue() == aodto.getSecurityCode().longValue()) {
+			return true;
+
+		}
+		if (card.getMonth().longValue() == aodto.getExpDateMonth().longValue()
+				&& card.getYear().longValue() == aodto.getExpDateYear().longValue()) {
+			rmdto.setResult(TransactionResult.INVALID_DATE);
+
+		}
+		if (card.getSecurityCode().longValue() == aodto.getSecurityCode().longValue()) {
+			rmdto.setResult(TransactionResult.CVC_INVALID);
+		}
+		return false;
 	}
 }

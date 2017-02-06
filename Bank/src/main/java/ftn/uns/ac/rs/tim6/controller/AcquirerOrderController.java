@@ -99,7 +99,7 @@ public class AcquirerOrderController {
 
 			}
 
-			createAndSaveIssuerMessage(rmdto);
+			createAndSaveIssuerMessage(rmdto, acquirerOrder);
 
 			// TODO korak 10 + 11
 			// poruka prema merchantu koja se prosledjuje od PCC-a
@@ -114,13 +114,14 @@ public class AcquirerOrderController {
 
 	}
 
-	private void createAndSaveIssuerMessage(ResponseMessageDto rmdto) {
+	private void createAndSaveIssuerMessage(ResponseMessageDto rmdto, AcquirerOrder acquirerOrder) {
 		IssuerMessage im = new IssuerMessage();
 		im.setAcquirerOrderId(rmdto.getAcquirerOrderId());
 		im.setAcquirerTimestamp(rmdto.getAcquirerTimestamp());
 		im.setIssuerOrderId(rmdto.getMerchantOrderId());
 		im.setIssuerTimestamp(rmdto.getMerchantTimestamp());
 		im.setTransactionResult(rmdto.getResult());
+		im.setAcquirerOrder(acquirerOrder);
 		issuerMessageService.save(im);
 	}
 
@@ -149,10 +150,10 @@ public class AcquirerOrderController {
 		acquirerOrder.setPan(paymentInfo.getPan());
 		acquirerOrder.setSecurityCode(paymentInfo.getSecurityCode());
 		acquirerOrder.setTransactionAmount(paymentRequest.getAmount());
-		acquirerOrder.setCardHolder("ZA SAD NEKI CARD HOLDER");
+		acquirerOrder.setCardHolder("Card Holder");
 		acquirerOrder.setExpDateYear(paymentInfo.getYear());
 		acquirerOrder.setExpDateMonth(paymentInfo.getMonth());
-		// acquirerOrder.setAccount();
+		acquirerOrder.setAccount(accountService.findByPan(paymentInfo.getPan()));
 		acquirerOrderService.save(acquirerOrder);
 
 		return acquirerOrder;

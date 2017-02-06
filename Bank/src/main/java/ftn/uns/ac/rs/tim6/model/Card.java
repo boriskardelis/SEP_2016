@@ -20,13 +20,13 @@ public class Card implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "CARD_ID")
-	private Long id;
+	private Integer id;
 
 	@Column(name = "MONTH")
-	private int month;
+	private Long month;
 
 	@Column(name = "YEAR")
-	private int year;
+	private Long year;
 
 	@Column(name = "CARD_HOLDER_NAME")
 	private String cardHolderName;
@@ -41,20 +41,36 @@ public class Card implements Serializable {
 	@JoinColumn(name = "ACCOUNT", nullable = true)
 	private Account account;
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public String getCardHolder() {
+	public Long getMonth() {
+		return month;
+	}
+
+	public void setMonth(Long month) {
+		this.month = month;
+	}
+
+	public Long getYear() {
+		return year;
+	}
+
+	public void setYear(Long year) {
+		this.year = year;
+	}
+
+	public String getCardHolderName() {
 		return cardHolderName;
 	}
 
-	public void setCardHolder(String cardHolder) {
-		this.cardHolderName = cardHolder;
+	public void setCardHolderName(String cardHolderName) {
+		this.cardHolderName = cardHolderName;
 	}
 
 	public Long getPan() {
@@ -81,23 +97,11 @@ public class Card implements Serializable {
 		this.account = account;
 	}
 
-	public int getMonth() {
-		return month;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
-	public void setMonth(int month) {
-		this.month = month;
-	}
-
-	public int getYear() {
-		return year;
-	}
-
-	public void setYear(int year) {
-		this.year = year;
-	}
-
-	public Card(Long id, int month, int year, String cardHolderName, Long pan, Long securityCode, Account account) {
+	public Card(Integer id, Long month, Long year, String cardHolderName, Long pan, Long securityCode, Account account) {
 		super();
 		this.id = id;
 		this.month = month;
