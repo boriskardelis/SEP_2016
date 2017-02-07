@@ -5,11 +5,47 @@
 		.module('merchantApp')
 		.controller('BuyCtrl', BuyCtrl);
 
-	BuyCtrl.$inject = ['$scope', '$rootScope', 'BuyService', '$state', '$timeout', '$window', '$translate'];
-	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate) {
+	BuyCtrl.$inject = ['$scope', '$rootScope', 'BuyService', '$state', '$timeout', '$window', '$translate', 'localStorageService'];
+	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate, localStorageService) {
 		var vm = this;
 		
 		console.log($translate.use());
+
+		//vm.proba = localStorageService.cookie.get('proba');
+		vm.regionSelected = localStorageService.cookie.get('regionSelected');
+		vm.sumToSelected = localStorageService.cookie.get('sumToSelected');
+		vm.sportSelected = localStorageService.cookie.get('sportSelected');
+		//vm.startDate = localStorageService.cookie.get('startDate');
+		//vm.endDate = localStorageService.cookie.get('endDate');
+		//vm.towingSelected = localStorageService.cookie.get('towingSelected');
+		
+		/*console.log("DATUM");
+		console.log(vm.endDate);
+		console.log(new Date());*/
+
+
+	/*	$scope.$watch('vm.proba', function(newVal){
+		    localStorageService.cookie.set('proba', newVal);	   
+	    });*/
+		$scope.$watch('vm.regionSelected', function(newVal){
+		    localStorageService.cookie.set('regionSelected', newVal);
+	    });
+	    $scope.$watch('vm.sumToSelected', function(newVal){
+		    localStorageService.cookie.set('sumToSelected', newVal);
+	    });
+	    $scope.$watch('vm.sportSelected', function(newVal){
+		    localStorageService.cookie.set('sportSelected', newVal);
+	    });
+	   /* $scope.$watch('vm.startDate', function(newVal){
+		    localStorageService.cookie.set('startDate', newVal);
+	    });
+	     $scope.$watch('vm.towingSelected', function(newVal){
+	     	console.log("WATCH");
+		    localStorageService.cookie.set('towingSelected', newVal);
+	    });*/
+	   /* $scope.$watch('vm.endDate', function(newVal){
+		    localStorageService.cookie.set('endDate', newVal);
+	    });*/
 
 		BuyService.getRiskSubcategoriesBasedOnLanguage($translate.use()).then(function(response) {
 			console.log(response.data);
@@ -116,6 +152,9 @@
 		    startingDay: 1
 		};
 		vm.calculateFirstStep = function() {
+			localStorageService.cookie.set('regionSelected', vm.regionSelected);
+			localStorageService.cookie.set('endDate', vm.endDate);
+
 			//Parsiranje datuma za prikazevanje u petom koraku
 			var startDay = vm.startDate.getDate();
 			var startMonth = vm.startDate.getMonth()+1;
@@ -158,11 +197,16 @@
 			vm.getNumber = function(num) {
 			    return new Array(num);   
 			}
+			 console.log(localStorageService.cookie.get('regionSelected'));
 
 		};
 
 		vm.calculateSecondStep = function() {
-		
+			console.log(vm.towingSelected);
+			localStorageService.cookie.set('towingSelected', vm.towingSelected);
+			console.log("nakon");
+			console.log(vm.towingSelected);
+
 			console.log("CALCULATE");
 			//Napravim objeka koji kasnije saljem za drools da bi se izracunala cena
 			var ageId = [];

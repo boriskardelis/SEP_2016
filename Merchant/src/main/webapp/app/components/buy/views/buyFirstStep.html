@@ -1,13 +1,19 @@
 
 
+<!-- <input type="text" ng-model="vm.proba" placeholder="0"> -->
+
+
 	<div class="form-group row celina">
 		<div class="col-xs-3">
 			<label class="right" for="region" translate="region"></label>
 		</div>
 		<div class="col-xs-9">
-		    <select ng-model="vm.regionSelected" ng-options="region.nameTranslate.name for region in vm.regions">
-		  	     <option value="" translate="selectDestination"> </option>
-				<!-- <option ng-repeat="region in vm.regions" value="{{region}}">{{region.name}}</option> -->
+		    <select ng-model="vm.regionSelected" ng-options="region.nameTranslate.name for region in vm.regions track by region.id">
+		   
+		    	 	<option value="" translate="selectDestination"></option> 	
+
+		    	 	 <!-- <option  value="">{{vm.regionSelected.nameTranslate.name}}</option>	 -->
+		    	
 			</select>
 		</div>
 	</div>
@@ -17,11 +23,12 @@
 	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
 	 	</div>
 	 	<div class="col-xs-9">		
-		   	<span ng-repeat="sum in vm.sumTo">
-			    <input type="radio" ng-model="vm.sumToSelected" ng-value="sum"  name="sumToinsur">    
-				<label for="sum.nameTranslate.name{{sum.nameTranslate.name}}">{{sum.nameTranslate.name}}</label>
+		   	<div ng-repeat="sum in vm.sumTo" ng-init="vm.sumToSelected">	   	
+		   		<!-- The specific problem is comparing two different instances of an object which are not reference equal, but which logically represent the same data. -->
+			    <input type="radio" ng-model="vm.sumToSelected" ng-value="sum" radio-track-by="id">    
+				<label>{{sum.nameTranslate.name}}</label>
 				<br>		   
-			</span>			
+			</div>			
 		</div>
 	</div>
 
@@ -77,7 +84,7 @@
 			<label class="right" for="sport">Sport:</label>
 		</div>
 		<div class="col-xs-9">
-				<select ng-model="vm.sportSelected" ng-options="sport.nameTranslate.name for sport in vm.sports">
+				<select ng-model="vm.sportSelected" ng-options="sport.nameTranslate.name for sport in vm.sports track by sport.id">
 			  	     <option value="" translate="selectSport"> </option>
 				</select>
 		</div>

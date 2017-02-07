@@ -8,6 +8,8 @@
 
  function config($stateProvider, $urlRouterProvider, $locationProvider, $translateProvider) {
   
+
+   //localStorageServiceProvider.setPrefix('merchantApp');
   
  	$urlRouterProvider.otherwise('/home');
   //Posto koristim nested views, treba mi da kada pogodim parenta (buy), redirektuje me na child (firstStep), a pritom da ostavim url
@@ -309,7 +311,19 @@
 
   }
 
-  function run($rootScope, $state) {
+  function run($rootScope, $state, localStorageService, $translate) {
+
+    $translate.use(localStorageService.cookie.get('language'));
+
+    /* $scope.$watch('vm.proba', function(newVal){
+      console.log("newVal:");
+      console.log(newVal);
+        localStorageService.cookie.set('proba', newVal);
+        console.log('U WATCH: ');
+        console.log(localStorageService.cookie.get('proba'));
+      });
+*/
+
    
 
   }

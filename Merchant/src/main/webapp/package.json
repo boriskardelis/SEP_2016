@@ -16,6 +16,7 @@
   "author": "A B M",
   "license": "ISC",
   "dependencies": {
+    "angular-local-storage": "^0.5.2",
     "gulp": "^3.9.1"
   }
 }
