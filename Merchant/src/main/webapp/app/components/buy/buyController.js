@@ -11,6 +11,13 @@
 		
 		console.log($translate.use());
 
+		vm.isDisabled = false;
+		//Zasto ne radi sa VM (this)?!
+	    $scope.buttonDisable = function() {
+	   		console.log("USAO U FUNK");
+	        $scope.isDisabled = true;
+	    }
+
 		//vm.proba = localStorageService.cookie.get('proba');
 		vm.regionSelected = localStorageService.cookie.get('regionSelected');
 		vm.sumToSelected = localStorageService.cookie.get('sumToSelected');
@@ -53,20 +60,20 @@
 			console.log(response.data[0].nameTranslate);
 
 			//@subcategories, @category
-			vm.regions = BuyService.getSubsForCat(response.data, "region");
-			vm.ages  = BuyService.getSubsForCat(response.data, "age");
-			vm.sumTo = BuyService.getSubsForCat(response.data, "sumTo");
-			vm.sports = BuyService.getSubsForCat(response.data, "sport");
+			vm.regions = BuyService.getSubsForCat(response.data, "Region");
+			vm.ages  = BuyService.getSubsForCat(response.data, "Age");
+			vm.sumTo = BuyService.getSubsForCat(response.data, "Sum insured");
+			vm.sports = BuyService.getSubsForCat(response.data, "Sport");
 
-			vm.towings = BuyService.getSubsForCat(response.data, "towing");
-			vm.repairs = BuyService.getSubsForCat(response.data, "repairs");
-			vm.accommodations = BuyService.getSubsForCat(response.data, "accommodation");
-			vm.alternativeRides = BuyService.getSubsForCat(response.data, "alternativeRide");
+			vm.towings = BuyService.getSubsForCat(response.data, "Towing");
+			vm.repairs = BuyService.getSubsForCat(response.data, "Repairs");
+			vm.accommodations = BuyService.getSubsForCat(response.data, "Accommodation");
+			vm.alternativeRides = BuyService.getSubsForCat(response.data, "Alternative ride");
 
-			vm.surfaces = BuyService.getSubsForCat(response.data, "surface");
-			vm.ageApartments = BuyService.getSubsForCat(response.data, "ageApartment");
-			vm.valueApartments = BuyService.getSubsForCat(response.data, "valueApartment");
-			vm.disasters = BuyService.getSubsForCat(response.data, "disaster");
+			vm.surfaces = BuyService.getSubsForCat(response.data, "Surface");
+			vm.ageApartments = BuyService.getSubsForCat(response.data, "Age apartment");
+			vm.valueApartments = BuyService.getSubsForCat(response.data, "Value apartment estimated");
+			vm.disasters = BuyService.getSubsForCat(response.data, "Insured disaster");
 
 			console.log("regions:");
 			console.log(vm.regions);
@@ -112,10 +119,9 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			 	$timeout(function() {
-			 		console.log("proslo");
+			 
 				   $window.location = vm.paymentUrlAndID.url;
-				}, 1000);
+			
 		    });
     	};
 
@@ -240,8 +246,8 @@
 			});
 		};
 
-    	//.insuranceType = ["Putno", "Home"];
-    	vm.checked = [];
+		
+
 
 	}
 
