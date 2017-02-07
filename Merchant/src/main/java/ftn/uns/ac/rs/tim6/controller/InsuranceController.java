@@ -210,6 +210,8 @@ public class InsuranceController {
 			vehicleService.save(v);
 			i.setVehicle(v);
 		}
+
+		// TODO set risksubCategory
 		
 		insuranceService.save(i);
 		System.out.println("pre for-a");
@@ -218,7 +220,7 @@ public class InsuranceController {
 		
 		for (RiskSubcategory r : iidto.getItemsForDrools().getItemsListForDrools()) {
 			if (r != null) {
-//				System.out.println(r.getId());
+				System.out.println(r.getId());
 				list.add(r);
 
 			}

@@ -102,7 +102,7 @@ public class MailService {
 
 			// Dodajem sliku
 			Image image = Image
-					.getInstance("../Merchant/src/main/webapp/assets/img/travel2pdf.jpg");
+					.getInstance("/Users/Milos/git/SEP_2016/Merchant/src/main/webapp/assets/img/travel2pdf.jpg");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
 			// document.add(new Paragraph("Chuck Norris Insurance"));
