@@ -96,19 +96,21 @@ public class AcquirerOrderController {
 				a.setAccountBalance(b1.add(b2, mc));
 				System.out.println(a.getAccountBalance());
 				accountService.save(a);
+				createAndSaveIssuerMessage(rmdto, acquirerOrder);
 
 			}
-
-			createAndSaveIssuerMessage(rmdto, acquirerOrder);
-
 			// TODO korak 10 + 11
 			// poruka prema merchantu koja se prosledjuje od PCC-a
 			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
 			urldto = client.postForObject("https://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
-
 			return new ResponseEntity<URLDto>(urldto, HttpStatus.OK);
 
 		} catch (Exception e) {
+			rmdto.setPaymentId(paymentInfo.getPaymentId());
+			rmdto.setResult(TransactionResult.ERROR);
+			HttpEntity<ResponseMessageDto> entityResponse = new HttpEntity<ResponseMessageDto>(rmdto, headers);
+			urldto = client.postForObject("https://localhost:8080/api/incomingresult", entityResponse, URLDto.class);
+
 			return new ResponseEntity<URLDto>(urldto, HttpStatus.BAD_REQUEST);
 		}
 

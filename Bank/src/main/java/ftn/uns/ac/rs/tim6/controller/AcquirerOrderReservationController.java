@@ -79,11 +79,11 @@ public class AcquirerOrderReservationController {
 			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 			rmdto.setMerchantTimestamp(aodto.getTimestamp());
-			
+
 		} else {
 
 			System.out.println("kartica nije validna");
-			
+
 		}
 
 		try {
@@ -98,19 +98,26 @@ public class AcquirerOrderReservationController {
 	}
 
 	private Boolean cardCheck(Card card, AcquirerOrderDto aodto, ResponseMessageDto rmdto) {
-		if (card.getMonth().longValue() == aodto.getExpDateMonth().longValue()
-				&& card.getYear().longValue() == aodto.getExpDateYear().longValue()
-				&& card.getSecurityCode().longValue() == aodto.getSecurityCode().longValue()) {
-			return true;
+		if (aodto.getExpDateMonth() != null || aodto.getExpDateYear() != null || aodto.getSecurityCode() != null) {
 
-		}
-		if (card.getMonth().longValue() == aodto.getExpDateMonth().longValue()
-				&& card.getYear().longValue() == aodto.getExpDateYear().longValue()) {
-			rmdto.setResult(TransactionResult.INVALID_DATE);
+			if (card.getMonth().longValue() == aodto.getExpDateMonth().longValue()
+					&& card.getYear().longValue() == aodto.getExpDateYear().longValue()
+					&& card.getSecurityCode().longValue() == aodto.getSecurityCode().longValue()) {
+				return true;
 
-		}
-		if (card.getSecurityCode().longValue() == aodto.getSecurityCode().longValue()) {
-			rmdto.setResult(TransactionResult.CVC_INVALID);
+			} else {
+				rmdto.setResult(TransactionResult.ERROR);
+			}
+			rmdto.setResult(TransactionResult.ERROR);
+			if (card.getMonth().longValue() != aodto.getExpDateMonth().longValue()
+					|| card.getYear().longValue() != aodto.getExpDateYear().longValue()) {
+				rmdto.setResult(TransactionResult.INVALID_DATE);
+
+			} else if (card.getSecurityCode().longValue() != aodto.getSecurityCode().longValue()) {
+				rmdto.setResult(TransactionResult.CVC_INVALID);
+			}
+		} else {
+			rmdto.setResult(TransactionResult.ERROR);
 		}
 		return false;
 	}

@@ -16,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import ftn.uns.ac.rs.tim6.dto.AcquirerOrderDto;
 import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto;
+import ftn.uns.ac.rs.tim6.dto.ResponseMessageDto.TransactionResult;
 import ftn.uns.ac.rs.tim6.model.Bank;
 import ftn.uns.ac.rs.tim6.model.IncomingMessage;
 import ftn.uns.ac.rs.tim6.model.ResponseMessage;
@@ -47,14 +48,17 @@ public class IncomingMessageController {
 	@RequestMapping(value = "/incomingacquirerorder", method = RequestMethod.POST)
 	public ResponseEntity<ResponseMessageDto> handleIncomingMessage(@RequestBody AcquirerOrderDto aodto) {
 
-		// TODO korak 7
-		Bank bank = findBankByPan(aodto.getPan());
-
 		RestTemplate client = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
-		setAndSaveIncomingMessage(aodto, bank);
+		// TODO korak 7
+		Bank bank = findBankByPan(aodto.getPan(), rmdto);
 
+		if (bank != null) {
+			setAndSaveIncomingMessage(aodto, bank);
+		}else {
+			rmdto.setResult(TransactionResult.ERROR);
+		}
 		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 
@@ -62,7 +66,7 @@ public class IncomingMessageController {
 
 			headers.setContentType(MediaType.APPLICATION_JSON);
 			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			// check certificates	
+			// check certificates
 			CheckerCertificates checkerCertificate = new CheckerCertificates();
 			checkerCertificate.doTrustToCertificates();
 			rmdto = client.postForObject("https://localhost:" + bank.getPort() + "/api/reservation", entity,
@@ -71,6 +75,7 @@ public class IncomingMessageController {
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
+			rmdto.setResult(TransactionResult.ERROR);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
 	}
@@ -102,7 +107,7 @@ public class IncomingMessageController {
 
 	}
 
-	private Bank findBankByPan(Long pan) {
+	private Bank findBankByPan(Long pan, ResponseMessageDto rmdto) {
 		// A BBBBB CCCCCCCCCCCC D ja uzimam prvih 6 cifara
 		Long panBanke = Long.parseLong(Long.toString(pan).substring(0, 6));
 		List<Bank> banke = new ArrayList<Bank>();
@@ -115,6 +120,7 @@ public class IncomingMessageController {
 			}
 		}
 		System.out.println("NISMO NASLI SMO BANKU!!!");
+		rmdto.setResult(TransactionResult.ERROR);
 		return null;
 	}
 
