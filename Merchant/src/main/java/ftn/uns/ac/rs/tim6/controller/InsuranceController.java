@@ -220,7 +220,7 @@ public class InsuranceController {
 		
 		for (RiskSubcategory r : iidto.getItemsForDrools().getItemsListForDrools()) {
 			if (r != null) {
-				System.out.println(r.getId());
+//				System.out.println(r.getId());
 				list.add(r);
 
 			}
