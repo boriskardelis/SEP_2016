@@ -91,7 +91,7 @@
        		var personFormating = {};
        		console.log(vm.person);
        		for (var i=0;  i < vm.totalPersons - 1; i++) {
-				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.lastName[i], address: vm.person.address[i], 
+				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i], address: vm.person.address[i], 
 					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
 
 				persons.push(personFormating);		
@@ -162,9 +162,9 @@
 			var startDate = startDay + '.' + startMonth +'.' + startYear;
 			vm.startDateParsed = startDate;
 
-			var endDay = vm.startDate.getDate();
-			var endMonth = vm.startDate.getMonth()+1;
-			var endYear = vm.startDate.getFullYear();
+			var endDay = vm.endDate.getDate();
+			var endMonth = vm.endDate.getMonth()+1;
+			var endYear = vm.endDate.getFullYear();
 			var endDate = endDay + '.' + endMonth +'.' + endYear;
 			vm.endDateParsed = endDate;
 
