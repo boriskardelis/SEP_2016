@@ -5,8 +5,8 @@
 		.module('merchantApp')
 		.controller('UrlCtrl', UrlCtrl);
 
-	UrlCtrl.$inject = ['$scope', '$stateParams', 'UrlService'];
-	function UrlCtrl($scope, $stateParams, UrlService) {
+	UrlCtrl.$inject = ['$scope', '$stateParams', 'UrlService', '$window'];
+	function UrlCtrl($scope, $stateParams, UrlService, $window) {
 		var vm = this;
 
 		var paymentId = $stateParams.paymentId;
@@ -23,7 +23,7 @@
 			//status 0-SUCCESSFUL 1-FAILED 2-ERROR
 			//result 0-SUCCESSFUL, 1-INSUFFICIENT_FUNDS, 2-INVALID_DATE, 3-CVC_INVALID
 			if (vm.status == "SUCCESSFUL") {
-				vm.message = "Your payment hes been successfull."; 
+				vm.message = "Your payment hes been successfull. Check your email for the report"; 
 			} else if (vm.status == "FAILED" && vm.result == "INSUFFICIENT_FUNDS") {
 				vm.message = "Insufficient funds on your bank account";
 			} else if (vm.status == "FAILED" && vm.result == "INVALID_DATE") {
@@ -34,5 +34,9 @@
 				vm.message = "Error has occurred on server side, please try again later";
 			}		
 		});
+
+		 vm.redirectBackOnBank = function() {
+		 	$window.location = "https://localhost:7070/payment?paymentId="+ paymentId;
+		 }
 	}
 })();
