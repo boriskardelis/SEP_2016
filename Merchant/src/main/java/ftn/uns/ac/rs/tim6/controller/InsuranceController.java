@@ -7,6 +7,7 @@ import java.net.URL;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -209,27 +210,24 @@ public class InsuranceController {
 			vehicleService.save(v);
 			i.setVehicle(v);
 		}
+
+		// TODO set risksubCategory
 		
+		insuranceService.save(i);
+		System.out.println("pre for-a");
 		
-		//TODO set risksubCategory
-		//i.setRiskSubategories(iidto.getItemsForDrools().getItemsListForDrools());
-		//i.setRiskSubategories(iidto.getItemsForDrools().);
-		//for(int j=0; j<5; j++){
-		System.out.println(i.getRiskSubategories().size());
-		//}
+		ArrayList<RiskSubcategory> list = new ArrayList<RiskSubcategory>();
+		
 		for (RiskSubcategory r : iidto.getItemsForDrools().getItemsListForDrools()) {
-			
-			//i.getRiskSubategories().add(r);
-			//System.out.println(r.getNameTranslate().getName());
-			if(r != null){
-				System.out.println(r.getNameTranslate().getName());
-				//i.getRiskSubategories().size(); ovdje pada
-				//i.getRiskSubategories().isEmpty(); i ovdje pada
-				
-				
+			if (r != null) {
+				System.out.println(r.getId());
+				list.add(r);
+
 			}
 		}
-		
+		i.setRiskSubategories(list);
+		System.out.println("posle for-a");
+
 		insuranceService.save(i);
 
 		List<Person> persons = iidto.getPersons();
