@@ -91,6 +91,7 @@ public class AcquirerOrderReservationController {
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
 		} catch (Exception e) {
+			rmdto.setResult(TransactionResult.ERROR);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
 

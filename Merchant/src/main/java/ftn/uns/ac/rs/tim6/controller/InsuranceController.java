@@ -209,6 +209,9 @@ public class InsuranceController {
 			vehicleService.save(v);
 			i.setVehicle(v);
 		}
+		
+		//TODO set risksubCategory
+		
 		insuranceService.save(i);
 
 		List<Person> persons = iidto.getPersons();
