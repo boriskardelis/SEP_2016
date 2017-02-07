@@ -210,7 +210,25 @@ public class InsuranceController {
 			i.setVehicle(v);
 		}
 		
+		
 		//TODO set risksubCategory
+		//i.setRiskSubategories(iidto.getItemsForDrools().getItemsListForDrools());
+		//i.setRiskSubategories(iidto.getItemsForDrools().);
+		//for(int j=0; j<5; j++){
+		System.out.println(i.getRiskSubategories().size());
+		//}
+		for (RiskSubcategory r : iidto.getItemsForDrools().getItemsListForDrools()) {
+			
+			//i.getRiskSubategories().add(r);
+			//System.out.println(r.getNameTranslate().getName());
+			if(r != null){
+				System.out.println(r.getNameTranslate().getName());
+				//i.getRiskSubategories().size(); ovdje pada
+				//i.getRiskSubategories().isEmpty(); i ovdje pada
+				
+				
+			}
+		}
 		
 		insuranceService.save(i);
 

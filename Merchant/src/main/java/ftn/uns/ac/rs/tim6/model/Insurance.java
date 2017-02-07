@@ -63,6 +63,12 @@ public class Insurance implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "VEHICLE_ID")
 	private Vehicle vehicle;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinTable(name = "SHOPPING_CART",
+	joinColumns = @JoinColumn(name = "INSURANCE_ID"),
+	inverseJoinColumns = @JoinColumn(name = "RISK_SUBCATEGORY_ID"))
+	private List<RiskSubcategory> riskSubategories;
 
 	public Integer getId() {
 		return id;
@@ -187,11 +193,20 @@ public class Insurance implements Serializable {
 	public void setPremiumPrice(BigDecimal premiumPrice) {
 		this.premiumPrice = premiumPrice;
 	}
+	
+
+	public List<RiskSubcategory> getRiskSubategories() {
+		return riskSubategories;
+	}
+
+	public void setRiskSubategories(List<RiskSubcategory> riskSubategories) {
+		this.riskSubategories = riskSubategories;
+	}
 
 	public Insurance(Integer id, int numberOfPersons, Date startDate, Date endDate, BigDecimal totalPrice,
 			BigDecimal discountPrice, BigDecimal taxPrice, BigDecimal premiumPrice, Integer paymentId,
 			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer, Home home,
-			Vehicle vehicle) {
+			Vehicle vehicle, List<RiskSubcategory> riskSubategories) {
 		super();
 		this.id = id;
 		this.numberOfPersons = numberOfPersons;
@@ -208,6 +223,7 @@ public class Insurance implements Serializable {
 		this.buyer = buyer;
 		this.home = home;
 		this.vehicle = vehicle;
+		this.riskSubategories = riskSubategories;
 	}
 
 	public Insurance() {
