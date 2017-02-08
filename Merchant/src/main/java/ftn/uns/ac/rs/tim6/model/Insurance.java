@@ -16,7 +16,7 @@ public class Insurance implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column(name = "INSURANCE_ID")
-	private Integer id;
+	private long id;
 
 	@Column(name = "NUMBER_OF_PERSONS")
 	private int numberOfPersons;
@@ -42,6 +42,9 @@ public class Insurance implements Serializable {
 	@Column(name = "PAYMENT_ID")
 	private Integer paymentId;
 
+	@Column(name = "INS_LANGUAGE")
+	private String language;
+
 	@OneToMany(mappedBy = "insurance", cascade = CascadeType.ALL)
 	private List<InsuranceType> insuranceTypes;
 
@@ -63,18 +66,16 @@ public class Insurance implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "VEHICLE_ID")
 	private Vehicle vehicle;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "SHOPPING_CART",
-	joinColumns = @JoinColumn(name = "INSURANCE_ID"),
-	inverseJoinColumns = @JoinColumn(name = "RISK_SUBCATEGORY_ID"))
+	@JoinTable(name = "SHOPPING_CART", joinColumns = @JoinColumn(name = "INSURANCE_ID"), inverseJoinColumns = @JoinColumn(name = "RISK_SUBCATEGORY_ID"))
 	private List<RiskSubcategory> riskSubategories;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -193,7 +194,6 @@ public class Insurance implements Serializable {
 	public void setPremiumPrice(BigDecimal premiumPrice) {
 		this.premiumPrice = premiumPrice;
 	}
-	
 
 	public List<RiskSubcategory> getRiskSubategories() {
 		return riskSubategories;
@@ -203,7 +203,15 @@ public class Insurance implements Serializable {
 		this.riskSubategories = riskSubategories;
 	}
 
-	public Insurance(Integer id, int numberOfPersons, Date startDate, Date endDate, BigDecimal totalPrice,
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
+	}
+
+	public Insurance(long id, int numberOfPersons, Date startDate, Date endDate, BigDecimal totalPrice,
 			BigDecimal discountPrice, BigDecimal taxPrice, BigDecimal premiumPrice, Integer paymentId,
 			List<InsuranceType> insuranceTypes, List<Person> persons, Pricelist pricelist, Buyer buyer, Home home,
 			Vehicle vehicle, List<RiskSubcategory> riskSubategories) {

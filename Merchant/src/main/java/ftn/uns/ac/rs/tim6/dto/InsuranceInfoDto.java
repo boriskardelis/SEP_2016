@@ -21,6 +21,7 @@ public class InsuranceInfoDto {
 	private BigDecimal discountPrice;
 	private BigDecimal totalPrice;
 	private boolean contractor;
+	private String language;
 
 	public Vehicle getVehicle() {
 		return vehicle;
@@ -108,6 +109,14 @@ public class InsuranceInfoDto {
 
 	public void setContractor(boolean contractor) {
 		this.contractor = contractor;
+	}
+
+	public String getLanguage() {
+		return language;
+	}
+
+	public void setLanguage(String language) {
+		this.language = language;
 	}
 
 }

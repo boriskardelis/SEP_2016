@@ -194,6 +194,9 @@ public class InsuranceController {
 		i.setPremiumPrice(iidto.getPremiumPrice());
 		i.setPricelist(pricelistService.findCurrentPriceList());
 		i.setPaymentId(puid.getPaymentId());
+		i.setLanguage(iidto.getLanguage());
+		
+		System.out.println(i.getLanguage());
 
 		Buyer b = iidto.getBuyer();
 		b.setInsured(iidto.isContractor());
@@ -211,8 +214,6 @@ public class InsuranceController {
 			vehicleService.save(v);
 			i.setVehicle(v);
 		}
-
-		// TODO set risksubCategory
 		
 		insuranceService.save(i);
 		System.out.println("pre for-a");
@@ -231,12 +232,14 @@ public class InsuranceController {
 
 		insuranceService.save(i);
 
+		System.out.println("persons");
 		List<Person> persons = iidto.getPersons();
 		for (Person p : persons) {
 			p.setInsurance(i);
 			personService.save(p);
 		}
 
+		System.out.println("holder");
 		if (!iidto.isContractor()) {
 			Person holder = iidto.getPersonHolder();
 			holder.setInsurance(i);
