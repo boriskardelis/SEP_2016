@@ -18,6 +18,11 @@
     <script src="./bower_components/checklist-model/checklist-model.js"></script>
     <script src="./bower_components/angular-translate/angular-translate.js"></script>
     <script src="./bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
+
+    <script src="./bower_components/spin.js/spin.js"></script>
+    <script src="./bower_components/angular-spinner/angular-spinner.js"></script>
+    <script src="./bower_components/angular-loading-spinner/angular-loading-spinner.js"></script>
+    
    
    
     <script src="./app/appModule.js"></script>
@@ -40,14 +45,16 @@
     <script src="./app/components/buy/buyAdditionalDirective.js"></script>
     <script src="./app/components/buy/buyPersonsDirective.js"></script>
     <script src="./app/components/buy/buyRadioDirective.js"></script>
+    <script src="./app/components/buy/loadingDirective.js"></script>
  
 </head>
 <body ng-app="merchantApp">
 
 
         
-       
-          
+            <!-- Radi na nivou cele aplikacije, mogao sam dodati u bilo koji html -->
+            <span us-spinner="{radius:30, width:8, length: 16}"></span>
+
             <div ui-view="navigation">
               
             </div>

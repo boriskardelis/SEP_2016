@@ -14,8 +14,11 @@
 		vm.isDisabled = false;
 		//Zasto ne radi sa VM (this)?!
 	    $scope.buttonDisable = function() {
-	   		console.log("USAO U FUNK");
-	        $scope.isDisabled = true;
+	   	    console.log("USAO U FUNK");  
+	        $timeout(function() {
+		        $scope.isDisabled = true;
+		        console.log('update with timeout fired');
+		    }, 0);
 	    }
 
 		//vm.proba = localStorageService.cookie.get('proba');

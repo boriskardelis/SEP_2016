@@ -34,15 +34,20 @@
 			PaymentService.pay(vm.card).then(function(response) {
 				console.log("Uradjen PAY");
 				console.log(response.data);
-				console.log("SLEDI REDIREKCIJA......");
-				
-				$timeout(function() {
-				   $window.location = response.data.url;
-				}, 1000);
-
-			
+				console.log("SLEDI REDIREKCIJA......");		
+			    $window.location = response.data.url;		
 			});
 		};
+
+		vm.isDisabled = false;
+		//Zasto ne radi sa VM (this)?!
+	    $scope.buttonDisable = function() {
+	   	    console.log("USAO U FUNK");  
+	        $timeout(function() {
+		        $scope.isDisabled = true;
+		        console.log('update with timeout fired');
+		    }, 0);
+	    }
 
 	}
 })();

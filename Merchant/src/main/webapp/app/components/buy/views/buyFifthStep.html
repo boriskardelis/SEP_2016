@@ -1,4 +1,4 @@
- 	
+
     <p class="h4 bg-success" align="center">{{ 'insuranceInformation' | translate }}</p>
         <div class="form-group row">
             <div class="col-xs-3">
@@ -163,7 +163,7 @@
     <br>
 
   <div class="row text-center col-xs-4 col-xs-offset-4">
-      <button type="submit" class="btn btn-success btn-block">Buy</button>
+      <button type="submit" ng-disabled="isDisabled" ng-click="buttonDisable()" class="btn btn-success btn-block">Buy</button>
   </div>
 
   <br><br><br>
