@@ -19,16 +19,8 @@ public class DateConverter {
 		return null;
 	}
 
-	public static String convertToDataBase(String string) {
-		try {
-			Date date = new SimpleDateFormat("EEE MMM dd HH:mm:ss z YYYY").parse(string);
-			return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(date);
-		} catch (ParseException e) {
-
-			e.printStackTrace();
-		}
-
-		return null;
+	public static  String convertToDataBase(Date d) throws ParseException {
+		return new SimpleDateFormat("dd/MM/yyyy").format(d);
 
 	}
 
