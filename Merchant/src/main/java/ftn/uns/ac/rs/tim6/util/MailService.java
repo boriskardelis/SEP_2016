@@ -38,6 +38,8 @@ import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import ftn.uns.ac.rs.tim6.model.Insurance;
+import ftn.uns.ac.rs.tim6.model.Person;
+import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 
 @Service
 public class MailService {
@@ -105,115 +107,217 @@ public class MailService {
 					.getInstance("../Merchant/src/main/webapp/assets/img/travel2pdf.jpg");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
-			// document.add(new Paragraph("Chuck Norris Insurance"));
-			document.add(new Paragraph(new Date().toString()));
-
+			document.add(new Paragraph(DateConverter.convertToDataBase(new Date())));
 			document.addAuthor("SEP2016/17");
 			document.addCreationDate();
 			document.addCreator("Sep2016/2017");
 			document.addTitle("Sample PDF");
 
 			// Create Paragraph
-			Paragraph paragraph = new Paragraph("Insurance policy",
-					new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
-			paragraph.setAlignment(Element.ALIGN_CENTER);
-			// New line
-			paragraph.add(new Paragraph(" "));
-			// paragraph.add("Informacije o osiguranju");
-			paragraph.add(new Paragraph(" "));
-			paragraph.add(new Paragraph(" "));
-			document.add(paragraph);
+			if (i.getLanguage().equals("English")){
+				Paragraph paragraph = new Paragraph("Insurance policy",
+						new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
+				paragraph.setAlignment(Element.ALIGN_CENTER);
+				paragraph.add(new Paragraph(" "));
+				paragraph.add(new Paragraph(" "));
+				document.add(paragraph);
 
-			// Create a table in PDF
-			PdfPTable pdfTable = new PdfPTable(2);
-			Paragraph par1 = new Paragraph("Insurance carrier informations",
-					new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
-			PdfPCell cell1 = new PdfPCell(par1);
-			cell1.setColspan(4);
-			cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			pdfTable.addCell(cell1);
+			}else{
+				Paragraph paragraph = new Paragraph("Polisa osiguranja",
+						new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
+				paragraph.setAlignment(Element.ALIGN_CENTER);
+				paragraph.add(new Paragraph(" "));
+				paragraph.add(new Paragraph(" "));
+				document.add(paragraph);
+			}
+			
+			
 
-			pdfTable.addCell("First name");
-			pdfTable.addCell(i.getBuyer().getFirstName());
-
-			pdfTable.addCell("Last name");
-			pdfTable.addCell(i.getBuyer().getLastName());
-
-			pdfTable.addCell("Address");
-			pdfTable.addCell(i.getBuyer().getAddress());
-
-			document.add(pdfTable);
-			document.add(Chunk.NEWLINE);
-
+			if (i.getLanguage().equals("English")){
 			PdfPTable pdfTable2 = new PdfPTable(2);
-			Paragraph par2 = new Paragraph("Insuranced person informations",
+			Paragraph par2 = new Paragraph("Insuranced persons informations",
 					new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
 			PdfPCell cell2 = new PdfPCell(par2);
 			cell2.setColspan(4);
 			cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
 			pdfTable2.addCell(cell2);
+			if(i.getBuyer().isInsured() == false){
+				for (Person p : i.getPersons()) {
+					
+					pdfTable2.addCell("First name");
+					pdfTable2.addCell(p.getFirstName());
+	
+					pdfTable2.addCell("Last name");
+					pdfTable2.addCell(p.getLastName());
+	
+					pdfTable2.addCell("Address");
+					pdfTable2.addCell(p.getAddress());
+					
+					
+					
+				}
+				
+			}
+			else{
+				pdfTable2.addCell("First name");
+				pdfTable2.addCell(i.getBuyer().getFirstName());
 
-			pdfTable2.addCell("First name");
-			pdfTable2.addCell(i.getPersons().get(0).getFirstName());
+				pdfTable2.addCell("Last name");
+				pdfTable2.addCell(i.getBuyer().getLastName());
 
-			pdfTable2.addCell("Last name");
-			pdfTable2.addCell(i.getPersons().get(0).getLastName());
+				pdfTable2.addCell("Address");
+				pdfTable2.addCell(i.getBuyer().getAddress());
+				
+				for (Person p : i.getPersons()) {
+					
+					pdfTable2.addCell("First name");
+					pdfTable2.addCell(p.getFirstName());
+	
+					pdfTable2.addCell("Last name");
+					pdfTable2.addCell(p.getLastName());
+	
+					pdfTable2.addCell("Address");
+					pdfTable2.addCell(p.getAddress());
+					
+				}
+			}
 
-			pdfTable2.addCell("Address");
-			pdfTable2.addCell(i.getPersons().get(0).getAddress());
+			
 
-			document.add(pdfTable2);
+				document.add(pdfTable2);
+	
+				document.add(Chunk.NEWLINE);
+			}
+			else{
+				PdfPTable pdfTable2 = new PdfPTable(2);
+				Paragraph par2 = new Paragraph("Podaci o osiguranicima",
+						new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				PdfPCell cell2 = new PdfPCell(par2);
+				cell2.setColspan(4);
+				cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+				pdfTable2.addCell(cell2);
+				if(i.getBuyer().isInsured() == false){
+					for (Person p : i.getPersons()) {
+						
+						pdfTable2.addCell("Ime");
+						pdfTable2.addCell(p.getFirstName());
+		
+						pdfTable2.addCell("Prezime");
+						pdfTable2.addCell(p.getLastName());
+		
+						pdfTable2.addCell("Adresa");
+						pdfTable2.addCell(p.getAddress());
+						
+						
+						
+					}
+					
+				}
+				else{
+					pdfTable2.addCell("Ime");
+					pdfTable2.addCell(i.getBuyer().getFirstName());
 
-			document.add(Chunk.NEWLINE);
+					pdfTable2.addCell("Prezime");
+					pdfTable2.addCell(i.getBuyer().getLastName());
 
-			PdfPTable pdfTable3 = new PdfPTable(2);
-			Paragraph par3 = new Paragraph("Policy informations", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
-			PdfPCell cell3 = new PdfPCell(par3);
-			cell3.setColspan(4);
-			cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
-			pdfTable3.addCell(cell3);
+					pdfTable2.addCell("Adresa");
+					pdfTable2.addCell(i.getBuyer().getAddress());
+					
+					for (Person p : i.getPersons()) {
+						
+						pdfTable2.addCell("Ime");
+						pdfTable2.addCell(p.getFirstName());
+		
+						pdfTable2.addCell("Prezime");
+						pdfTable2.addCell(p.getLastName());
+		
+						pdfTable2.addCell("Adresa");
+						pdfTable2.addCell(p.getAddress());
+						
+					}
+				}
 
-			pdfTable3.addCell("Destination");
-			// pdfTable3.addCell(i.getInsuranceTypes().get(0).getRiskCategories().get(1).getName());
-			i.getPricelist().getPricelistItems().get(0).getRiskSubcategory();
-			pdfTable3.addCell("North America");
+				
 
-			pdfTable3.addCell("Start date");
-			pdfTable3.addCell(i.getStartDate().toString());
+					document.add(pdfTable2);
+		
+					document.add(Chunk.NEWLINE);
+				
+			}
 
-			pdfTable3.addCell("End date");
-			pdfTable3.addCell(i.getEndDate().toString());
-
-			pdfTable3.addCell("Insurance price");
-			pdfTable3.addCell(i.getTotalPrice().toString());
-
-			document.add(pdfTable3);
-
-			/*
-			 * com.itextpdf.text.List list = new com.itextpdf.text.List();
-			 * list.add("Start date" + "\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-			 * i.getStartDate().toString()); list.add("End date" +
-			 * "\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + i.getEndDate().toString());
-			 * list.add("Total price" + "\t\t\t\t\t\t\t\t\t\t\t\t\t" +
-			 * i.getTotalPrice().toString()); document.add(list);
-			 */
-
-			// cell1 = new PdfPCell(new
-			// Phrase(i.getBuyer().getFirstName()));
-			// cell1.setHorizontalAlignment(Element.ALIGN_CENTER);
-			// pdfTable.addCell(cell1);
-
-			// pdfTable.setHeaderRows(1);
-
-			// pdfTable.addCell("Prezime osgiuranika");
-			// pdfTable.addCell(i.getBuyer().getLastName());
-
-			// pdfTable.addCell("Adresa osiguranika");
-			// pdfTable.addCell(i.getBuyer().getAddress());
-
-			// document.add(pdfTable2);
-			// document.add(pdfTable3);
-
+			/*PdfPTable pdfTable3 = new PdfPTable(2);
+			
+			pdfTable3.addCell("Sum insured to");
+			for (RiskSubcategory r : i.getRiskSubategories()) {
+				if (r.getRiskCategory().getName().equals("sumTo")){
+					pdfTable3.addCell(r.getNameTranslate().getName());
+				}
+			}
+			*/
+			if (i.getLanguage().equals("English")){
+				PdfPTable pdfTable3 = new PdfPTable(2);
+				Paragraph par3 = new Paragraph("Policy informations", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				PdfPCell cell3 = new PdfPCell(par3);
+				cell3.setColspan(4);
+				cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+				pdfTable3.addCell(cell3);
+				
+				pdfTable3.addCell("Insurance carrier");
+				pdfTable3.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
+				
+				for (RiskSubcategory r : i.getRiskSubategories()) {
+					System.out.println(r.getRiskCategory().getName());
+					pdfTable3.addCell(r.getRiskCategory().getName());
+					pdfTable3.addCell(r.getNameTranslate().getName());
+					
+					
+				}
+				
+				pdfTable3.addCell("Total price");
+				pdfTable3.addCell(i.getTotalPrice().toString() + " RSD");
+				//DateConverter.convertToDataBase
+				pdfTable3.addCell("Validity of insurance");
+				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - " + DateConverter.convertToDataBase(i.getEndDate()));
+				
+				document.add(pdfTable3);
+			}
+			else
+			{
+				PdfPTable pdfTable3 = new PdfPTable(2);
+				Paragraph par3 = new Paragraph("Informacije o polisi osiguranja", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				PdfPCell cell3 = new PdfPCell(par3);
+				cell3.setColspan(4);
+				cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
+				pdfTable3.addCell(cell3);
+				
+				pdfTable3.addCell("Nosilac osiguranja");
+				pdfTable3.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
+				
+				for (RiskSubcategory r : i.getRiskSubategories()) {
+					if(r.getRiskCategory().getName().equals("Sum insured")){
+							pdfTable3.addCell("Osigurana suma");
+							pdfTable3.addCell(r.getNameTranslate().getName());
+					}
+					else
+					{
+							System.out.println(r.getRiskCategory().getName());
+							pdfTable3.addCell(r.getRiskCategory().getName());
+							pdfTable3.addCell(r.getNameTranslate().getName());
+					}
+					
+					
+				}
+				
+				pdfTable3.addCell("Ukupna cena");
+				pdfTable3.addCell(i.getTotalPrice().toString() + " RSD");
+				//DateConverter.convertToDataBase
+				pdfTable3.addCell("Važenje osiguranja");
+				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - " + DateConverter.convertToDataBase(i.getEndDate()));
+				
+				document.add(pdfTable3);
+			}
+			
+			
 			document.close();
 			file.close();
 
@@ -222,13 +326,31 @@ public class MailService {
 				Message message = new MimeMessage(session);
 				message.setFrom(new InternetAddress("sistemielektronskog@gmail.com"));
 				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(i.getBuyer().getEmail()));
-				message.setSubject("Chuck Norris Insurance");
-				message.setText("Tekst");
+				if (i.getLanguage().equals("English")){
+					message.setSubject("Chuck Norris Insurance policy");
+				}
+				else{
+					message.setSubject("Chuck Norris Insurance polisa osiguranja");
+				}
+				message.setText("Zasto mi ne ispises ovaj tekst?!");
 
 				MimeBodyPart messageBodyPart = new MimeBodyPart();
+				MimeBodyPart messageBodyPart1 = new MimeBodyPart();
 
 				Multipart multipart = new MimeMultipart();
-
+				
+				//tekst
+				//messageBodyPart1 = new MimeBodyPart();
+				if (i.getLanguage().equals("English")){
+					
+					messageBodyPart1.setText("Dear customer,\n\n\tYou can see your insurance policy in attachment.\n\nKind regards,\n\nChuck Norris Insurance");
+					
+				}
+				else{
+					messageBodyPart1.setText("Poštovani,\n\nU prilogu se nalazi vaša polisa osiguranja.\n\nSrdačan pozdrav,\n\nChuck Norris Insurance");
+				}
+				multipart.addBodyPart(messageBodyPart1);
+				//atachment
 				messageBodyPart = new MimeBodyPart();
 				String filee = "Insurance" + i.getId() + ".pdf";
 				String fileName = "Insurance" + i.getId() + ".pdf";
@@ -238,6 +360,8 @@ public class MailService {
 				multipart.addBodyPart(messageBodyPart);
 
 				message.setContent(multipart);
+				
+				
 
 				System.out.println("Sending");
 

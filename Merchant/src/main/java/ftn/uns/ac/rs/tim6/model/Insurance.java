@@ -67,7 +67,7 @@ public class Insurance implements Serializable {
 	@JoinColumn(name = "VEHICLE_ID")
 	private Vehicle vehicle;
 
-	@OneToMany(cascade = CascadeType.ALL)
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(name = "SHOPPING_CART", joinColumns = @JoinColumn(name = "INSURANCE_ID"), inverseJoinColumns = @JoinColumn(name = "RISK_SUBCATEGORY_ID"))
 	private List<RiskSubcategory> riskSubategories;
 
