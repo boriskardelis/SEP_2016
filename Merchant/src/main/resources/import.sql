@@ -12,20 +12,20 @@
 --INSERT INTO date_category (end_date, start_date) VALUES ('2017-10-11 00:00:00', '2014-10-11 00:00:00');
 --INSERT INTO date_category (end_date, start_date) VALUES ('2016-10-11 00:00:00', '2013-10-11 00:00:00');
 
-INSERT INTO risk_category (name) VALUES ('age');
-INSERT INTO risk_category (name) VALUES ('region');
-INSERT INTO risk_category (name) VALUES ('sumTo');
-INSERT INTO risk_category (name) VALUES ('sport');
+INSERT INTO risk_category (name) VALUES ('Age');
+INSERT INTO risk_category (name) VALUES ('Region');
+INSERT INTO risk_category (name) VALUES ('Sum insured');
+INSERT INTO risk_category (name) VALUES ('Sport');
 
-INSERT INTO risk_category (name) VALUES ('towing');
-INSERT INTO risk_category (name) VALUES ('repairs');
-INSERT INTO risk_category (name) VALUES ('accommodation');
-INSERT INTO risk_category (name) VALUES ('alternativeRide');
+INSERT INTO risk_category (name) VALUES ('Towing');
+INSERT INTO risk_category (name) VALUES ('Repairs');
+INSERT INTO risk_category (name) VALUES ('Accommodation');
+INSERT INTO risk_category (name) VALUES ('Alternative ride');
 
-INSERT INTO risk_category (name) VALUES ('surface');
-INSERT INTO risk_category (name) VALUES ('ageApartment');
-INSERT INTO risk_category (name) VALUES ('valueApartment');
-INSERT INTO risk_category (name) VALUES ('disaster');
+INSERT INTO risk_category (name) VALUES ('Surface');
+INSERT INTO risk_category (name) VALUES ('Age apartment');
+INSERT INTO risk_category (name) VALUES ('Value apartment estimated');
+INSERT INTO risk_category (name) VALUES ('Insured disaster');
 
 INSERT INTO language (language_name) VALUES ('English');
 INSERT INTO language (language_name) VALUES ('Serbian');
