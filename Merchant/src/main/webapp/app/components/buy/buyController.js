@@ -96,6 +96,8 @@
 		});
 
 	    vm.processForm = function() {
+
+	    	vm.language = $translate.use();
   
        		var persons = [];
        		var personFormating = {};
@@ -111,7 +113,7 @@
 
        		var insuranceInfo = {};
        		insuranceInfo = {contractor: vm.contractor, vehicle: vm.vehicle, home: vm.home, personHolder: vm.personHolder, persons: persons,
-       		 buyer: vm.buyer, itemsForDrools: vm.itemsForDrools, premiumPrice: vm.droolPrices.premiumPrice, 
+       		 buyer: vm.buyer, itemsForDrools: vm.itemsForDrools, premiumPrice: vm.droolPrices.premiumPrice, language: vm.language, 
        		 discountPrice: vm.droolPrices.discountPrice, taxPrice: vm.droolPrices.taxPrice, totalPrice: vm.droolPrices.totalPrice};
 			
 			console.log("InsuranceInfo: ");
