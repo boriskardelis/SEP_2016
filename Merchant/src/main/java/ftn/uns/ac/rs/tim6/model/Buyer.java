@@ -59,12 +59,12 @@ public class Buyer implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Long getJMBG() {
+	public Long getJmbg() {
 		return jmbg;
 	}
 
-	public void setJMBG(Long jMBG) {
-		this.jmbg = jMBG;
+	public void setJmbg(Long jmbg) {
+		this.jmbg = jmbg;
 	}
 
 	public Long getPassportNumber() {
@@ -105,14 +105,6 @@ public class Buyer implements Serializable {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Long getJmbg() {
-		return jmbg;
-	}
-
-	public void setJmbg(Long jmbg) {
-		this.jmbg = jmbg;
 	}
 
 	public boolean isInsured() {
