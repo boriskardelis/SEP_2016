@@ -196,6 +196,7 @@ public class InsuranceController {
 		i.setPaymentId(puid.getPaymentId());
 
 		Buyer b = iidto.getBuyer();
+		b.setInsured(iidto.isContractor());
 		buyerService.save(b);
 		i.setBuyer(b);
 

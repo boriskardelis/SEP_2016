@@ -40,6 +40,9 @@ public class Buyer implements Serializable {
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
+	@Column(name = "INSURED")
+	private boolean insured;
+
 	public Long getId() {
 		return id;
 	}
@@ -104,17 +107,38 @@ public class Buyer implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public Buyer(Long id, String lastName, Long jMBG, Long passportNumber, String email, String firstName,
-			String address, String phoneNumber) {
+	public Long getJmbg() {
+		return jmbg;
+	}
+
+	public void setJmbg(Long jmbg) {
+		this.jmbg = jmbg;
+	}
+
+	public boolean isInsured() {
+		return insured;
+	}
+
+	public void setInsured(boolean insured) {
+		this.insured = insured;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	public Buyer(Long id, String lastName, Long jmbg, Long passportNumber, String email, String firstName,
+			String address, String phoneNumber, boolean insured) {
 		super();
 		this.id = id;
 		this.lastName = lastName;
-		this.jmbg = jMBG;
+		this.jmbg = jmbg;
 		this.passportNumber = passportNumber;
 		this.email = email;
 		this.firstName = firstName;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.insured = insured;
 	}
 
 	public Buyer() {
