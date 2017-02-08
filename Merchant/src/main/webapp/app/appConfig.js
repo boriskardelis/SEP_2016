@@ -141,7 +141,7 @@
             language : "Language",
             home : "Home",
             buyInsurance : "Buy insurance",
-            about : "About",
+            about : "About us",
             sumToInsure : "Sum to insure:",
             selectAge : "-Select age-",
             selectDestination: "-Select destination-",
@@ -212,6 +212,15 @@
             insuranceInformation : "Insurance informations:",
             additionalInsurances : "Additional insurances:",
             to1 : "to",
+            cni : "Hello, we are Chuck Norris insurance company.",
+            moto : "Our moto is",
+            question : "But the question is, are we safe enough?!",
+            answer : "Answer is simple... We are NOT.",
+            so : "So,",
+            buy : "buy",
+            rest : "Chuck Norris insurace and travel safe.",
+            withangels : "-Travel with angles & Chuck Norris insurance-",
+
 
 
 
@@ -220,7 +229,7 @@
 
         var ser =
         {   
-            cn : "Chuck Norris osiuguranje",
+            cn : "Chuck Norris osiguranje",
             eng : "Engleski (En)",
             srb : "Srpski (Sr)",
             language : "Jezik",
@@ -297,6 +306,14 @@
             insuranceInformation : "Informacije o osiguranju",
             additionalInsurances : "Dodatna osiguranja",
             to1 : "do",        
+            cni : "Mi smo Chuck Norris osiguravajuća kompanija.",
+            moto : "Naš moto je",
+            question : "Ali pitanje je, da li smo dovoljno bezbedni?!",
+            answer : "Odgovor je jednostavan... NISMO.",
+            so : "Zato,",
+            buy : "kupite",
+            rest : "Chuck Norris osiguranje i putujte bezbedno.",
+            withangels : "-Putujte sa anđelima & Chuck Norris osiguranjem-",
             
         };
 

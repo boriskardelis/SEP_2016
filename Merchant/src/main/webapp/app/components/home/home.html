@@ -1,13 +1,16 @@
 
-    <div class="col-md-10 col-md-offset-1 form-div">
-    	 <img width="950" height="300" src="./assets/img/angels.jpg" alt="We all travel with angels">
+    <div class="col-md-10 col-md-offset-1 form-div" ng-if="vm.language == 'English'">
+    	 <img width="950" height="300" src="./assets/img/twae.png" alt="We all travel with angels">
     </div>
-    <div class="col-md-10 col-md-offset-1 form-div">
-    	<p class="home-font">But question is, are we safe enough?!</p>
-    	<p class="home-font"> Answer is simple... We are NOT.</p>
-	   	<p class="home-font">So, <a ui-sref="buy.firstStep">buy </a> Chuck Norris insurace and travel safe.</p>
+    <div class="col-md-10 col-md-offset-1 form-div" ng-if="vm.language == 'Serbian'">
+         <img width="950" height="300" src="./assets/img/twas.png" alt="We all travel with angels">
+    </div>
+    <div class="col-md-10 col-md-offset-1 form-div" >
+    	<p class="home-font">{{ 'question' | translate }}</p>
+    	<p class="home-font">{{ 'answer' | translate }}</p>
+	   	<p class="home-font">{{ 'so' | translate }}<a ui-sref="buy.firstStep">{{ 'buy' | translate }}</a> {{ 'rest' | translate }}</p>
 	   	<br><br>
-	   	<p class="home-font">-Travel with angles & Chuck Norris insurance-</p>
+	   	<p class="home-font">{{ 'withangels' | translate }}</p>
     </div>
     <div class="col-md-10 col-md-offset-1 form-div">
     	 <img width="950" height="400" src="./assets/img/sunset.jpg" alt="beach with sunset">

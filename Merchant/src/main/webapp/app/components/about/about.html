@@ -2,9 +2,25 @@
 
 
 
-    <div class="col-md-10 col-md-offset-1 form-div">
-    	<h2 align="center" class="bg-success">About us:</h2>
-    	<p class="about-font">Hello, we are Chuck Norris insurance company.</p>
+    <div class="col-md-10 col-xs-offset-1 form-div">
+    	<h2 align="center" class="bg-success">{{ 'about' | translate }}</h2>
+    	<p class="about-font">{{ 'cni' | translate }}</p>
+    	<p class="about-font">{{ 'moto' | translate }}</p>
+    	<div class="col-xs-4 col-xs-offset-4" ng-if="vm.language == 'English'">
+    		<img width="319" height="397" src="./assets/img/ourmoto.jpg" alt="We all travel with angels">
+    	</div>
+    	<div class="col-xs-4 col-xs-offset-4" ng-if="vm.language == 'Serbian'">
+    		<img width="319" height="397" src="./assets/img/moto.jpg" alt="We all travel with angels">
+    	</div>
+
+ 		
+
+    	
+    	
     	
     </div>
+
+    <div class="col-md-8 col-md-offset-2">
+    	
+     </div>
   
