@@ -171,7 +171,7 @@
             repairsTo : "Repairs to a certain price: ",
             selectPrice : "-Select price-",
             accommodation: "Accommodation in hotel to certain days:",
-            selectNumberOfDays : "-Select number of days-",
+            selectNumberOfDays : "-Select days-",
             alternativeRide : "Alternative ride:",
             selectRide : "-Select ride-",
             vehicleInformations : "Vehcile informations:",

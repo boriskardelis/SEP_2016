@@ -48,6 +48,7 @@ public class PaymentController {
 		TransactionResult rezultat = rmdto.getResult();
 
 		System.out.println("paymentID: " + rmdto.getPaymentId());
+		
 
 		if (rezultat.equals(TransactionResult.SUCCESSFUL)) {
 			urldto.setUrl("https://localhost:8080/paymentSuccessful?paymentId=" + rmdto.getPaymentId());

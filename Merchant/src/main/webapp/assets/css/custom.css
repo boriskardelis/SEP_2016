@@ -12,6 +12,10 @@ img {
     max-width: 100%;
     max-height: auto;
 }
+.adit-text {
+	font-size: 26px;
+
+}
 .home-font {
 	font-size: 26px;
 	text-align: center;
