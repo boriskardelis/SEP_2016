@@ -11,15 +11,16 @@ Web application for online insurance purchasing. Project for Electronic Payment 
 Check out our [Wiki](https://github.com/boriskardelis/SEP_2016/wiki) page for more information.
 
 ## Team 
-* Aleksej Makaji
-* Boris Kardelis
-* Miloš Vujošević
+* [Aleksej Makaji](https://github.com/karmaobserver)
+* [Boris Kardelis](https://github.com/boriskardelis)
+* [Miloš Vujošević](https://github.com/mikofcf)
 
 ## Technologies
-* Spring Boot
-* Java 1.7
-* AngularJS 1.5
-* MySQL
+* [Spring Boot](https://projects.spring.io/spring-boot/)
+* [Java 1.7](https://www.java.com/en/)
+* [AngularJS 1.5](https://angularjs.org/)
+* [MySQL](https://www.mysql.com/)
+* [JBoss Drools](https://www.drools.org/)
 
 ## License
 Copyright 2017 Chuck Norris Insurance
