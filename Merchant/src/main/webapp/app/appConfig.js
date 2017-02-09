@@ -174,7 +174,7 @@
             selectNumberOfDays : "-Select days-",
             alternativeRide : "Alternative ride:",
             selectRide : "-Select ride-",
-            vehicleInformations : "Vehcile informations:",
+            vehicleInformations : "Vehicle informations:",
             registrationNumber: "Registration number:",
             vehicleMake : "Vehcile make:",
             vehicleOwnerFN : "Vehicle owner first name:",

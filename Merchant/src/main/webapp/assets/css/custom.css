@@ -13,8 +13,9 @@ img {
     max-height: auto;
 }
 .adit-text {
-	font-size: 26px;
-
+	font-size: 15px;
+	font-style: bold;
+	border-bottom: 1px solid;*/
 }
 .home-font {
 	font-size: 26px;

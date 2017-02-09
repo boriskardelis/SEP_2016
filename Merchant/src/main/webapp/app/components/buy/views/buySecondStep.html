@@ -1,13 +1,240 @@
 
     <!-- Insurance type direktiva -->
-    <div class="form-group celina">
+   <!--  <div class="form-group celina">
          <label class="buy-lable" for="insurnaceType" translate="additionalInsurance"></label>
          <ul ng-repeat="insuranceType in vm.insuranceTypes">
-            <!-- <p>INSURANCES: {{insuranceType}}</p> -->
+    
             <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters" towing-selected="vm.towingSelected" repair-selected="vm.repairSelected" accommodation-selected="vm.accommodationSelected" alternative-ride-selected="vm.alternativeRideSelected" vehicle="vm.vehicle" home="vm.home" surface-selected="vm.surfaceSelected" age-apartment-selected="vm.ageApartmentSelected" value-apartment-selected="vm.valueApartmentSelected" disaster-selected="vm.disasterSelected"></buy-additional-directive></li>
          </ul>
-    </div>
+    </div> -->
+   
+    <div class="form-group celina">
+            <label class="buy-lable" translate="additionalInsurance"></label>
+            <!-- <ul ng-repeat="insuranceType in vm.insuranceTypes"> -->
+            <div class="checkbox">
+                <label class="form-check-label">
+                    <input type="checkbox" ng-model="vm.insuranceTypeRoadCheck" ng-change="vm.insuranceTypeRoadChecking()"><p class="adit-text">{{vm.insuranceTypeRoad.insuranceName}}</p>
+                </label>
+            </div>
 
+            <div ng-show="vm.insuranceTypeRoadCheck">
+                <div class="form-group">
+                    <p class="h4 bg-success" align="center" translate="additionalPackages"></p>
+
+                    <div class="form-group row">
+                        <div class="checkbox">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" ng-model="vm.towingCheck" ng-change="vm.towingChecking()">{{ 'towing' | translate }}
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-show="vm.towingCheck" ng-model="vm.towingSelected" ng-options="towing.nameTranslate.name for towing in vm.towings">
+                                <option value="">{{ 'selectMileage' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="checkbox">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" ng-model="vm.repairsCheck" ng-change="vm.repairsChecking()" >{{ 'repairsTo' | translate }}
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-show="vm.repairsCheck" ng-model="vm.repairSelected" ng-options="repair.nameTranslate.name for repair in vm.repairs">
+                                <option value="">{{ 'selectPrice' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="checkbox">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" ng-model="vm.accommodationsCheck" ng-change="vm.accommodationsChecking()">{{ 'accommodation' | translate }}
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-show="vm.accommodationsCheck" ng-model="vm.accommodationSelected" ng-options="accommodation.nameTranslate.name for accommodation in vm.accommodations">
+                                <option value="">{{ 'selectNumberOfDays' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="checkbox">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" ng-model="vm.alternativeRidesCheck" ng-change="vm.alternativeRidesChecking()">{{ 'alternativeRide' | translate }}
+                            </label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-show="vm.alternativeRidesCheck" ng-model="vm.alternativeRideSelected" ng-options="alternativeRide.nameTranslate.name for alternativeRide in vm.alternativeRides">
+                                <option value="">{{ 'selectRide' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <br/>
+
+                <div class="form-group">
+                    <p class="h4 bg-success" align="center">{{ 'vehicleInformations' | translate }}</p>
+                    <br>
+                    
+                    <div class="form-group row">    
+                        <div class="col-xs-3">      
+                            <label class="right">{{ 'registrationNumber' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.registrationNumber" class="form-control" placeholder="{{ 'registrationNumber' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'vehicleMake' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'vehicleOwnerFN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.ownerFirstName" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'vehicleOwnerLN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.ownerLastName" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'vehicleOwnerJMBG' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.ownerJmbg" class="form-control" placeholder="JMBG">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">                  
+                            <label class="right">{{ 'vehicleType' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.type" class="form-control" placeholder="{{ 'vehicleType' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'vinNumber' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.vinNumber" class="form-control" placeholder="{{ 'vinNumber' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row celina">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'yearOfProduction' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.vehicle.yearOfProduction" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}">
+                        </div>
+                    </div>
+                </div>          
+            </div>
+
+            <div class="checkbox">
+                <label class="form-check-label">
+                    <input type="checkbox" ng-model="vm.insuranceTypeHomeCheck" ng-change="vm.insuranceTypeHomeChecking()"><p class="adit-text">{{vm.insuranceTypeHome.insuranceName}}</p>
+                </label>
+            </div>
+   
+            <div ng-show="vm.insuranceTypeHomeCheck">
+                
+                <div class="form-group">
+                        <p class="h4 bg-success" align="center">{{ 'homeInfo' | translate }}</p>
+                        <br>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label class="right">{{ 'address' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.address" class="form-control" placeholder="{{ 'address' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerFN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerFirstName" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerLN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerLastName" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerJMBG' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerJMBG" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'surface' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-model="vm.surfaceSelected" ng-options="surface.nameTranslate.name for surface in vm.surfaces">
+                                 <option value="">{{ 'selectSurface' | translate }}</option>            
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">      
+                            <label class="right">{{ 'ageOfHome' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-model="vm.ageApartmentSelected" ng-options="ageApartment.nameTranslate.name for ageApartment in vm.ageApartments">
+                                 <option value="">{{ 'selectAge' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'estimatedValue' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">      
+                            <select class="form-control" ng-model="vm.valueApartmentSelected" ng-options="valueApartment.nameTranslate.name for valueApartment in vm.valueApartments">
+                                 <option value="">{{ 'selectValue' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'insureFrom' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">  
+                            <select class="form-control" ng-model="vm.disasterSelected" ng-options="disaster.nameTranslate.name for disaster in vm.disasters">
+                                 <option value="">{{ 'selectType' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>                              
+            </div>
+     </div>
+    
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
             <a ui-sref="buy.thirdStep" class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()">

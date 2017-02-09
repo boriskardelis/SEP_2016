@@ -89,7 +89,11 @@
 
 		BuyService.getInsuranceTypes().then(function(response) {
 			vm.insuranceTypes = response.data;
+			vm.insuranceTypeRoad = vm.insuranceTypes[0];
+			vm.insuranceTypeHome = vm.insuranceTypes[1];
 		});
+
+
 
 		BuyService.getVehicle().then(function(response) {
 			vm.vehciles = response.data;
@@ -124,14 +128,26 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			 
-				   $window.location = vm.paymentUrlAndID.url;
-			
+			    $window.location = vm.paymentUrlAndID.url;	
 		    });
     	};
 
+    	//Date
 		vm.startDate = new Date();
-		vm.endDate = new Date();
+		var forwardDate = new Date();
+		forwardDate.setDate(forwardDate.getDate() + 1);
+		vm.endDate = forwardDate;
+
+		vm.dateOptionsStart = {
+		    maxDate: new Date(2020, 5, 21),
+		    minDate: new Date(),
+		    startingDay: 1
+		};
+		vm.dateOptionsEnd = {
+		    maxDate: new Date(2020, 5, 22),
+		    minDate: vm.endDate,
+		    startingDay: 1
+		};
 
 		vm.openStart = function() {
 		   	console.log("OPENED");
@@ -148,20 +164,18 @@
 		};
 
 		vm.startDatePicked = function() {
-			if (vm.endDate < vm.startDate)
-				vm.endDate = vm.startDate;
+			if (vm.endDate < vm.startDate) {
+				vm.endDate = vm.endDate.setDate(vm.startDate.getDate() + 1);
+			}
+				var minEnd = vm.startDate;
+				minEnd.setDate(vm.startDate.getDate() + 1);
+				vm.dateOptionsEnd.minDate = minEnd;
 		};
 		vm.endDatePicked = function() {
-			if (vm.endDate < vm.startDate)
-				vm.startDate = vm.endDate;
+			/*if (vm.endDate < vm.startDate)
+				vm.startDate = vm.endDate;*/
 		};
 
-		vm.dateOptions = {
-		    //formatYear: 'yy',
-		    maxDate: new Date(2020, 5, 22),
-		    minDate: new Date(),
-		    startingDay: 1
-		};
 		vm.calculateFirstStep = function() {
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
 			localStorageService.cookie.set('endDate', vm.endDate);
@@ -182,10 +196,8 @@
 			var size = Object.keys(vm.ages).length;
 
 			console.log(vm.ages);
-			for (var i=0;  i <size; i++) {
-				
+			for (var i=0;  i <size; i++) {			
 					console.log(vm.ages[i]);
-				
 			}
 
 			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.	
@@ -251,6 +263,73 @@
 			});
 		};
 
+		vm.towingChecking = function() {
+			if (!vm.towingCheck)
+				vm.towingSelected = null;
+		}
+
+		vm.repairsChecking = function() {
+			if (!vm.repairsCheck)
+				vm.repairSelected = null;
+		}
+
+		vm.accommodationsChecking = function() {
+			if (!vm.accommodationsCheck)
+				vm.accommodationSelected = null;
+		}
+
+		vm.alternativeRidesChecking = function() {
+			if (!vm.alternativeRidesCheck)
+				vm.alternativeRideSelected = null;
+		}
+
+		vm.insuranceTypeChecking = function() {
+			if (!vm.alternativeRidesCheck)
+				vm.alternativeRideSelected = null;
+		}
+
+		vm.insuranceTypeRoadChecking =function() {
+			if (!vm.insuranceTypeRoadCheck) {
+				vm.towingCheck = false;
+				vm.towingSelected = null;
+				vm.repairsCheck = false;
+				vm.repairSelected = null;
+				vm.accommodationsCheck = false;
+				vm.accommodationSelected = null;
+				vm.alternativeRidesCheck = false;
+				vm.alternativeRideSelected = null;
+
+				vm.vehicle = {make: "", registrationNumber: "", ownerFirstName: "", ownerLastName: "", ownerJmbg: "", type: "", type: "", 
+							vinNumber: "", yearOfProduction: ""};
+				/*vm.vehicle.registrationNumber = "";
+				vm.vehicle.make = "";
+				vm.vehicle.ownerFirstName = "";
+				vm.vehicle.ownerLastName = "";
+				vm.vehicle.ownerJmbg = "";
+				vm.vehicle.type = "";
+				vm.vehicle.vinNumber = "";
+				vm.vehicle.yearOfProduction = "";*/
+			}
+		}
+
+		vm.insuranceTypeHomeChecking =function() {
+			if (!vm.insuranceTypeHomeCheck) {
+				vm.surfaceSelected = null;
+				vm.ageApartmentSelected = null;
+				vm.valueApartmentSelected = null;
+				vm.disasterSelected = null;
+				vm.home = {address: "", ownerFirstName: "", ownerLastName: "", ownerJMBG: ""};
+				/*vm.home.address = "";
+				vm.home.ownerFirstName = "";
+				vm.home.ownerLastName = "";
+				vm.home.ownerJMBG = "";*/
+			}
+		}
+
+		
+
+		
+		
 		
 
 
