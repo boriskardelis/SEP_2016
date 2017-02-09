@@ -20,11 +20,6 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
 import com.itextpdf.text.Chunk;
@@ -44,40 +39,11 @@ import ftn.uns.ac.rs.tim6.model.RiskSubcategory;
 @Service
 public class MailService {
 
-	private static final Logger LOG = LoggerFactory.getLogger(MailService.class);
-
-	@Autowired
-	private JavaMailSender javaMailSender;
-
 	public MailService() {
 
 	}
 
-	public void sendMail(String to, String message) {
-
-		LOG.debug("Sending mail to {} with message: {}", to, message);
-		MimeMessage mailtest = javaMailSender.createMimeMessage();
-		try {
-			MimeMessageHelper helper = new MimeMessageHelper(mailtest, true);
-			helper.setFrom("sistemielektronskog@gmail.com");
-			helper.setTo(to);
-			helper.setSubject("Insurances");
-			helper.setText(message);
-			javaMailSender.send(mailtest);
-		} catch (MessagingException e) {
-			
-			e.printStackTrace();
-		}
-		// SimpleMailMessage mail = new SimpleMailMessage();
-		// mail.setFrom("sistemielektronskog@gmail.com");
-		// mail.setTo(to);
-		// mail.setSubject("Insurances");
-		// mail.setText(message);
-		// javaMailSender.send(mail);
-	}
-
 	public void sendMail(Insurance i) {
-		
 
 		final String username = "sistemielektronskog@gmail.com";
 		final String password = "poslovanja";
@@ -103,8 +69,7 @@ public class MailService {
 			document.open();
 
 			// Dodajem sliku
-			Image image = Image
-					.getInstance("../Merchant/src/main/webapp/assets/img/travel2pdf.jpg");
+			Image image = Image.getInstance("../Merchant/src/main/webapp/assets/img/travel2pdf.jpg");
 			image.setAlignment(Element.ALIGN_CENTER);
 			document.add(image);
 			document.add(new Paragraph(DateConverter.convertToDataBase(new Date())));
@@ -114,7 +79,7 @@ public class MailService {
 			document.addTitle("Sample PDF");
 
 			// Create Paragraph
-			if (i.getLanguage().equals("English")){
+			if (i.getLanguage().equals("English")) {
 				Paragraph paragraph = new Paragraph("Insurance policy",
 						new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
 				paragraph.setAlignment(Element.ALIGN_CENTER);
@@ -122,7 +87,7 @@ public class MailService {
 				paragraph.add(new Paragraph(" "));
 				document.add(paragraph);
 
-			}else{
+			} else {
 				Paragraph paragraph = new Paragraph("Polisa osiguranja",
 						new Font(Font.FontFamily.TIMES_ROMAN, 18, Font.BOLD));
 				paragraph.setAlignment(Element.ALIGN_CENTER);
@@ -130,65 +95,57 @@ public class MailService {
 				paragraph.add(new Paragraph(" "));
 				document.add(paragraph);
 			}
-			
-			
 
-			if (i.getLanguage().equals("English")){
-			PdfPTable pdfTable2 = new PdfPTable(2);
-			Paragraph par2 = new Paragraph("Insuranced persons informations",
-					new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
-			PdfPCell cell2 = new PdfPCell(par2);
-			cell2.setColspan(4);
-			cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
-			pdfTable2.addCell(cell2);
-			if(i.getBuyer().isInsured() == false){
-				for (Person p : i.getPersons()) {
-					
+			if (i.getLanguage().equals("English")) {
+				PdfPTable pdfTable2 = new PdfPTable(2);
+				Paragraph par2 = new Paragraph("Insuranced persons informations",
+						new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				PdfPCell cell2 = new PdfPCell(par2);
+				cell2.setColspan(4);
+				cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
+				pdfTable2.addCell(cell2);
+				if (i.getBuyer().isInsured() == false) {
+					for (Person p : i.getPersons()) {
+
+						pdfTable2.addCell("First name");
+						pdfTable2.addCell(p.getFirstName());
+
+						pdfTable2.addCell("Last name");
+						pdfTable2.addCell(p.getLastName());
+
+						pdfTable2.addCell("Address");
+						pdfTable2.addCell(p.getAddress());
+
+					}
+
+				} else {
 					pdfTable2.addCell("First name");
-					pdfTable2.addCell(p.getFirstName());
-	
+					pdfTable2.addCell(i.getBuyer().getFirstName());
+
 					pdfTable2.addCell("Last name");
-					pdfTable2.addCell(p.getLastName());
-	
+					pdfTable2.addCell(i.getBuyer().getLastName());
+
 					pdfTable2.addCell("Address");
-					pdfTable2.addCell(p.getAddress());
-					
-					
-					
+					pdfTable2.addCell(i.getBuyer().getAddress());
+
+					for (Person p : i.getPersons()) {
+
+						pdfTable2.addCell("First name");
+						pdfTable2.addCell(p.getFirstName());
+
+						pdfTable2.addCell("Last name");
+						pdfTable2.addCell(p.getLastName());
+
+						pdfTable2.addCell("Address");
+						pdfTable2.addCell(p.getAddress());
+
+					}
 				}
-				
-			}
-			else{
-				pdfTable2.addCell("First name");
-				pdfTable2.addCell(i.getBuyer().getFirstName());
-
-				pdfTable2.addCell("Last name");
-				pdfTable2.addCell(i.getBuyer().getLastName());
-
-				pdfTable2.addCell("Address");
-				pdfTable2.addCell(i.getBuyer().getAddress());
-				
-				for (Person p : i.getPersons()) {
-					
-					pdfTable2.addCell("First name");
-					pdfTable2.addCell(p.getFirstName());
-	
-					pdfTable2.addCell("Last name");
-					pdfTable2.addCell(p.getLastName());
-	
-					pdfTable2.addCell("Address");
-					pdfTable2.addCell(p.getAddress());
-					
-				}
-			}
-
-			
 
 				document.add(pdfTable2);
-	
+
 				document.add(Chunk.NEWLINE);
-			}
-			else{
+			} else {
 				PdfPTable pdfTable2 = new PdfPTable(2);
 				Paragraph par2 = new Paragraph("Podaci o osiguranicima",
 						new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
@@ -196,24 +153,21 @@ public class MailService {
 				cell2.setColspan(4);
 				cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
 				pdfTable2.addCell(cell2);
-				if(i.getBuyer().isInsured() == false){
+				if (i.getBuyer().isInsured() == false) {
 					for (Person p : i.getPersons()) {
-						
+
 						pdfTable2.addCell("Ime");
 						pdfTable2.addCell(p.getFirstName());
-		
+
 						pdfTable2.addCell("Prezime");
 						pdfTable2.addCell(p.getLastName());
-		
+
 						pdfTable2.addCell("Adresa");
 						pdfTable2.addCell(p.getAddress());
-						
-						
-						
+
 					}
-					
-				}
-				else{
+
+				} else {
 					pdfTable2.addCell("Ime");
 					pdfTable2.addCell(i.getBuyer().getFirstName());
 
@@ -222,102 +176,96 @@ public class MailService {
 
 					pdfTable2.addCell("Adresa");
 					pdfTable2.addCell(i.getBuyer().getAddress());
-					
+
 					for (Person p : i.getPersons()) {
-						
+
 						pdfTable2.addCell("Ime");
 						pdfTable2.addCell(p.getFirstName());
-		
+
 						pdfTable2.addCell("Prezime");
 						pdfTable2.addCell(p.getLastName());
-		
+
 						pdfTable2.addCell("Adresa");
 						pdfTable2.addCell(p.getAddress());
-						
+
 					}
 				}
 
-				
+				document.add(pdfTable2);
 
-					document.add(pdfTable2);
-		
-					document.add(Chunk.NEWLINE);
-				
+				document.add(Chunk.NEWLINE);
+
 			}
 
-			/*PdfPTable pdfTable3 = new PdfPTable(2);
-			
-			pdfTable3.addCell("Sum insured to");
-			for (RiskSubcategory r : i.getRiskSubategories()) {
-				if (r.getRiskCategory().getName().equals("sumTo")){
-					pdfTable3.addCell(r.getNameTranslate().getName());
-				}
-			}
-			*/
-			if (i.getLanguage().equals("English")){
+			/*
+			 * PdfPTable pdfTable3 = new PdfPTable(2);
+			 * 
+			 * pdfTable3.addCell("Sum insured to"); for (RiskSubcategory r :
+			 * i.getRiskSubategories()) { if
+			 * (r.getRiskCategory().getName().equals("sumTo")){
+			 * pdfTable3.addCell(r.getNameTranslate().getName()); } }
+			 */
+			if (i.getLanguage().equals("English")) {
 				PdfPTable pdfTable3 = new PdfPTable(2);
-				Paragraph par3 = new Paragraph("Policy informations", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				Paragraph par3 = new Paragraph("Policy informations",
+						new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
 				PdfPCell cell3 = new PdfPCell(par3);
 				cell3.setColspan(4);
 				cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
 				pdfTable3.addCell(cell3);
-				
+
 				pdfTable3.addCell("Insurance carrier");
 				pdfTable3.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
-				
+
 				for (RiskSubcategory r : i.getRiskSubategories()) {
 					System.out.println(r.getRiskCategory().getName());
 					pdfTable3.addCell(r.getRiskCategory().getName());
 					pdfTable3.addCell(r.getNameTranslate().getName());
-					
-					
+
 				}
-				
+
 				pdfTable3.addCell("Total price");
 				pdfTable3.addCell(i.getTotalPrice().toString() + " RSD");
-				//DateConverter.convertToDataBase
+				// DateConverter.convertToDataBase
 				pdfTable3.addCell("Validity of insurance");
-				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - " + DateConverter.convertToDataBase(i.getEndDate()));
-				
+				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - "
+						+ DateConverter.convertToDataBase(i.getEndDate()));
+
 				document.add(pdfTable3);
-			}
-			else
-			{
+			} else {
 				PdfPTable pdfTable3 = new PdfPTable(2);
-				Paragraph par3 = new Paragraph("Informacije o polisi osiguranja", new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
+				Paragraph par3 = new Paragraph("Informacije o polisi osiguranja",
+						new Font(Font.FontFamily.TIMES_ROMAN, 14, Font.BOLD));
 				PdfPCell cell3 = new PdfPCell(par3);
 				cell3.setColspan(4);
 				cell3.setHorizontalAlignment(Element.ALIGN_CENTER);
 				pdfTable3.addCell(cell3);
-				
+
 				pdfTable3.addCell("Nosilac osiguranja");
 				pdfTable3.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
-				
+
 				for (RiskSubcategory r : i.getRiskSubategories()) {
-					if(r.getRiskCategory().getName().equals("Sum insured")){
-							pdfTable3.addCell("Osigurana suma");
-							pdfTable3.addCell(r.getNameTranslate().getName());
+					if (r.getRiskCategory().getName().equals("Sum insured")) {
+						pdfTable3.addCell("Osigurana suma");
+						pdfTable3.addCell(r.getNameTranslate().getName());
+					} else {
+						System.out.println(r.getRiskCategory().getName());
+						pdfTable3.addCell(r.getRiskCategory().getName());
+						pdfTable3.addCell(r.getNameTranslate().getName());
 					}
-					else
-					{
-							System.out.println(r.getRiskCategory().getName());
-							pdfTable3.addCell(r.getRiskCategory().getName());
-							pdfTable3.addCell(r.getNameTranslate().getName());
-					}
-					
-					
+
 				}
-				
+
 				pdfTable3.addCell("Ukupna cena");
 				pdfTable3.addCell(i.getTotalPrice().toString() + " RSD");
-				//DateConverter.convertToDataBase
+				// DateConverter.convertToDataBase
 				pdfTable3.addCell("Važenje osiguranja");
-				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - " + DateConverter.convertToDataBase(i.getEndDate()));
-				
+				pdfTable3.addCell(DateConverter.convertToDataBase(i.getStartDate()) + " - "
+						+ DateConverter.convertToDataBase(i.getEndDate()));
+
 				document.add(pdfTable3);
 			}
-			
-			
+
 			document.close();
 			file.close();
 
@@ -326,10 +274,9 @@ public class MailService {
 				Message message = new MimeMessage(session);
 				message.setFrom(new InternetAddress("sistemielektronskog@gmail.com"));
 				message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(i.getBuyer().getEmail()));
-				if (i.getLanguage().equals("English")){
+				if (i.getLanguage().equals("English")) {
 					message.setSubject("Chuck Norris Insurance policy");
-				}
-				else{
+				} else {
 					message.setSubject("Chuck Norris Insurance polisa osiguranja");
 				}
 				message.setText("Zasto mi ne ispises ovaj tekst?!");
@@ -338,19 +285,20 @@ public class MailService {
 				MimeBodyPart messageBodyPart1 = new MimeBodyPart();
 
 				Multipart multipart = new MimeMultipart();
-				
-				//tekst
-				//messageBodyPart1 = new MimeBodyPart();
-				if (i.getLanguage().equals("English")){
-					
-					messageBodyPart1.setText("Dear customer,\n\n\tYou can see your insurance policy in attachment.\n\nKind regards,\n\nChuck Norris Insurance");
-					
-				}
-				else{
-					messageBodyPart1.setText("Poštovani,\n\nU prilogu se nalazi vaša polisa osiguranja.\n\nSrdačan pozdrav,\n\nChuck Norris Insurance");
+
+				// tekst
+				// messageBodyPart1 = new MimeBodyPart();
+				if (i.getLanguage().equals("English")) {
+
+					messageBodyPart1.setText(
+							"Dear customer,\n\n\tYou can see your insurance policy in attachment.\n\nKind regards,\n\nChuck Norris Insurance");
+
+				} else {
+					messageBodyPart1.setText(
+							"Poštovani,\n\nU prilogu se nalazi vaša polisa osiguranja.\n\nSrdačan pozdrav,\n\nChuck Norris Insurance");
 				}
 				multipart.addBodyPart(messageBodyPart1);
-				//atachment
+				// atachment
 				messageBodyPart = new MimeBodyPart();
 				String filee = "Insurance" + i.getId() + ".pdf";
 				String fileName = "Insurance" + i.getId() + ".pdf";
@@ -360,8 +308,6 @@ public class MailService {
 				multipart.addBodyPart(messageBodyPart);
 
 				message.setContent(multipart);
-				
-				
 
 				System.out.println("Sending");
 
