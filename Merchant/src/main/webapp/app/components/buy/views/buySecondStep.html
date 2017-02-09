@@ -28,7 +28,7 @@
                             </label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-show="vm.towingCheck" ng-model="vm.towingSelected" ng-options="towing.nameTranslate.name for towing in vm.towings">
+                            <select class="form-control" ng-show="vm.towingCheck" ng-model="vm.towingSelected" ng-options="towing.nameTranslate.name for towing in vm.towings track by towing.id">
                                 <option value="">{{ 'selectMileage' | translate }}</option>
                             </select>
                         </div>
@@ -41,7 +41,7 @@
                             </label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-show="vm.repairsCheck" ng-model="vm.repairSelected" ng-options="repair.nameTranslate.name for repair in vm.repairs">
+                            <select class="form-control" ng-show="vm.repairsCheck" ng-model="vm.repairSelected" ng-options="repair.nameTranslate.name for repair in vm.repairs track by repair.id">
                                 <option value="">{{ 'selectPrice' | translate }}</option>
                             </select>
                         </div>
@@ -54,7 +54,7 @@
                             </label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-show="vm.accommodationsCheck" ng-model="vm.accommodationSelected" ng-options="accommodation.nameTranslate.name for accommodation in vm.accommodations">
+                            <select class="form-control" ng-show="vm.accommodationsCheck" ng-model="vm.accommodationSelected" ng-options="accommodation.nameTranslate.name for accommodation in vm.accommodations track by accommodation.id">
                                 <option value="">{{ 'selectNumberOfDays' | translate }}</option>
                             </select>
                         </div>
@@ -67,7 +67,7 @@
                             </label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-show="vm.alternativeRidesCheck" ng-model="vm.alternativeRideSelected" ng-options="alternativeRide.nameTranslate.name for alternativeRide in vm.alternativeRides">
+                            <select class="form-control" ng-show="vm.alternativeRidesCheck" ng-model="vm.alternativeRideSelected" ng-options="alternativeRide.nameTranslate.name for alternativeRide in vm.alternativeRides track by alternativeRide.id">
                                 <option value="">{{ 'selectRide' | translate }}</option>
                             </select>
                         </div>
@@ -196,7 +196,7 @@
                             <label class="right">{{ 'surface' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-model="vm.surfaceSelected" ng-options="surface.nameTranslate.name for surface in vm.surfaces">
+                            <select class="form-control" ng-model="vm.surfaceSelected" ng-options="surface.nameTranslate.name for surface in vm.surfaces track by surface.id">
                                  <option value="">{{ 'selectSurface' | translate }}</option>            
                             </select>
                         </div>
@@ -206,7 +206,7 @@
                             <label class="right">{{ 'ageOfHome' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <select class="form-control" ng-model="vm.ageApartmentSelected" ng-options="ageApartment.nameTranslate.name for ageApartment in vm.ageApartments">
+                            <select class="form-control" ng-model="vm.ageApartmentSelected" ng-options="ageApartment.nameTranslate.name for ageApartment in vm.ageApartments track by ageApartment.id">
                                  <option value="">{{ 'selectAge' | translate }}</option>
                             </select>
                         </div>
@@ -216,7 +216,7 @@
                             <label class="right">{{ 'estimatedValue' | translate }}</label>
                         </div>
                         <div class="col-xs-3">      
-                            <select class="form-control" ng-model="vm.valueApartmentSelected" ng-options="valueApartment.nameTranslate.name for valueApartment in vm.valueApartments">
+                            <select class="form-control" ng-model="vm.valueApartmentSelected" ng-options="valueApartment.nameTranslate.name for valueApartment in vm.valueApartments track by valueApartment.id">
                                  <option value="">{{ 'selectValue' | translate }}</option>
                             </select>
                         </div>
@@ -226,7 +226,7 @@
                             <label class="right">{{ 'insureFrom' | translate }}</label>
                         </div>
                         <div class="col-xs-3">  
-                            <select class="form-control" ng-model="vm.disasterSelected" ng-options="disaster.nameTranslate.name for disaster in vm.disasters">
+                            <select class="form-control" ng-model="vm.disasterSelected" ng-options="disaster.nameTranslate.name for disaster in vm.disasters track by disaster.id">
                                  <option value="">{{ 'selectType' | translate }}</option>
                             </select>
                         </div>
