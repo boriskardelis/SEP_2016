@@ -3,6 +3,7 @@ package ftn.uns.ac.rs.tim6.model;
 import java.io.Serializable;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "HOME")
@@ -15,16 +16,19 @@ public class Home implements Serializable {
 	@Column(name = "HOME_ID")
 	private long id;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "ADDRESS")
 	private String address;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "OWNER_FIRST_NAME")
 	private String ownerFirstName;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "OWNER_LAST_NAME")
 	private String ownerLastName;
 
-	@Column(name = "OWNER_JMBG")
+	@Column(name = "OWNER_JMBG", length = 13)
 	private Long ownerJMBG;
 
 	public long getId() {

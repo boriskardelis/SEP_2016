@@ -202,18 +202,22 @@ public class InsuranceController {
 		b.setInsured(iidto.isContractor());
 		buyerService.save(b);
 		i.setBuyer(b);
+		
+		System.out.println("posle buyer-a");
 
-		if (iidto.getHome() != null && !iidto.getHome().getOwnerFirstName().isEmpty()) {
+		if (iidto.getHome() != null || !iidto.getHome().getOwnerFirstName().isEmpty()) {
 			Home h = iidto.getHome();
 			homeService.save(h);
 			i.setHome(h);
 		}
 
-		if (iidto.getVehicle() != null && !iidto.getVehicle().getOwnerFirstName().isEmpty()) {
+		System.out.println("pre vehicle");
+		if (iidto.getVehicle() != null || !iidto.getVehicle().getOwnerFirstName().isEmpty()) {
 			Vehicle v = iidto.getVehicle();
 			vehicleService.save(v);
 			i.setVehicle(v);
 		}
+		System.out.println("posle vehicle");
 		
 		insuranceService.save(i);
 		System.out.println("pre for-a");

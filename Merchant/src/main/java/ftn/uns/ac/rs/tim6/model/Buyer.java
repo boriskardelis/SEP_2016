@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "BUYER")
@@ -19,24 +20,30 @@ public class Buyer implements Serializable {
 	@Column(name = "BUYER_ID")
 	private Long id;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "LAST_NAME")
 	private String lastName;
 
-	@Column(name = "JMBG")
+	@Column(name = "JMBG", length = 13)
 	private Long jmbg;
 
+	@Size(min = 9, max = 9)
 	@Column(name = "PASSPORT_NUMBER")
-	private Long passportNumber;
+	private String passportNumber;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "EMAIL")
 	private String email;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "ADDRESS")
 	private String address;
 
+	@Size(min = 1, max = 30)
 	@Column(name = "PHONE_NUMBER")
 	private String phoneNumber;
 
@@ -67,11 +74,11 @@ public class Buyer implements Serializable {
 		this.jmbg = jmbg;
 	}
 
-	public Long getPassportNumber() {
+	public String getPassportNumber() {
 		return passportNumber;
 	}
 
-	public void setPassportNumber(Long passportNumber) {
+	public void setPassportNumber(String passportNumber) {
 		this.passportNumber = passportNumber;
 	}
 
@@ -119,7 +126,7 @@ public class Buyer implements Serializable {
 		return serialVersionUID;
 	}
 
-	public Buyer(Long id, String lastName, Long jmbg, Long passportNumber, String email, String firstName,
+	public Buyer(Long id, String lastName, Long jmbg, String passportNumber, String email, String firstName,
 			String address, String phoneNumber, boolean insured) {
 		super();
 		this.id = id;
