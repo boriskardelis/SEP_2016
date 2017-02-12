@@ -35,7 +35,7 @@ public class Buyer implements Serializable {
 	@Column(name = "EMAIL")
 	private String email;
 
-	@Size(min = 1, max = 30)
+	@Size(min = 1, max = 70)
 	@Column(name = "FIRST_NAME")
 	private String firstName;
 

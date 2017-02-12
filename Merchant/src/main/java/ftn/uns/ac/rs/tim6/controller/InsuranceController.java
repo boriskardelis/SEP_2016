@@ -1,10 +1,18 @@
 package ftn.uns.ac.rs.tim6.controller;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
-
+import java.security.KeyStore;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateFactory;
+import java.security.cert.TrustAnchor;
+import java.security.cert.X509Certificate;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -22,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+
+import com.itextpdf.text.Anchor;
 
 import org.drools.runtime.StatefulKnowledgeSession;
 import org.joda.time.Days;
@@ -52,6 +62,7 @@ import ftn.uns.ac.rs.tim6.service.RiskSubcategoryService;
 import ftn.uns.ac.rs.tim6.service.VehicleService;
 import ftn.uns.ac.rs.tim6.util.CheckerCertificates;
 import ftn.uns.ac.rs.tim6.util.DroolsReadKnowlageBase;
+import ftn.uns.ac.rs.tim6.util.Serti;
 
 @RestController
 @RequestMapping("/api")
@@ -155,6 +166,15 @@ public class InsuranceController {
 			HttpEntity<MerchantDto> entity = new HttpEntity<MerchantDto>(mdto, headers);
 
 			// connecting to URL
+			    
+		   /* final InputStream inStream = new FileInputStream("../Merchant/src/main/resources/ca.crt");
+		    	      CertificateFactory cf = CertificateFactory.getInstance("X.509");
+		    	      X509Certificate cert = (X509Certificate)cf.generateCertificate(inStream);
+		    	  
+			
+			Serti serti = new Serti();
+			TrustAnchor anchor = serti.index(cert);*/
+			
 			CheckerCertificates checkerCertificate = new CheckerCertificates();
 			checkerCertificate.doTrustToCertificates();
 			URL url = new URL("https://localhost:7070/api/urlid");

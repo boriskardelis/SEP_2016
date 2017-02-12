@@ -105,12 +105,14 @@
                             <label class="right">{{ 'registrationNumber' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.registrationNumber" name="registrationNumber" class="form-control" placeholder="{{ 'registrationNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.registrationNumber" name="registrationNumber" class="form-control" placeholder="{{ 'registrationNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="5" ng-maxlength="10">
                         </div>
                     </div>      
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.minlength && vm.formSecond.registrationNumber.$touched">{{ 'minLength' | translate }}5</p>
+                             <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.maxlength && vm.formSecond.registrationNumber.$touched">{{ 'maxLength' | translate }}10</p>
                         </div>
                     </div>
 
@@ -119,12 +121,13 @@
                             <label class="right">{{ 'vehicleMake' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.make" name="make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.make" name="make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.make.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.make.$error.maxlength && vm.formSecond.make.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -133,12 +136,13 @@
                             <label class="right">{{ 'vehicleOwnerFN' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.ownerFirstName" name="ownerFirstName" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.ownerFirstName" name="ownerFirstName" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.ownerFirstName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerFirstName.$error.maxlength && vm.formSecond.ownerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -147,12 +151,13 @@
                             <label class="right">{{ 'vehicleOwnerLN' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.ownerLastName" name="ownerLastName" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.ownerLastName" name="ownerLastName" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.ownerLastName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerLastName.$error.maxlength && vm.formSecond.ownerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -161,12 +166,14 @@
                             <label class="right">{{ 'vehicleOwnerJMBG' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.ownerJmbg" name="ownerJmbg" class="form-control" placeholder="JMBG" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.ownerJmbg" name="ownerJmbg" class="form-control" placeholder="JMBG" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.minlength && vm.formSecond.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.maxlength && vm.formSecond.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
                         </div>
                     </div>
 
@@ -175,12 +182,13 @@
                             <label class="right">{{ 'vehicleType' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.type" name="type" class="form-control" placeholder="{{ 'vehicleType' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.type" name="type" class="form-control" placeholder="{{ 'vehicleType' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.type.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.type.$error.maxlength && vm.formSecond.type.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -189,12 +197,14 @@
                             <label class="right">{{ 'vinNumber' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.vinNumber" name="vinNumber" class="form-control" placeholder="{{ 'vinNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.vinNumber" name="vinNumber" class="form-control" placeholder="{{ 'vinNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="17" ng-maxlength="17">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.minlength && vm.formSecond.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
+                            <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.maxlength && vm.formSecond.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
                         </div>
                     </div>
 
@@ -203,12 +213,14 @@
                             <label class="right">{{ 'yearOfProduction' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.vehicle.yearOfProduction" name="yearOfProduction" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}" ng-required="vm.insuranceTypeRoadCheck">
+                            <input type="text" ng-model="vm.vehicle.yearOfProduction" name="yearOfProduction" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="4" ng-maxlength="4" numbers-only="numbers-only">
                         </div>
                     </div>
                     <div class="form-group row unity">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.minlength && vm.formSecond.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
+                            <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.maxlength && vm.formSecond.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
                         </div>
                     </div>
                 </div>          
@@ -230,13 +242,14 @@
                             <label class="right">{{ 'address' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.home.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" ng-required="vm.insuranceTypeHomeCheck">
+                            <input type="text" ng-model="vm.home.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.address.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
                         </div>
+                        <p class="err-val" ng-show="vm.formSecond.address.$error.maxlength && vm.formSecond.address.$touched">{{ 'maxLength' | translate }}30</p>
                     </div>
 
                     <div class="form-group row">
@@ -244,12 +257,13 @@
                             <label class="right">{{ 'homeOwnerFN' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.home.ownerFirstName" name="homeOwenerFirstName" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}" ng-required="vm.insuranceTypeHomeCheck">
+                            <input type="text" ng-model="vm.home.ownerFirstName" name="homeOwenerFirstName" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.homeOwenerFirstName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.homeOwenerFirstName.$error.maxlength && vm.formSecond.homeOwenerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -258,12 +272,13 @@
                             <label class="right">{{ 'homeOwnerLN' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.home.ownerLastName" name="homeOwnerLastName" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}" ng-required="vm.insuranceTypeHomeCheck">
+                            <input type="text" ng-model="vm.home.ownerLastName" name="homeOwnerLastName" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.homeOwnerLastName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                             <p class="err-val" ng-show="vm.formSecond.homeOwnerLastName.$error.maxlength && vm.formSecond.homeOwnerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -272,12 +287,14 @@
                             <label class="right">{{ 'homeOwnerJMBG' | translate }}</label>
                         </div>
                         <div class="col-xs-3">
-                            <input type="text" ng-model="vm.home.ownerJMBG" name="ownerJMBG" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}" ng-required="vm.insuranceTypeHomeCheck">
+                            <input type="text" ng-model="vm.home.ownerJMBG" name="ownerJMBG" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
                             <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.minlength && vm.formSecond.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.maxlength && vm.formSecond.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
                         </div>
                     </div>
 

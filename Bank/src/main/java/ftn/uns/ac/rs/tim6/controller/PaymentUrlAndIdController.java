@@ -42,6 +42,8 @@ public class PaymentUrlAndIdController {
 
 	@RequestMapping(value = "/urlid", method = RequestMethod.POST)
 	public PaymentUrlIdDto handleBuy(@RequestBody MerchantDto mdto) {
+		
+		System.out.println("POGODIO BANKU");
 
 		// TODO korak 3
 		PaymentUrlIdDto puid = new PaymentUrlIdDto();

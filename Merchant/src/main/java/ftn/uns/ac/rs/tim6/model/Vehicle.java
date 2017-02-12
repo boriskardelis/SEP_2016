@@ -30,8 +30,8 @@ public class Vehicle implements Serializable {
 	@Column(name = "TYPE")
 	private String type;
 
-	@Min(value = 1900)
-	@Max(value = 2017)
+/*	@Min(value = 1900)
+	@Max(value = 2017)*/
 	@Column(name = "YEAR_OF_PRODUCTION")
 	private int yearOfProduction;
 

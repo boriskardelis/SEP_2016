@@ -135,6 +135,9 @@
 
         var eng =
         {   
+            specLength : "Characters length must be ",
+            minLength : "Min characters is ",
+            maxLength : "Max characters is ",
             invalidEmail : "This is not a valid email",
             requiredFieldPackage : "Field required or uncheck package",
             requiredOption : "Option required",
@@ -192,7 +195,7 @@
             address: "Address",
             homeOwnerFN : "Home owner first name:",
             homeOwnerLN : "Home owner last name:",
-            homeOwnerJMBG : "Home owner identification number:",
+            homeOwnerJMBG : "Home owner JMBG:",
             surface : "Surface of home:",
             selectSurface : "-Select surface-",
             ageOfHome : "Age of home:",
@@ -233,7 +236,10 @@
         };
 
         var ser =
-        {   
+        {    
+            specLength : "Broj karaktera mora biti ",
+            minLength : "Najmanja dužina je ",
+            maxLength : "Najveća dužina je ",
             invalidEmail : "Email nije validan",
             requiredFieldPackage : "Obavezno polje ili odstiklirati paket",
             requiredOption : "Obavezna opcija",

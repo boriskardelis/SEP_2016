@@ -9,12 +9,13 @@
                 <label class="right">{{ 'firstName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.firstName" name="firstName" class="form-control" placeholder="{{ 'firstName' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.firstName" name="firstName" class="form-control" placeholder="{{ 'firstName' | translate }}" required ng-maxlength="30">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.firstName.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.firstName.$error.maxlength && vm.formFourth.firstName.$touched">{{ 'maxLength' | translate }}30</p>
             </div>
         </div>
         <div class="form-group row">
@@ -22,12 +23,13 @@
                 <label class="right">{{ 'lastName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.lastName" name="lastName" class="form-control" placeholder="{{ 'lastName' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.lastName" name="lastName" class="form-control" placeholder="{{ 'lastName' | translate }}" required ng-maxlength="30">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.lastName.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.lastName.$error.maxlength && vm.formFourth.lastName.$touched">{{ 'maxLength' | translate }}30</p>
             </div>
         </div>
         <div class="form-group row">
@@ -35,12 +37,14 @@
                 <label class="right">{{ 'jmbg' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.jmbg" name="jmbg" class="form-control" placeholder="{{ 'jmbg' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.jmbg" name="jmbg" class="form-control" placeholder="{{ 'jmbg' | translate }}" required ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.jmbg.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.jmbg.$error.minlength && vm.formFourth.jmbg.$touched">{{ 'specLength' | translate }}13</p>
+                <p class="err-val" ng-show="vm.formFourth.jmbg.$error.maxlength && vm.formFourth.jmbg.$touched">{{ 'specLength' | translate }}13</p>
             </div>
         </div>
            <div class="form-group row">
@@ -48,12 +52,14 @@
                 <label class="right">{{ 'passportNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.passportNumber" name="passportNumber" class="form-control" placeholder="{{ 'passportNumber' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.passportNumber" name="passportNumber" class="form-control" placeholder="{{ 'passportNumber' | translate }}" required ng-minlength="9" ng-maxlength="9" numbers-only="numbers-only">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.passportNumber.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.passportNumber.$error.minlength && vm.formFourth.passportNumber.$touched">{{ 'specLength' | translate }}9</p>
+                <p class="err-val" ng-show="vm.formFourth.passportNumber.$error.maxlength && vm.formFourth.passportNumber.$touched">{{ 'specLength' | translate }}9</p>
             </div>
         </div>
         <div class="form-group row">
@@ -61,12 +67,13 @@
                 <label class="right">{{ 'address' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" required ng-maxlength="30">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.address.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.address.$error.maxlength && vm.formFourth.address.$touched">{{ 'maxLength' | translate }}30</p>
             </div>
         </div>
         <div class="form-group row">
@@ -74,12 +81,13 @@
                 <label class="right">{{ 'phoneNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.phoneNumber" name="phoneNumber" class="form-control" placeholder="{{ 'phoneNumber' | translate }}" required>
+                <input type="text" ng-model="vm.buyer.phoneNumber" name="phoneNumber" class="form-control" placeholder="{{ 'phoneNumber' | translate }}" required ng-maxlength="30">
             </div>
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.phoneNumber.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.phoneNumber.$error.maxlength && vm.formFourth.phoneNumber.$touched">{{ 'maxLength' | translate }}30</p>
             </div>
         </div>
         <div class="form-group row">
@@ -87,17 +95,18 @@
                 <label class="right">E-mail:</label>
             </div>
             <div class="col-xs-3">
-                <input type="email" ng-model="vm.buyer.email" name="email" class="form-control" placeholder="E-mail" required>
+                <input type="email" ng-model="vm.buyer.email" name="email" class="form-control" placeholder="E-mail" required ng-maxlength="70">
             </div>
         </div>
          <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-3">
                 <p class="err-val" ng-show="vm.formFourth.email.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
                 <p class="err-val" ng-show="vm.formFourth.email.$error.email && vm.formFourth.email.$touched">{{ 'invalidEmail' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.email.$error.maxlength && vm.formFourth.email.$touched">{{ 'maxLength' | translate }}70</p>
             </div>
         </div>
 
-        <div class="form-group row celina">
+        <div class="form-group row">
             <div class="col-xs-3">
                 <label class="right" for="sumTo">{{ 'insuranceContractor' | translate }}</label>
             </div>
@@ -124,29 +133,29 @@
                         <label>0.</label>                  
                     </div>
 
-                    <div class="form-group col-xs-2" style="width: 15.33%">
+                    <div class="form-group col-xs-2 width15">
                         <label class="center" for="name" >{{ 'firstName' | translate }}</label>
-                        <input type="text" ng-model="vm.personHolder.firstName" name="holderFirstName" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.firstName" name="holderFirstName" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}" ng-required="vm.contractor == false" ng-maxlength="30">
                     </div>
-                    <div class="form-group  col-xs-2" style="width: 15.33%">
+                    <div class="form-group  col-xs-2 width15">
                         <label class="center" for="last" >{{ 'lastName' | translate }}</label>
-                        <input type="text" ng-model="vm.personHolder.lastName" name="holderLastName" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.lastName" name="holderLastName" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}" ng-required="vm.contractor == false" ng-maxlength="30">
                      </div>
-                     <div class="form-group  col-xs-2" style="width: 15.33%">
+                     <div class="form-group  col-xs-2 width15">
                         <label class="center" for="address" >{{ 'address' | translate }}</label>
-                        <input type="text" ng-model="vm.personHolder.address" name="holderAddress" class="form-control" id="address" placeholder="{{ 'address' | translate }}" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.address" name="holderAddress" class="form-control" id="address" placeholder="{{ 'address' | translate }}" ng-required="vm.contractor == false" ng-maxlength="30">
                      </div>
-                      <div class="form-group  col-xs-2" style="width: 15.33%">
+                      <div class="form-group  col-xs-2 width15">
                         <label class="center" for="jmbg" >JMBG</label>
-                        <input type="text" ng-model="vm.personHolder.jmbg" name="holderJmbg" class="form-control" id="jmbg" placeholder="JMBG" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.jmbg" name="holderJmbg" class="form-control" id="jmbg" placeholder="JMBG" ng-required="vm.contractor == false" ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only" >
                      </div>
-                     <div class="form-group col-xs-2" style="width: 15.33%">
+                     <div class="form-group col-xs-2 width15">
                         <label class="center" for="passport" >{{ 'passportNumber' | translate }}</label>
-                        <input type="text" ng-model="vm.personHolder.passportNumber" name="holderPassportNumber" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.passportNumber" name="holderPassportNumber" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}" ng-required="vm.contractor == false" ng-minlength="9" ng-maxlength="9" numbers-only="numbers-only">
                      </div>
-                     <div class="form-group col-xs-2" style="width: 15.33%">
+                     <div class="form-group col-xs-2 width15">
                         <label class="center" for="phone" >{{ 'phoneNumber' | translate }}</label>
-                        <input type="text" ng-model="vm.personHolder.phoneNumber" name="holderPhoneNumber" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}" ng-required="vm.contractor == false">
+                        <input type="text" ng-model="vm.personHolder.phoneNumber" name="holderPhoneNumber" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}" ng-required="vm.contractor == false" ng-maxlength="30">
                      </div>
                 </div> 
                 <div class="form-group row">
@@ -154,6 +163,13 @@
                     </div>
                     <div class="col-xs-5">
                         <p class="err-val" ng-show="(vm.formFourth.holderFirstName.$error.required || vm.formFourth.holderLastName.$error.required || vm.formFourth.holderAddress.$error.required || vm.formFourth.holderJmbg.$error.required || vm.formFourth.holderPassportNumber.$error.required || vm.formFourth.holderPhoneNumber.$error.required) && vm.submittedFourth">{{ 'requiredFields' | translate }}</p>
+                        
+                    </div>
+                    <div class="col-xs-5">
+                        <p class="err-val" ng-show="vm.formFourth.holderJmbg.$error.minlength && vm.formFourth.holderJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                        <p class="err-val" ng-show="vm.formFourth.holderJmbg.$error.maxlength && vm.formFourth.holderJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                        <p class="err-val" ng-show="vm.formFourth.holderPassportNumber.$error.minlength && vm.formFourth.holderPassportNumber.$touched">{{ 'specLength' | translate }}9</p>
+                        <p class="err-val" ng-show="vm.formFourth.holderPassportNumber.$error.maxlength && vm.formFourth.holderPassportNumber.$touched">{{ 'specLength' | translate }}9</p>
                     </div>
                 </div>       
              </div>

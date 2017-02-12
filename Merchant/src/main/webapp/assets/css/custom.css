@@ -19,6 +19,10 @@
 	color: red;
 }*/
 
+.width15 {
+
+	width: 15.33%;
+}
 .celina {
 	 padding-bottom: 10px;
 	 border-bottom: 1px solid;
@@ -27,7 +31,7 @@
 }
 
 .unity {
-	 padding-bottom: 20px;
+	 padding-bottom: 20px;	
 }
 
 .form-group {
@@ -43,9 +47,14 @@
 	color: red;
 }
 
+.ng-touched.ng-dirty.ng-invalid{
+    border: 2px solid red;
+    /*color: red;*/
+}
+
 .submitted .ng-invalid{
     border: 2px solid red;
-    color: red;
+    /*color: red;*/
 }
 
 .err-val {
