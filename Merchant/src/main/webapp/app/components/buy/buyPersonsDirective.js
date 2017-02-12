@@ -29,7 +29,11 @@
         	scope: {
         		ageTyped: '=',
                         personIndex: "=",
-                        person: "="
+                        person: "=",
+                        formFourth: "=",
+                        submittedFourth: "="
+
+
 			
 			}
 		};

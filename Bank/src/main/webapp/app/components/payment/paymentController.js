@@ -27,6 +27,10 @@
 		 });
 
 		vm.pay = function() {
+
+			vm.submitted = true;
+			if (vm.form.$invalid) return;
+
 			console.log("placeno");
 			vm.card.paymentId = vm.paymentId;
 			console.log("CARD INFO:");

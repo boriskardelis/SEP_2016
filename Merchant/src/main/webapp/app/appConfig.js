@@ -134,7 +134,12 @@
     $locationProvider.html5Mode(true); 
 
         var eng =
-        {
+        {   
+            invalidEmail : "This is not a valid email",
+            requiredFieldPackage : "Field required or uncheck package",
+            requiredOption : "Option required",
+            requiredField : "Field required",
+            requiredFields : "Fill up all required fields for person",
             cn : "Chuck Norris Insurance",
             eng : "English (En)",
             srb : "Serbian (Sr)",
@@ -229,6 +234,11 @@
 
         var ser =
         {   
+            invalidEmail : "Email nije validan",
+            requiredFieldPackage : "Obavezno polje ili odstiklirati paket",
+            requiredOption : "Obavezna opcija",
+            requiredField : "Obavezno polje",
+            requiredFields : "Popunite sva obavezna polja za osobu",
             cn : "Chuck Norris osiguranje",
             eng : "Engleski (En)",
             srb : "Srpski (Sr)",

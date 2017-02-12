@@ -4,6 +4,14 @@
 }
 .buy-lable {
 	 /*padding-left:100px;*/
+.submitted .ng-invalid{
+    border: 2px solid red;
+    color: red;
+}
+
+.err-val {
+	 color: red;
+}
 img {
     max-width: 100%;
     max-height: auto;
@@ -14,8 +22,9 @@ img {
 
 }
 .form-group {
-	padding-left: 20px;*/
-}
+	padding-left: 20px;
+	margin-bottom: 8px;
+}	
 .form-group-pers {
 	padding-left: 5px;
 }

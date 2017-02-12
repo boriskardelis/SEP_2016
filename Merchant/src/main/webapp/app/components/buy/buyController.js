@@ -11,6 +11,8 @@
 		
 		console.log($translate.use());
 
+		vm.onlyNumbers = /^\d+$/;
+
 		vm.isDisabled = false;
 		//Zasto ne radi sa VM (this)?!
 	    $scope.buttonDisable = function() {
@@ -88,8 +90,6 @@
 
 		vm.totalPersons = localStorageService.cookie.get('totalPersons');
 		console.log(vm.totalPersons);
-
-		
 
 		/*for (var i=0;  i < vm.totalPersons-1; i++) {
 			console.log("PUTA");
@@ -186,7 +186,7 @@
 		vm.dateOptionsStart = {
 		    maxDate: new Date(2020, 5, 21),
 		    minDate: new Date(),
-		    startingDay: 1
+		    startingDay: 1	//da pocinje od ponedeljka
 		};
 		vm.dateOptionsEnd = {
 		    maxDate: new Date(2020, 5, 22),
@@ -208,22 +208,27 @@
 		    });		
 		};
 
+		$scope.$watch('vm.startDate', function(newVal, oldVal){
+		   // localStorageService.cookie.set('proba', newVal);
+		   console.log("WATCHINGGGGGGGGG");
+		   console.log(newVal);
+		   console.log(oldVal);
+	
+	    });
+
 		vm.startDatePicked = function() {
 			console.log("NA POCETKU FUNK");
 			console.log(vm.startDate);
 			var startDate = vm.startDate.getDate();
 			if (vm.endDate <= vm.startDate) {
-				console.log("usao");
+				console.log("usao END");
 				console.log(vm.endDate);
-				vm.endDate = vm.endDate.setDate(startDate + 1);
+				vm.endDate.setDate(startDate + 1);
+				console.log("AFTERDAY END");
 				console.log(vm.endDate);
-
 			}	
-				var minEnd = vm.startDate;
-
-				minEnd.setDate(startDate + 1);
-
-				vm.dateOptionsEnd.minDate = minEnd;
+				/*vm.startDate.setDate(startDate + 1);
+				vm.dateOptionsEnd.minDate = vm.startDate;*/
 				console.log("START DATE");
 				console.log(vm.startDate);
 		};
@@ -233,6 +238,10 @@
 		};
 
 		vm.calculateFirstStep = function() {
+
+			vm.submittedFirst = true;
+			if (vm.form.$invalid) return;
+
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
 			localStorageService.cookie.set('sumToSelected', vm.sumToSelected);
 			localStorageService.cookie.set('sportSelected', vm.sportSelected);
@@ -291,9 +300,15 @@
 				console.log(vm.ageTyped.number[i]);
 			}*/
 
+			$state.go("buy.secondStep");
+
 		};
 
 		vm.calculateSecondStep = function() {
+
+			vm.submittedSecond = true;
+			if (vm.formSecond.$invalid) return;
+
 			localStorageService.cookie.set('insuranceTypeRoadCheck', vm.insuranceTypeRoadCheck);
 			localStorageService.cookie.set('insuranceTypeHomeCheck', vm.insuranceTypeHomeCheck);
 			localStorageService.cookie.set('towingCheck', vm.towingCheck);
@@ -353,10 +368,16 @@
 				.then(function(response) {
 			 		vm.droolPrices = response.data;
 			});
+
+			$state.go("buy.thirdStep");	
 	
 		};
 
 		vm.calculateFourthStep = function() {
+
+			vm.submittedFourth = true;
+			if (vm.formFourth.$invalid) return;
+
 			localStorageService.cookie.set('buyer.firstName', vm.buyer.firstName);
 			localStorageService.cookie.set('buyer.lastName', vm.buyer.lastName);
 			localStorageService.cookie.set('buyer.jmbg', vm.buyer.jmbg);
@@ -403,10 +424,13 @@
 				console.log(vm.person.passportNumber[i]);
 				console.log(vm.person.phoneNumber[i]);
 			}*/
-
+			$state.go("buy.fifthStep");	
 		}
 
-		vm.processForm = function() {
+		vm.calculateFifthStep = function() {
+
+			vm.submitted = true;
+			if (vm.formFifth.$invalid) return;
 
 	    	vm.language = $translate.use();
   
@@ -510,16 +534,7 @@
 				passportNumber: "", 
 				phoneNumber: ""		
 			};
-
 		}
-
-		
-
-		
-		
-		
-
-
 	}
 
 })();

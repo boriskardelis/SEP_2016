@@ -13,20 +13,21 @@
 	          <!-- the links to our nested states using relative paths -->
 	          <!-- add the active class if the state matches our ui-sref -->
           <div id="status-buttons" class="text-center">
-              <a ui-sref-active="active" ui-sref=".firstStep"><span>1</span>{{ 'firsts' | translate }}</a>
+              <a ui-sref-active="active" ui-sref=".firstStep" ng-disabled="true"><span>1</span>{{ 'firsts' | translate }}</a>
               <a ui-sref-active="active" ui-sref=".secondStep"><span>2</span> {{ 'seconds' | translate }}</a>
               <a ui-sref-active="active" ui-sref=".thirdStep"><span>3</span> {{ 'thirds' | translate }}</a>
               <a ui-sref-active="active" ui-sref=".fourthStep"><span>4</span> {{ 'fourths' | translate }}</a>
               <a ui-sref-active="active" ui-sref=".fifthStep"><span>5</span> {{ 'fifths' | translate }}</a>
           </div>
-	   </div>
+		  </div>
 		      <!-- use ng-submit to catch the form submission and use our Angular function -->
-		      <form id="signup-form" ng-submit="vm.processForm()">
+		      <!-- <form ng-class="{'submitted': vm.submitted}" id="signup-form" ng-submit="vm.processForm()" name="vm.form" novalidate> -->
 		          <!-- our nested state views will be injected here -->
+		          <!-- <div id="signup-form"> -->
 		          <div id="form-views" ui-view></div>
-		      </form>  
-	 
-	    </div>  
+		          <!-- </div> -->
+		      <!-- </form>   -->
+		  </div>  
 
 		
 		 

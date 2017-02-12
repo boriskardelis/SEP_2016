@@ -8,6 +8,50 @@
 	margin-bottom: 20px;
 }*/
 /*to make images responsive*/
+/*.ng-pristine .ng-invalid-required {
+	border:1px solid #a94442;
+}*/
+/*input[type="radio"] {
+	background-color: #e5eef7;
+	color: red;
+}*/
+/*.red {
+	color: red;
+}*/
+
+.celina {
+	 padding-bottom: 10px;
+	 border-bottom: 1px solid;
+	 border-left-width: 1000px;
+	 border-color: #a2d4d8;
+}
+
+.unity {
+	 padding-bottom: 20px;
+}
+
+.form-group {
+	padding-left: 20px;
+	margin-bottom: 8px;
+}	
+.validate-message {
+
+	border-bottom: 1px solid;
+	border-color: #a2d4d8;
+}
+.red {
+	color: red;
+}
+
+.submitted .ng-invalid{
+    border: 2px solid red;
+    color: red;
+}
+
+.err-val {
+	 color: red;
+}
+
 img {
     max-width: 100%;
     max-height: auto;
@@ -15,7 +59,7 @@ img {
 .adit-text {
 	font-size: 15px;
 	font-style: bold;
-	border-bottom: 1px solid;*/
+	border-bottom: 1px solid;
 }
 .home-font {
 	font-size: 26px;
@@ -40,9 +84,7 @@ img {
 	width: 100px;
 
 }
-.form-group {
-	padding-left: 20px;*/
-}
+
 .form-group-pers {
 	padding-left: 5px;
 }
@@ -61,12 +103,6 @@ img {
 	text-align: center;
 }
 
-.celina {
-	 padding-bottom: 10px;
-	 border-bottom: 1px solid;
-	 border-color: #a2d4d8;
-
-}
 /*	#f7fce0 zuckasta
 	#e0fcfc  plava 
 	#e5eaea siva 
@@ -108,7 +144,8 @@ pre                             { margin-bottom:20px; }
 
 /* ANIMATION STYLINGS
 ============================================================================= */
-#signup-form            { position:relative; min-height:100px; overflow:hidden; padding:0px; }
+#signup-form            { position:relative; min-height:100px;  padding:0px; }
+/*overflow:hidden;*/
 
 /* basic styling for entering and leaving */
 /* left and right added to ensure full width */

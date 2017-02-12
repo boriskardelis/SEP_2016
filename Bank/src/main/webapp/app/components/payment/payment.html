@@ -1,7 +1,7 @@
  <br><br><br><br>
  <!-- {{spinnerActive}} -->
 
- <form id="signup-form" ng-submit="vm.pay()">
+ <form id="signup-form" ng-class="{'submitted': vm.submitted}" id="signup-form" name="vm.form" novalidate ng-submit="vm.pay()">
 
     <div class="form-group col-xs-8 col-xs-offset-2 form-div">
 
@@ -45,7 +45,12 @@
                 <label class="right">Card number(PAN):</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.card.pan" class="form-control" placeholder="Card number">
+                <input type="text" ng-model="vm.card.pan" name="pan" class="form-control" placeholder="Card number" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-4">
+                <p class="err-val" ng-show="vm.form.pan.$error.required && vm.submitted">Required field</p>
             </div>
         </div>
         <div class="form-group row">
@@ -53,7 +58,12 @@
                 <label class="right">CVV2/CVC2:</label>
             </div>
             <div class="col-xs-2">
-                <input type="text" ng-model="vm.card.securityCode" class="form-control" placeholder="CVV2/CVC2">
+                <input type="text" ng-model="vm.card.securityCode" name="securityCode" class="form-control" placeholder="CVV2/CVC2" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-4">
+                <p class="err-val" ng-show="vm.form.securityCode.$error.required && vm.submitted">Required field</p>
             </div>
         </div>
         <div class="form-group row">
@@ -61,14 +71,22 @@
                 <label class="right">Expiration date:</label>
             </div>
             <div class="col-xs-2">
-                <select class="form-control" ng-model="vm.card.month" ng-options="month for month in vm.months">
+                <select class="form-control" ng-model="vm.card.month" name="month" ng-options="month for month in vm.months" required>
                      <option value="" translate="-month-"> </option>
                 </select>             
             </div>
             <div class="col-xs-2">
-                <select class="form-control" ng-model="vm.card.year" ng-options="year for year in vm.years">
+                <select class="form-control" ng-model="vm.card.year" name="year" ng-options="year for year in vm.years" required>
                      <option value="" translate="-year-"> </option>
                 </select> 
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-2">
+                <p class="err-val" ng-show="vm.form.month.$error.required && vm.submitted">Required field</p>
+            </div>
+            <div class="col-xs-2">
+                <p class="err-val" ng-show="vm.form.year.$error.required && vm.submitted">Required field</p>
             </div>
         </div>
         <br>

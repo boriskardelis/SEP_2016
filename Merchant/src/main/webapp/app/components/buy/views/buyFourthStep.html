@@ -1,5 +1,6 @@
     
     <!-- <div class="form-group"> -->
+    <form ng-class="{'submitted': vm.submittedFourth}" id="signup-form" ng-submit="vm.calculateFourthStep()" name="vm.formFourth" novalidate>
         <p class="h4 bg-success" align="center">{{ 'insuranceContractorInfo' | translate }}</p>
         <br>
     
@@ -8,7 +9,12 @@
                 <label class="right">{{ 'firstName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.firstName" class="form-control" placeholder="{{ 'firstName' | translate }}">
+                <input type="text" ng-model="vm.buyer.firstName" name="firstName" class="form-control" placeholder="{{ 'firstName' | translate }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.firstName.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
             </div>
         </div>
         <div class="form-group row">
@@ -16,7 +22,12 @@
                 <label class="right">{{ 'lastName' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.lastName" class="form-control" placeholder="{{ 'lastName' | translate }}">
+                <input type="text" ng-model="vm.buyer.lastName" name="lastName" class="form-control" placeholder="{{ 'lastName' | translate }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.lastName.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
             </div>
         </div>
         <div class="form-group row">
@@ -24,7 +35,12 @@
                 <label class="right">{{ 'jmbg' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.jmbg" class="form-control" placeholder="{{ 'jmbg' | translate }}">
+                <input type="text" ng-model="vm.buyer.jmbg" name="jmbg" class="form-control" placeholder="{{ 'jmbg' | translate }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.jmbg.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
             </div>
         </div>
            <div class="form-group row">
@@ -32,7 +48,12 @@
                 <label class="right">{{ 'passportNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.passportNumber" class="form-control" placeholder="{{ 'passportNumber' | translate }}">
+                <input type="text" ng-model="vm.buyer.passportNumber" name="passportNumber" class="form-control" placeholder="{{ 'passportNumber' | translate }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.passportNumber.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
             </div>
         </div>
         <div class="form-group row">
@@ -40,7 +61,12 @@
                 <label class="right">{{ 'address' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.address" class="form-control" placeholder="{{ 'address' | translate }}">
+                <input type="text" ng-model="vm.buyer.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.address.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
             </div>
         </div>
         <div class="form-group row">
@@ -48,18 +74,28 @@
                 <label class="right">{{ 'phoneNumber' | translate }}:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.phoneNumber" class="form-control" placeholder="{{ 'phoneNumber' | translate }}">
+                <input type="text" ng-model="vm.buyer.phoneNumber" name="phoneNumber" class="form-control" placeholder="{{ 'phoneNumber' | translate }}" required>
             </div>
         </div>
-          <div class="form-group row celina">
+        <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.phoneNumber.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+            </div>
+        </div>
+        <div class="form-group row">
             <div class="col-xs-3">          
                 <label class="right">E-mail:</label>
             </div>
             <div class="col-xs-3">
-                <input type="text" ng-model="vm.buyer.email" class="form-control" placeholder="E-mail">
+                <input type="email" ng-model="vm.buyer.email" name="email" class="form-control" placeholder="E-mail" required>
             </div>
         </div>
-    
+         <div class="form-group row">
+            <div class="col-xs-offset-3 col-xs-3">
+                <p class="err-val" ng-show="vm.formFourth.email.$error.required && vm.submittedFourth">{{ 'requiredField' | translate }}</p>
+                <p class="err-val" ng-show="vm.formFourth.email.$error.email && vm.formFourth.email.$touched">{{ 'invalidEmail' | translate }}</p>
+            </div>
+        </div>
 
         <div class="form-group row celina">
             <div class="col-xs-3">
@@ -67,11 +103,11 @@
             </div>
             <div class="col-xs-9" ng-init="vm.contractor">
                 <label class="form-check-label">
-                     <input class="form-check-input" type="radio" ng-model="vm.contractor" name="contractor" ng-value="true" ng-change="vm.contractorChange()">{{ 'spaic' | translate }}
+                     <input class="form-check-input" type="radio" ng-model="vm.contractor" name="contractor" ng-value="true" ng-change="vm.contractorChange()">&nbsp{{ 'spaic' | translate }}
                 </label>
                 <br>
                 <label class="form-check-label">
-                     <input class="form-check-input" type="radio" ng-model="vm.contractor" name="contractor" ng-value="false" >{{ 'nspaic' | translate }}    
+                     <input class="form-check-input" type="radio" ng-model="vm.contractor" name="contractor" ng-value="false" >&nbsp{{ 'nspaic' | translate }}    
                 </label>
                 <br>                 
              </div>
@@ -82,56 +118,64 @@
                     <label>&nbsp&nbsp Insurance carrier informations:</label>
                     <br><br>
                 <!-- <p class="h4" align="left">Insurance carrier informations:</p> -->
-                <div class="form-group row celina">
+                <div class="form-group row">
                     <div class="form-group col-xs-1" style="width: 0.5%">
-                            <br/><br/>
-                            <label>0.</label>                  
-                     </div>
+                        <br/><br/>
+                        <label>0.</label>                  
+                    </div>
 
-                     <div class="form-group col-xs-2" style="width: 15.33%">
-                            <label class="center" for="name" >{{ 'firstName' | translate }}</label>
-                            <input type="text" ng-model="vm.personHolder.firstName" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}">
-                     </div>
-                      <div class="form-group  col-xs-2" style="width: 15.33%">
-                            <label class="center" for="last" >{{ 'lastName' | translate }}</label>
-                            <input type="text" ng-model="vm.personHolder.lastName" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}">
+                    <div class="form-group col-xs-2" style="width: 15.33%">
+                        <label class="center" for="name" >{{ 'firstName' | translate }}</label>
+                        <input type="text" ng-model="vm.personHolder.firstName" name="holderFirstName" class="form-control" id="name" placeholder="{{ 'firstName' | translate }}" ng-required="vm.contractor == false">
+                    </div>
+                    <div class="form-group  col-xs-2" style="width: 15.33%">
+                        <label class="center" for="last" >{{ 'lastName' | translate }}</label>
+                        <input type="text" ng-model="vm.personHolder.lastName" name="holderLastName" class="form-control" id="last" placeholder="{{ 'lastName' | translate }}" ng-required="vm.contractor == false">
                      </div>
                      <div class="form-group  col-xs-2" style="width: 15.33%">
-                            <label class="center" for="address" >{{ 'address' | translate }}</label>
-                            <input type="text" ng-model="vm.personHolder.address" class="form-control" id="address" placeholder="{{ 'address' | translate }}">
+                        <label class="center" for="address" >{{ 'address' | translate }}</label>
+                        <input type="text" ng-model="vm.personHolder.address" name="holderAddress" class="form-control" id="address" placeholder="{{ 'address' | translate }}" ng-required="vm.contractor == false">
                      </div>
                       <div class="form-group  col-xs-2" style="width: 15.33%">
-                            <label class="center" for="jmbg" >JMBG</label>
-                            <input type="text" ng-model="vm.personHolder.jmbg" class="form-control" id="jmbg" placeholder="JMBG">
+                        <label class="center" for="jmbg" >JMBG</label>
+                        <input type="text" ng-model="vm.personHolder.jmbg" name="holderJmbg" class="form-control" id="jmbg" placeholder="JMBG" ng-required="vm.contractor == false">
                      </div>
                      <div class="form-group col-xs-2" style="width: 15.33%">
-                            <label class="center" for="passport" >{{ 'passportNumber' | translate }}</label>
-                            <input type="text" ng-model="vm.personHolder.passportNumber" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}">
+                        <label class="center" for="passport" >{{ 'passportNumber' | translate }}</label>
+                        <input type="text" ng-model="vm.personHolder.passportNumber" name="holderPassportNumber" class="form-control" id="passport" placeholder="{{ 'passportNumber' | translate }}" ng-required="vm.contractor == false">
                      </div>
                      <div class="form-group col-xs-2" style="width: 15.33%">
-                            <label class="center" for="phone" >{{ 'phoneNumber' | translate }}</label>
-                            <input type="text" ng-model="vm.personHolder.phoneNumber" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}">
+                        <label class="center" for="phone" >{{ 'phoneNumber' | translate }}</label>
+                        <input type="text" ng-model="vm.personHolder.phoneNumber" name="holderPhoneNumber" class="form-control" id="phone" placeholder="{{ 'phoneNumber' | translate }}" ng-required="vm.contractor == false">
                      </div>
-                </div>        
+                </div> 
+                <div class="form-group row">
+                    <div class="form-group col-xs-1" style="width: 0.5%">               
+                    </div>
+                    <div class="col-xs-5">
+                        <p class="err-val" ng-show="(vm.formFourth.holderFirstName.$error.required || vm.formFourth.holderLastName.$error.required || vm.formFourth.holderAddress.$error.required || vm.formFourth.holderJmbg.$error.required || vm.formFourth.holderPassportNumber.$error.required || vm.formFourth.holderPhoneNumber.$error.required) && vm.submittedFourth">{{ 'requiredFields' | translate }}</p>
+                    </div>
+                </div>       
              </div>
 
               <!-- URADI AKO KORISNIK PROMENI NAZAD -->
-    <div ng-if="vm.totalPersons != 0">
+    <div ng-if="vm.totalPersons > 1">
         <p class="h4 bg-success" align="center">{{ 'insurancedPersons' | translate }}</p>
     </div>
      <span ng-repeat="(personIndex, i) in vm.getNumber(vm.totalPersons - 1) track by $index"> <!-- -1 iz razloga sto je jedan nosioc -->
-            <buy-persons-directive age="age" person-index="personIndex" person="vm.person"></buy-persons-directive>
+            <buy-persons-directive age="age" person-index="personIndex" person="vm.person" form-fourth="vm.formFourth" submitted-fourth="vm.submittedFourth"></buy-persons-directive>
     </span>
 
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
-            <a ui-sref="buy.fifthStep" class="btn btn-block btn-info" ng-click="vm.calculateFourthStep()">
+            <button type="submit" class="btn btn-block btn-info">
             {{ 'nextSection' | translate }}<span class="glyphicon glyphicon-circle-arrow-right"></span>
-            </a>
-            <a ui-sref="buy.thirdStep" class="btn btn-block btn-info">
+            </button>
+            <button ui-sref="buy.thirdStep" class="btn btn-block btn-info">
             <span class="glyphicon glyphicon-circle-arrow-left"></span>{{ 'previousSection' | translate }} 
-            </a>
+            </button>
             </span>         
         </div>
     </div>
     <br>
+</form>

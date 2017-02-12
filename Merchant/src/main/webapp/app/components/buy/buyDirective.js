@@ -25,7 +25,8 @@
         	scope: {
 				age: '=',
 				ageIndex: '=',
-				ageTyped: '='
+				ageTyped: '=',
+				onlyNumbers: '='
 
 				
 				//očekuje se u HTMLu atribut koji ide uz direktivu i koji se zove employee.
