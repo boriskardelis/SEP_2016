@@ -11,19 +11,18 @@ var concat = require('gulp-concat');
 var print = require('gulp-print');
 
 
-var vendorFiles=['angular/angular.js', 
+var vendorFiles=['jquery/dist/jquery.js',
+	'angular/angular.js', 
     'angular-animate/angular-animate.js',
     'angular-bootstrap/ui-bootstrap-tpls.js',
-    'angular-loading-spinner/angular-loading-spinner.js',
-    'angular-local-storage/dist/angular-local-storage.js',
-	'angular-spinner/angular-spinner.js',
-	'angular-translate/angular-translate.js',
-    'angular-ui-router/release/angular-ui-router.js', 
+    'angular-ui-router/release/angular-ui-router.js',
     'bootstrap/dist/js/bootstrap.js', 
-    'checklist-model/checklist-model.js',
-    
-    'jquery/dist/jquery.js',
-    'spin.js/spin.js'];
+
+    'angular-translate/angular-translate.js',
+    'angular-local-storage/dist/angular-local-storage.js',
+    'spin.js/spin.js',
+    'angular-spinner/angular-spinner.js',
+    'angular-loading-spinner/angular-loading-spinner.js'];
 
 var addPathPrefix = function(orderedPaths){
 	scriptPaths = [];
@@ -67,7 +66,7 @@ gulp.task('scripts',function(){
 	gulp.src(['app/**/*.js','!app/**/*.spec.js'])
 		.pipe(gNgFileSort())
 		.pipe(concat('all.min.js'))
-		.pipe(uglify())
+		.pipe(uglify({mangle: false}))
 		.pipe(gulp.dest('dist'));
 
 
