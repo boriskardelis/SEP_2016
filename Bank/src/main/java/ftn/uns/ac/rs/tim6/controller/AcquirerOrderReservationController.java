@@ -49,13 +49,14 @@ public class AcquirerOrderReservationController {
 		MathContext mc = new MathContext(10);
 
 		System.out.println("stigli smo u banku B " + aodto.getPan());
-		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
-		BigDecimal b1 = account.getAccountBalance();
+		//int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
+		//BigDecimal b1 = account.getAccountBalance();
 
 		Card card = cardService.findByPan(aodto.getPan());
-		Boolean valid = cardCheck(card, aodto, rmdto);
+		//Boolean valid = cardCheck(card, aodto, rmdto);
+		rmdto.setResult(TransactionResult.SUCCESSFUL);
 
-		if (valid) {
+		/*if (valid) {
 
 			// TODO korak 8
 			if (res == 0) { // tacno
@@ -75,16 +76,16 @@ public class AcquirerOrderReservationController {
 			} else if (res == -1) { // nema dovoljno
 
 				rmdto.setResult(TransactionResult.INSUFFICIENT_FUNDS);
-			}
+			}*/
 			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
 			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
 			rmdto.setMerchantTimestamp(aodto.getTimestamp());
 
-		} else {
+		/*} else {
 
 			System.out.println("kartica nije validna");
 
-		}
+		}*/
 
 		try {
 			// TODO korak 9
