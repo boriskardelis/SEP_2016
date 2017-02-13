@@ -135,6 +135,7 @@
 
         var eng =
         {   
+            durationMust : "Duration must be at least 1 day",
             specLength : "Characters length must be ",
             minLength : "Min characters is ",
             maxLength : "Max characters is ",
@@ -164,11 +165,11 @@
             from : "From:",
             to : "To:",
             selectSport : "-Select sport-",
-            firsts : "First step",
-            seconds : "Second step",
-            thirds : "Third step",
-            fourths : "Fourth step",
-            fifths : "Fifth step",
+            firsts : "Basic info",
+            seconds : "Packages",
+            thirds : "Price",
+            fourths : "Persons info",
+            fifths : "Confirmation",
             travelInsuranceMessage : "Travel insurance",
             nextSection : "Next section",
             previousSection: "Previous section",
@@ -237,6 +238,7 @@
 
         var ser =
         {    
+            durationMust :"Razlika datuma mora biti barem 1 dan",
             specLength : "Broj karaktera mora biti ",
             minLength : "Najmanja dužina je ",
             maxLength : "Najveća dužina je ",
@@ -266,11 +268,11 @@
             from : "Od",
             to : "Do",
             selectSport : "-Odaberite sport-",
-            firsts : "Prvi korak",
-            seconds : "Drugi korak",
-            thirds : "Treći korak",
-            fourths : "Četvrti korak",
-            fifths : "Peti korak",
+            firsts : "Osnovni podaci",
+            seconds : "Paketi",
+            thirds : "Cena",
+            fourths : "Podaci osoba",
+            fifths : "Potvrda",
             travelInsuranceMessage : "Putno osiguranje",
             nextSection : "Sledeći korak",
             previousSection: "Predhodni korak",

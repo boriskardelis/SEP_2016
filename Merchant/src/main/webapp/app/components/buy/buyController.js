@@ -9,6 +9,8 @@
 	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate, localStorageService) {
 		var vm = this;
 		
+		
+
 		console.log($translate.use());
 
 		vm.onlyNumbers = /^\d+$/;
@@ -552,6 +554,50 @@
 				passportNumber: "", 
 				phoneNumber: ""		
 			};
+		}
+
+		vm.firstPremission = function() {
+			console.log("JEJ");
+		}
+		vm.secondPremission = function() {
+			console.log("dva");
+			console.log($state.current.name);
+			if ($state.is('buy.firstStep')) {	
+				//zabrana za
+				return true;
+			} else {
+				return false;
+			}
+		}
+		vm.thirdPremission = function() {
+			console.log("dva");
+			console.log($state.current.name);
+			if ($state.is('buy.firstStep') || $state.is('buy.secondStep')) {	
+				//zabrana za
+				return true;
+			} else {
+				return false;
+			}
+		}
+		vm.fourthPremission = function() {
+			console.log("dva");
+			console.log($state.current.name);
+			if ($state.is('buy.firstStep') || $state.is('buy.secondStep') || $state.is('buy.thirdStep')) {	
+				//zabrana za
+				return true;
+			} else {
+				return false;
+			}
+		}
+		vm.fifthPremission = function() {
+			console.log("dva");
+			console.log($state.current.name);
+			if ($state.is('buy.firstStep') || $state.is('buy.secondStep') || $state.is('buy.thirdStep') || $state.is('buy.fourthStep')) {	
+				//zabrana za
+				return true;
+			} else {
+				return false;
+			}
 		}
 	}
 

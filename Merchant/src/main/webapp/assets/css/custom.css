@@ -18,6 +18,7 @@
 /*.red {
 	color: red;
 }*/
+
 .duration {
 	 border: 2px solid red;
 }
@@ -147,8 +148,9 @@ pre                             { margin-bottom:20px; }
 #status-buttons                 {  }
 #status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
 #status-buttons a:hover         { text-decoration:none; }
-#status-buttons span            { background: #222222; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px; 
+#status-buttons span            { background: #222222; display:block; height:20px; margin:0 auto 10px; padding-top:5px; width:120px; 
     border-radius:50%; }
+    /*Za krug 30px 30px hight  i width*/
 
 /* active buttons */
 #status-buttons a.active span   { background:#5bc0de; }

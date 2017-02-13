@@ -13,11 +13,11 @@
 	          <!-- the links to our nested states using relative paths -->
 	          <!-- add the active class if the state matches our ui-sref -->
           <div id="status-buttons" class="text-center">
-              <a ui-sref-active="active" ui-sref=".firstStep" ng-disabled="true"><span>1</span>{{ 'firsts' | translate }}</a>
-              <a ui-sref-active="active" ui-sref=".secondStep"><span>2</span> {{ 'seconds' | translate }}</a>
-              <a ui-sref-active="active" ui-sref=".thirdStep"><span>3</span> {{ 'thirds' | translate }}</a>
-              <a ui-sref-active="active" ui-sref=".fourthStep"><span>4</span> {{ 'fourths' | translate }}</a>
-              <a ui-sref-active="active" ui-sref=".fifthStep"><span>5</span> {{ 'fifths' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.firstPremission()" ui-sref=".firstStep"><span>1</span>{{ 'firsts' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.secondPremission()" ui-sref=".secondStep"><span>2</span> {{ 'seconds' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.thirdPremission()" ui-sref=".thirdStep"><span>3</span> {{ 'thirds' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.fourthPremission()" ui-sref=".fourthStep"><span>4</span> {{ 'fourths' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.fifthPremission()" ui-sref=".fifthStep"><span>5</span> {{ 'fifths' | translate }}</a>
           </div>
 		  </div>
 		      <!-- use ng-submit to catch the form submission and use our Angular function -->

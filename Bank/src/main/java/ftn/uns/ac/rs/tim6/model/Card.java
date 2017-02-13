@@ -34,8 +34,8 @@ public class Card implements Serializable {
 	@Column(name = "CARD_HOLDER_NAME")
 	private String cardHolderName;
 	
-	@Size(min = 14, max = 16)
-	@Column(name = "PAN", length = 13)
+	@Size(min = 10, max = 16)
+	@Column(name = "PAN")
 	private Long pan;
 	
 	@Size(min = 3, max = 4)
