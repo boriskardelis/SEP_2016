@@ -30,6 +30,7 @@
 		vm.sportSelected = localStorageService.cookie.get('sportSelected');
 		vm.startDate = localStorageService.cookie.get('startDate');
 		vm.endDate = localStorageService.cookie.get('endDate');
+		vm.ageTyped = localStorageService.cookie.get('ageTyped');
 
 		vm.insuranceTypeRoadCheck = localStorageService.cookie.get('insuranceTypeRoadCheck');
 		vm.insuranceTypeHomeCheck = localStorageService.cookie.get('insuranceTypeHomeCheck');
@@ -267,6 +268,8 @@
 			localStorageService.cookie.set('sportSelected', vm.sportSelected);
 			localStorageService.cookie.set('startDate', vm.startDate);
 			localStorageService.cookie.set('endDate', vm.endDate);
+			localStorageService.cookie.set('ageTyped', vm.ageTyped);
+
 
 			//Parsiranje datuma za prikazevanje u petom koraku
 			var startDay = vm.startDate.getDate();
