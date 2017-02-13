@@ -435,7 +435,7 @@
        		var personFormating = {};
        		console.log(vm.person);
        		for (var i=0;  i < vm.totalPersons - 1; i++) {
-				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i], address: vm.person.address[i], 
+				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i], 
 					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
 
 				persons.push(personFormating);		

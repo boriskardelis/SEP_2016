@@ -11,3 +11,13 @@ bower install angular angular-translate --save
 npm install gulp-sass gulp-uglify gulp-concat run-sequence browser-sync --save-dev
 
 check-list dependancy sam koristio za checkbx-ove
+
+#####################
+gulp od pocetka
+npm install -g gulp-cli //ovo radimo samo jednom po računaru
+npm install gulp --save-dev
+npm install
+######################
+gulo uglify
+npm install --save-dev gulp-uglify
+######################
