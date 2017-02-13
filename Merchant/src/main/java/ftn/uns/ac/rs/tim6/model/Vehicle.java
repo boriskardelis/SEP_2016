@@ -32,7 +32,7 @@ public class Vehicle implements Serializable {
 
 /*	@Min(value = 1900)
 	@Max(value = 2017)*/
-	@Column(name = "YEAR_OF_PRODUCTION")
+	@Column(name = "YEAR_OF_PRODUCTION", length = 4)
 	private int yearOfProduction;
 
 	@Size(min = 5, max = 10)

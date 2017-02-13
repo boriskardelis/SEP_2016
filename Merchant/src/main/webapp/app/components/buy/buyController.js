@@ -176,7 +176,7 @@
 
 	    
     	//Date
-    	//if (vm.startDate == null) {
+    	//if (vm.startDate == null & vm.endDate == null) {
 			vm.startDate = new Date();
 			var forwardDate = new Date();
 			forwardDate.setDate(forwardDate.getDate() + 1);
@@ -188,11 +188,11 @@
 		    minDate: new Date(),
 		    startingDay: 1	//da pocinje od ponedeljka
 		};
-		vm.dateOptionsEnd = {
+		/*vm.dateOptionsEnd = {
 		    maxDate: new Date(2020, 5, 22),
-		    minDate: vm.endDate,
+		    minDate: vm.startDate,
 		    startingDay: 1
-		};
+		};*/
 
 		vm.openStart = function() {
 		   	console.log("OPENED");
@@ -208,29 +208,47 @@
 		    });		
 		};
 
-		$scope.$watch('vm.startDate', function(newVal, oldVal){
-		   // localStorageService.cookie.set('proba', newVal);
-		   console.log("WATCHINGGGGGGGGG");
-		   console.log(newVal);
-		   console.log(oldVal);
+	    $scope.$watch("vm.startDate", function(newValue, oldValue) {			
+			if(vm.startDate.getTime() > vm.endDate.getTime()) {
+				
+				vm.endDate= vm.startDate;
+				/*console.log("DAT NAKON dodele" + vm.endDate);
+				var date = vm.startDate.getDate();
+				var month = vm.startDate.getMonth();
+				var year = vm.startDate.getFullYear();
+				vm.endDate.setDate(date+1);
+				vm.endDate.setMonth(month);
+				vm.endDate.setFullYear(year);*/
+
+				console.log("DAT NAKON povecanja" + vm.endDate);
+				//vm.endDate = vm.startDate.setDate(vm.startDate + 1);
+			}	
+			
+			vm.dateOptionsEnd = {
+			minDate : vm.startDate,
+			};
+		});
 	
-	    });
 
 		vm.startDatePicked = function() {
-			console.log("NA POCETKU FUNK");
+
+			/*console.log("NA POCETKU FUNK");
 			console.log(vm.startDate);
 			var startDate = vm.startDate.getDate();
 			if (vm.endDate <= vm.startDate) {
 				console.log("usao END");
 				console.log(vm.endDate);
-				vm.endDate.setDate(startDate + 1);
+				vm.endDate = vm.endDate.setDate(startDate + 1);
+
 				console.log("AFTERDAY END");
 				console.log(vm.endDate);
+
+
 			}	
-				/*vm.startDate.setDate(startDate + 1);
-				vm.dateOptionsEnd.minDate = vm.startDate;*/
+				vm.startDate.setDate(startDate + 1);
+				vm.dateOptionsEnd.minDate = vm.startDate;
 				console.log("START DATE");
-				console.log(vm.startDate);
+				console.log(vm.startDate);*/
 		};
 		vm.endDatePicked = function() {
 			/*if (vm.endDate < vm.startDate)
@@ -240,7 +258,7 @@
 		vm.calculateFirstStep = function() {
 
 			vm.submittedFirst = true;
-			if (vm.form.$invalid) return;
+			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime())) return;
 
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
 			localStorageService.cookie.set('sumToSelected', vm.sumToSelected);
@@ -256,7 +274,7 @@
 			vm.startDateParsed = startDate;
 
 			var endDay = vm.endDate.getDate();
-			var endMonth = vm.endDate.getMonth()+1;
+			var endMonth = vm.endDate.getMonth();
 			var endYear = vm.endDate.getFullYear();
 			var endDate = endDay + '.' + endMonth +'.' + endYear;
 			vm.endDateParsed = endDate;

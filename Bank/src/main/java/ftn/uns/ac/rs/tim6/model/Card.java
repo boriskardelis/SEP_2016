@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "CARD")
@@ -21,19 +22,23 @@ public class Card implements Serializable {
 	@GeneratedValue
 	@Column(name = "CARD_ID")
 	private Integer id;
-
+	
+	@Size(min = 1, max = 31)
 	@Column(name = "MONTH")
 	private Long month;
-
-	@Column(name = "YEAR")
+	
+	@Column(name = "YEAR", length = 4)
 	private Long year;
-
+	
+	@Size(min = 1, max = 30)
 	@Column(name = "CARD_HOLDER_NAME")
 	private String cardHolderName;
-
-	@Column(name = "PAN")
+	
+	@Size(min = 14, max = 16)
+	@Column(name = "PAN", length = 13)
 	private Long pan;
-
+	
+	@Size(min = 3, max = 4)
 	@Column(name = "SECURITY_CODE")
 	private Long securityCode;
 

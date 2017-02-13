@@ -9,6 +9,8 @@
 	function PaymentCtrl($scope, $stateParams, $timeout, PaymentService, $window) {
 		var vm = this;
 
+		vm.isDisabled = false;
+
 		var date = new Date();
 		vm.currentYear = date.getFullYear();
 
@@ -29,7 +31,9 @@
 		vm.pay = function() {
 
 			vm.submitted = true;
-			if (vm.form.$invalid) return;
+			if (vm.form.$invalid) 
+				return;
+			
 
 			console.log("placeno");
 			vm.card.paymentId = vm.paymentId;
@@ -43,12 +47,18 @@
 			});
 		};
 
-		vm.isDisabled = false;
+		
 		//Zasto ne radi sa VM (this)?!
 	    $scope.buttonDisable = function() {
 	   	    console.log("USAO U FUNK");  
 	        $timeout(function() {
-		        $scope.isDisabled = true;
+		        if (vm.form.$invalid) {
+		        	console.log("INVALID")
+					$scope.isDisabled = false
+				} else {
+					console.log("VALID")
+			        $scope.isDisabled = true;
+			        }
 		        console.log('update with timeout fired');
 		    }, 0);
 	    }
