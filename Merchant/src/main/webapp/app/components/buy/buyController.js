@@ -32,6 +32,14 @@
 		vm.endDate = localStorageService.cookie.get('endDate');
 		vm.ageTyped = localStorageService.cookie.get('ageTyped');
 
+	
+		vm.droolPrices = {
+			premiumPrice: localStorageService.cookie.get('droolPrices.premiumPrice'), 
+			discountPrice: localStorageService.cookie.get('droolPrices.discountPrice'), 
+			taxPrice: localStorageService.cookie.get('droolPrices.taxPrice'), 
+			totalPrice: localStorageService.cookie.get('droolPrices.totalPrice') 
+		};
+
 		vm.insuranceTypeRoadCheck = localStorageService.cookie.get('insuranceTypeRoadCheck');
 		vm.insuranceTypeHomeCheck = localStorageService.cookie.get('insuranceTypeHomeCheck');
 		vm.towingCheck = localStorageService.cookie.get('towingCheck');
@@ -145,18 +153,6 @@
 
 			console.log("regions:");
 			console.log(vm.regions);
-
-			/*for (var i=0;  i < vm.ages.length; i++) {
-				
-				//localStorageService.cookie.set('ageTyped[i]', vm.ageTyped[i]);
-				
-				//vm.ageTyped = localStorageService.cookie.get('ageTyped[i]'),
-				vm.ageTyped  = {
-					number: localStorageService.cookie.get('ageTyped.number[i]'), 
-					
-					writable: true						
-				};		
-			}*/
 					
 		});
 
@@ -311,6 +307,10 @@
 			localStorageService.cookie.set('towingCheck', vm.towingCheck);
 			localStorageService.cookie.set('towingSelected', vm.towingSelected);
 
+			localStorageService.cookie.set('droolPrices.premiumPrice', vm.droolPrices.premiumPrice);
+			localStorageService.cookie.set('droolPrices.discountPrice', vm.droolPrices.discountPrice);
+			localStorageService.cookie.set('droolPrices.taxPrice', vm.droolPrices.taxPrice);
+			localStorageService.cookie.set('droolPrices.totalPrice', vm.droolPrices.totalPrice);
 			
 			localStorageService.cookie.set('repairsCheck', vm.repairsCheck);
 			localStorageService.cookie.set('repairSelected', vm.repairSelected);
@@ -456,9 +456,9 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			 	$timeout(function() {
+			 	//$timeout(function() {
 			     	$window.location = vm.paymentUrlAndID.url;	
-			    }, 200000);
+			   // }, 200000);
 			    
 		    });
     	};

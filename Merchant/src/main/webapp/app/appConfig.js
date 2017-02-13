@@ -135,6 +135,11 @@
 
         var eng =
         {   
+            homeUrl : "Return to homepage of ChuckNorris insruance",
+            bankUrl : "Return to bank to change data of card",
+            successfulPayment : "Successful payment",
+            errorPayment : "Error has occurred",
+            failedPayment : "Payment failed",
             durationMust : "Duration must be at least 1 day",
             specLength : "Characters length must be ",
             minLength : "Min characters is ",
@@ -238,6 +243,11 @@
 
         var ser =
         {    
+            homeUrl : "Vratite se na početak stranice Chuck Norris osiguranja",
+            bankUrl : "Vratite se na banku da promenite podatke o kartici",
+            successfulPayment : "Uspešno plaćanje",
+            errorPayment : "Dogodila se greška",
+            failedPayment : "Neuspešno plaćanje",
             durationMust :"Razlika datuma mora biti barem 1 dan",
             specLength : "Broj karaktera mora biti ",
             minLength : "Najmanja dužina je ",

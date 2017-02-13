@@ -22,17 +22,37 @@
 			
 			//status 0-SUCCESSFUL 1-FAILED 2-ERROR
 			//result 0-SUCCESSFUL, 1-INSUFFICIENT_FUNDS, 2-INVALID_DATE, 3-CVC_INVALID
-			if (vm.status == "SUCCESSFUL") {
-				vm.message = "Your payment hes been successfull. Check your email for the report"; 
-			} else if (vm.status == "FAILED" && vm.result == "INSUFFICIENT_FUNDS") {
-				vm.message = "Insufficient funds on your bank account";
-			} else if (vm.status == "FAILED" && vm.result == "INVALID_DATE") {
-				vm.message = "Your card date is not valid";
-			} else if (vm.status == "FAILED" && vm.result == "CVC_INVALID") {
-				vm.message = "Your CVV2/CVC2 is invalid.";
-			} else if (vm.status == "ERROR") {
-				vm.message = "Error has occurred on server side, please try again later";
-			}		
+			if ($translate.use() == "English") {
+				if (vm.status == "SUCCESSFUL") {
+					vm.message = "Your payment hes been successfull. Check your email for the report"; 
+				} else if (vm.status == "FAILED" && vm.result == "INSUFFICIENT_FUNDS") {
+					vm.message = "Insufficient funds on your bank account";
+				} else if (vm.status == "FAILED" && vm.result == "INVALID_DATE") {
+					vm.message = "Your card date is not valid";
+				} else if (vm.status == "FAILED" && vm.result == "CVC_INVALID") {
+					vm.message = "Your CVV2/CVC2 is invalid.";
+				} else if (vm.status == "ERROR") {
+					vm.message = "Error has occurred on server side, please try again later";
+				} else if (vm.status == "FAILED" && vm.status == "INVALID_CARD") {
+					vm.message = "Invalid card";
+				}
+			}
+
+			if ($translate.use() == "Serbian") {
+				if (vm.status == "SUCCESSFUL") {
+					vm.message = "Plaćanje je uspešno. Provertite vaš email za izveštaj"; 
+				} else if (vm.status == "FAILED" && vm.result == "INSUFFICIENT_FUNDS") {
+					vm.message = "Nedovoljno sredstava na vašem bankovnom računu";
+				} else if (vm.status == "FAILED" && vm.result == "INVALID_DATE") {
+					vm.message = "Datum na kartici nije validan";
+				} else if (vm.status == "FAILED" && vm.result == "CVC_INVALID") {
+					vm.message = "Bezbednosti kod nije validan";
+				} else if (vm.status == "ERROR") {
+					vm.message = "Desila se greška na serveru, pokušajte ponovo";
+				} else if (vm.status == "FAILED" && vm.status == "INVALID_CARD") {
+					vm.message = "Nevažeća kartica";
+				}	
+			}			
 		});
 
 		 vm.redirectBackOnBank = function() {

@@ -2,27 +2,27 @@
 
 
 <div ng-if="vm.status == 'SUCCESSFUL'" class="col-md-8 col-md-offset-2 form-div">
-    <p class="h3 bg-success" align="center">Payment successful</p>
+    <p class="h3 bg-success" align="center" translate="successfulPayment"></p>
     <br>
     <p class="url-font">&nbsp{{vm.message}}</p>
     <br>
-    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+    <a ui-sref="home" class="btn btn-block btn-info a-font" translate="homeUrl"></a>
 </div>
 
 <div ng-if="vm.status == 'ERROR'" class="col-md-8 col-md-offset-2 form-div">
-    <p class="h3 bg-danger" align="center">Error has occurred</p>
+    <p class="h3 bg-danger" align="center" translate="errorPayment"></p>
     <br>
     <p class="url-font">&nbsp{{vm.message}}</p>
     <br>
-    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+    <a ui-sref="home" class="btn btn-block btn-info a-font" translate="homeUrl"></a>
 </div>
 
 <div ng-if="vm.status == 'FAILED'" class="col-md-8 col-md-offset-2 form-div">
-    <p class="h3 bg-danger" align="center">Payment failed</p>
+    <p class="h3 bg-danger" align="center" translate="failedPayment"></p>
     <br>
     <p class="url-font">&nbsp{{vm.message}}</p>
     <br>
   
-    <a  class="btn btn-block btn-info a-font"   ng-click="vm.redirectBackOnBank()">Return to bank to change data of card</a>
-    <a ui-sref="home" class="btn btn-block btn-info a-font">Return to homepage of ChuckNorris insruance</a>
+    <a  class="btn btn-block btn-info a-font"   ng-click="vm.redirectBackOnBank()" translate="bankUrl"></a>
+    <a ui-sref="home" class="btn btn-block btn-info a-font" translate="homeUrl"></a>
 </div>
