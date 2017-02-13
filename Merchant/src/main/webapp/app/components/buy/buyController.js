@@ -232,32 +232,6 @@
 			};
 		});
 	
-
-		vm.startDatePicked = function() {
-
-			/*console.log("NA POCETKU FUNK");
-			console.log(vm.startDate);
-			var startDate = vm.startDate.getDate();
-			if (vm.endDate <= vm.startDate) {
-				console.log("usao END");
-				console.log(vm.endDate);
-				vm.endDate = vm.endDate.setDate(startDate + 1);
-
-				console.log("AFTERDAY END");
-				console.log(vm.endDate);
-
-
-			}	
-				vm.startDate.setDate(startDate + 1);
-				vm.dateOptionsEnd.minDate = vm.startDate;
-				console.log("START DATE");
-				console.log(vm.startDate);*/
-		};
-		vm.endDatePicked = function() {
-			/*if (vm.endDate < vm.startDate)
-				vm.startDate = vm.endDate;*/
-		};
-
 		vm.calculateFirstStep = function() {
 
 			vm.submittedFirst = true;
@@ -482,7 +456,10 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			    $window.location = vm.paymentUrlAndID.url;	
+			 	$timeout(function() {
+			     	$window.location = vm.paymentUrlAndID.url;	
+			    }, 200000);
+			    
 		    });
     	};
 
