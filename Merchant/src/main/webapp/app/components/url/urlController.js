@@ -5,8 +5,8 @@
 		.module('merchantApp')
 		.controller('UrlCtrl', UrlCtrl);
 
-	UrlCtrl.$inject = ['$scope', '$stateParams', 'UrlService', '$window'];
-	function UrlCtrl($scope, $stateParams, UrlService, $window) {
+	UrlCtrl.$inject = ['$scope', '$stateParams', 'UrlService', '$window','$translate'];
+	function UrlCtrl($scope, $stateParams, UrlService, $window, $translate) {
 		var vm = this;
 
 		var paymentId = $stateParams.paymentId;
@@ -33,7 +33,7 @@
 					vm.message = "Your CVV2/CVC2 is invalid.";
 				} else if (vm.status == "ERROR") {
 					vm.message = "Error has occurred on server side, please try again later";
-				} else if (vm.status == "FAILED" && vm.status == "INVALID_CARD") {
+				} else if (vm.status == "FAILED" && vm.result == "INVALID_CARD") {
 					vm.message = "Invalid card";
 				}
 			}
@@ -49,7 +49,7 @@
 					vm.message = "Bezbednosti kod nije validan";
 				} else if (vm.status == "ERROR") {
 					vm.message = "Desila se greška na serveru, pokušajte ponovo";
-				} else if (vm.status == "FAILED" && vm.status == "INVALID_CARD") {
+				} else if (vm.status == "FAILED" && vm.result == "INVALID_CARD") {
 					vm.message = "Nevažeća kartica";
 				}	
 			}			

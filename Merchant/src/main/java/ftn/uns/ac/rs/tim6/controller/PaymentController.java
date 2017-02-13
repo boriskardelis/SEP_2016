@@ -70,6 +70,9 @@ public class PaymentController {
 			urldto.setUrl("https://localhost:8080/paymentError?paymentId=" + rmdto.getPaymentId());
 			urldto.setStatus(Status.ERROR);
 
+		} else if (rezultat.equals(TransactionResult.INVALID_CARD)) {
+			urldto.setUrl("https://localhost:8080/paymentError?paymentId=" + rmdto.getPaymentId());
+			urldto.setStatus(Status.FAILED);
 		}
 		setAndSavePayment(rmdto, urldto);
 

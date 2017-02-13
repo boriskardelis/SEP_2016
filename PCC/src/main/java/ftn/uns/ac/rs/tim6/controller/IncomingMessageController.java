@@ -52,32 +52,44 @@ public class IncomingMessageController {
 		HttpHeaders headers = new HttpHeaders();
 		ResponseMessageDto rmdto = new ResponseMessageDto();
 		// TODO korak 7
-		Bank bank = findBankByPan(aodto.getPan(), rmdto);
-
-		if (bank != null) {
-			setAndSaveIncomingMessage(aodto, bank);
-		}else {
-			rmdto.setResult(TransactionResult.ERROR);
-		}
-		rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
-		rmdto.setAcquirerTimestamp(aodto.getTimestamp());
-
+		Bank bank;
 		try {
 
-			headers.setContentType(MediaType.APPLICATION_JSON);
-			HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
-			// check certificates
-			CheckerCertificates checkerCertificate = new CheckerCertificates();
-			checkerCertificate.doTrustToCertificates();
-			rmdto = client.postForObject("https://localhost:" + bank.getPort() + "/api/reservation", entity,
-					ResponseMessageDto.class);
-			setAndSaveResponseMessage(rmdto, bank);
+			bank = findBankByPan(aodto.getPan(), rmdto);
+			if (bank != null) {
+				setAndSaveIncomingMessage(aodto, bank);
+			}
+
+			rmdto.setAcquirerOrderId(aodto.getAcquirerOrderId());
+			rmdto.setAcquirerTimestamp(aodto.getTimestamp());
+			if (bank == null) {
+				rmdto.setResult(TransactionResult.INVALID_CARD);
+				return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
+			}
+
+			try {
+
+				headers.setContentType(MediaType.APPLICATION_JSON);
+				HttpEntity<AcquirerOrderDto> entity = new HttpEntity<AcquirerOrderDto>(aodto, headers);
+				// check certificates
+				CheckerCertificates checkerCertificate = new CheckerCertificates();
+				checkerCertificate.doTrustToCertificates();
+				rmdto = client.postForObject("https://localhost:" + bank.getPort() + "/api/reservation", entity,
+						ResponseMessageDto.class);
+				setAndSaveResponseMessage(rmdto, bank);
+				return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
+
+			} catch (Exception e) {
+				rmdto.setResult(TransactionResult.ERROR);
+				return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
+			}
+		} catch (Exception e) {
+
+			rmdto.setResult(TransactionResult.INVALID_CARD);
 			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
 
-		} catch (Exception e) {
-			rmdto.setResult(TransactionResult.ERROR);
-			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.BAD_REQUEST);
 		}
+
 	}
 
 	private void setAndSaveResponseMessage(ResponseMessageDto rmdto, Bank bank) {
@@ -120,7 +132,7 @@ public class IncomingMessageController {
 			}
 		}
 		System.out.println("NISMO NASLI SMO BANKU!!!");
-		rmdto.setResult(TransactionResult.ERROR);
+		rmdto.setResult(TransactionResult.INVALID_CARD);
 		return null;
 	}
 

@@ -49,10 +49,17 @@ public class AcquirerOrderReservationController {
 		MathContext mc = new MathContext(10);
 
 		System.out.println("stigli smo u banku B " + aodto.getPan());
-		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
-		BigDecimal b1 = account.getAccountBalance();
+		
 
 		Card card = cardService.findByPan(aodto.getPan());
+		
+		if (card == null) {
+			rmdto.setResult(TransactionResult.INVALID_CARD);
+			System.out.println("kartica nije validna");
+			return new ResponseEntity<ResponseMessageDto>(rmdto, HttpStatus.OK);
+		}
+		int res = account.getAccountBalance().compareTo(aodto.getTransactionAmount());
+		BigDecimal b1 = account.getAccountBalance();
 		Boolean valid = cardCheck(card, aodto, rmdto);
 	
 
@@ -83,6 +90,7 @@ public class AcquirerOrderReservationController {
 
 		} else {
 
+			rmdto.setResult(TransactionResult.INVALID_CARD);
 			System.out.println("kartica nije validna");
 
 		}
@@ -107,9 +115,9 @@ public class AcquirerOrderReservationController {
 				return true;
 
 			} else {
-				rmdto.setResult(TransactionResult.ERROR);
+				rmdto.setResult(TransactionResult.INVALID_CARD);
 			}
-			rmdto.setResult(TransactionResult.ERROR);
+			rmdto.setResult(TransactionResult.INVALID_CARD);
 			if (card.getMonth().longValue() != aodto.getExpDateMonth().longValue()
 					|| card.getYear().longValue() != aodto.getExpDateYear().longValue()) {
 				rmdto.setResult(TransactionResult.INVALID_DATE);
@@ -118,7 +126,7 @@ public class AcquirerOrderReservationController {
 				rmdto.setResult(TransactionResult.CVC_INVALID);
 			}
 		} else {
-			rmdto.setResult(TransactionResult.ERROR);
+			rmdto.setResult(TransactionResult.INVALID_CARD);
 		}
 		return false;
 	}

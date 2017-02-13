@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class ResponseMessageDto {
 
 	public enum TransactionResult {
-		SUCCESSFUL, INSUFFICIENT_FUNDS, INVALID_DATE, CVC_INVALID, ERROR, NOT_STARTED
+		SUCCESSFUL, INSUFFICIENT_FUNDS, INVALID_DATE, CVC_INVALID, ERROR, NOT_STARTED, INVALID_CARD
 	}
 
 	private TransactionResult result;
