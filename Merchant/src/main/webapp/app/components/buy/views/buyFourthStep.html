@@ -177,6 +177,7 @@
         <p class="h4 bg-success" align="center">{{ 'insurancedPersons' | translate }}</p>
     </div>
      <span ng-repeat="person in vm.persons track by $index"> <!-- -1 iz razloga sto je jedan nosioc -->
+        <div ng-form="vm.innerForm">
             <div  class="form-group row">
                  <div class="col-xs-1" style="width: 0.5%">
                     <br><br>
@@ -184,7 +185,14 @@
                  </div>
                  <buy-persons-directive person="person" form-fourth="vm.formFourth" submitted-fourth="vm.submittedFourth"></buy-persons-directive>
             </div>
-
+            <div class="form-group row">
+                <p class="err-val p-inline" ng-show="vm.innerForm.firstName.$error.required && vm.submittedFourth">{{ 'requiredFields' | translate }}.</p>
+                <p class="err-val p-inline" ng-show="vm.innerForm.jmbg.$error.minlength && vm.formFourth.jmbg.$touched">&nbsp{{ 'jmbgErr' | translate }}</p>
+                <p class="err-val  p-inline" ng-show="vm.innerForm.jmbg.$error.maxlength && vm.formFourth.jmbg.$touched">&nbsp{{ 'jmbgErr' | translate }}</p>
+                <p class="err-val  p-inline" ng-show="vm.innerForm.passportNumber.$error.minlength && vm.formFourth.passportNumber.$touched">&nbsp{{ 'passportErr' | translate }}</p>
+                <p class="err-val  p-inline" ng-show="vm.innerForm.passportNumber.$error.maxlength && vm.formFourth.passportNumber.$touched">&nbsp{{ 'passportErr' | translate }}</p>         
+            </div>
+        </div>
            
     </span>
 
