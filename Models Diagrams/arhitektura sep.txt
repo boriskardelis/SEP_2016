@@ -1,0 +1,17 @@
+Arhitektura projekta SEP 2016:
+
+frontend:
+angular
+html
+css
+single page aplication
+
+backend:
+java - spring
+restful servisi
+
+baza:
+MySql
+
+testiranje:
+unit testovi
