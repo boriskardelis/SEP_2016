@@ -387,6 +387,8 @@
 
 		vm.calculateFifthStep = function() {
 
+			vm.submittedSecondRoad = true;
+
 			vm.submitted = true;
 			if (vm.formFifth.$invalid) return;
 
@@ -408,9 +410,9 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			 	$timeout(function() {
+			 	//$timeout(function() {
 			     	$window.location = vm.paymentUrlAndID.url;	
-			    }, 200000);
+			    //}, 200000);
 			    
 		    });
     	};

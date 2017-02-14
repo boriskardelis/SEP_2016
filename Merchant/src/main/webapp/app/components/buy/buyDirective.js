@@ -16,9 +16,7 @@
         		// vm.age = scope.age;
         		//console.log(vm.age);
         		console.log(scope.ageIndex);
-
-
-        		
+	
         		
         	},
         	templateUrl: 'app/components/buy/views/buyDirective.html',
