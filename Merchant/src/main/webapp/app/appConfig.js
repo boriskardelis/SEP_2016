@@ -135,6 +135,7 @@
 
         var eng =
         {   
+            requiredPerson : "At least one person has to be insured",
             homeUrl : "Return to homepage of ChuckNorris insruance",
             bankUrl : "Return to bank to change data of card",
             successfulPayment : "Successful payment",
@@ -192,7 +193,7 @@
             vehicleMake : "Vehcile make:",
             vehicleOwnerFN : "Vehicle owner first name:",
             vehicleOwnerLN : "Vehicle owner last name:",
-            vehicleOwnerJMBG : "Vehicle owner personal identification number:",
+            vehicleOwnerJMBG : "Vehicle owner JMBG:",
             vehicleType : "Vehicle type:",
             vinNumber : "Vin number:",
             yearOfProduction : "Year of production:",
@@ -242,6 +243,7 @@
 
         var ser =
         {    
+            requiredPerson : "Barem jedna osoba mora biti osigurana",
             homeUrl : "Vratite se na početak stranice Chuck Norris osiguranja",
             bankUrl : "Vratite se na banku da promenite podatke o kartici",
             successfulPayment : "Uspešno plaćanje",

@@ -26,8 +26,9 @@
 				age: '=',
 				ageIndex: '=',
 				ageTyped: '=',
-				onlyNumbers: '='
-
+				onlyNumbers: '=',
+				form: "=",
+                submittedFirst: "="
 				
 				//očekuje se u HTMLu atribut koji ide uz direktivu i koji se zove employee.
 				//kada stavimo '=' prosleđujemo referencu na neku vrednost iz nekog roditeljskog scope-a,

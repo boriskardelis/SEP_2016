@@ -7,10 +7,11 @@
             <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters" towing-selected="vm.towingSelected" repair-selected="vm.repairSelected" accommodation-selected="vm.accommodationSelected" alternative-ride-selected="vm.alternativeRideSelected" vehicle="vm.vehicle" home="vm.home" surface-selected="vm.surfaceSelected" age-apartment-selected="vm.ageApartmentSelected" value-apartment-selected="vm.valueApartmentSelected" disaster-selected="vm.disasterSelected"></buy-additional-directive></li>
          </ul>
     </div> -->
-<form ng-class="{'submitted': vm.submittedSecond}" id="signup-form" ng-submit="vm.calculateSecondStep()" name="vm.formSecond" novalidate>
+
     <div class="form-group unity">
             <label class="buy-lable" translate="additionalInsurance"></label>
             <!-- <ul ng-repeat="insuranceType in vm.insuranceTypes"> -->
+            <form ng-class="{'submitted': vm.submittedSecondRoad}" id="signup-form"  name="vm.formSecondRoad" novalidate>
             <div class="checkbox">
                 <label class="form-check-label">
                     <input type="checkbox" ng-model="vm.insuranceTypeRoadCheck" ng-change="vm.insuranceTypeRoadChecking()"><p class="adit-text">{{vm.insuranceTypeRoad.insuranceName}}</p>
@@ -35,7 +36,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4">
-                            <p class="err-val" ng-show="vm.formSecond.towingSelected.$error.required && vm.submittedSecond">{{ 'requiredFieldPackage' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.towingSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
                         </div>
                     </div>
 
@@ -53,7 +54,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4">
-                            <p class="err-val" ng-show="vm.formSecond.repairSelected.$error.required && vm.submittedSecond">{{ 'requiredFieldPackage' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.repairSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
                         </div>
                     </div>
 
@@ -71,7 +72,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4">
-                            <p class="err-val" ng-show="vm.formSecond.accommodationSelected.$error.required && vm.submittedSecond">{{ 'requiredFieldPackage' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.accommodationSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
                         </div>
                     </div>
 
@@ -89,7 +90,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-4">
-                            <p class="err-val" ng-show="vm.formSecond.alternativeRideSelected.$error.required && vm.submittedSecond">{{ 'requiredFieldPackage' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.alternativeRideSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
                         </div>
                     </div>
 
@@ -110,9 +111,9 @@
                     </div>      
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.minlength && vm.formSecond.registrationNumber.$touched">{{ 'minLength' | translate }}5</p>
-                             <p class="err-val" ng-show="vm.formSecond.registrationNumber.$error.maxlength && vm.formSecond.registrationNumber.$touched">{{ 'maxLength' | translate }}10</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.minlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'minLength' | translate }}5</p>
+                             <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.maxlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'maxLength' | translate }}10</p>
                         </div>
                     </div>
 
@@ -126,8 +127,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.make.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.make.$error.maxlength && vm.formSecond.make.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.make.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.make.$error.maxlength && vm.formSecondRoad.make.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -141,8 +142,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.ownerFirstName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerFirstName.$error.maxlength && vm.formSecond.ownerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerFirstName.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerFirstName.$error.maxlength && vm.formSecondRoad.ownerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -156,8 +157,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.ownerLastName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerLastName.$error.maxlength && vm.formSecond.ownerLastName.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerLastName.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerLastName.$error.maxlength && vm.formSecondRoad.ownerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -171,9 +172,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.minlength && vm.formSecond.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerJmbg.$error.maxlength && vm.formSecond.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.minlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.maxlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
                         </div>
                     </div>
 
@@ -187,8 +188,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.type.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.type.$error.maxlength && vm.formSecond.type.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.type.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.type.$error.maxlength && vm.formSecondRoad.type.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -202,9 +203,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.minlength && vm.formSecond.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
-                            <p class="err-val" ng-show="vm.formSecond.vinNumber.$error.maxlength && vm.formSecond.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.minlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.maxlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
                         </div>
                     </div>
 
@@ -218,13 +219,15 @@
                     </div>
                     <div class="form-group row unity">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.minlength && vm.formSecond.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
-                            <p class="err-val" ng-show="vm.formSecond.yearOfProduction.$error.maxlength && vm.formSecond.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.minlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
+                            <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.maxlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
                         </div>
                     </div>
                 </div>          
             </div>
+</form>
+<form ng-class="{'submitted': vm.submittedSecondHome}" id="signup-form"  name="vm.formSecondHome" novalidate>
 
             <div class="checkbox">
                 <label class="form-check-label">
@@ -247,9 +250,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.address.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.address.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
                         </div>
-                        <p class="err-val" ng-show="vm.formSecond.address.$error.maxlength && vm.formSecond.address.$touched">{{ 'maxLength' | translate }}30</p>
+                        <p class="err-val" ng-show="vm.formSecondHome.address.$error.maxlength && vm.formSecondHome.address.$touched">{{ 'maxLength' | translate }}30</p>
                     </div>
 
                     <div class="form-group row">
@@ -262,8 +265,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.homeOwenerFirstName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.homeOwenerFirstName.$error.maxlength && vm.formSecond.homeOwenerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.homeOwenerFirstName.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.homeOwenerFirstName.$error.maxlength && vm.formSecondHome.homeOwenerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -277,8 +280,8 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.homeOwnerLastName.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                             <p class="err-val" ng-show="vm.formSecond.homeOwnerLastName.$error.maxlength && vm.formSecond.homeOwnerLastName.$touched">{{ 'maxLength' | translate }}30</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.homeOwnerLastName.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                             <p class="err-val" ng-show="vm.formSecondHome.homeOwnerLastName.$error.maxlength && vm.formSecondHome.homeOwnerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
 
@@ -292,9 +295,9 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.minlength && vm.formSecond.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
-                            <p class="err-val" ng-show="vm.formSecond.ownerJMBG.$error.maxlength && vm.formSecond.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.minlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.maxlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
                         </div>
                     </div>
 
@@ -310,7 +313,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.surfaceSelected.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.surfaceSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
                         </div>
                     </div>
 
@@ -326,7 +329,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.ageApartmentSelected.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ageApartmentSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
                         </div>
                     </div>
 
@@ -342,7 +345,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.valueApartmentSelected.$error.required && vm.submittedSecond">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.valueApartmentSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
                         </div>
                     </div>
 
@@ -358,17 +361,19 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecond.disasterSelected.$error.required && vm.submittedSecond" >{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.disasterSelected.$error.required && vm.submittedSecondHome" >{{ 'requiredField' | translate }}</p>
                         </div>
                     </div>
 
                 </div>                              
             </div>
+        </form>
      </div>
-    
+
+
     <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
-            <button type="submit" class="btn btn-block btn-info">
+            <button  class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()">
             {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
             </button>
             <button ui-sref="buy.firstStep" class="btn btn-block btn-info">
@@ -378,6 +383,6 @@
         </div>
     </div>
     <br>
-</form>
+
 
 <!--   <button ui-sref="buy.thirdStep" class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()"> -->

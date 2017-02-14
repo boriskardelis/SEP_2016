@@ -9,9 +9,8 @@
 	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate, localStorageService) {
 		var vm = this;
 		
-		
-
 		console.log($translate.use());
+		console.log(vm.form);
 
 		vm.onlyNumbers = /^\d+$/;
 
@@ -23,7 +22,7 @@
 		        $scope.isDisabled = true;
 		        console.log('update with timeout fired');
 		    }, 0);
-	    }
+	    };
 
 		vm.regionSelected = localStorageService.cookie.get('regionSelected');
 		vm.sumToSelected = localStorageService.cookie.get('sumToSelected');
@@ -232,6 +231,7 @@
 
 			vm.submittedFirst = true;
 			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime())) return;
+			vm.submittedFirst = false;
 
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
 			localStorageService.cookie.set('sumToSelected', vm.sumToSelected);
@@ -299,18 +299,30 @@
 
 		vm.calculateSecondStep = function() {
 
-			vm.submittedSecond = true;
-			if (vm.formSecond.$invalid) return;
+			if (vm.insuranceTypeRoadCheck) {
+				console.log("ROAD VALIDATE");
+				vm.formSecondRoad.$validate;
+			} 
+			if (vm.insuranceTypeHomeCheck) {
+				console.log("HOME VALIDATE");
+				vm.formSecondHome.$validate;
+			}
+
+			vm.submittedSecondRoad = true;
+			if (vm.formSecondRoad.$invalid) return;
+
+			vm.submittedSecondHome = true;
+			if (vm.formSecondHome.$invalid) return;
+
+			vm.submittedSecondRoad = false;
+			vm.submittedSecondHome = false;
 
 			localStorageService.cookie.set('insuranceTypeRoadCheck', vm.insuranceTypeRoadCheck);
 			localStorageService.cookie.set('insuranceTypeHomeCheck', vm.insuranceTypeHomeCheck);
 			localStorageService.cookie.set('towingCheck', vm.towingCheck);
 			localStorageService.cookie.set('towingSelected', vm.towingSelected);
 
-			localStorageService.cookie.set('droolPrices.premiumPrice', vm.droolPrices.premiumPrice);
-			localStorageService.cookie.set('droolPrices.discountPrice', vm.droolPrices.discountPrice);
-			localStorageService.cookie.set('droolPrices.taxPrice', vm.droolPrices.taxPrice);
-			localStorageService.cookie.set('droolPrices.totalPrice', vm.droolPrices.totalPrice);
+			
 			
 			localStorageService.cookie.set('repairsCheck', vm.repairsCheck);
 			localStorageService.cookie.set('repairSelected', vm.repairSelected);
@@ -364,7 +376,14 @@
 			BuyService.postCalculate(vm.itemsForDrools)
 				.then(function(response) {
 			 		vm.droolPrices = response.data;
+
+				    localStorageService.cookie.set('droolPrices.premiumPrice', vm.droolPrices.premiumPrice);
+					localStorageService.cookie.set('droolPrices.discountPrice', vm.droolPrices.discountPrice);
+					localStorageService.cookie.set('droolPrices.taxPrice', vm.droolPrices.taxPrice);
+					localStorageService.cookie.set('droolPrices.totalPrice', vm.droolPrices.totalPrice);
 			});
+
+
 
 			$state.go("buy.thirdStep");	
 	
@@ -374,6 +393,7 @@
 
 			vm.submittedFourth = true;
 			if (vm.formFourth.$invalid) return;
+			vm.submittedFourth = false;
 
 			localStorageService.cookie.set('buyer.firstName', vm.buyer.firstName);
 			localStorageService.cookie.set('buyer.lastName', vm.buyer.lastName);
@@ -435,7 +455,7 @@
        		var personFormating = {};
        		console.log(vm.person);
        		for (var i=0;  i < vm.totalPersons - 1; i++) {
-				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i], 
+				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i],
 					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
 
 				persons.push(personFormating);		

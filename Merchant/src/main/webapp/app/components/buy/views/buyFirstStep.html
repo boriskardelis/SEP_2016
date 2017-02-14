@@ -15,7 +15,7 @@
 			<p class="err-val" ng-show="vm.form.regionSelected.$error.required && vm.submittedFirst">{{ 'requiredField' | translate }}</p>
 		</div>
 	</div>
-	
+	{{vm.submittedFirst}}
 	<div class="form-group row">
 		<div class="col-xs-3">
 	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
@@ -38,13 +38,18 @@
 	</div>
 
 	<!-- Persons preko DIREKTIVE!!! -->
-    <div class="form-group row unity">
+    <div class="form-group row">
     	<div class="col-xs-3">
 			<label class="right" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
 		</div>
-		<span ng-repeat="(ageIndex, age) in vm.ages">
-			<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped"></buy-directive>
-		</span>
+		<div ng-repeat="(ageIndex, age) in vm.ages">
+			<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped" submitted-first="vm.submittedFirst" form="vm.form"></buy-directive>
+		</div>
+	</div>
+	<div class="form-group row unity">
+		<div class="col-xs-offset-3 col-xs-3">
+			<p class="err-val" ng-show="vm.submittedFirst && ((vm.ageTyped[0] == null || vm.ageTyped[0] == '0') && (vm.ageTyped[1] == '0' || vm.ageTyped[1] == null) && (vm.ageTyped[2] == '0' || vm.ageTyped[2] == null))">{{ 'requiredPerson' | translate }}</p>
+		</div>
 	</div>
 
 

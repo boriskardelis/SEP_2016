@@ -34,7 +34,7 @@
 				} else if (vm.status == "ERROR") {
 					vm.message = "Error has occurred on server side, please try again later";
 				} else if (vm.status == "FAILED" && vm.result == "INVALID_CARD") {
-					vm.message = "Invalid card";
+					vm.message = "The credit card is invalid";
 				}
 			}
 
@@ -50,7 +50,7 @@
 				} else if (vm.status == "ERROR") {
 					vm.message = "Desila se greška na serveru, pokušajte ponovo";
 				} else if (vm.status == "FAILED" && vm.result == "INVALID_CARD") {
-					vm.message = "Nevažeća kartica";
+					vm.message = "Nevažeća kreditna kartica";
 				}	
 			}			
 		});

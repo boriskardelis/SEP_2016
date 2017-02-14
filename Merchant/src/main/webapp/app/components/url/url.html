@@ -4,7 +4,7 @@
 <div ng-if="vm.status == 'SUCCESSFUL'" class="col-md-8 col-md-offset-2 form-div">
     <p class="h3 bg-success" align="center" translate="successfulPayment"></p>
     <br>
-    <p class="url-font">&nbsp{{vm.message}}</p>
+    <p class="url-font" align="center">&nbsp{{vm.message}}</p>
     <br>
     <a ui-sref="home" class="btn btn-block btn-info a-font" translate="homeUrl"></a>
 </div>
@@ -12,7 +12,7 @@
 <div ng-if="vm.status == 'ERROR'" class="col-md-8 col-md-offset-2 form-div">
     <p class="h3 bg-danger" align="center" translate="errorPayment"></p>
     <br>
-    <p class="url-font">&nbsp{{vm.message}}</p>
+    <p class="url-font" align="center">&nbsp{{vm.message}}</p>
     <br>
     <a ui-sref="home" class="btn btn-block btn-info a-font" translate="homeUrl"></a>
 </div>
@@ -20,7 +20,7 @@
 <div ng-if="vm.status == 'FAILED'" class="col-md-8 col-md-offset-2 form-div">
     <p class="h3 bg-danger" align="center" translate="failedPayment"></p>
     <br>
-    <p class="url-font">&nbsp{{vm.message}}</p>
+    <p class="url-font" align="center">&nbsp{{vm.message}}</p>
     <br>
   
     <a  class="btn btn-block btn-info a-font"   ng-click="vm.redirectBackOnBank()" translate="bankUrl"></a>
