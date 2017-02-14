@@ -135,6 +135,7 @@
 
         var eng =
         {   
+            insuranceCarrire : "Insurance carrier informations",
             mustBe : "Must be ",
             passportErrShort : "Pass num must be ",
             jmbgErrShort : "JMBG must be ",
@@ -249,6 +250,7 @@
 
         var ser =
         {   
+            insuranceCarrire : "Podaci o nosiocu osiguranja",
             mustBe : "Mora biti ",
             passportErrShort : "Br. pasoša tačno ",
             jmbgErrShort : "JMBG mora biti ",
