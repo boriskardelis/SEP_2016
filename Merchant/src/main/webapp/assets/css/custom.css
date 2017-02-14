@@ -1,23 +1,5 @@
-/*BITNO, #signup-form  vrati padding na 30px i min-height:300px. Takodje body sam iskljucio padding
-.left-padding {
-	padding-left: 100px;
-}
-.buy-lable {
-	 /*padding-left:100px;*/
-/*.button-sections {
-	margin-bottom: 20px;
-}*/
-/*to make images responsive*/
-/*.ng-pristine .ng-invalid-required {
-	border:1px solid #a94442;
-}*/
-/*input[type="radio"] {
-	background-color: #e5eef7;
-	color: red;
-}*/
-/*.red {
-	color: red;
-}*/
+/*BITNO, #signup-form  vrati padding na 30px i min-height:300px. Takodje body sam iskljucio padding*/
+
 .p-inline {
 	display: inline;
 }
@@ -59,6 +41,18 @@
 .red-checkbox {
 	outline: 2px solid red;
 }
+
+/*:placeholder-shown {
+  border-color: blue;
+}*/
+
+input[type="text"].ng-invalid.ng-touched {
+	border: 2px solid red;
+}
+input[type="email"].ng-invalid.ng-touched {
+	border: 2px solid red;
+}
+
 
 /*.ng-touched.ng-dirty.ng-invalid{
     border: 2px solid red;

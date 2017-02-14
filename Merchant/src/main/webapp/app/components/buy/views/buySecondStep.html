@@ -116,7 +116,7 @@
                         </div>      
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.registrationNumber.$error.required && vm.formSecondRoad.registrationNumber.$touched) || (vm.formSecondRoad.registrationNumber.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.minlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'minLength' | translate }}5</p>
                                  <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.maxlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'maxLength' | translate }}10</p>
                             </div>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.ownerFirstName.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerFirstName.$error.required && vm.formSecondRoad.ownerFirstName.$touched) || (vm.formSecondRoad.ownerFirstName.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.ownerFirstName.$error.maxlength && vm.formSecondRoad.ownerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                             </div>
                         </div>
@@ -162,7 +162,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.ownerLastName.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerLastName.$error.required && vm.formSecondRoad.ownerLastName.$touched) || (vm.formSecondRoad.ownerLastName.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.ownerLastName.$error.maxlength && vm.formSecondRoad.ownerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                             </div>
                         </div>
@@ -177,7 +177,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerJmbg.$error.required && vm.formSecondRoad.ownerJmbg.$touched) || (vm.formSecondRoad.ownerJmbg.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.minlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.maxlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
                             </div>
@@ -193,7 +193,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.type.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.type.$error.required && vm.formSecondRoad.type.$touched) || (vm.formSecondRoad.type.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.type.$error.maxlength && vm.formSecondRoad.type.$touched">{{ 'maxLength' | translate }}30</p>
                             </div>
                         </div>
@@ -208,7 +208,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.vinNumber.$error.required && vm.formSecondRoad.vinNumber.$touched) || (vm.formSecondRoad.vinNumber.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.minlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.maxlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
                             </div>
@@ -224,7 +224,7 @@
                         </div>
                         <div class="form-group row unity">
                             <div class="col-xs-offset-3 col-xs-3">
-                                <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="(vm.formSecondRoad.yearOfProduction.$error.required && vm.formSecondRoad.yearOfProduction.$touched) || (vm.formSecondRoad.yearOfProduction.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.minlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
                                 <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.maxlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
                             </div>
@@ -256,7 +256,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecondHome.address.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="(vm.formSecondHome.address.$error.required && vm.formSecondHome.address.$touched) || (vm.formSecondHome.address.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
                         </div>
                         <p class="err-val" ng-show="vm.formSecondHome.address.$error.maxlength && vm.formSecondHome.address.$touched">{{ 'maxLength' | translate }}30</p>
                     </div>
@@ -271,7 +271,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecondHome.homeOwenerFirstName.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="(vm.formSecondHome.homeOwenerFirstName.$error.required && vm.formSecondHome.homeOwenerFirstName.$touched) || (vm.formSecondHome.homeOwenerFirstName.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
                             <p class="err-val" ng-show="vm.formSecondHome.homeOwenerFirstName.$error.maxlength && vm.formSecondHome.homeOwenerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
@@ -286,7 +286,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecondHome.homeOwnerLastName.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="(vm.formSecondHome.homeOwnerLastName.$error.required && vm.formSecondHome.homeOwnerLastName.$touched) || (vm.formSecondHome.homeOwnerLastName.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
                              <p class="err-val" ng-show="vm.formSecondHome.homeOwnerLastName.$error.maxlength && vm.formSecondHome.homeOwnerLastName.$touched">{{ 'maxLength' | translate }}30</p>
                         </div>
                     </div>
@@ -301,7 +301,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-xs-offset-3 col-xs-3">
-                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="(vm.formSecondHome.ownerJMBG.$error.required && vm.formSecondHome.ownerJMBG.$touched) || (vm.formSecondHome.ownerJMBG.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
                             <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.minlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
                             <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.maxlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
                         </div>

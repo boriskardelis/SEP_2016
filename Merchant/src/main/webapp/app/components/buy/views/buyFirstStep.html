@@ -12,7 +12,7 @@
 	</div>
 	<div class="form-group row unity">
 		<div class="col-xs-offset-3 col-xs-3">
-			<p class="err-val" ng-show="vm.form.regionSelected.$error.required && vm.submittedFirst">{{ 'requiredField' | translate }}</p>
+			<p class="err-val" ng-show="vm.form.regionSelected.$error.required && vm.form.regionSelected.$touched">{{ 'requiredField' | translate }}</p>
 		</div>
 	</div>
 
