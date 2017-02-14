@@ -90,7 +90,7 @@ public class AcquirerOrderReservationController {
 
 		} else {
 
-			rmdto.setResult(TransactionResult.INVALID_CARD);
+			//rmdto.setResult(TransactionResult.INVALID_CARD);
 			System.out.println("kartica nije validna");
 
 		}
