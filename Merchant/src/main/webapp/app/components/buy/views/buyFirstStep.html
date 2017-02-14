@@ -15,7 +15,7 @@
 			<p class="err-val" ng-show="vm.form.regionSelected.$error.required && vm.submittedFirst">{{ 'requiredField' | translate }}</p>
 		</div>
 	</div>
-	{{vm.submittedFirst}}
+
 	<div class="form-group row">
 		<div class="col-xs-3">
 	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
@@ -47,8 +47,8 @@
 		</div>
 	</div>
 	<div class="form-group row unity">
-		<div class="col-xs-offset-3 col-xs-3">
-			<p class="err-val" ng-show="vm.submittedFirst && ((vm.ageTyped[0] == null || vm.ageTyped[0] == '0') && (vm.ageTyped[1] == '0' || vm.ageTyped[1] == null) && (vm.ageTyped[2] == '0' || vm.ageTyped[2] == null))">{{ 'requiredPerson' | translate }}</p>
+		<div class="col-xs-offset-3 col-xs-5">
+			<p class="err-val" ng-show="vm.submittedFirst && ((vm.ageTyped[0] == undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] == '') && (vm.ageTyped[1] == '0' || vm.ageTyped[1] == undefined || vm.ageTyped[1] == '') && (vm.ageTyped[2] == '0' || vm.ageTyped[2] == undefined || vm.ageTyped[2] == ''))">{{ 'requiredPerson' | translate }}</p>
 		</div>
 	</div>
 

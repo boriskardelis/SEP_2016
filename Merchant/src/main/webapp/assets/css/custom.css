@@ -50,6 +50,11 @@
 	color: red;
 }
 
+.red-border{
+	border: 2px solid red;
+
+}
+
 .ng-touched.ng-dirty.ng-invalid{
     border: 2px solid red;
     /*color: red;*/

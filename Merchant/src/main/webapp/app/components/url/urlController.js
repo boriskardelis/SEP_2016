@@ -57,6 +57,6 @@
 
 		 vm.redirectBackOnBank = function() {
 		 	$window.location = "https://localhost:7070/payment?paymentId="+ paymentId;
-		 }
+		 };
 	}
 })();

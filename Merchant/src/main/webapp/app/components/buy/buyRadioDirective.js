@@ -21,7 +21,7 @@
                     console.log(ng.radioTrackBy);
                     console.log(ng.ngModel);*/
 
-                    if (ng.ngModel != null) {
+                    if (ng.ngModel !== null) {
                             //mapiram
                         if (ng.ngValue[ng.radioTrackBy] === ng.ngModel[ng.radioTrackBy]) {                                
                             ng.ngModel = ng.ngValue;

@@ -8,7 +8,7 @@
 	BuyCtrl.$inject = ['$scope', '$rootScope', 'BuyService', '$state', '$timeout', '$window', '$translate', 'localStorageService'];
 	function BuyCtrl($scope, $rootScope, BuyService, $state, $timeout, $window, $translate, localStorageService) {
 		var vm = this;
-		
+
 		console.log($translate.use());
 		console.log(vm.form);
 
@@ -94,9 +94,9 @@
 		vm.contractor = localStorageService.cookie.get('contractor');
 		
 		//Po defaultu da bude selektovan contractor, ukoliko iz cookia dobija default.
-		if (vm.contractor == null) {
+		if (vm.contractor === null) {
 			vm.contractor = true;
-		};
+		}
 
 		vm.totalPersons = localStorageService.cookie.get('totalPersons');
 		console.log(vm.totalPersons);
@@ -229,8 +229,15 @@
 	
 		vm.calculateFirstStep = function() {
 
+			console.log("CALULATING");
+			console.log(vm.ageTyped[0]);
+
+			
 			vm.submittedFirst = true;
-			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime())) return;
+			//proverim custom validaciju za age type i datum
+			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime()) ||  ((vm.ageTyped[0] === undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] == '') && 
+				(vm.ageTyped[1] == '0' || vm.ageTyped[1] === undefined || vm.ageTyped[1] == '') && 
+				(vm.ageTyped[2] == '0' || vm.ageTyped[2] === undefined || vm.ageTyped[2] == ''))) return;
 			vm.submittedFirst = false;
 
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
@@ -262,16 +269,16 @@
 			}
 
 			//deo koji proveri ako neki broj osoba nije unet, da setuje na 0.	
-			for (var i=0;  i <size; i++) {
-				if (vm.ageTyped[i] == undefined) {
-					vm.ageTyped[i] = "0";
+			for (var j=0;   j<size; j++) {
+				if (vm.ageTyped[j] === undefined) {
+					vm.ageTyped[j] = "0";
 				}
 			}
 			//saberem sve ukupne osobe koliko ih ima
 			var sum = 0;
-			for (var i=0;  i <size; i++) {
+			for (var k=0;  k<size; k++) {
 				 //var sum = parseInt(vm.ageTyped[i]);
-				  sum = sum + parseInt(vm.ageTyped[i]);
+				  sum = sum + parseInt(vm.ageTyped[k]);
 			}
 			vm.totalPersons = sum;
 
@@ -280,7 +287,7 @@
 			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
 			vm.getNumber = function(num) {
 			    return new Array(num);   
-			}
+			};
 
 			localStorageService.cookie.set('totalPersons', vm.totalPersons);
 			/*for (var i=0;  i < vm.ages.length; i++) {
@@ -299,14 +306,14 @@
 
 		vm.calculateSecondStep = function() {
 
-			if (vm.insuranceTypeRoadCheck) {
+			/*if (vm.insuranceTypeRoadCheck) {
 				console.log("ROAD VALIDATE");
 				vm.formSecondRoad.$validate;
 			} 
 			if (vm.insuranceTypeHomeCheck) {
 				console.log("HOME VALIDATE");
 				vm.formSecondHome.$validate;
-			}
+			}*/
 
 			vm.submittedSecondRoad = true;
 			if (vm.formSecondRoad.$invalid) return;
@@ -358,7 +365,7 @@
 			for (var i=0;  i <sizeAge; i++) {
 				 ageId[i] = vm.ageTyped.idAgeSub[i];
 				ageCount[i] = vm.ageTyped[i];
-				ageList.push({ageId: ageId[i], ageCount: ageCount[i]})
+				ageList.push({ageId: ageId[i], ageCount: ageCount[i]});
 			}
 
 			//napravim listu itema koji uticu na cenu, koje treba da posaljem bekendu da bi izracuno cenu
@@ -442,7 +449,7 @@
 				console.log(vm.person.phoneNumber[i]);
 			}*/
 			$state.go("buy.fifthStep");	
-		}
+		};
 
 		vm.calculateFifthStep = function() {
 
@@ -486,27 +493,27 @@
 		vm.towingChecking = function() {
 			if (!vm.towingCheck)
 				vm.towingSelected = null;
-		}
+		};
 
 		vm.repairsChecking = function() {
 			if (!vm.repairsCheck)
 				vm.repairSelected = null;
-		}
+		};
 
 		vm.accommodationsChecking = function() {
 			if (!vm.accommodationsCheck)
 				vm.accommodationSelected = null;
-		}
+		};
 
 		vm.alternativeRidesChecking = function() {
 			if (!vm.alternativeRidesCheck)
 				vm.alternativeRideSelected = null;
-		}
+		};
 
 		vm.insuranceTypeChecking = function() {
 			if (!vm.alternativeRidesCheck)
 				vm.alternativeRideSelected = null;
-		}
+		};
 
 		vm.insuranceTypeRoadChecking =function() {
 			if (!vm.insuranceTypeRoadCheck) {
@@ -529,7 +536,7 @@
 					yearOfProduction: ""
 				};		
 			}
-		}
+		};
 
 		vm.insuranceTypeHomeChecking =function() {
 			if (!vm.insuranceTypeHomeCheck) {
@@ -543,7 +550,7 @@
 					ownerJMBG: ""};
 				
 			}
-		}
+		};
 
 		vm.contractorChange = function() {
 			vm.personHolder = {
@@ -554,11 +561,11 @@
 				passportNumber: "", 
 				phoneNumber: ""		
 			};
-		}
+		};
 
 		vm.firstPremission = function() {
 			console.log("JEJ");
-		}
+		};
 		vm.secondPremission = function() {
 			console.log("dva");
 			console.log($state.current.name);
@@ -568,7 +575,7 @@
 			} else {
 				return false;
 			}
-		}
+		};
 		vm.thirdPremission = function() {
 			console.log("dva");
 			console.log($state.current.name);
@@ -578,7 +585,7 @@
 			} else {
 				return false;
 			}
-		}
+		};
 		vm.fourthPremission = function() {
 			console.log("dva");
 			console.log($state.current.name);
@@ -588,7 +595,7 @@
 			} else {
 				return false;
 			}
-		}
+		};
 		vm.fifthPremission = function() {
 			console.log("dva");
 			console.log($state.current.name);
@@ -598,7 +605,7 @@
 			} else {
 				return false;
 			}
-		}
+		};
 	}
 
 })();
