@@ -18,7 +18,9 @@
 /*.red {
 	color: red;
 }*/
-
+.p-inline {
+	display: inline;
+}
 .duration {
 	 border: 2px solid red;
 }
@@ -52,13 +54,16 @@
 
 .red-border{
 	border: 2px solid red;
-
 }
 
-.ng-touched.ng-dirty.ng-invalid{
+.red-checkbox {
+	outline: 2px solid red;
+}
+
+/*.ng-touched.ng-dirty.ng-invalid{
     border: 2px solid red;
-    /*color: red;*/
-}
+    
+}*/
 
 .submitted .ng-invalid{
     border: 2px solid red;
@@ -68,6 +73,7 @@
 .err-val {
 	 color: red;
 }
+
 
 img {
     max-width: 100%;

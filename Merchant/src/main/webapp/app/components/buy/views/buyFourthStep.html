@@ -161,15 +161,13 @@
                 <div class="form-group row">
                     <div class="form-group col-xs-1" style="width: 0.5%">               
                     </div>
-                    <div class="col-xs-5">
-                        <p class="err-val" ng-show="(vm.formFourth.holderFirstName.$error.required || vm.formFourth.holderLastName.$error.required || vm.formFourth.holderAddress.$error.required || vm.formFourth.holderJmbg.$error.required || vm.formFourth.holderPassportNumber.$error.required || vm.formFourth.holderPhoneNumber.$error.required) && vm.submittedFourth">{{ 'requiredFields' | translate }}</p>
-                        
-                    </div>
-                    <div class="col-xs-5">
-                        <p class="err-val" ng-show="vm.formFourth.holderJmbg.$error.minlength && vm.formFourth.holderJmbg.$touched">{{ 'specLength' | translate }}13</p>
-                        <p class="err-val" ng-show="vm.formFourth.holderJmbg.$error.maxlength && vm.formFourth.holderJmbg.$touched">{{ 'specLength' | translate }}13</p>
-                        <p class="err-val" ng-show="vm.formFourth.holderPassportNumber.$error.minlength && vm.formFourth.holderPassportNumber.$touched">{{ 'specLength' | translate }}9</p>
-                        <p class="err-val" ng-show="vm.formFourth.holderPassportNumber.$error.maxlength && vm.formFourth.holderPassportNumber.$touched">{{ 'specLength' | translate }}9</p>
+                    <div class="col-xs-12">
+                        <p class="err-val p-inline" ng-show="(vm.formFourth.holderFirstName.$error.required || vm.formFourth.holderLastName.$error.required || vm.formFourth.holderAddress.$error.required || vm.formFourth.holderJmbg.$error.required || vm.formFourth.holderPassportNumber.$error.required || vm.formFourth.holderPhoneNumber.$error.required) && vm.submittedFourth">{{ 'requiredFields' | translate }}.</p>
+                                       
+                        <p class="err-val p-inline" ng-show="vm.formFourth.holderJmbg.$error.minlength && vm.formFourth.holderJmbg.$touched">&nbsp{{ 'jmbgErr' | translate }}</p>
+                        <p class="err-val  p-inline" ng-show="vm.formFourth.holderJmbg.$error.maxlength && vm.formFourth.holderJmbg.$touched">&nbsp{{ 'jmbgErr' | translate }}</p>
+                        <p class="err-val  p-inline" ng-show="vm.formFourth.holderPassportNumber.$error.minlength && vm.formFourth.holderPassportNumber.$touched">&nbsp{{ 'passportErr' | translate }}</p>
+                        <p class="err-val  p-inline" ng-show="vm.formFourth.holderPassportNumber.$error.maxlength && vm.formFourth.holderPassportNumber.$touched">&nbsp{{ 'passportErr' | translate }}</p>                   
                     </div>
                 </div>       
              </div>

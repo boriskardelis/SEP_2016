@@ -109,8 +109,6 @@ INSERT INTO name_translate (name,language) VALUES ('Požar', 2);
 INSERT INTO name_translate (name,language) VALUES ('Thievery', 1);
 INSERT INTO name_translate (name,language) VALUES ('Pljačka', 2);
 
-INSERT INTO name_translate (name,language) VALUES ('BEZVEZE', 1);
-INSERT INTO name_translate (name,language) VALUES ('BEZVEZE2', 1);
 
 
 INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (1,1);
@@ -192,8 +190,7 @@ INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (12,76);
 INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (12,77);
 INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (12,78);
 
-INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (4,79);
-INSERT INTO risk_subcategory (risk_category, name_translate) VALUES (4,80);
+
 
 INSERT INTO insurance_type (insurance_name,  insurance) VALUES ( 'Road Insurance', NULL);
 INSERT INTO insurance_type (insurance_name, insurance) VALUES ('Home Insurance', NULL);

@@ -135,6 +135,9 @@
 
         var eng =
         {   
+            passportErr : "Passport num. must be 9 characters.",
+            jmbgErr : "JMBG must be 13 characters.",
+            selectPackage : "Select at least one package",
             requiredPerson : "At least one person has to be insured",
             homeUrl : "Return to homepage of ChuckNorris insruance",
             bankUrl : "Return to bank to change data of card",
@@ -243,6 +246,9 @@
 
         var ser =
         {    
+            passportErr : "Pasoš mora da ima 9 karaktera.",
+            jmbgErr : "JMBG mora da bude 13 karaktera.",
+            selectPackage : "Odaberite bar jedan paket",
             requiredPerson : "Barem jedna osoba mora biti osigurana",
             homeUrl : "Vratite se na početak stranice Chuck Norris osiguranja",
             bankUrl : "Vratite se na banku da promenite podatke o kartici",

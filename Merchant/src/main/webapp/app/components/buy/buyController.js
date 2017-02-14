@@ -115,10 +115,7 @@
 		}*/
 		
 		//AKO HOCU DA BUDE REAL TIME SESIJA
-	/*	$scope.$watch('vm.proba', function(newVal){
-		    localStorageService.cookie.set('proba', newVal);	   
-	    });*/
-		/*$scope.$watch('vm.regionSelected', function(newVal){
+	/*	$scope.$watch('vm.regionSelected', function(newVal){
 		    localStorageService.cookie.set('regionSelected', newVal);
 	    });
 	    $scope.$watch('vm.sumToSelected', function(newVal){
@@ -126,8 +123,7 @@
 	    });
 	    $scope.$watch('vm.sportSelected', function(newVal){
 		    localStorageService.cookie.set('sportSelected', newVal);
-	    });*/
-	 
+	    });*/	 
 
 		BuyService.getRiskSubcategoriesBasedOnLanguage($translate.use()).then(function(response) {
 			console.log(response.data);
@@ -166,13 +162,10 @@
 			vm.insuranceTypeHome = vm.insuranceTypes[1];
 		});
 
-
-
 		BuyService.getVehicle().then(function(response) {
 			vm.vehciles = response.data;
 		});
-
-	    
+   
     	//Date
     	//if (vm.startDate == null & vm.endDate == null) {
 			vm.startDate = new Date();
@@ -186,11 +179,6 @@
 		    minDate: new Date(),
 		    startingDay: 1	//da pocinje od ponedeljka
 		};
-		/*vm.dateOptionsEnd = {
-		    maxDate: new Date(2020, 5, 22),
-		    minDate: vm.startDate,
-		    startingDay: 1
-		};*/
 
 		vm.openStart = function() {
 		   	console.log("OPENED");
@@ -207,19 +195,8 @@
 		};
 
 	    $scope.$watch("vm.startDate", function(newValue, oldValue) {			
-			if(vm.startDate.getTime() > vm.endDate.getTime()) {
-				
+			if(vm.startDate.getTime() > vm.endDate.getTime()) {		
 				vm.endDate= vm.startDate;
-				/*console.log("DAT NAKON dodele" + vm.endDate);
-				var date = vm.startDate.getDate();
-				var month = vm.startDate.getMonth();
-				var year = vm.startDate.getFullYear();
-				vm.endDate.setDate(date+1);
-				vm.endDate.setMonth(month);
-				vm.endDate.setFullYear(year);*/
-
-				console.log("DAT NAKON povecanja" + vm.endDate);
-				//vm.endDate = vm.startDate.setDate(vm.startDate + 1);
 			}	
 			
 			vm.dateOptionsEnd = {
@@ -228,16 +205,12 @@
 		});
 	
 		vm.calculateFirstStep = function() {
-
-			console.log("CALULATING");
-			console.log(vm.ageTyped[0]);
-
-			
+		
 			vm.submittedFirst = true;
 			//proverim custom validaciju za age type i datum
-			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime()) ||  ((vm.ageTyped[0] === undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] == '') && 
-				(vm.ageTyped[1] == '0' || vm.ageTyped[1] === undefined || vm.ageTyped[1] == '') && 
-				(vm.ageTyped[2] == '0' || vm.ageTyped[2] === undefined || vm.ageTyped[2] == ''))) return;
+			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime()) ||  ((vm.ageTyped[0] === undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] === '') && 
+				(vm.ageTyped[1] == '0' || vm.ageTyped[1] === undefined || vm.ageTyped[1] === '') && 
+				(vm.ageTyped[2] == '0' || vm.ageTyped[2] === undefined || vm.ageTyped[2] === ''))) return;
 			vm.submittedFirst = false;
 
 			localStorageService.cookie.set('regionSelected', vm.regionSelected);
@@ -246,7 +219,6 @@
 			localStorageService.cookie.set('startDate', vm.startDate);
 			localStorageService.cookie.set('endDate', vm.endDate);
 			localStorageService.cookie.set('ageTyped', vm.ageTyped);
-
 
 			//Parsiranje datuma za prikazevanje u petom koraku
 			var startDay = vm.startDate.getDate();
@@ -290,15 +262,6 @@
 			};
 
 			localStorageService.cookie.set('totalPersons', vm.totalPersons);
-			/*for (var i=0;  i < vm.ages.length; i++) {
-				
-				localStorageService.cookie.set('ageTyped.number[i]', vm.ageTyped.number[i]);
-				
-				//vm.ageTyped[i] = localStorageService.cookie.get('ageTyped[i]'),
-				
-				console.log("sa sesoke");
-				console.log(vm.ageTyped.number[i]);
-			}*/
 
 			$state.go("buy.secondStep");
 
@@ -306,20 +269,19 @@
 
 		vm.calculateSecondStep = function() {
 
-			/*if (vm.insuranceTypeRoadCheck) {
-				console.log("ROAD VALIDATE");
-				vm.formSecondRoad.$validate;
-			} 
-			if (vm.insuranceTypeHomeCheck) {
-				console.log("HOME VALIDATE");
-				vm.formSecondHome.$validate;
-			}*/
+			if (vm.insuranceTypeRoadCheck)
+				vm.submittedSecondRoad = true;
+			
+			if (vm.insuranceTypeHomeCheck)
+				vm.submittedSecondHome = true;
+				
+			if (vm.formSecondRoad.$invalid || vm.formSecondHome.$invalid || ((vm.towingCheck === false || vm.towingCheck === undefined) 
+				&& (vm.repairsCheck === false || vm.repairsCheck === undefined) && (vm.accommodationsCheck === false || vm.accommodationsCheck === undefined) 
+				&& (vm.alternativeRidesCheck === false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad)) return;
 
-			vm.submittedSecondRoad = true;
-			if (vm.formSecondRoad.$invalid) return;
-
-			vm.submittedSecondHome = true;
-			if (vm.formSecondHome.$invalid) return;
+			/*if (vm.formSecondRoad.$invalid || vm.formSecondHome.$invalid || (vm.towingCheck === false || vm.towingCheck === undefined) 
+				&& (vm.repairsCheck === false || vm.repairsCheck === undefined) && (vm.accommodationsCheck === false || vm.accommodationsCheck === undefined) 
+				&& (vm.alternativeRidesCheck === false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad) return;*/
 
 			vm.submittedSecondRoad = false;
 			vm.submittedSecondHome = false;
@@ -327,9 +289,7 @@
 			localStorageService.cookie.set('insuranceTypeRoadCheck', vm.insuranceTypeRoadCheck);
 			localStorageService.cookie.set('insuranceTypeHomeCheck', vm.insuranceTypeHomeCheck);
 			localStorageService.cookie.set('towingCheck', vm.towingCheck);
-			localStorageService.cookie.set('towingSelected', vm.towingSelected);
-
-			
+			localStorageService.cookie.set('towingSelected', vm.towingSelected);		
 			
 			localStorageService.cookie.set('repairsCheck', vm.repairsCheck);
 			localStorageService.cookie.set('repairSelected', vm.repairSelected);
@@ -389,8 +349,6 @@
 					localStorageService.cookie.set('droolPrices.taxPrice', vm.droolPrices.taxPrice);
 					localStorageService.cookie.set('droolPrices.totalPrice', vm.droolPrices.totalPrice);
 			});
-
-
 
 			$state.go("buy.thirdStep");	
 	
@@ -496,7 +454,7 @@
 		};
 
 		vm.repairsChecking = function() {
-			if (!vm.repairsCheck)
+			if (!vm.repairsCheck) 
 				vm.repairSelected = null;
 		};
 
@@ -517,6 +475,7 @@
 
 		vm.insuranceTypeRoadChecking =function() {
 			if (!vm.insuranceTypeRoadCheck) {
+				vm.submittedSecondRoad = false;
 				vm.towingCheck = false;
 				vm.towingSelected = null;
 				vm.repairsCheck = false;
@@ -540,6 +499,7 @@
 
 		vm.insuranceTypeHomeChecking =function() {
 			if (!vm.insuranceTypeHomeCheck) {
+				vm.submittedSecondHome = false;
 				vm.surfaceSelected = null;
 				vm.ageApartmentSelected = null;
 				vm.valueApartmentSelected = null;
