@@ -53,12 +53,6 @@ input[type="email"].ng-invalid.ng-touched {
 	border: 2px solid red;
 }
 
-
-/*.ng-touched.ng-dirty.ng-invalid{
-    border: 2px solid red;
-    
-}*/
-
 .submitted .ng-invalid{
     border: 2px solid red;
     /*color: red;*/

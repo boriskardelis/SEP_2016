@@ -31,6 +31,8 @@
 		vm.endDate = localStorageService.cookie.get('endDate');
 		vm.ageTyped = localStorageService.cookie.get('ageTyped');
 
+		vm.persons = localStorageService.cookie.get('persons');
+
 	
 		vm.droolPrices = {
 			premiumPrice: localStorageService.cookie.get('droolPrices.premiumPrice'), 
@@ -100,20 +102,7 @@
 
 		vm.totalPersons = localStorageService.cookie.get('totalPersons');
 		console.log(vm.totalPersons);
-
-		/*for (var i=0;  i < vm.totalPersons-1; i++) {
-			console.log("PUTA");
-			vm.person = {
-				firstName: localStorageService.cookie.get('persons[i].firstName'), 
-				lastName: localStorageService.cookie.get('persons[i].lastName'),
-				address: localStorageService.cookie.get('persons[i].address'),
-				jmbg: localStorageService.cookie.get('persons[i].jmbg'),
-				passportNumber: localStorageService.cookie.get('persons[i].passportNumber'),
-				phoneNumber: localStorageService.cookie.get('persons[i].phoneNumber'),
-				writable: true						
-			};
-		}*/
-		
+	
 		//AKO HOCU DA BUDE REAL TIME SESIJA
 	/*	$scope.$watch('vm.regionSelected', function(newVal){
 		    localStorageService.cookie.set('regionSelected', newVal);
@@ -205,7 +194,9 @@
 		});
 	
 		vm.calculateFirstStep = function() {
-		
+			
+			console.log("SA SESIJE");
+			console.log(vm.persons);
 			vm.submittedFirst = true;
 			//proverim custom validaciju za age type i datum
 			if (vm.form.$invalid || (vm.endDate.getTime() <= vm.startDate.getTime()) ||  ((vm.ageTyped[0] === undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] === '') && 
@@ -254,14 +245,20 @@
 			}
 			vm.totalPersons = sum;
 
-			console.log(vm.totalPersons);
-
-			//metoda da bi iterirao kroz ng-repeat sa odredjenim brojem
-			vm.getNumber = function(num) {
-			    return new Array(num);   
-			};
-
 			localStorageService.cookie.set('totalPersons', vm.totalPersons);
+
+			//Person init
+			vm.persons = [];
+	       	var personInit = {};
+			for (var i=0;  i < vm.totalPersons -1; i++) {
+				personInit= {address: "", firstName: "", lastName: "",
+					passportNumber: "", phoneNumber: "", jmbg: ""};
+
+				vm.persons.push(personInit);		
+			}
+			console.log("PERSON INIT");
+			console.log(vm.persons);
+			localStorageService.cookie.set('persons', vm.persons);
 
 			$state.go("buy.secondStep");
 
@@ -275,13 +272,9 @@
 			if (vm.insuranceTypeHomeCheck)
 				vm.submittedSecondHome = true;
 				
-			if (vm.formSecondRoad.$invalid || vm.formSecondHome.$invalid || ((vm.towingCheck === false || vm.towingCheck === undefined) 
-				&& (vm.repairsCheck === false || vm.repairsCheck === undefined) && (vm.accommodationsCheck === false || vm.accommodationsCheck === undefined) 
-				&& (vm.alternativeRidesCheck === false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad)) return;
-
-			/*if (vm.formSecondRoad.$invalid || vm.formSecondHome.$invalid || (vm.towingCheck === false || vm.towingCheck === undefined) 
-				&& (vm.repairsCheck === false || vm.repairsCheck === undefined) && (vm.accommodationsCheck === false || vm.accommodationsCheck === undefined) 
-				&& (vm.alternativeRidesCheck === false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad) return;*/
+			if (vm.formSecondRoad.$invalid || vm.formSecondHome.$invalid || ((vm.towingCheck === false || vm.towingCheck === undefined) && (vm.repairsCheck === false || vm.repairsCheck === undefined) && 
+				(vm.accommodationsCheck === false || vm.accommodationsCheck === undefined) && 
+				(vm.alternativeRidesCheck === false || vm.alternativeRidesCheck === undefined) && vm.submittedSecondRoad)) return;
 
 			vm.submittedSecondRoad = false;
 			vm.submittedSecondHome = false;
@@ -377,35 +370,8 @@
 
 			localStorageService.cookie.set('contractor', vm.contractor);	
 
-			/*var persons = [];
-       		var personFormating = {};
-       		console.log(vm.person);
-       		for (var i=0;  i < vm.totalPersons - 1; i++) {
-				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i], address: vm.person.address[i], 
-					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
-
-				persons.push(personFormating);		
-			}
-			console.log("LISTA PERSONA");
-			console.log(persons);
-
-			for (var i=0;  i < persons.length; i++) {
-				
-				localStorageService.cookie.set('persons[i].firstName', persons[i].firstName);
-				localStorageService.cookie.set('persons[i].lastName', persons[i].lastName);	
-				localStorageService.cookie.set('persons[i].address', persons[i].address);		
-				localStorageService.cookie.set('persons[i].jmbg', persons[i].jmbg);	
-				localStorageService.cookie.set('persons[i].passportNumber', persons[i].passportNumber);
-				localStorageService.cookie.set('persons[i].phoneNumber', persons[i].phoneNumber);
-
-				console.log("sa sesoke");
-				console.log(vm.person.firstName[i]);
-				console.log(vm.person.lastName[i]);
-				console.log(vm.person.address[i]);
-				console.log(vm.person.jmbg[i]);
-				console.log(vm.person.passportNumber[i]);
-				console.log(vm.person.phoneNumber[i]);
-			}*/
+			localStorageService.cookie.set('persons', vm.persons);
+			
 			$state.go("buy.fifthStep");	
 		};
 
@@ -415,21 +381,12 @@
 			if (vm.formFifth.$invalid) return;
 
 	    	vm.language = $translate.use();
-  
-       		var persons = [];
-       		var personFormating = {};
-       		console.log(vm.person);
-       		for (var i=0;  i < vm.totalPersons - 1; i++) {
-				personFormating = {address: vm.person.address[i], firstName: vm.person.firstName[i], lastName: vm.person.lastName[i],
-					passportNumber: vm.person.passportNumber[i], phoneNumber: vm.person.phoneNumber[i], jmbg: vm.person.jmbg[i]};
-
-				persons.push(personFormating);		
-			}
+ 
 			console.log("LISTA PERSONA");
-			console.log(persons);
+			console.log(vm.persons);
 
        		var insuranceInfo = {};
-       		insuranceInfo = {contractor: vm.contractor, vehicle: vm.vehicle, home: vm.home, personHolder: vm.personHolder, persons: persons,
+       		insuranceInfo = {contractor: vm.contractor, vehicle: vm.vehicle, home: vm.home, personHolder: vm.personHolder, persons: vm.persons,
        		 buyer: vm.buyer, itemsForDrools: vm.itemsForDrools, premiumPrice: vm.droolPrices.premiumPrice, language: vm.language, 
        		 discountPrice: vm.droolPrices.discountPrice, taxPrice: vm.droolPrices.taxPrice, totalPrice: vm.droolPrices.totalPrice};
 			
@@ -441,9 +398,9 @@
 			 	vm.paymentUrlAndID = response.data;
 			 	console.log(vm.paymentUrlAndID);
 			 	//url paymentId
-			 	//$timeout(function() {
+			 	$timeout(function() {
 			     	$window.location = vm.paymentUrlAndID.url;	
-			   // }, 200000);
+			    }, 200000);
 			    
 		    });
     	};
