@@ -224,7 +224,6 @@
 			var endDate = endDay + '.' + endMonth +'.' + endYear;
 			vm.endDateParsed = endDate;
 
-			//var size = Object.keys(vm.ages).length;
 			var size = 0;
 			vm.ages.forEach(function() {
 				size++;
@@ -324,7 +323,7 @@
 			vm.ages.forEach(function() {
 				sizeAge++;
 			});
-			//var sizeAge = Object.keys(vm.ages).length;
+	
 			//console.log(vm.ageTyped.idAgeSub[0]);
 			for (var i=0;  i <sizeAge; i++) {
 				 ageId[i] = vm.ageTyped.idAgeSub[i];

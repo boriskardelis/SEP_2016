@@ -135,6 +135,9 @@
 
         var eng =
         {   
+            mustBe : "Must be ",
+            passportErrShort : "Pass num must be ",
+            jmbgErrShort : "JMBG must be ",
             passportErr : "Passport num. must be 9 characters.",
             jmbgErr : "JMBG must be 13 characters.",
             selectPackage : "Select at least one package",
@@ -245,7 +248,10 @@
         };
 
         var ser =
-        {    
+        {   
+            mustBe : "Mora biti ",
+            passportErrShort : "Br. pasoša tačno ",
+            jmbgErrShort : "JMBG mora biti ",
             passportErr : "Pasoš mora da ima 9 karaktera.",
             jmbgErr : "JMBG mora da bude 13 karaktera.",
             selectPackage : "Odaberite bar jedan paket",
