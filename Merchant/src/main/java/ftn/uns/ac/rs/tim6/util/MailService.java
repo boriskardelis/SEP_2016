@@ -105,39 +105,38 @@ public class MailService {
 				cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
 				pdfTable2.addCell(cell2);
 				if (i.getBuyer().isInsured() == false) {
+					int j = 1;
 					for (Person p : i.getPersons()) {
 
-						pdfTable2.addCell("First name");
-						pdfTable2.addCell(p.getFirstName());
+						pdfTable2.addCell(j+"." + " Full name");
+						pdfTable2.addCell(p.getFirstName() + " " + p.getLastName());
 
-						pdfTable2.addCell("Last name");
-						pdfTable2.addCell(p.getLastName());
 
-						pdfTable2.addCell("Address");
+						pdfTable2.addCell(j+"." + " Address");
 						pdfTable2.addCell(p.getAddress());
+						j++;
 
 					}
 
 				} else {
-					pdfTable2.addCell("First name");
-					pdfTable2.addCell(i.getBuyer().getFirstName());
+					int j = 1;
+					pdfTable2.addCell(j+"." + " Full name");
+					pdfTable2.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
 
-					pdfTable2.addCell("Last name");
-					pdfTable2.addCell(i.getBuyer().getLastName());
+				
 
-					pdfTable2.addCell("Address");
+					pdfTable2.addCell(j+"." + " Address");
 					pdfTable2.addCell(i.getBuyer().getAddress());
 
 					for (Person p : i.getPersons()) {
+						j++;
+						pdfTable2.addCell(j+"." + " Full name");
+						pdfTable2.addCell(p.getFirstName() + " " + p.getLastName());
 
-						pdfTable2.addCell("First name");
-						pdfTable2.addCell(p.getFirstName());
 
-						pdfTable2.addCell("Last name");
-						pdfTable2.addCell(p.getLastName());
-
-						pdfTable2.addCell("Address");
+						pdfTable2.addCell(j+"." + " Address");
 						pdfTable2.addCell(p.getAddress());
+						
 
 					}
 				}
@@ -154,38 +153,38 @@ public class MailService {
 				cell2.setHorizontalAlignment(Element.ALIGN_CENTER);
 				pdfTable2.addCell(cell2);
 				if (i.getBuyer().isInsured() == false) {
+					int j = 1;
 					for (Person p : i.getPersons()) {
+						
+						pdfTable2.addCell(j+"." + " Ime i prezime");
+						pdfTable2.addCell(p.getFirstName() + " " + p.getLastName());
 
-						pdfTable2.addCell("Ime");
-						pdfTable2.addCell(p.getFirstName());
 
-						pdfTable2.addCell("Prezime");
-						pdfTable2.addCell(p.getLastName());
-
-						pdfTable2.addCell("Adresa");
+						pdfTable2.addCell(j+"." + " Adresa");
 						pdfTable2.addCell(p.getAddress());
+						j++;
+
 
 					}
 
 				} else {
-					pdfTable2.addCell("Ime");
-					pdfTable2.addCell(i.getBuyer().getFirstName());
+					int j = 1;
+					pdfTable2.addCell(j+"." + " Ime i prezime");
+					pdfTable2.addCell(i.getBuyer().getFirstName() + " " + i.getBuyer().getLastName());
 
-					pdfTable2.addCell("Prezime");
-					pdfTable2.addCell(i.getBuyer().getLastName());
+				
 
-					pdfTable2.addCell("Adresa");
+					pdfTable2.addCell(j+"." + " Adresa");
 					pdfTable2.addCell(i.getBuyer().getAddress());
 
 					for (Person p : i.getPersons()) {
 
-						pdfTable2.addCell("Ime");
-						pdfTable2.addCell(p.getFirstName());
+						j++;
+						pdfTable2.addCell(j+"." + " Ime i prezime");
+						pdfTable2.addCell(p.getFirstName() + " " + p.getLastName());
 
-						pdfTable2.addCell("Prezime");
-						pdfTable2.addCell(p.getLastName());
 
-						pdfTable2.addCell("Adresa");
+						pdfTable2.addCell(j+"." + " Adresa");
 						pdfTable2.addCell(p.getAddress());
 
 					}
