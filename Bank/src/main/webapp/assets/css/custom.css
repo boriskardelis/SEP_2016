@@ -4,10 +4,11 @@
 }
 .buy-lable {
 	 /*padding-left:100px;*/
- .ng-touched.ng-dirty.ng-invalid{
-    border: 2px solid red;
-    /*color: red;*/
+input[type="text"].ng-invalid.ng-touched {
+	border: 2px solid red;
 }
+
+
 .submitted .ng-invalid{
     border: 2px solid red;
     /*color: red;*/

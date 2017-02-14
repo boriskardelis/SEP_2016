@@ -50,7 +50,7 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-4">
-                <p class="err-val" ng-show="vm.form.pan.$error.required && vm.submitted">Required field</p>
+                <p class="err-val" ng-show="(vm.form.pan.$error.required && vm.form.pan.$touched) || (vm.form.pan.$error.required && vm.submitted)">Required field</p>
                 <p class="err-val" ng-show="vm.form.pan.$error.minlength && vm.form.pan.$touched">Min characters is 10</p>
                 <p class="err-val" ng-show="vm.form.pan.$error.maxlength && vm.form.pan.$touched">Max characters is 16</p>
             </div>
@@ -65,7 +65,7 @@
         </div>
         <div class="form-group row">
             <div class="col-xs-offset-3 col-xs-4">
-                <p class="err-val" ng-show="vm.form.securityCode.$error.required && vm.submitted">Required field</p>
+                <p class="err-val" ng-show="(vm.form.securityCode.$error.required && vm.form.securityCode.$touched) || (vm.form.securityCode.$error.required && vm.submitted)">Required field</p>
                 <p class="err-val" ng-show="vm.form.securityCode.$error.minlength && vm.form.securityCode.$touched">Min characters is 3</p>
                 <p class="err-val" ng-show="vm.form.securityCode.$error.maxlength && vm.form.securityCode.$touched">Max characters is 4</p>
             </div>
