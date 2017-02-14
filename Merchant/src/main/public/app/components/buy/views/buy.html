@@ -1,0 +1,36 @@
+
+		
+<!-- <h2 align="center">{{ 'travelInsuranceMessage' | translate }}</h2> -->
+
+<!-- 950px width -->
+	
+
+
+	<div class="col-md-10 col-md-offset-1 form-div">	
+	  <div id="form-container">
+		  <img ng-src="./assets/img/travel2final.jpg">
+		  <br><br>
+	          <!-- the links to our nested states using relative paths -->
+	          <!-- add the active class if the state matches our ui-sref -->
+          <div id="status-buttons" class="text-center">
+              <a ui-sref-active="active" eat-click-if="vm.firstPremission()" ui-sref=".firstStep"><span>1</span>{{ 'firsts' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.secondPremission()" ui-sref=".secondStep"><span>2</span> {{ 'seconds' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.thirdPremission()" ui-sref=".thirdStep"><span>3</span> {{ 'thirds' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.fourthPremission()" ui-sref=".fourthStep"><span>4</span> {{ 'fourths' | translate }}</a>
+              <a ui-sref-active="active" eat-click-if="vm.fifthPremission()" ui-sref=".fifthStep"><span>5</span> {{ 'fifths' | translate }}</a>
+          </div>
+		  </div>
+		      <!-- use ng-submit to catch the form submission and use our Angular function -->
+		      <!-- <form ng-class="{'submitted': vm.submitted}" id="signup-form" ng-submit="vm.processForm()" name="vm.form" novalidate> -->
+		          <!-- our nested state views will be injected here -->
+		          <!-- <div id="signup-form"> -->
+		          <div id="form-views" ui-view></div>
+		          <!-- </div> -->
+		      <!-- </form>   -->
+		  </div>  
+
+		
+		 
+	
+   
+		

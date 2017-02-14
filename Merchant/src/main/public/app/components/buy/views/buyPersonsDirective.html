@@ -1,0 +1,30 @@
+
+<div class="form-group row"> 
+	 <div class="form-group col-xs-2 width15">
+	        <label class="center" for="name" >{{ 'firstName' | translate }}</label>
+	        <input type="text" ng-model="person.firstName" name="firstName" class="form-control" id="name" placeholder="First name" required ng-maxlength="30">
+	 </div>
+	  <div class="form-group  col-xs-2 width15">
+	        <label class="center" for="last" >{{ 'lastName' | translate }}</label>
+	        <input type="text" ng-model="person.lastName" name="lastName" class="form-control" id="last" placeholder="Last name" required ng-maxlength="30">
+	 </div>
+	 <div class="form-group  col-xs-2 width15">
+	        <label class="center" for="address" >{{ 'address' | translate }}</label>
+	        <input type="text" ng-model="person.address" class="form-control" name="address" id="address" placeholder="Address" required ng-maxlength="30">
+	 </div>
+	 <div class="form-group  col-xs-2 width15">
+	        <label class="center" for="jmbg" >JMBG</label>
+	        <input type="text" ng-model="person.jmbg" name="jmbg" class="form-control" id="jmbg" placeholder="JMBG" required ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
+	 </div>
+	 <div class="form-group col-xs-2 width15">
+	        <label class="center" for="passport" >{{ 'passportNumber' | translate }}</label>
+	        <input type="text" ng-model="person.passportNumber" name="passportNumber" class="form-control" id="passport" placeholder="Passsport" required ng-minlength="9" ng-maxlength="9" numbers-only="numbers-only">
+	 </div>
+	 <div class="form-group col-xs-2 width15">
+	        <label class="center" for="phone" >{{ 'phoneNumber' | translate }}</label>
+	        <input type="text" ng-model="person.phoneNumber" name="phoneNumber" class="form-control" id="phone" placeholder="Phone" required ng-maxlength="30">
+	 </div>
+</div> 
+
+
+<!--  -->

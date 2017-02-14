@@ -1,0 +1,21 @@
+
+	<div class="col-xs-2">	
+
+		<label  class="center" for="{{age.nameTranslate.name}}" translate="age_replacement" translate-values="{ name: '{{age.nameTranslate.name}}'}"></label>
+		<input type="text" ng-model="ageTyped[ageIndex]" class="form-control" name="ageNum" placeholder="0" numbers-only="numbers-only" ng-class="{'red-border': submittedFirst && ((ageTyped[0] === undefined || ageTyped[0] == '0' || ageTyped[0] == '') && (ageTyped[1] == '0' || ageTyped[1] === undefined || ageTyped[1] == '') && (ageTyped[2] == '0' || ageTyped[2] === undefined || ageTyped[2] == ''))}" maxlength="2"  >
+	</div>
+
+					<!-- <p class="err-val" ng-show="form.age.$error.maxlength">{{ 'requiredPerson' | translate }}</p> -->
+		
+				<!-- <p class="err-val" ng-show="innerForm.age.$error.required && submittedFirst">{{ 'requiredPerson' | translate }}</p>					 -->
+
+<!-- ng-required="ageTyped[0] == null || ageTyped[1] == null || ageTyped[2] == null" -->
+
+	<!-- NE mogu da izbacim nikako $parent odavde. Jer ng-init inicira samo prvi element u nizu. ZASTO? -->
+    <div class="form-group" hidden>			
+		
+		<input type="text"  ng-init="$parent.vm.ageTyped.idAgeSub[ageIndex] = age.id" ng-model="ageTyped.idAgeSub[ageIndex]" class="form-control" >
+	</div>
+
+	
+			

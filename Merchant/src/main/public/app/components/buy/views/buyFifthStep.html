@@ -1,0 +1,180 @@
+<form id="signup-form" ng-submit="vm.calculateFifthStep()" name="vm.formFifth" novalidate>
+    <p class="h4 bg-success" align="center">{{ 'insuranceInformation' | translate }}</p>
+    <div class="form-group row">
+        <div class="col-xs-3">
+             <label class="right">Region:</label>
+        </div>
+        <div class="col-xs-9">
+              <p>{{vm.regionSelected.nameTranslate.name}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3">
+             <label class="right">{{ 'sumToInsure' | translate }}</label>
+        </div>
+        <div class="col-xs-9">
+              <p>{{vm.sumToSelected.nameTranslate.name}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3">
+             <label class="right">{{ 'numberOfInsurancedPersons' | translate }}</label>
+        </div>
+        <div class="col-xs-9">
+              <p>{{vm.totalPersons}}</p>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-3">
+             <label class="right">{{ 'durationOfInsurance' | translate }}</label>
+        </div>
+        <div class="col-xs-9">
+              <p>{{ 'from' | translate }} {{vm.startDateParsed}} {{ 'to1' | translate }} {{vm.endDateParsed}}</p>
+        </div>
+    </div>
+
+    <div ng-if="vm.sportSelected != undefined || vm.insuranceTypeRoadCheck || vm.insuranceTypeHomeCheck" >
+      <p class="h4 bg-success" align="center">{{ 'additionalInsurances' | translate }}</p>  
+      <div ng-if="vm.sportSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Sport:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.sportSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.towingSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Towing:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.towingSelected.nameTranslate.name}}</p>
+          </div>
+      </div> 
+      <div ng-if="vm.repairSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Repairs:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.repairSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.accommodationSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Accommodation in hotel:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.accommodationSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.alternativeRideSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Alternative ride:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.alternativeRideSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.surfaceSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Suraface of apartment:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.surfaceSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.valueApartmentSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Estimated value of apartment:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.valueApartmentSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.disasterSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Insure from disaster:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.disasterSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+      <div ng-if="vm.ageApartmentSelected != undefined" class="form-group row">
+          <div class="col-xs-3">
+               <label class="right">Age of apartment:</label>
+          </div>
+          <div class="col-xs-9">
+                <p>{{vm.ageApartmentSelected.nameTranslate.name}}</p>
+          </div>
+      </div>
+    </div>
+    <p class="h4 bg-success" align="center">For payment</p>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                 <label class="right">Total price:</label>
+            </div>
+            <div class="col-xs-9">
+                  <p>{{vm.droolPrices.totalPrice}} RSD</p>
+            </div>
+        </div>
+
+    <p class="h4 bg-success" align="center">Information about buyer</p>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                 <label class="right">Name and Last name:</label>
+            </div>
+            <div class="col-xs-9">
+                  <p>{{vm.buyer.firstName}} {{vm.buyer.lastName}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                 <label class="right">JMBG:</label>
+            </div>
+            <div class="col-xs-9">
+                  <p>{{vm.buyer.jmbg}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                 <label class="right">Passport number:</label>
+            </div>
+            <div class="col-xs-9">
+                  <p>{{vm.buyer.passportNumber}}</p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                 <label class="right">Address:</label>
+            </div>
+            <div class="col-xs-9">
+                  <p>{{vm.buyer.address}}</p>
+            </div>
+        </div>
+
+    <p class="h4 bg-success" align="center">Delivery</p>
+        <div class="form-group row">
+            <div class="col-xs-3">
+                <label class="right">E-mail:</label>
+            </div>
+            <div class="col-xs-9">
+                <p>{{vm.buyer.email}}</p>
+            </div>
+        </div>
+    <br>
+
+  <div class="row text-center col-xs-4 col-xs-offset-4">
+      <button type="submit" ng-disabled="isDisabled" ng-click="buttonDisable()" class="btn btn-success btn-block">Buy</button>
+  </div>
+
+  <br><br><br>
+  <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">     
+          <button ui-sref="buy.fourthStep" class="btn btn-block btn-info col-xs-2">
+          <span class="glyphicon glyphicon-circle-arrow-left"></span> Previouse Section 
+          </button>
+          </span>         
+      </div>
+  </div>
+  <br>
+</form>

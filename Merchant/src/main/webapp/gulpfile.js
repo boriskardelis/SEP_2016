@@ -9,6 +9,10 @@ var concatCss = require('gulp-concat-css');
 var gNgFileSort = require('gulp-angular-filesort');
 var concat = require('gulp-concat');
 var print = require('gulp-print');
+var deleteLines = require('gulp-delete-lines');
+var insertLines = require('gulp-insert-lines');
+var removeEmptyLines = require('gulp-remove-empty-lines');
+var clean = require('gulp-clean');
 
 
 var vendorFiles=['jquery/dist/jquery.js',
@@ -84,3 +88,38 @@ gulp.task('vendor-scripts',function(){
 });
 
 gulp.task('dist', ['minify-css', 'scripts', 'vendor-scripts']);
+
+
+gulp.task('make', ['dist'], function(){
+
+	gulp.src(['!app/**/*.js', 'app/**/*']).pipe(gulp.dest('../public/app'));
+	gulp.src(['!assets/js/**/*', 'assets/**/*','!assets/css/**/*']).pipe(gulp.dest('../public/assets'));
+	gulp.src('assets/fonts/*').pipe(gulp.dest('../public/assets/fonts'));
+	gulp.src('dist/*.css').pipe(gulp.dest('../public/assets/css'));
+	gulp.src('dist/*.js').pipe(gulp.dest('../public/assets/js'));
+
+	gulp.src("index.html")
+		.pipe(deleteLines({
+      		'filters': [
+      			/<link/i
+  			]
+    	}))
+    	.pipe(deleteLines({
+      		'filters': [
+      			/<script/i
+  			]
+    	}))
+    	.pipe(removeEmptyLines({
+		    removeComments: true
+		}))
+		.pipe(insertLines({
+      		'before': /<\/head>/,
+	      	'lineBefore': '\t\t<link href="assets/css/bootstrap.min.css" rel="stylesheet"/>\n' +
+	      					'\t\t<link href="assets/css/all.min.css" rel="stylesheet"/>\n' +
+	      					'\t\t<script src="assets/js/vendor.min.css"></script>\n' +
+	      					'\t\t<script src="assets/js/all.min.css"></script>\n'
+	      				 
+	    }))
+    	.pipe(gulp.dest('../public'));
+  		
+});

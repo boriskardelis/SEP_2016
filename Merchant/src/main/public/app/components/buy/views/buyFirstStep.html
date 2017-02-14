@@ -1,0 +1,121 @@
+<!-- <input type="text" ng-model="vm.proba" placeholder="0"> -->
+ <form ng-class="{'submitted': vm.submittedFirst}" id="signup-form" ng-submit="vm.calculateFirstStep()" name="vm.form" novalidate>
+	<div class="form-group row">
+		<div class="col-xs-3">
+			<label for="reg" class="right" for="region" translate="region"></label>
+		</div>
+		<div class="col-xs-3">
+		    <select id="reg" class="form-control" ng-model="vm.regionSelected" id="regionSelected" name="regionSelected" required ng-options="region.nameTranslate.name for region in vm.regions track by region.id">	   
+		    	 	<option value="" translate="selectDestination"></option> 		    	
+			</select>
+		</div>
+	</div>
+	<div class="form-group row unity">
+		<div class="col-xs-offset-3 col-xs-3">
+			<p class="err-val" ng-show="vm.form.regionSelected.$error.required && vm.form.regionSelected.$touched">{{ 'requiredField' | translate }}</p>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-xs-3">
+	 		<label class="right" for="sumTo" translate="sumToInsure"></label>
+	 	</div>
+	 	<div class="col-xs-5">		
+		   	<div ng-repeat="sum in vm.sumTo" ng-init="vm.sumToSelected">	   	
+		   		<!-- The specific problem is comparing two different instances of an object which are not reference equal, but which logically represent the same data. -->
+		   		<!-- ng-class-om sam resio da bi napravio crvene labele u slucaju invalidne forme -->
+		   		 <label class="form-check-label" ng-class="{'red': vm.submittedFirst && vm.form.sumToSelected.$invalid}">
+			   		 <input class="form-check-input" type="radio" ng-model="vm.sumToSelected" name="sumToSelected" ng-value="sum" radio-track-by="id" required>&nbsp{{sum.nameTranslate.name}}    
+				</label>
+				<br>		   
+			</div>			
+		</div>
+	</div>
+	<div class="form-group row unity">
+		<div class="col-xs-offset-3 col-xs-3">
+			<p class="err-val" ng-show="vm.form.sumToSelected.$error.required && vm.submittedFirst">{{ 'requiredOption' | translate }}</p>
+		</div>
+	</div>
+
+	<!-- Persons preko DIREKTIVE!!! -->
+    <div class="form-group row">
+    	<div class="col-xs-3">
+			<label class="right" for="numberOfPersons" translate="numberOfInsurancedPersons"></label>
+		</div>
+		<div ng-repeat="(ageIndex, age) in vm.ages">
+			<buy-directive age="age" age-index="ageIndex" age-typed="vm.ageTyped" submitted-first="vm.submittedFirst" form="vm.form"></buy-directive>
+		</div>
+	</div>
+	<div class="form-group row unity">
+		<div class="col-xs-offset-3 col-xs-5">
+			<p class="err-val" ng-show="vm.submittedFirst && ((vm.ageTyped[0] == undefined || vm.ageTyped[0] == '0' || vm.ageTyped[0] == '') && (vm.ageTyped[1] == '0' || vm.ageTyped[1] == undefined || vm.ageTyped[1] == '') && (vm.ageTyped[2] == '0' || vm.ageTyped[2] == undefined || vm.ageTyped[2] == ''))">{{ 'requiredPerson' | translate }}</p>
+		</div>
+	</div>
+
+
+	<!-- Za DatePicker -->
+	<div class="form-group row">
+		<div class="col-xs-3">
+			<label class="right" for="duration" translate="durationOfInsurance" ></label>
+		</div>
+		<div class="col-xs-3">
+			<label class="buy-lable" for="startDate" translate="from"  ng-class="{'red': vm.submittedFirst && (vm.endDate.getTime() <= vm.startDate.getTime())}"></label>
+		    <p class="input-group">
+		      <input  type="text" class="form-control" uib-datepicker-popup ng-model="vm.startDate" name="startDate" required is-open="vm.startOpened" datepicker-options="vm.dateOptionsStart" ng-required="true" close-text="Close" ng-class="{'duration': vm.submittedFirst && (vm.endDate.getTime() <= vm.startDate.getTime())}" />
+		      <span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="vm.openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+		      </span>
+		    </p>
+		</div>
+		
+		<div class="col-xs-3">
+			<label class="buy-lable" for="endDate" translate="to"  ng-class="{'red': vm.submittedFirst && (vm.endDate.getTime() <= vm.startDate.getTime())}"></label>
+		    <p class="input-group">
+		      <input type="text" class="form-control" uib-datepicker-popup ng-model="vm.endDate" name="endDate" required is-open="vm.endOpened" datepicker-options="vm.dateOptionsEnd" ng-required="true" close-text="Close" ng-class="{'duration': vm.submittedFirst && (vm.endDate.getTime() <= vm.startDate.getTime())}" />
+		      <span class="input-group-btn">
+		        <button type="button" class="btn btn-default" ng-click="vm.openEnd()"><i class="glyphicon glyphicon-calendar"></i></button>
+		      </span>
+		    </p>
+		</div>
+	</div>
+	
+	<div class="form-group row unity">
+		<div class="col-xs-offset-3 col-xs-3">
+			<p class="err-val" ng-show="vm.form.startDate.$error.required && vm.submittedFirst">{{ 'requiredField' | translate }}</p>
+			<p class="err-val" ng-show="(vm.endDate.getTime() <= vm.startDate.getTime()) && vm.submittedFirst">{{ 'durationMust' | translate }}</p>
+		</div>
+		<div class="col-xs-3">
+			<p class="err-val" ng-show="vm.form.endDate.$error.required && vm.submittedFirst">{{ 'requiredField' | translate }}</p>
+			
+		</div>
+	</div>
+	 
+	<div class="form-group row unity">
+		<div class="col-xs-3">
+			<label class="right" for="sport">Sport:</label>
+		</div>
+		<div class="col-xs-3">
+				<select class="form-control" ng-model="vm.sportSelected" ng-options="sport.nameTranslate.name for sport in vm.sports track by sport.id">
+			  	     <option value="" translate="selectSport"> </option>
+				</select>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+		    <button type="submit"    class="btn btn-block btn-info" >
+		    {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
+		    </button>
+		</div>
+	</div>
+	<br>
+ </form>  
+
+<!-- ng-disabled="vm.form.$invalid" -->
+<!-- ui-sref="buy.secondStep" ng-click="vm.calculateFirstStep()" ng-disabled="vm.form.$invalid"-->
+
+	
+
+
+
+

@@ -1,0 +1,394 @@
+
+    <!-- Insurance type direktiva -->
+   <!--  <div class="form-group celina">
+         <label class="buy-lable" for="insurnaceType" translate="additionalInsurance"></label>
+         <ul ng-repeat="insuranceType in vm.insuranceTypes">
+    
+            <li><buy-additional-directive insurance-type="insuranceType" towings="vm.towings" repairs="vm.repairs" accommodations="vm.accommodations" alternative-rides="vm.alternativeRides" surfaces="vm.surfaces" age-apartments="vm.ageApartments" value-apartments="vm.valueApartments" disasters="vm.disasters" towing-selected="vm.towingSelected" repair-selected="vm.repairSelected" accommodation-selected="vm.accommodationSelected" alternative-ride-selected="vm.alternativeRideSelected" vehicle="vm.vehicle" home="vm.home" surface-selected="vm.surfaceSelected" age-apartment-selected="vm.ageApartmentSelected" value-apartment-selected="vm.valueApartmentSelected" disaster-selected="vm.disasterSelected"></buy-additional-directive></li>
+         </ul>
+    </div> -->
+
+    <div class="form-group unity">
+            <label class="buy-lable" translate="additionalInsurance"></label>
+            <!-- <ul ng-repeat="insuranceType in vm.insuranceTypes"> -->
+            
+                <div class="checkbox">
+                    <label class="form-check-label">
+                        <input type="checkbox" ng-model="vm.insuranceTypeRoadCheck" ng-change="vm.insuranceTypeRoadChecking()"><p class="adit-text">{{vm.insuranceTypeRoad.insuranceName}}</p>
+                    </label>
+                </div>
+
+                <div ng-show="vm.insuranceTypeRoadCheck">
+                <form ng-class="{'submitted': vm.submittedSecondRoad}" id="signup-form"  name="vm.formSecondRoad" novalidate>
+                    <div class="form-group">
+                        <p class="h4 bg-success" align="center" translate="additionalPackages"></p>
+
+                        <div class="form-group row">
+                            <div class="checkbox">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" ng-model="vm.towingCheck" ng-change="vm.towingChecking()" ng-class="{'red-checkbox': (vm.towingCheck == false || vm.towingCheck == undefined) && (vm.repairsCheck == false || vm.repairsCheck == undefined) && (vm.accommodationsCheck == false || vm.accommodationsCheck == undefined) && (vm.alternativeRidesCheck == false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad}">{{ 'towing' | translate }}
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <select class="form-control" ng-show="vm.towingCheck" ng-model="vm.towingSelected" name="towingSelected" ng-options="towing.nameTranslate.name for towing in vm.towings track by towing.id" ng-required="vm.towingCheck">
+                                    <option value="">{{ 'selectMileage' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <p class="err-val" ng-show="vm.formSecondRoad.towingSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="checkbox">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" ng-model="vm.repairsCheck" ng-change="vm.repairsChecking()" ng-class="{'red-checkbox': (vm.towingCheck == false || vm.towingCheck == undefined) && (vm.repairsCheck == false || vm.repairsCheck == undefined) && (vm.accommodationsCheck == false || vm.accommodationsCheck == undefined) && (vm.alternativeRidesCheck == false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad}">{{ 'repairsTo' | translate }}
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <select class="form-control" ng-show="vm.repairsCheck" ng-model="vm.repairSelected" name="repairSelected" ng-options="repair.nameTranslate.name for repair in vm.repairs track by repair.id" ng-required="vm.repairsCheck">
+                                    <option value="">{{ 'selectPrice' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <p class="err-val" ng-show="vm.formSecondRoad.repairSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="checkbox">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" ng-model="vm.accommodationsCheck" ng-change="vm.accommodationsChecking()" ng-class="{'red-checkbox': (vm.towingCheck == false || vm.towingCheck == undefined) && (vm.repairsCheck == false || vm.repairsCheck == undefined) && (vm.accommodationsCheck == false || vm.accommodationsCheck == undefined) && (vm.alternativeRidesCheck == false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad}">{{ 'accommodation' | translate }}
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <select class="form-control" ng-show="vm.accommodationsCheck" ng-model="vm.accommodationSelected" name="accommodationSelected" ng-options="accommodation.nameTranslate.name for accommodation in vm.accommodations track by accommodation.id" ng-required="vm.accommodationsCheck">
+                                    <option value="">{{ 'selectNumberOfDays' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <p class="err-val" ng-show="vm.formSecondRoad.accommodationSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="checkbox">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" ng-model="vm.alternativeRidesCheck" ng-change="vm.alternativeRidesChecking()" ng-class="{'red-checkbox': (vm.towingCheck == false || vm.towingCheck == undefined) && (vm.repairsCheck == false || vm.repairsCheck == undefined) && (vm.accommodationsCheck == false || vm.accommodationsCheck == undefined) && (vm.alternativeRidesCheck == false || vm.alternativeRidesCheck == undefined) && vm.submittedSecondRoad}">{{ 'alternativeRide' | translate }}
+                                </label>
+                            </div>
+                            <div class="col-xs-3">
+                                <select class="form-control" ng-show="vm.alternativeRidesCheck" ng-model="vm.alternativeRideSelected" name="alternativeRideSelected" ng-options="alternativeRide.nameTranslate.name for alternativeRide in vm.alternativeRides track by alternativeRide.id" ng-required="vm.alternativeRidesCheck">
+                                    <option value="">{{ 'selectRide' | translate }}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-4">
+                                <p class="err-val" ng-show="vm.formSecondRoad.alternativeRideSelected.$error.required && vm.submittedSecondRoad">{{ 'requiredFieldPackage' | translate }}</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                             <p class="err-val" ng-show="vm.towingCheck == false  && vm.repairsCheck == false && vm.accommodationsCheck == false && vm.alternativeRidesCheck == false && vm.submittedSecondRoad">{{ 'selectPackage' | translate }}</p>
+                        </div>
+                       
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <p class="h4 bg-success" align="center">{{ 'vehicleInformations' | translate }}</p>
+                        <br>
+                        
+                        <div class="form-group row">    
+                            <div class="col-xs-3">      
+                                <label class="right">{{ 'registrationNumber' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.registrationNumber" name="registrationNumber" class="form-control" placeholder="{{ 'registrationNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="5" ng-maxlength="10">
+                            </div>
+                        </div>      
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.registrationNumber.$error.required && vm.formSecondRoad.registrationNumber.$touched) || (vm.formSecondRoad.registrationNumber.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.minlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'minLength' | translate }}5</p>
+                                 <p class="err-val" ng-show="vm.formSecondRoad.registrationNumber.$error.maxlength && vm.formSecondRoad.registrationNumber.$touched">{{ 'maxLength' | translate }}10</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'vehicleMake' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.make" name="make" class="form-control" placeholder="{{ 'vehicleMake' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="vm.formSecondRoad.make.$error.required && vm.submittedSecondRoad">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.make.$error.maxlength && vm.formSecondRoad.make.$touched">{{ 'maxLength' | translate }}30</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'vehicleOwnerFN' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.ownerFirstName" name="ownerFirstName" class="form-control" placeholder="{{ 'vehicleOwnerFN' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerFirstName.$error.required && vm.formSecondRoad.ownerFirstName.$touched) || (vm.formSecondRoad.ownerFirstName.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.ownerFirstName.$error.maxlength && vm.formSecondRoad.ownerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'vehicleOwnerLN' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.ownerLastName" name="ownerLastName" class="form-control" placeholder="{{ 'vehicleOwnerLN' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerLastName.$error.required && vm.formSecondRoad.ownerLastName.$touched) || (vm.formSecondRoad.ownerLastName.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.ownerLastName.$error.maxlength && vm.formSecondRoad.ownerLastName.$touched">{{ 'maxLength' | translate }}30</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'vehicleOwnerJMBG' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.ownerJmbg" name="ownerJmbg" class="form-control" placeholder="JMBG" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.ownerJmbg.$error.required && vm.formSecondRoad.ownerJmbg.$touched) || (vm.formSecondRoad.ownerJmbg.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.minlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.ownerJmbg.$error.maxlength && vm.formSecondRoad.ownerJmbg.$touched">{{ 'specLength' | translate }}13</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">                  
+                                <label class="right">{{ 'vehicleType' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.type" name="type" class="form-control" placeholder="{{ 'vehicleType' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-maxlength="30">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.type.$error.required && vm.formSecondRoad.type.$touched) || (vm.formSecondRoad.type.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.type.$error.maxlength && vm.formSecondRoad.type.$touched">{{ 'maxLength' | translate }}30</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'vinNumber' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.vinNumber" name="vinNumber" class="form-control" placeholder="{{ 'vinNumber' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="17" ng-maxlength="17">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.vinNumber.$error.required && vm.formSecondRoad.vinNumber.$touched) || (vm.formSecondRoad.vinNumber.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.minlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.vinNumber.$error.maxlength && vm.formSecondRoad.vinNumber.$touched">{{ 'specLength' | translate }}17</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-xs-3">          
+                                <label class="right">{{ 'yearOfProduction' | translate }}</label>
+                            </div>
+                            <div class="col-xs-3">
+                                <input type="text" ng-model="vm.vehicle.yearOfProduction" name="yearOfProduction" class="form-control" placeholder="{{ 'yearOfProduction' | translate }}" ng-required="vm.insuranceTypeRoadCheck" ng-minlength="4" ng-maxlength="4" numbers-only="numbers-only">
+                            </div>
+                        </div>
+                        <div class="form-group row unity">
+                            <div class="col-xs-offset-3 col-xs-3">
+                                <p class="err-val" ng-show="(vm.formSecondRoad.yearOfProduction.$error.required && vm.formSecondRoad.yearOfProduction.$touched) || (vm.formSecondRoad.yearOfProduction.$error.required && vm.submittedSecondRoad)">{{ 'requiredField' | translate }}</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.minlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
+                                <p class="err-val" ng-show="vm.formSecondRoad.yearOfProduction.$error.maxlength && vm.formSecondRoad.yearOfProduction.$touched">{{ 'specLength' | translate }}4</p>
+                            </div>
+                        </div>
+                    </div>          
+                </div>
+            </form>
+
+
+            <div class="checkbox">
+                <label class="form-check-label">
+                    <input type="checkbox" ng-model="vm.insuranceTypeHomeCheck" ng-change="vm.insuranceTypeHomeChecking()"><p class="adit-text">{{vm.insuranceTypeHome.insuranceName}}</p>
+                </label>
+            </div>
+  
+            <div ng-show="vm.insuranceTypeHomeCheck">
+             <form ng-class="{'submitted': vm.submittedSecondHome}" id="signup-form"  name="vm.formSecondHome" novalidate>
+                
+                <div class="form-group">
+                        <p class="h4 bg-success" align="center">{{ 'homeInfo' | translate }}</p>
+                        <br>
+                    <div class="form-group row">
+                        <div class="col-xs-3">
+                            <label class="right">{{ 'address' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.address" name="address" class="form-control" placeholder="{{ 'address' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="(vm.formSecondHome.address.$error.required && vm.formSecondHome.address.$touched) || (vm.formSecondHome.address.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
+                        </div>
+                        <p class="err-val" ng-show="vm.formSecondHome.address.$error.maxlength && vm.formSecondHome.address.$touched">{{ 'maxLength' | translate }}30</p>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerFN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerFirstName" name="homeOwenerFirstName" class="form-control" placeholder="{{ 'homeOwnerFN' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="(vm.formSecondHome.homeOwenerFirstName.$error.required && vm.formSecondHome.homeOwenerFirstName.$touched) || (vm.formSecondHome.homeOwenerFirstName.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.homeOwenerFirstName.$error.maxlength && vm.formSecondHome.homeOwenerFirstName.$touched">{{ 'maxLength' | translate }}30</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerLN' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerLastName" name="homeOwnerLastName" class="form-control" placeholder="{{ 'homeOwnerLN' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-maxlength="30">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="(vm.formSecondHome.homeOwnerLastName.$error.required && vm.formSecondHome.homeOwnerLastName.$touched) || (vm.formSecondHome.homeOwnerLastName.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
+                             <p class="err-val" ng-show="vm.formSecondHome.homeOwnerLastName.$error.maxlength && vm.formSecondHome.homeOwnerLastName.$touched">{{ 'maxLength' | translate }}30</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">          
+                            <label class="right">{{ 'homeOwnerJMBG' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <input type="text" ng-model="vm.home.ownerJMBG" name="ownerJMBG" class="form-control" placeholder="{{ 'homeOwnerJMBG' | translate }}" ng-required="vm.insuranceTypeHomeCheck" ng-minlength="13" ng-maxlength="13" numbers-only="numbers-only">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="(vm.formSecondHome.ownerJMBG.$error.required && vm.formSecondHome.ownerJMBG.$touched) || (vm.formSecondHome.ownerJMBG.$error.required && vm.submittedSecondHome)">{{ 'requiredField' | translate }}</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.minlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
+                            <p class="err-val" ng-show="vm.formSecondHome.ownerJMBG.$error.maxlength && vm.formSecondHome.ownerJMBG.$touched">{{ 'specLength' | translate }}13</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'surface' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-model="vm.surfaceSelected" name="surfaceSelected" ng-options="surface.nameTranslate.name for surface in vm.surfaces track by surface.id" ng-required="vm.insuranceTypeHomeCheck">
+                                 <option value="">{{ 'selectSurface' | translate }}</option>            
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="vm.formSecondHome.surfaceSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">      
+                            <label class="right">{{ 'ageOfHome' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">
+                            <select class="form-control" ng-model="vm.ageApartmentSelected" name="ageApartmentSelected" ng-options="ageApartment.nameTranslate.name for ageApartment in vm.ageApartments track by ageApartment.id" ng-required="vm.insuranceTypeHomeCheck">
+                                 <option value="">{{ 'selectAge' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="vm.formSecondHome.ageApartmentSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'estimatedValue' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">      
+                            <select class="form-control" ng-model="vm.valueApartmentSelected" name="valueApartmentSelected" ng-options="valueApartment.nameTranslate.name for valueApartment in vm.valueApartments track by valueApartment.id" ng-required="vm.insuranceTypeHomeCheck">
+                                 <option value="">{{ 'selectValue' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="vm.formSecondHome.valueApartmentSelected.$error.required && vm.submittedSecondHome">{{ 'requiredField' | translate }}</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-xs-3">  
+                            <label class="right">{{ 'insureFrom' | translate }}</label>
+                        </div>
+                        <div class="col-xs-3">  
+                            <select class="form-control" ng-model="vm.disasterSelected" name="disasterSelected" ng-options="disaster.nameTranslate.name for disaster in vm.disasters track by disaster.id" ng-required="vm.insuranceTypeHomeCheck">
+                                 <option value="">{{ 'selectType' | translate }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-xs-offset-3 col-xs-3">
+                            <p class="err-val" ng-show="vm.formSecondHome.disasterSelected.$error.required && vm.submittedSecondHome" >{{ 'requiredField' | translate }}</p>
+                        </div>
+                    </div>
+
+                </div>                              
+            </div>
+        </form>
+     </div>
+
+
+    <div class="row">
+        <div class="col-xs-4 col-xs-offset-4">
+            <button  class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()">
+            {{ 'nextSection' | translate }} <span class="glyphicon glyphicon-circle-arrow-right"></span>
+            </button>
+            <button ui-sref="buy.firstStep" class="btn btn-block btn-info">
+            <span class="glyphicon glyphicon-circle-arrow-left"></span> {{ 'previousSection' | translate }} 
+            </button>
+            </span>         
+        </div>
+    </div>
+    <br>
+
+
+<!--   <button ui-sref="buy.thirdStep" class="btn btn-block btn-info" ng-click="vm.calculateSecondStep()"> -->
